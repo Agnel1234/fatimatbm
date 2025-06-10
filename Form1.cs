@@ -18,6 +18,7 @@ namespace TestFat
             InitializeComponent();
             LoadFamilies();
             LoadAnbiyam();
+            LoadZoneFamilyChart();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -102,6 +103,25 @@ namespace TestFat
                 iconColumn.HeaderText = "Delete";
                 iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
                 anbiyamGrid.Columns.Insert(7, iconColumn); // Insert at the first position, or use Add() for last
+            }
+        }
+
+        private void LoadZoneFamilyChart()
+        {
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyCountByZone");
+
+            chart1.Series.Clear();
+            chart1.ChartAreas[0].AxisX.Title = "Zone";
+            chart1.ChartAreas[0].AxisY.Title = "Number of Families";
+
+            var series = chart1.Series.Add("Families per Zone");
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string zone = row["Zone"].ToString();
+                int count = Convert.ToInt32(row["FamilyCount"]);
+                series.Points.AddXY(zone, count);
             }
         }
     }
