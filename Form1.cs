@@ -18,6 +18,7 @@ namespace TestFat
             InitializeComponent();
             LoadFamilies();
             LoadAnbiyam();
+            LoadZoneFamilyChart();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -93,16 +94,110 @@ namespace TestFat
             {
                 DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
                 iconColumn.Name = "Icon";
-                iconColumn.HeaderText = "Edit";
+                iconColumn.HeaderText = "Delete";
                 iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
                 anbiyamGrid.Columns.Insert(6, iconColumn); // Insert at the first position, or use Add() for last
 
-                iconColumn = new DataGridViewImageColumn();
-                iconColumn.Name = "Icon1";
-                iconColumn.HeaderText = "Delete";
-                iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
-                anbiyamGrid.Columns.Insert(7, iconColumn); // Insert at the first position, or use Add() for last
+                //iconColumn = new DataGridViewImageColumn();
+                //iconColumn.Name = "Icon1";
+                //iconColumn.HeaderText = "Delete";
+                //iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
+                //anbiyamGrid.Columns.Insert(7, iconColumn); // Insert at the first position, or use Add() for last
             }
+        }
+
+        private void LoadZoneFamilyChart()
+        {
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyCountByZone");
+
+            chart1.Series.Clear();
+            chart1.ChartAreas[0].AxisX.Title = "Zone";
+            chart1.ChartAreas[0].AxisY.Title = "Number of Families";
+
+            var series = chart1.Series.Add("Families per Zone");
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string zone = row["Zone"].ToString();
+                int count = Convert.ToInt32(row["FamilyCount"]);
+                series.Points.AddXY(zone, count);
+            }
+
+            chart2.Series.Clear();
+            chart2.ChartAreas[0].AxisX.Title = "Zone";
+            chart2.ChartAreas[0].AxisY.Title = "Number of Families";
+
+            var series2 = chart2.Series.Add("Families per Zone");
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string zone = row["Zone"].ToString();
+                int count = Convert.ToInt32(row["FamilyCount"]);
+                series2.Points.AddXY(zone, count);
+            }
+
+            chart3.Series.Clear();
+            chart3.ChartAreas[0].AxisX.Title = "Zone";
+            chart3.ChartAreas[0].AxisY.Title = "Number of Families";
+
+            var series3 = chart3.Series.Add("Families per Zone");
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string zone = row["Zone"].ToString();
+                int count = Convert.ToInt32(row["FamilyCount"]);
+                series3.Points.AddXY(zone, count);
+            }
+
+        }
+
+        private void ShowPopup(string action)
+        {
+            using (var popup = new AnbiyamPopup())
+            {
+                if( action == "create")
+                {
+                    popup.ShowDialog(this); // Shows as a modal dialog
+                }
+                else if (action == "edit")
+                {
+                    this.anbiyamGrid.SelectedRows.Cast<DataGridViewRow>().ToList().ForEach(row =>
+                    {
+                        // Assuming the first cell contains the ID or unique identifier
+                        string selectedId = row.Cells[0].Value.ToString();
+                        popup.Tag = selectedId; // Store the ID in the popup for later use
+                    });
+                }
+                else
+                {
+                    MessageBox.Show("Invalid action specified.");
+                    return;
+                }
+
+            }
+        }
+
+        private void btncreate_Click(object sender, EventArgs e)
+        {
+            ShowPopup("create");
+        }
+
+        private void btnedit_Click(object sender, EventArgs e)
+        {
+            ShowPopup("edit");
+        }
+
+        private void chart3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

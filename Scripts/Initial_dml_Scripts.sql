@@ -160,3 +160,19 @@ BEGIN
     SELECT a.anbiyam_code as Code, a.anbiyam_name as AnbiyamName, a.created_at as Created, a.anbiyam_zone as Zone, a.anbiyam_coordinator_name as Coordinator, a.coordinator_phone as Phone FROM anbiyam a;
 END
 GO
+
+CREATE PROCEDURE sp_GetFamilyCountByZone
+AS
+BEGIN
+    SELECT 
+        a.anbiyam_zone AS Zone,
+        COUNT(f.family_id) AS FamilyCount
+    FROM 
+        anbiyam a
+        LEFT JOIN family f ON a.anbiyam_id = f.anbiyam_id
+    GROUP BY 
+        a.anbiyam_zone
+    ORDER BY 
+        a.anbiyam_zone
+END
+GO

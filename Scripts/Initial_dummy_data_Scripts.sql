@@ -33,3 +33,25 @@ VALUES
 (1, NULL, 'Grandpa Fernandez', '1940-02-10', '2020-05-01', '2020-05-03', 'St. Mary Cemetery, Chennai', 'G101', 'Beloved grandfather'),
 (2, 6, 'Rita Raj', '2002-07-15', '2023-12-20', '2023-12-22', 'St. Paul Cemetery, Chennai', 'G202', 'Daughter of Anita and Paul');
 GO
+
+
+-- Add more anbiyam (zones)
+INSERT INTO anbiyam (anbiyam_name, anbiyam_code, anbiyam_zone, anbiyam_coordinator_name, anbiyam_ass_coordinator_name, coordinator_email, coordinator_phone)
+VALUES 
+('St. Thomas', 'ST03', 3, 'Thomas Xavier', 'Lucy Thomas', 'thomas.xavier@example.com', '3456789012'),
+('St. Francis', 'SF04', 4, 'Francis Dsouza', 'Maria Francis', 'francis.dsouza@example.com', '4567890123'),
+('St. Teresa', 'ST05', 5, 'Teresa Mary', 'John Teresa', 'teresa.mary@example.com', '5678901234');
+
+-- Add more families (ensure anbiyam_id matches the new anbiyam rows above)
+-- Suppose the new anbiyam_id values are 3, 4, 5 (check your DB for actual IDs)
+INSERT INTO family (anbiyam_id, family_code, head_of_family, gender, family_permanant_address, family_temp_address, family_city, family_state, zip_code, phone, email, occupation, dob, qualification, blood_group, marriage_date, monthly_subscription, parish_member_since)
+VALUES
+(3, 'ST0303', 'Xavier Thomas', 'Male', '12 Beach Rd', '34 Guest St', 'Chennai', 'TN', '600003', '9123456780', 'xavier.t@example.com', 'Doctor', '1980-02-15', 'MBBS', 'B+', '2005-05-10', 250, 2010),
+(4, 'SF0404', 'Maria Francis', 'Female', '56 Lake View', '78 Hill St', 'Chennai', 'TN', '600004', '9234567891', 'maria.f@example.com', 'Nurse', '1985-07-20', 'B.Sc.', 'O+', '2010-09-15', 180, 2012),
+(5, 'ST0505', 'John Teresa', 'Male', '90 Park Lane', '12 River Rd', 'Chennai', 'TN', '600005', '9345678902', 'john.t@example.com', 'Engineer', '1978-11-30', 'B.E.', 'A-', '2000-03-25', 220, 2008);
+
+-- Add more families to existing zones if needed
+INSERT INTO family (anbiyam_id, family_code, head_of_family, gender, family_permanant_address, family_temp_address, family_city, family_state, zip_code, phone, email, occupation, dob, qualification, blood_group, marriage_date, monthly_subscription, parish_member_since)
+VALUES
+(1, 'SP0103', 'David Peter', 'Male', '101 Main St', '202 Temp St', 'Chennai', 'TN', '600006', '9456789012', 'david.p@example.com', 'Teacher', '1982-04-18', 'M.A.', 'AB+', '2007-08-12', 210, 2011),
+(2, 'SP0203', 'Anil Paul', 'Male', '303 Church Rd', '404 Guest Rd', 'Chennai', 'TN', '600007', '9567890123', 'anil.p@example.com', 'Accountant', '1979-09-25', 'B.Com.', 'B-', '2002-12-05', 190, 2009);
