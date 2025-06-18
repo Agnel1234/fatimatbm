@@ -16,14 +16,12 @@ namespace TestFat
         public Form1()
         {
             InitializeComponent();
-            LoadFamilies();
+           // LoadFamilies();
+            LoadFamiliesAsync();
             LoadAnbiyam();
             LoadZoneFamilyChart();
-        }
-
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-
+            LoadFamilyBasicDetails();
+            this.familygrid.SelectionChanged += familygrid_SelectionChanged;
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -31,10 +29,51 @@ namespace TestFat
             Application.Exit();
         }
 
-        private void LoadFamilies()
+        //private void LoadFamilies()
+        //{
+        //    DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
+        //    dataGridView1.DataSource = dt;
+        //    dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
+        //    dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+        //}
+
+        private void LoadFamiliesAsync()
         {
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
-            dataGridView1.DataSource = dt;
+            using (var progress = new ProgressForm("Connecting Database..."))
+            {
+                DataTable dt = null;
+                Exception dbException = null;
+
+                var worker = new System.ComponentModel.BackgroundWorker();
+                worker.DoWork += (s, e) =>
+                {
+                    try
+                    {
+                        dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
+                    }
+                    catch (Exception ex)
+                    {
+                        dbException = ex;
+                    }
+                };
+                worker.RunWorkerCompleted += (s, e) =>
+                {
+                    progress.Close();
+                    if (dbException != null)
+                    {
+                        MessageBox.Show("Database connection failed:\n" + dbException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        dataGridView1.DataSource = dt;
+                        dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
+                        dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+                    }
+                };
+
+                worker.RunWorkerAsync();
+                progress.ShowDialog(this);
+            }
         }
 
         private void LoadAnbiyam()
@@ -60,50 +99,45 @@ namespace TestFat
             dataGridView1.DataSource = dt;
         }
 
+        private void LoadFamilyBasicDetails()
+        {
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails");
+            familygrid.DataSource = dt;
+            familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
+            familygrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+            familygrid.Columns["FamilyID"].Visible = false;
+        }
+
         private void searchButton_Click_1(object sender, EventArgs e)
         {
-            // Get selected anbiyam_id (handle "Select" as null)
-            object anbiyamIdObj = anbiyamCombobox.SelectedValue;
-            int? anbiyamId = null;
-            if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
-                anbiyamId = parsedId;
-
-            // Get coordinator name and head of family from textboxes
-            string coordinatorName = coordinatorTetbox.Text.Trim();
-            string headOfFamily = familyHeadTextbox.Text.Trim();
-
-            // Use DBNull.Value for empty parameters
-            var parameters = new[]
+            using (var progress = new ProgressForm("Searching..."))
             {
+                // Get selected anbiyam_id (handle "Select" as null)
+                object anbiyamIdObj = anbiyamCombobox.SelectedValue;
+                int? anbiyamId = null;
+                if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
+                    anbiyamId = parsedId;
+
+                // Get coordinator name and head of family from textboxes
+                string coordinatorName = coordinatorTetbox.Text.Trim();
+                string headOfFamily = familyHeadTextbox.Text.Trim();
+
+                // Use DBNull.Value for empty parameters
+                var parameters = new[]
+                {
                 new SqlParameter("@anbiyam_id", (object)anbiyamId ?? DBNull.Value),
                 new SqlParameter("@coordinator_name", string.IsNullOrEmpty(coordinatorName) ? (object)DBNull.Value : coordinatorName),
                 new SqlParameter("@head_of_family", string.IsNullOrEmpty(headOfFamily) ? (object)DBNull.Value : headOfFamily)
             };
 
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_SearchFamilyWithAnbiyam", parameters);
-            dataGridView1.DataSource = dt;
+                DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_SearchFamilyWithAnbiyam", parameters);
+                dataGridView1.DataSource = dt;
+            }
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAllAnbiyams");
-            anbiyamGrid.DataSource = dt;
-
-            // Check if the icon column already exists to avoid duplicates
-            if (anbiyamGrid.Columns["Icon"] == null)
-            {
-                DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
-                iconColumn.Name = "Icon";
-                iconColumn.HeaderText = "Delete";
-                iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
-                anbiyamGrid.Columns.Insert(6, iconColumn); // Insert at the first position, or use Add() for last
-
-                //iconColumn = new DataGridViewImageColumn();
-                //iconColumn.Name = "Icon1";
-                //iconColumn.HeaderText = "Delete";
-                //iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
-                //anbiyamGrid.Columns.Insert(7, iconColumn); // Insert at the first position, or use Add() for last
-            }
+            LoadAnbiyamGrid();
         }
 
         private void LoadZoneFamilyChart()
@@ -156,27 +190,37 @@ namespace TestFat
 
         private void ShowPopup(string action)
         {
-            using (var popup = new AnbiyamPopup())
+            if (action == "create")
             {
-                if( action == "create")
+                using (var popup = new AnbiyamPopup())
                 {
-                    popup.ShowDialog(this); // Shows as a modal dialog
+                    popup.ShowDialog(); // Shows as a modal dialog
                 }
-                else if (action == "edit")
+                LoadAnbiyamGrid();
+            }
+            else if (action == "edit")
+            {
+                if (anbiyamGrid.SelectedRows.Count == 0)
                 {
-                    this.anbiyamGrid.SelectedRows.Cast<DataGridViewRow>().ToList().ForEach(row =>
-                    {
-                        // Assuming the first cell contains the ID or unique identifier
-                        string selectedId = row.Cells[0].Value.ToString();
-                        popup.Tag = selectedId; // Store the ID in the popup for later use
-                    });
-                }
-                else
-                {
-                    MessageBox.Show("Invalid action specified.");
+                    MessageBox.Show("Please select an Anbiyam to edit.");
                     return;
                 }
-
+                var selectedId = anbiyamGrid.SelectedRows[0];
+                if (selectedId == null || selectedId.Cells["anbiyamID"].Value == null || selectedId.Cells["anbiyamID"].Value == "")
+                {
+                    MessageBox.Show("Please select an Anbiyam to edit.");
+                    return;
+                }
+                using (var popup = new AnbiyamPopup((int)selectedId.Cells["anbiyamID"].Value))
+                {
+                    popup.ShowDialog(); // Shows as a modal dialog
+                }
+                LoadAnbiyamGrid();
+            }
+            else
+            {
+                MessageBox.Show("Invalid action specified.");
+                return;
             }
         }
 
@@ -190,14 +234,55 @@ namespace TestFat
             ShowPopup("edit");
         }
 
-        private void chart3_Click(object sender, EventArgs e)
+        private void LoadAnbiyamGrid()
         {
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAllAnbiyams");
+            anbiyamGrid.DataSource = dt;
+            anbiyamGrid.Columns["anbiyamID"].Visible = false;
+            anbiyamGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
+            anbiyamGrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
 
+            // Check if the icon column already exists to avoid duplicates
+            if (anbiyamGrid.Columns["delete"] == null)
+            {
+                DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
+                iconColumn.Name = "delete";
+                iconColumn.HeaderText = "";
+                iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
+                anbiyamGrid.Columns.Insert(7, iconColumn); // Insert at the first position, or use Add() for last
+            }
         }
 
-        private void chart1_Click(object sender, EventArgs e)
+        private void familygrid_SelectionChanged(object sender, EventArgs e)
         {
-
+            if (familygrid.SelectedRows.Count > 0)
+            {
+                var selectedRow = familygrid.SelectedRows[0];
+                // Assuming you have a hidden column or a way to get family_id
+                int familyId = GetFamilyIdFromSelectedRow(selectedRow);
+                LoadFamilyMembersForGrid(familyId);
+            }
         }
+
+        private int GetFamilyIdFromSelectedRow(DataGridViewRow row)
+        {
+            // If you have family_id as a hidden column:
+            return Convert.ToInt32(row.Cells["FamilyID"].Value);
+
+            // If not, you need to fetch it based on unique fields (not recommended).
+            // Best practice: include family_id as a hidden column in your SELECT.
+            throw new NotImplementedException();
+        }
+
+        private void LoadFamilyMembersForGrid(int familyId)
+        {
+            var param = new SqlParameter("@family_id", familyId);
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyMembersByFamilyId", param);
+            familyMembersGrid.DataSource = dt;
+            familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10, FontStyle.Bold);
+            familyMembersGrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+            familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
+        }
+
     }
 }

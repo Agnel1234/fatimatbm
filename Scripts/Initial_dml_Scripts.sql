@@ -157,7 +157,15 @@ GO
 CREATE PROCEDURE sp_GetAllAnbiyams
 AS
 BEGIN
-    SELECT a.anbiyam_code as Code, a.anbiyam_name as AnbiyamName, a.created_at as Created, a.anbiyam_zone as Zone, a.anbiyam_coordinator_name as Coordinator, a.coordinator_phone as Phone FROM anbiyam a;
+    SELECT
+        a.anbiyam_id as anbiyamID,
+        a.anbiyam_code as Code, 
+        a.anbiyam_name as AnbiyamName, 
+        a.created_at as Created, 
+        a.anbiyam_zone as Zone, 
+        a.anbiyam_coordinator_name as Coordinator, 
+        a.coordinator_phone as Phone 
+   FROM anbiyam a;
 END
 GO
 
@@ -174,5 +182,154 @@ BEGIN
         a.anbiyam_zone
     ORDER BY 
         a.anbiyam_zone
+END
+GO
+
+
+CREATE PROCEDURE sp_InsertAnbiyam
+    @anbiyam_name NVARCHAR(50),
+    @anbiyam_zone INT,
+    @anbiyam_coordinator_name NVARCHAR(50),
+    @anbiyam_ass_coordinator_name NVARCHAR(50),
+    @coordinator_email NVARCHAR(100),
+    @coordinator_phone NVARCHAR(15),
+    @anbiyam_code NVARCHAR(10)
+AS
+BEGIN
+    INSERT INTO anbiyam (
+        anbiyam_name,
+        anbiyam_zone,
+        anbiyam_coordinator_name,
+        anbiyam_ass_coordinator_name,
+        coordinator_email,
+        coordinator_phone,
+        anbiyam_code,
+        created_at,
+        modified
+    )
+    VALUES (
+        @anbiyam_name,
+        @anbiyam_zone,
+        @anbiyam_coordinator_name,
+        @anbiyam_ass_coordinator_name,
+        @coordinator_email,
+        @coordinator_phone,
+        @anbiyam_code,
+        GETDATE(),
+        GETDATE()
+    );
+END
+GO
+
+CREATE PROCEDURE sp_GetTotalAnbiyamsCount
+AS
+BEGIN
+    SELECT count(a.anbiyam_name) FROM anbiyam a;
+END
+GO
+
+CREATE PROCEDURE sp_GetSelectedAnbiyam
+    @anbiyam_id INT
+AS
+BEGIN
+SELECT 
+    anbiyam_name,
+    anbiyam_zone,
+    anbiyam_coordinator_name,
+    anbiyam_ass_coordinator_name,
+    coordinator_phone,
+    anbiyam_code,
+    coordinator_email
+FROM Anbiyam Where anbiyam_id = @anbiyam_id
+END
+GO
+
+CREATE PROCEDURE sp_InsertOrUpdateAnbiyam
+    @anbiyam_id INT = NULL,
+    @anbiyam_name NVARCHAR(50),
+    @anbiyam_zone INT,
+    @anbiyam_coordinator_name NVARCHAR(50),
+    @anbiyam_ass_coordinator_name NVARCHAR(50),
+    @coordinator_email NVARCHAR(100),
+    @coordinator_phone NVARCHAR(15),
+    @anbiyam_code NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @anbiyam_id IS NULL OR @anbiyam_id = 0
+    BEGIN
+        -- Insert new record
+        INSERT INTO anbiyam (
+            anbiyam_name,
+            anbiyam_zone,
+            anbiyam_coordinator_name,
+            anbiyam_ass_coordinator_name,
+            coordinator_email,
+            coordinator_phone,
+            anbiyam_code,
+            created_at,
+            modified
+        )
+        VALUES (
+            @anbiyam_name,
+            @anbiyam_zone,
+            @anbiyam_coordinator_name,
+            @anbiyam_ass_coordinator_name,
+            @coordinator_email,
+            @coordinator_phone,
+            @anbiyam_code,
+            GETDATE(),
+            GETDATE()
+        );
+    END
+    ELSE
+    BEGIN
+        -- Update existing record
+        UPDATE anbiyam
+        SET
+            anbiyam_name = @anbiyam_name,
+            anbiyam_zone = @anbiyam_zone,
+            anbiyam_coordinator_name = @anbiyam_coordinator_name,
+            anbiyam_ass_coordinator_name = @anbiyam_ass_coordinator_name,
+            coordinator_email = @coordinator_email,
+            coordinator_phone = @coordinator_phone,
+            anbiyam_code = @anbiyam_code,
+            modified = GETDATE()
+        WHERE anbiyam_id = @anbiyam_id;
+    END
+END
+GO
+
+Create PROCEDURE sp_GetFamilyBasicDetails
+AS
+BEGIN
+    SELECT 
+        family_id as FamilyID,
+        family_code as FamilyCode, 
+        head_of_family as FamilyHead, 
+        gender as Gender, 
+        family_permanant_address as Address, 
+        phone as Phone
+    FROM family;
+END
+GO
+
+
+ALTER PROCEDURE sp_GetFamilyMembersByFamilyId
+    @family_id INT
+AS
+BEGIN
+    SELECT 
+        member_id as memberID,
+        first_name as MemberName,
+        relationship as Relationship,
+        gender as Gender,
+        dob as MemberDOB,
+        member_status as Status,
+        phone as Phone,
+        marital_status as MaritalStatus
+    FROM family_member
+    WHERE family_id = @family_id;
 END
 GO
