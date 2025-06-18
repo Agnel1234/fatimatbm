@@ -16,7 +16,8 @@ namespace TestFat
         public Form1()
         {
             InitializeComponent();
-            LoadFamilies();
+           // LoadFamilies();
+            LoadFamiliesAsync();
             LoadAnbiyam();
             LoadZoneFamilyChart();
             LoadFamilyBasicDetails();
@@ -28,12 +29,51 @@ namespace TestFat
             Application.Exit();
         }
 
-        private void LoadFamilies()
+        //private void LoadFamilies()
+        //{
+        //    DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
+        //    dataGridView1.DataSource = dt;
+        //    dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
+        //    dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+        //}
+
+        private void LoadFamiliesAsync()
         {
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
-            dataGridView1.DataSource = dt;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-            dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+            using (var progress = new ProgressForm("Connecting Database..."))
+            {
+                DataTable dt = null;
+                Exception dbException = null;
+
+                var worker = new System.ComponentModel.BackgroundWorker();
+                worker.DoWork += (s, e) =>
+                {
+                    try
+                    {
+                        dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
+                    }
+                    catch (Exception ex)
+                    {
+                        dbException = ex;
+                    }
+                };
+                worker.RunWorkerCompleted += (s, e) =>
+                {
+                    progress.Close();
+                    if (dbException != null)
+                    {
+                        MessageBox.Show("Database connection failed:\n" + dbException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        dataGridView1.DataSource = dt;
+                        dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
+                        dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+                    }
+                };
+
+                worker.RunWorkerAsync();
+                progress.ShowDialog(this);
+            }
         }
 
         private void LoadAnbiyam()
@@ -70,26 +110,29 @@ namespace TestFat
 
         private void searchButton_Click_1(object sender, EventArgs e)
         {
-            // Get selected anbiyam_id (handle "Select" as null)
-            object anbiyamIdObj = anbiyamCombobox.SelectedValue;
-            int? anbiyamId = null;
-            if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
-                anbiyamId = parsedId;
-
-            // Get coordinator name and head of family from textboxes
-            string coordinatorName = coordinatorTetbox.Text.Trim();
-            string headOfFamily = familyHeadTextbox.Text.Trim();
-
-            // Use DBNull.Value for empty parameters
-            var parameters = new[]
+            using (var progress = new ProgressForm("Searching..."))
             {
+                // Get selected anbiyam_id (handle "Select" as null)
+                object anbiyamIdObj = anbiyamCombobox.SelectedValue;
+                int? anbiyamId = null;
+                if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
+                    anbiyamId = parsedId;
+
+                // Get coordinator name and head of family from textboxes
+                string coordinatorName = coordinatorTetbox.Text.Trim();
+                string headOfFamily = familyHeadTextbox.Text.Trim();
+
+                // Use DBNull.Value for empty parameters
+                var parameters = new[]
+                {
                 new SqlParameter("@anbiyam_id", (object)anbiyamId ?? DBNull.Value),
                 new SqlParameter("@coordinator_name", string.IsNullOrEmpty(coordinatorName) ? (object)DBNull.Value : coordinatorName),
                 new SqlParameter("@head_of_family", string.IsNullOrEmpty(headOfFamily) ? (object)DBNull.Value : headOfFamily)
             };
 
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_SearchFamilyWithAnbiyam", parameters);
-            dataGridView1.DataSource = dt;
+                DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_SearchFamilyWithAnbiyam", parameters);
+                dataGridView1.DataSource = dt;
+            }
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
