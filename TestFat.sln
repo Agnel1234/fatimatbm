@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36121.58 d17.14
+VisualStudioVersion = 17.14.36121.58
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFat", "TestFat.csproj", "{A65067F1-6768-464A-874B-01E058620BDD}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TestFat", "..\TestFat\TestFat.vdproj", "{6B273C63-82BA-9CD1-1B8B-2354775308F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{A65067F1-6768-464A-874B-01E058620BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A65067F1-6768-464A-874B-01E058620BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A65067F1-6768-464A-874B-01E058620BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B273C63-82BA-9CD1-1B8B-2354775308F2}.Debug|Any CPU.ActiveCfg = Debug
+		{6B273C63-82BA-9CD1-1B8B-2354775308F2}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
