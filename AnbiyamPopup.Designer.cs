@@ -118,7 +118,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(13, 187);
+            this.lblEmail.Location = new System.Drawing.Point(13, 181);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(37, 13);
             this.lblEmail.TabIndex = 14;
@@ -127,7 +127,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Location = new System.Drawing.Point(186, 187);
+            this.txtEmail.Location = new System.Drawing.Point(186, 181);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(200, 20);
             this.txtEmail.TabIndex = 5;
@@ -136,7 +136,7 @@
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(13, 222);
+            this.lblPhone.Location = new System.Drawing.Point(13, 216);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(52, 13);
             this.lblPhone.TabIndex = 15;
@@ -145,7 +145,7 @@
             // txtPhone
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPhone.Location = new System.Drawing.Point(186, 222);
+            this.txtPhone.Location = new System.Drawing.Point(186, 216);
             this.txtPhone.MaxLength = 10;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(200, 20);
@@ -175,7 +175,7 @@
             this.panel1.Controls.Add(this.lblCoordinator);
             this.panel1.Location = new System.Drawing.Point(41, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(402, 426);
+            this.panel1.Size = new System.Drawing.Size(402, 416);
             this.panel1.TabIndex = 10;
             // 
             // btnSave
@@ -184,9 +184,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.DarkGray;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(16, 313);
+            this.btnSave.Location = new System.Drawing.Point(186, 291);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(370, 39);
+            this.btnSave.Size = new System.Drawing.Size(200, 29);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Register Anbiyam";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -196,7 +196,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 145);
+            this.label2.Location = new System.Drawing.Point(13, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(163, 13);
             this.label2.TabIndex = 13;
@@ -205,7 +205,7 @@
             // txtAssistantCo
             // 
             this.txtAssistantCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAssistantCo.Location = new System.Drawing.Point(186, 145);
+            this.txtAssistantCo.Location = new System.Drawing.Point(186, 142);
             this.txtAssistantCo.Name = "txtAssistantCo";
             this.txtAssistantCo.Size = new System.Drawing.Size(200, 20);
             this.txtAssistantCo.TabIndex = 4;
@@ -214,7 +214,7 @@
             // 
             this.anbiyamCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.anbiyamCode.Enabled = false;
-            this.anbiyamCode.Location = new System.Drawing.Point(186, 265);
+            this.anbiyamCode.Location = new System.Drawing.Point(186, 256);
             this.anbiyamCode.Name = "anbiyamCode";
             this.anbiyamCode.Size = new System.Drawing.Size(200, 20);
             this.anbiyamCode.TabIndex = 7;
@@ -223,7 +223,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 265);
+            this.label1.Location = new System.Drawing.Point(13, 256);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 16;
@@ -236,7 +236,6 @@
             this.ClientSize = new System.Drawing.Size(481, 450);
             this.Controls.Add(this.panel1);
             this.Name = "AnbiyamPopup";
-            this.Text = "AnbiyamPopup";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -333,5 +333,12 @@ namespace TestFat
             familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
         }
 
+        private void btnFamilyCreate_Click(object sender, EventArgs e)
+        {
+            using (var popup = new FamilyPopup())
+            {
+                popup.ShowDialog(); // Shows as a modal dialog
+            }
+        }
     }
 }
