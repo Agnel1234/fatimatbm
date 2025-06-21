@@ -151,6 +151,228 @@
             this.dateTimePicker12 = new System.Windows.Forms.DateTimePicker();
             this.label43 = new System.Windows.Forms.Label();
             this.textBox29 = new System.Windows.Forms.TextBox();
+            this.child2Groupbox = new System.Windows.Forms.GroupBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.checkBox23 = new System.Windows.Forms.CheckBox();
+            this.checkBox24 = new System.Windows.Forms.CheckBox();
+            this.checkBox25 = new System.Windows.Forms.CheckBox();
+            this.checkBox26 = new System.Windows.Forms.CheckBox();
+            this.checkBox27 = new System.Windows.Forms.CheckBox();
+            this.checkBox28 = new System.Windows.Forms.CheckBox();
+            this.checkBox29 = new System.Windows.Forms.CheckBox();
+            this.checkBox30 = new System.Windows.Forms.CheckBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label46 = new System.Windows.Forms.Label();
+            this.dateTimePicker13 = new System.Windows.Forms.DateTimePicker();
+            this.label47 = new System.Windows.Forms.Label();
+            this.dateTimePicker14 = new System.Windows.Forms.DateTimePicker();
+            this.label48 = new System.Windows.Forms.Label();
+            this.dateTimePicker15 = new System.Windows.Forms.DateTimePicker();
+            this.label49 = new System.Windows.Forms.Label();
+            this.dateTimePicker16 = new System.Windows.Forms.DateTimePicker();
+            this.label50 = new System.Windows.Forms.Label();
+            this.dateTimePicker17 = new System.Windows.Forms.DateTimePicker();
+            this.label51 = new System.Windows.Forms.Label();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.dateTimePicker18 = new System.Windows.Forms.DateTimePicker();
+            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.child3Groupbox = new System.Windows.Forms.GroupBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.textBox38 = new System.Windows.Forms.TextBox();
+            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.checkBox31 = new System.Windows.Forms.CheckBox();
+            this.checkBox32 = new System.Windows.Forms.CheckBox();
+            this.checkBox33 = new System.Windows.Forms.CheckBox();
+            this.checkBox34 = new System.Windows.Forms.CheckBox();
+            this.checkBox35 = new System.Windows.Forms.CheckBox();
+            this.checkBox36 = new System.Windows.Forms.CheckBox();
+            this.checkBox37 = new System.Windows.Forms.CheckBox();
+            this.checkBox38 = new System.Windows.Forms.CheckBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.label60 = new System.Windows.Forms.Label();
+            this.dateTimePicker19 = new System.Windows.Forms.DateTimePicker();
+            this.label61 = new System.Windows.Forms.Label();
+            this.dateTimePicker20 = new System.Windows.Forms.DateTimePicker();
+            this.label62 = new System.Windows.Forms.Label();
+            this.dateTimePicker21 = new System.Windows.Forms.DateTimePicker();
+            this.label63 = new System.Windows.Forms.Label();
+            this.dateTimePicker22 = new System.Windows.Forms.DateTimePicker();
+            this.label64 = new System.Windows.Forms.Label();
+            this.dateTimePicker23 = new System.Windows.Forms.DateTimePicker();
+            this.label65 = new System.Windows.Forms.Label();
+            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.textBox41 = new System.Windows.Forms.TextBox();
+            this.textBox42 = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.textBox43 = new System.Windows.Forms.TextBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.dateTimePicker24 = new System.Windows.Forms.DateTimePicker();
+            this.textBox44 = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.textBox45 = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.child4Groupbox = new System.Windows.Forms.GroupBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.textBox46 = new System.Windows.Forms.TextBox();
+            this.textBox47 = new System.Windows.Forms.TextBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.checkBox39 = new System.Windows.Forms.CheckBox();
+            this.checkBox40 = new System.Windows.Forms.CheckBox();
+            this.checkBox41 = new System.Windows.Forms.CheckBox();
+            this.checkBox42 = new System.Windows.Forms.CheckBox();
+            this.checkBox43 = new System.Windows.Forms.CheckBox();
+            this.checkBox44 = new System.Windows.Forms.CheckBox();
+            this.checkBox45 = new System.Windows.Forms.CheckBox();
+            this.checkBox46 = new System.Windows.Forms.CheckBox();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label74 = new System.Windows.Forms.Label();
+            this.dateTimePicker25 = new System.Windows.Forms.DateTimePicker();
+            this.label75 = new System.Windows.Forms.Label();
+            this.dateTimePicker26 = new System.Windows.Forms.DateTimePicker();
+            this.label76 = new System.Windows.Forms.Label();
+            this.dateTimePicker27 = new System.Windows.Forms.DateTimePicker();
+            this.label77 = new System.Windows.Forms.Label();
+            this.dateTimePicker28 = new System.Windows.Forms.DateTimePicker();
+            this.label78 = new System.Windows.Forms.Label();
+            this.dateTimePicker29 = new System.Windows.Forms.DateTimePicker();
+            this.label79 = new System.Windows.Forms.Label();
+            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.textBox49 = new System.Windows.Forms.TextBox();
+            this.textBox50 = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.textBox51 = new System.Windows.Forms.TextBox();
+            this.label83 = new System.Windows.Forms.Label();
+            this.dateTimePicker30 = new System.Windows.Forms.DateTimePicker();
+            this.textBox52 = new System.Windows.Forms.TextBox();
+            this.label84 = new System.Windows.Forms.Label();
+            this.textBox53 = new System.Windows.Forms.TextBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.child5Groupbox = new System.Windows.Forms.GroupBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.textBox54 = new System.Windows.Forms.TextBox();
+            this.textBox55 = new System.Windows.Forms.TextBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.checkBox47 = new System.Windows.Forms.CheckBox();
+            this.checkBox48 = new System.Windows.Forms.CheckBox();
+            this.checkBox49 = new System.Windows.Forms.CheckBox();
+            this.checkBox50 = new System.Windows.Forms.CheckBox();
+            this.checkBox51 = new System.Windows.Forms.CheckBox();
+            this.checkBox52 = new System.Windows.Forms.CheckBox();
+            this.checkBox53 = new System.Windows.Forms.CheckBox();
+            this.checkBox54 = new System.Windows.Forms.CheckBox();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label88 = new System.Windows.Forms.Label();
+            this.dateTimePicker31 = new System.Windows.Forms.DateTimePicker();
+            this.label89 = new System.Windows.Forms.Label();
+            this.dateTimePicker32 = new System.Windows.Forms.DateTimePicker();
+            this.label90 = new System.Windows.Forms.Label();
+            this.dateTimePicker33 = new System.Windows.Forms.DateTimePicker();
+            this.label91 = new System.Windows.Forms.Label();
+            this.dateTimePicker34 = new System.Windows.Forms.DateTimePicker();
+            this.label92 = new System.Windows.Forms.Label();
+            this.dateTimePicker35 = new System.Windows.Forms.DateTimePicker();
+            this.label93 = new System.Windows.Forms.Label();
+            this.textBox56 = new System.Windows.Forms.TextBox();
+            this.label94 = new System.Windows.Forms.Label();
+            this.textBox57 = new System.Windows.Forms.TextBox();
+            this.textBox58 = new System.Windows.Forms.TextBox();
+            this.label95 = new System.Windows.Forms.Label();
+            this.label96 = new System.Windows.Forms.Label();
+            this.textBox59 = new System.Windows.Forms.TextBox();
+            this.label97 = new System.Windows.Forms.Label();
+            this.dateTimePicker36 = new System.Windows.Forms.DateTimePicker();
+            this.textBox60 = new System.Windows.Forms.TextBox();
+            this.label98 = new System.Windows.Forms.Label();
+            this.textBox61 = new System.Windows.Forms.TextBox();
+            this.label99 = new System.Windows.Forms.Label();
+            this.otherRelation1Groupbox = new System.Windows.Forms.GroupBox();
+            this.label100 = new System.Windows.Forms.Label();
+            this.textBox62 = new System.Windows.Forms.TextBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.checkBox55 = new System.Windows.Forms.CheckBox();
+            this.checkBox56 = new System.Windows.Forms.CheckBox();
+            this.checkBox57 = new System.Windows.Forms.CheckBox();
+            this.checkBox58 = new System.Windows.Forms.CheckBox();
+            this.checkBox59 = new System.Windows.Forms.CheckBox();
+            this.checkBox60 = new System.Windows.Forms.CheckBox();
+            this.checkBox61 = new System.Windows.Forms.CheckBox();
+            this.checkBox62 = new System.Windows.Forms.CheckBox();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.label103 = new System.Windows.Forms.Label();
+            this.dateTimePicker38 = new System.Windows.Forms.DateTimePicker();
+            this.label104 = new System.Windows.Forms.Label();
+            this.dateTimePicker39 = new System.Windows.Forms.DateTimePicker();
+            this.label105 = new System.Windows.Forms.Label();
+            this.dateTimePicker40 = new System.Windows.Forms.DateTimePicker();
+            this.label106 = new System.Windows.Forms.Label();
+            this.dateTimePicker41 = new System.Windows.Forms.DateTimePicker();
+            this.label107 = new System.Windows.Forms.Label();
+            this.textBox64 = new System.Windows.Forms.TextBox();
+            this.label108 = new System.Windows.Forms.Label();
+            this.textBox66 = new System.Windows.Forms.TextBox();
+            this.label110 = new System.Windows.Forms.Label();
+            this.textBox67 = new System.Windows.Forms.TextBox();
+            this.label111 = new System.Windows.Forms.Label();
+            this.dateTimePicker42 = new System.Windows.Forms.DateTimePicker();
+            this.textBox68 = new System.Windows.Forms.TextBox();
+            this.label112 = new System.Windows.Forms.Label();
+            this.textBox69 = new System.Windows.Forms.TextBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.otherRelation2Groupbox = new System.Windows.Forms.GroupBox();
+            this.label101 = new System.Windows.Forms.Label();
+            this.textBox63 = new System.Windows.Forms.TextBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.checkBox63 = new System.Windows.Forms.CheckBox();
+            this.checkBox64 = new System.Windows.Forms.CheckBox();
+            this.checkBox65 = new System.Windows.Forms.CheckBox();
+            this.checkBox66 = new System.Windows.Forms.CheckBox();
+            this.checkBox67 = new System.Windows.Forms.CheckBox();
+            this.checkBox68 = new System.Windows.Forms.CheckBox();
+            this.checkBox69 = new System.Windows.Forms.CheckBox();
+            this.checkBox70 = new System.Windows.Forms.CheckBox();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.label102 = new System.Windows.Forms.Label();
+            this.dateTimePicker37 = new System.Windows.Forms.DateTimePicker();
+            this.label109 = new System.Windows.Forms.Label();
+            this.dateTimePicker43 = new System.Windows.Forms.DateTimePicker();
+            this.label114 = new System.Windows.Forms.Label();
+            this.dateTimePicker44 = new System.Windows.Forms.DateTimePicker();
+            this.label115 = new System.Windows.Forms.Label();
+            this.dateTimePicker45 = new System.Windows.Forms.DateTimePicker();
+            this.label116 = new System.Windows.Forms.Label();
+            this.textBox65 = new System.Windows.Forms.TextBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.textBox70 = new System.Windows.Forms.TextBox();
+            this.label118 = new System.Windows.Forms.Label();
+            this.textBox71 = new System.Windows.Forms.TextBox();
+            this.label119 = new System.Windows.Forms.Label();
+            this.dateTimePicker46 = new System.Windows.Forms.DateTimePicker();
+            this.textBox72 = new System.Windows.Forms.TextBox();
+            this.label120 = new System.Windows.Forms.Label();
+            this.textBox73 = new System.Windows.Forms.TextBox();
+            this.label121 = new System.Windows.Forms.Label();
             this.generalGroupBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.husbandGroupBox.SuspendLayout();
@@ -163,6 +385,24 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.child2Groupbox.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.child3Groupbox.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.child4Groupbox.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.child5Groupbox.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.otherRelation1Groupbox.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.otherRelation2Groupbox.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // generalGroupBox
@@ -192,7 +432,7 @@
             this.generalGroupBox.Controls.Add(this.label2);
             this.generalGroupBox.Controls.Add(this.comboBox1);
             this.generalGroupBox.Controls.Add(this.label1);
-            this.generalGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generalGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generalGroupBox.ForeColor = System.Drawing.SystemColors.Highlight;
             this.generalGroupBox.Location = new System.Drawing.Point(3, 3);
             this.generalGroupBox.Name = "generalGroupBox";
@@ -206,7 +446,7 @@
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox9.Location = new System.Drawing.Point(743, 40);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(192, 26);
+            this.textBox9.Size = new System.Drawing.Size(192, 23);
             this.textBox9.TabIndex = 21;
             // 
             // label11
@@ -224,7 +464,7 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(967, 151);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(113, 26);
+            this.textBox5.Size = new System.Drawing.Size(113, 23);
             this.textBox5.TabIndex = 19;
             // 
             // label7
@@ -241,7 +481,7 @@
             // 
             this.textBox6.Location = new System.Drawing.Point(776, 146);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(113, 26);
+            this.textBox6.Size = new System.Drawing.Size(113, 23);
             this.textBox6.TabIndex = 17;
             // 
             // label8
@@ -258,7 +498,7 @@
             // 
             this.textBox7.Location = new System.Drawing.Point(602, 145);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(113, 26);
+            this.textBox7.Size = new System.Drawing.Size(113, 23);
             this.textBox7.TabIndex = 15;
             // 
             // label9
@@ -275,7 +515,7 @@
             // 
             this.textBox8.Location = new System.Drawing.Point(136, 142);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(395, 26);
+            this.textBox8.Size = new System.Drawing.Size(395, 23);
             this.textBox8.TabIndex = 13;
             // 
             // label10
@@ -292,7 +532,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(967, 97);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(113, 26);
+            this.textBox4.Size = new System.Drawing.Size(113, 23);
             this.textBox4.TabIndex = 11;
             // 
             // label6
@@ -309,7 +549,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(776, 92);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(113, 26);
+            this.textBox3.Size = new System.Drawing.Size(113, 23);
             this.textBox3.TabIndex = 9;
             // 
             // label5
@@ -326,7 +566,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(602, 91);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(113, 26);
+            this.textBox2.Size = new System.Drawing.Size(113, 23);
             this.textBox2.TabIndex = 7;
             // 
             // label4
@@ -343,7 +583,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(136, 88);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(395, 26);
+            this.textBox1.Size = new System.Drawing.Size(395, 23);
             this.textBox1.TabIndex = 5;
             // 
             // label3
@@ -363,7 +603,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(448, 38);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(129, 28);
+            this.comboBox2.Size = new System.Drawing.Size(129, 24);
             this.comboBox2.TabIndex = 3;
             // 
             // label2
@@ -383,7 +623,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(136, 38);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(238, 28);
+            this.comboBox1.Size = new System.Drawing.Size(238, 24);
             this.comboBox1.TabIndex = 1;
             // 
             // label1
@@ -398,7 +638,8 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoScrollMargin = new System.Drawing.Size(1, 0);
@@ -407,10 +648,16 @@
             this.flowLayoutPanel1.Controls.Add(this.husbandGroupBox);
             this.flowLayoutPanel1.Controls.Add(this.wifeGroupbox);
             this.flowLayoutPanel1.Controls.Add(this.child1Groupbox);
+            this.flowLayoutPanel1.Controls.Add(this.child2Groupbox);
+            this.flowLayoutPanel1.Controls.Add(this.child3Groupbox);
+            this.flowLayoutPanel1.Controls.Add(this.child4Groupbox);
+            this.flowLayoutPanel1.Controls.Add(this.child5Groupbox);
+            this.flowLayoutPanel1.Controls.Add(this.otherRelation1Groupbox);
+            this.flowLayoutPanel1.Controls.Add(this.otherRelation2Groupbox);
             this.flowLayoutPanel1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1125, 773);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1117, 797);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // husbandGroupBox
@@ -434,7 +681,7 @@
             this.husbandGroupBox.Controls.Add(this.label13);
             this.husbandGroupBox.Controls.Add(this.textBox10);
             this.husbandGroupBox.Controls.Add(this.label12);
-            this.husbandGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.husbandGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.husbandGroupBox.ForeColor = System.Drawing.SystemColors.Highlight;
             this.husbandGroupBox.Location = new System.Drawing.Point(3, 201);
             this.husbandGroupBox.Name = "husbandGroupBox";
@@ -597,7 +844,7 @@
             // 
             this.textBox12.Location = new System.Drawing.Point(682, 48);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(118, 26);
+            this.textBox12.Size = new System.Drawing.Size(118, 23);
             this.textBox12.TabIndex = 28;
             // 
             // label15
@@ -614,14 +861,14 @@
             // 
             this.textBox14.Location = new System.Drawing.Point(73, 90);
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(198, 26);
+            this.textBox14.Size = new System.Drawing.Size(198, 23);
             this.textBox14.TabIndex = 26;
             // 
             // textBox11
             // 
             this.textBox11.Location = new System.Drawing.Point(683, 96);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(117, 26);
+            this.textBox11.Size = new System.Drawing.Size(117, 23);
             this.textBox11.TabIndex = 26;
             // 
             // label17
@@ -648,7 +895,7 @@
             // 
             this.textBox15.Location = new System.Drawing.Point(408, 96);
             this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(134, 26);
+            this.textBox15.Size = new System.Drawing.Size(134, 23);
             this.textBox15.TabIndex = 24;
             // 
             // label18
@@ -673,7 +920,7 @@
             // 
             this.textBox16.Location = new System.Drawing.Point(944, 42);
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(134, 26);
+            this.textBox16.Size = new System.Drawing.Size(134, 23);
             this.textBox16.TabIndex = 22;
             // 
             // label13
@@ -690,7 +937,7 @@
             // 
             this.textBox10.Location = new System.Drawing.Point(73, 41);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(198, 26);
+            this.textBox10.Size = new System.Drawing.Size(198, 23);
             this.textBox10.TabIndex = 23;
             // 
             // label12
@@ -724,7 +971,7 @@
             this.wifeGroupbox.Controls.Add(this.label28);
             this.wifeGroupbox.Controls.Add(this.textBox21);
             this.wifeGroupbox.Controls.Add(this.label29);
-            this.wifeGroupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wifeGroupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wifeGroupbox.ForeColor = System.Drawing.SystemColors.Highlight;
             this.wifeGroupbox.Location = new System.Drawing.Point(3, 494);
             this.wifeGroupbox.Name = "wifeGroupbox";
@@ -887,7 +1134,7 @@
             // 
             this.textBox13.Location = new System.Drawing.Point(686, 54);
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(118, 26);
+            this.textBox13.Size = new System.Drawing.Size(118, 23);
             this.textBox13.TabIndex = 47;
             // 
             // label24
@@ -904,14 +1151,14 @@
             // 
             this.textBox17.Location = new System.Drawing.Point(77, 96);
             this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(198, 26);
+            this.textBox17.Size = new System.Drawing.Size(198, 23);
             this.textBox17.TabIndex = 44;
             // 
             // textBox18
             // 
             this.textBox18.Location = new System.Drawing.Point(687, 102);
             this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(117, 26);
+            this.textBox18.Size = new System.Drawing.Size(117, 23);
             this.textBox18.TabIndex = 45;
             // 
             // label25
@@ -938,7 +1185,7 @@
             // 
             this.textBox19.Location = new System.Drawing.Point(412, 102);
             this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(134, 26);
+            this.textBox19.Size = new System.Drawing.Size(134, 23);
             this.textBox19.TabIndex = 40;
             // 
             // label27
@@ -963,7 +1210,7 @@
             // 
             this.textBox20.Location = new System.Drawing.Point(948, 48);
             this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(134, 26);
+            this.textBox20.Size = new System.Drawing.Size(134, 23);
             this.textBox20.TabIndex = 35;
             // 
             // label28
@@ -980,7 +1227,7 @@
             // 
             this.textBox21.Location = new System.Drawing.Point(77, 47);
             this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(198, 26);
+            this.textBox21.Size = new System.Drawing.Size(198, 23);
             this.textBox21.TabIndex = 39;
             // 
             // label29
@@ -1016,7 +1263,7 @@
             this.child1Groupbox.Controls.Add(this.label37);
             this.child1Groupbox.Controls.Add(this.textBox27);
             this.child1Groupbox.Controls.Add(this.label38);
-            this.child1Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child1Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child1Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
             this.child1Groupbox.Location = new System.Drawing.Point(3, 795);
             this.child1Groupbox.Name = "child1Groupbox";
@@ -1036,9 +1283,9 @@
             this.panel6.Controls.Add(this.checkBox19);
             this.panel6.Controls.Add(this.checkBox20);
             this.panel6.Controls.Add(this.checkBox21);
-            this.panel6.Location = new System.Drawing.Point(33, 149);
+            this.panel6.Location = new System.Drawing.Point(33, 142);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(452, 140);
+            this.panel6.Size = new System.Drawing.Size(494, 140);
             this.panel6.TabIndex = 50;
             // 
             // checkBox15
@@ -1131,7 +1378,7 @@
             this.panel7.Controls.Add(this.dateTimePicker7);
             this.panel7.Controls.Add(this.label31);
             this.panel7.Controls.Add(this.dateTimePicker8);
-            this.panel7.Location = new System.Drawing.Point(548, 149);
+            this.panel7.Location = new System.Drawing.Point(548, 142);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(534, 140);
             this.panel7.TabIndex = 49;
@@ -1176,7 +1423,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(841, 57);
+            this.label32.Location = new System.Drawing.Point(841, 50);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(75, 15);
             this.label32.TabIndex = 48;
@@ -1184,16 +1431,16 @@
             // 
             // textBox22
             // 
-            this.textBox22.Location = new System.Drawing.Point(657, 53);
+            this.textBox22.Location = new System.Drawing.Point(657, 46);
             this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(118, 26);
+            this.textBox22.Size = new System.Drawing.Size(118, 23);
             this.textBox22.TabIndex = 47;
             // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(580, 59);
+            this.label33.Location = new System.Drawing.Point(580, 52);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(53, 15);
             this.label33.TabIndex = 46;
@@ -1201,23 +1448,23 @@
             // 
             // textBox23
             // 
-            this.textBox23.Location = new System.Drawing.Point(263, 103);
+            this.textBox23.Location = new System.Drawing.Point(263, 96);
             this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(160, 26);
+            this.textBox23.Size = new System.Drawing.Size(160, 23);
             this.textBox23.TabIndex = 44;
             // 
             // textBox24
             // 
-            this.textBox24.Location = new System.Drawing.Point(761, 109);
+            this.textBox24.Location = new System.Drawing.Point(761, 102);
             this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(54, 26);
+            this.textBox24.Size = new System.Drawing.Size(54, 23);
             this.textBox24.TabIndex = 45;
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(198, 108);
+            this.label34.Location = new System.Drawing.Point(198, 101);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(59, 15);
             this.label34.TabIndex = 42;
@@ -1227,7 +1474,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(684, 114);
+            this.label35.Location = new System.Drawing.Point(684, 107);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(71, 15);
             this.label35.TabIndex = 43;
@@ -1235,16 +1482,16 @@
             // 
             // textBox25
             // 
-            this.textBox25.Location = new System.Drawing.Point(535, 103);
+            this.textBox25.Location = new System.Drawing.Point(535, 96);
             this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(118, 26);
+            this.textBox25.Size = new System.Drawing.Size(118, 23);
             this.textBox25.TabIndex = 40;
             // 
             // label36
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(458, 109);
+            this.label36.Location = new System.Drawing.Point(458, 102);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(69, 15);
             this.label36.TabIndex = 38;
@@ -1253,23 +1500,23 @@
             // dateTimePicker9
             // 
             this.dateTimePicker9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker9.Location = new System.Drawing.Point(378, 53);
+            this.dateTimePicker9.Location = new System.Drawing.Point(378, 46);
             this.dateTimePicker9.Name = "dateTimePicker9";
             this.dateTimePicker9.Size = new System.Drawing.Size(160, 21);
             this.dateTimePicker9.TabIndex = 41;
             // 
             // textBox26
             // 
-            this.textBox26.Location = new System.Drawing.Point(948, 48);
+            this.textBox26.Location = new System.Drawing.Point(948, 41);
             this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(134, 26);
+            this.textBox26.Size = new System.Drawing.Size(134, 23);
             this.textBox26.TabIndex = 35;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(315, 53);
+            this.label37.Location = new System.Drawing.Point(315, 46);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(39, 15);
             this.label37.TabIndex = 36;
@@ -1277,16 +1524,16 @@
             // 
             // textBox27
             // 
-            this.textBox27.Location = new System.Drawing.Point(102, 48);
+            this.textBox27.Location = new System.Drawing.Point(102, 41);
             this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(178, 26);
+            this.textBox27.Size = new System.Drawing.Size(178, 23);
             this.textBox27.TabIndex = 39;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(30, 48);
+            this.label38.Location = new System.Drawing.Point(30, 41);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(41, 15);
             this.label38.TabIndex = 37;
@@ -1294,45 +1541,54 @@
             // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.Thistle;
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.Gainsboro;
             this.panel5.Controls.Add(this.button3);
             this.panel5.Controls.Add(this.button2);
             this.panel5.Controls.Add(this.button1);
-            this.panel5.Location = new System.Drawing.Point(23, 823);
+            this.panel5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel5.Location = new System.Drawing.Point(23, 832);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1127, 57);
+            this.panel5.Size = new System.Drawing.Size(1128, 57);
             this.panel5.TabIndex = 2;
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.Gainsboro;
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.BackColor = System.Drawing.Color.White;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(412, 3);
+            this.button3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button3.Location = new System.Drawing.Point(940, 14);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 38);
+            this.button3.Size = new System.Drawing.Size(160, 27);
             this.button3.TabIndex = 2;
             this.button3.Text = "Save All";
             this.button3.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Gainsboro;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(215, 3);
+            this.button2.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button2.Location = new System.Drawing.Point(764, 14);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 38);
+            this.button2.Size = new System.Drawing.Size(160, 27);
             this.button2.TabIndex = 1;
             this.button2.Text = "Add Other Relation";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(21, 3);
+            this.button1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button1.Location = new System.Drawing.Point(580, 14);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 38);
+            this.button1.Size = new System.Drawing.Size(160, 27);
             this.button1.TabIndex = 0;
             this.button1.Text = "Add Children";
             this.button1.UseVisualStyleBackColor = false;
@@ -1340,16 +1596,16 @@
             // 
             // textBox28
             // 
-            this.textBox28.Location = new System.Drawing.Point(102, 102);
+            this.textBox28.Location = new System.Drawing.Point(102, 95);
             this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(62, 26);
+            this.textBox28.Size = new System.Drawing.Size(62, 23);
             this.textBox28.TabIndex = 52;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(28, 108);
+            this.label39.Location = new System.Drawing.Point(28, 101);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(68, 15);
             this.label39.TabIndex = 51;
@@ -1424,7 +1680,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(842, 113);
+            this.label43.Location = new System.Drawing.Point(842, 106);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(62, 15);
             this.label43.TabIndex = 54;
@@ -1432,10 +1688,2282 @@
             // 
             // textBox29
             // 
-            this.textBox29.Location = new System.Drawing.Point(946, 108);
+            this.textBox29.Location = new System.Drawing.Point(946, 101);
             this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(134, 26);
+            this.textBox29.Size = new System.Drawing.Size(134, 23);
             this.textBox29.TabIndex = 53;
+            // 
+            // child2Groupbox
+            // 
+            this.child2Groupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.child2Groupbox.Controls.Add(this.label44);
+            this.child2Groupbox.Controls.Add(this.textBox30);
+            this.child2Groupbox.Controls.Add(this.textBox31);
+            this.child2Groupbox.Controls.Add(this.label45);
+            this.child2Groupbox.Controls.Add(this.panel9);
+            this.child2Groupbox.Controls.Add(this.panel10);
+            this.child2Groupbox.Controls.Add(this.label51);
+            this.child2Groupbox.Controls.Add(this.textBox32);
+            this.child2Groupbox.Controls.Add(this.label52);
+            this.child2Groupbox.Controls.Add(this.textBox33);
+            this.child2Groupbox.Controls.Add(this.textBox34);
+            this.child2Groupbox.Controls.Add(this.label53);
+            this.child2Groupbox.Controls.Add(this.label54);
+            this.child2Groupbox.Controls.Add(this.textBox35);
+            this.child2Groupbox.Controls.Add(this.label55);
+            this.child2Groupbox.Controls.Add(this.dateTimePicker18);
+            this.child2Groupbox.Controls.Add(this.textBox36);
+            this.child2Groupbox.Controls.Add(this.label56);
+            this.child2Groupbox.Controls.Add(this.textBox37);
+            this.child2Groupbox.Controls.Add(this.label57);
+            this.child2Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child2Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.child2Groupbox.Location = new System.Drawing.Point(3, 1096);
+            this.child2Groupbox.Name = "child2Groupbox";
+            this.child2Groupbox.Size = new System.Drawing.Size(1097, 295);
+            this.child2Groupbox.TabIndex = 55;
+            this.child2Groupbox.TabStop = false;
+            this.child2Groupbox.Text = "Child-2";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(842, 104);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(62, 15);
+            this.label44.TabIndex = 54;
+            this.label44.Text = "WhatsApp";
+            // 
+            // textBox30
+            // 
+            this.textBox30.Location = new System.Drawing.Point(946, 99);
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(134, 23);
+            this.textBox30.TabIndex = 53;
+            // 
+            // textBox31
+            // 
+            this.textBox31.Location = new System.Drawing.Point(102, 93);
+            this.textBox31.Name = "textBox31";
+            this.textBox31.Size = new System.Drawing.Size(62, 23);
+            this.textBox31.TabIndex = 52;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(28, 99);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(68, 15);
+            this.label45.TabIndex = 51;
+            this.label45.Text = "Class /Year";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel9.Controls.Add(this.checkBox23);
+            this.panel9.Controls.Add(this.checkBox24);
+            this.panel9.Controls.Add(this.checkBox25);
+            this.panel9.Controls.Add(this.checkBox26);
+            this.panel9.Controls.Add(this.checkBox27);
+            this.panel9.Controls.Add(this.checkBox28);
+            this.panel9.Controls.Add(this.checkBox29);
+            this.panel9.Controls.Add(this.checkBox30);
+            this.panel9.Location = new System.Drawing.Point(33, 140);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(494, 140);
+            this.panel9.TabIndex = 50;
+            // 
+            // checkBox23
+            // 
+            this.checkBox23.AutoSize = true;
+            this.checkBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox23.Location = new System.Drawing.Point(168, 108);
+            this.checkBox23.Name = "checkBox23";
+            this.checkBox23.Size = new System.Drawing.Size(132, 19);
+            this.checkBox23.TabIndex = 42;
+            this.checkBox23.Text = "Catechism Teacher";
+            this.checkBox23.UseVisualStyleBackColor = true;
+            // 
+            // checkBox24
+            // 
+            this.checkBox24.AutoSize = true;
+            this.checkBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox24.Location = new System.Drawing.Point(330, 65);
+            this.checkBox24.Name = "checkBox24";
+            this.checkBox24.Size = new System.Drawing.Size(55, 19);
+            this.checkBox24.TabIndex = 41;
+            this.checkBox24.Text = "Choir";
+            this.checkBox24.UseVisualStyleBackColor = true;
+            // 
+            // checkBox25
+            // 
+            this.checkBox25.AutoSize = true;
+            this.checkBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox25.Location = new System.Drawing.Point(14, 108);
+            this.checkBox25.Name = "checkBox25";
+            this.checkBox25.Size = new System.Drawing.Size(129, 19);
+            this.checkBox25.TabIndex = 40;
+            this.checkBox25.Text = "Catechism Student";
+            this.checkBox25.UseVisualStyleBackColor = true;
+            // 
+            // checkBox26
+            // 
+            this.checkBox26.AutoSize = true;
+            this.checkBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox26.Location = new System.Drawing.Point(330, 20);
+            this.checkBox26.Name = "checkBox26";
+            this.checkBox26.Size = new System.Drawing.Size(94, 19);
+            this.checkBox26.TabIndex = 39;
+            this.checkBox26.Text = "Youth Group";
+            this.checkBox26.UseVisualStyleBackColor = true;
+            // 
+            // checkBox27
+            // 
+            this.checkBox27.AutoSize = true;
+            this.checkBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox27.Location = new System.Drawing.Point(166, 20);
+            this.checkBox27.Name = "checkBox27";
+            this.checkBox27.Size = new System.Drawing.Size(107, 19);
+            this.checkBox27.TabIndex = 37;
+            this.checkBox27.Text = "Legion of Mary";
+            this.checkBox27.UseVisualStyleBackColor = true;
+            // 
+            // checkBox28
+            // 
+            this.checkBox28.AutoSize = true;
+            this.checkBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox28.Location = new System.Drawing.Point(14, 20);
+            this.checkBox28.Name = "checkBox28";
+            this.checkBox28.Size = new System.Drawing.Size(146, 19);
+            this.checkBox28.TabIndex = 35;
+            this.checkBox28.Text = "Administrative Council";
+            this.checkBox28.UseVisualStyleBackColor = true;
+            // 
+            // checkBox29
+            // 
+            this.checkBox29.AutoSize = true;
+            this.checkBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox29.Location = new System.Drawing.Point(14, 65);
+            this.checkBox29.Name = "checkBox29";
+            this.checkBox29.Size = new System.Drawing.Size(99, 19);
+            this.checkBox29.TabIndex = 36;
+            this.checkBox29.Text = "Alter Services";
+            this.checkBox29.UseVisualStyleBackColor = true;
+            // 
+            // checkBox30
+            // 
+            this.checkBox30.AutoSize = true;
+            this.checkBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox30.Location = new System.Drawing.Point(166, 65);
+            this.checkBox30.Name = "checkBox30";
+            this.checkBox30.Size = new System.Drawing.Size(154, 19);
+            this.checkBox30.TabIndex = 38;
+            this.checkBox30.Text = "St. Vincent De Paul Soc";
+            this.checkBox30.UseVisualStyleBackColor = true;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel10.Controls.Add(this.label46);
+            this.panel10.Controls.Add(this.dateTimePicker13);
+            this.panel10.Controls.Add(this.label47);
+            this.panel10.Controls.Add(this.dateTimePicker14);
+            this.panel10.Controls.Add(this.label48);
+            this.panel10.Controls.Add(this.dateTimePicker15);
+            this.panel10.Controls.Add(this.label49);
+            this.panel10.Controls.Add(this.dateTimePicker16);
+            this.panel10.Controls.Add(this.label50);
+            this.panel10.Controls.Add(this.dateTimePicker17);
+            this.panel10.Location = new System.Drawing.Point(548, 140);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(534, 140);
+            this.panel10.TabIndex = 49;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(22, 108);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(66, 15);
+            this.label46.TabIndex = 39;
+            this.label46.Text = "Priesthood";
+            // 
+            // dateTimePicker13
+            // 
+            this.dateTimePicker13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker13.Location = new System.Drawing.Point(110, 108);
+            this.dateTimePicker13.Name = "dateTimePicker13";
+            this.dateTimePicker13.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker13.TabIndex = 40;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(273, 67);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(65, 15);
+            this.label47.TabIndex = 37;
+            this.label47.Text = "Matrimony";
+            // 
+            // dateTimePicker14
+            // 
+            this.dateTimePicker14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker14.Location = new System.Drawing.Point(378, 61);
+            this.dateTimePicker14.Name = "dateTimePicker14";
+            this.dateTimePicker14.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker14.TabIndex = 38;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(268, 25);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(101, 15);
+            this.label48.TabIndex = 35;
+            this.label48.Text = "First Communion";
+            // 
+            // dateTimePicker15
+            // 
+            this.dateTimePicker15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker15.Location = new System.Drawing.Point(378, 20);
+            this.dateTimePicker15.Name = "dateTimePicker15";
+            this.dateTimePicker15.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker15.TabIndex = 36;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(19, 24);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(81, 15);
+            this.label49.TabIndex = 33;
+            this.label49.Text = "Baptism Date";
+            // 
+            // dateTimePicker16
+            // 
+            this.dateTimePicker16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker16.Location = new System.Drawing.Point(109, 19);
+            this.dateTimePicker16.Name = "dateTimePicker16";
+            this.dateTimePicker16.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker16.TabIndex = 34;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(21, 61);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(77, 15);
+            this.label50.TabIndex = 31;
+            this.label50.Text = "Confirmation";
+            // 
+            // dateTimePicker17
+            // 
+            this.dateTimePicker17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker17.Location = new System.Drawing.Point(109, 61);
+            this.dateTimePicker17.Name = "dateTimePicker17";
+            this.dateTimePicker17.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker17.TabIndex = 32;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(841, 48);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(75, 15);
+            this.label51.TabIndex = 48;
+            this.label51.Text = "Qualification";
+            // 
+            // textBox32
+            // 
+            this.textBox32.Location = new System.Drawing.Point(657, 44);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.Size = new System.Drawing.Size(118, 23);
+            this.textBox32.TabIndex = 47;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(580, 50);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(53, 15);
+            this.label52.TabIndex = 46;
+            this.label52.Text = "Relation";
+            // 
+            // textBox33
+            // 
+            this.textBox33.Location = new System.Drawing.Point(263, 94);
+            this.textBox33.Name = "textBox33";
+            this.textBox33.Size = new System.Drawing.Size(160, 23);
+            this.textBox33.TabIndex = 44;
+            // 
+            // textBox34
+            // 
+            this.textBox34.Location = new System.Drawing.Point(761, 100);
+            this.textBox34.Name = "textBox34";
+            this.textBox34.Size = new System.Drawing.Size(54, 23);
+            this.textBox34.TabIndex = 45;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(198, 99);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(59, 15);
+            this.label53.TabIndex = 42;
+            this.label53.Text = "Institution";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(684, 105);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(71, 15);
+            this.label54.TabIndex = 43;
+            this.label54.Text = "Bloodgroup";
+            // 
+            // textBox35
+            // 
+            this.textBox35.Location = new System.Drawing.Point(535, 94);
+            this.textBox35.Name = "textBox35";
+            this.textBox35.Size = new System.Drawing.Size(118, 23);
+            this.textBox35.TabIndex = 40;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(458, 100);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(69, 15);
+            this.label55.TabIndex = 38;
+            this.label55.Text = "Occupation";
+            // 
+            // dateTimePicker18
+            // 
+            this.dateTimePicker18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker18.Location = new System.Drawing.Point(378, 44);
+            this.dateTimePicker18.Name = "dateTimePicker18";
+            this.dateTimePicker18.Size = new System.Drawing.Size(160, 21);
+            this.dateTimePicker18.TabIndex = 41;
+            // 
+            // textBox36
+            // 
+            this.textBox36.Location = new System.Drawing.Point(948, 39);
+            this.textBox36.Name = "textBox36";
+            this.textBox36.Size = new System.Drawing.Size(134, 23);
+            this.textBox36.TabIndex = 35;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(315, 44);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(39, 15);
+            this.label56.TabIndex = 36;
+            this.label56.Text = "D.O.B";
+            // 
+            // textBox37
+            // 
+            this.textBox37.Location = new System.Drawing.Point(102, 39);
+            this.textBox37.Name = "textBox37";
+            this.textBox37.Size = new System.Drawing.Size(178, 23);
+            this.textBox37.TabIndex = 39;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(30, 39);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(41, 15);
+            this.label57.TabIndex = 37;
+            this.label57.Text = "Name";
+            // 
+            // child3Groupbox
+            // 
+            this.child3Groupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.child3Groupbox.Controls.Add(this.label58);
+            this.child3Groupbox.Controls.Add(this.textBox38);
+            this.child3Groupbox.Controls.Add(this.textBox39);
+            this.child3Groupbox.Controls.Add(this.label59);
+            this.child3Groupbox.Controls.Add(this.panel12);
+            this.child3Groupbox.Controls.Add(this.panel13);
+            this.child3Groupbox.Controls.Add(this.label65);
+            this.child3Groupbox.Controls.Add(this.textBox40);
+            this.child3Groupbox.Controls.Add(this.label66);
+            this.child3Groupbox.Controls.Add(this.textBox41);
+            this.child3Groupbox.Controls.Add(this.textBox42);
+            this.child3Groupbox.Controls.Add(this.label67);
+            this.child3Groupbox.Controls.Add(this.label68);
+            this.child3Groupbox.Controls.Add(this.textBox43);
+            this.child3Groupbox.Controls.Add(this.label69);
+            this.child3Groupbox.Controls.Add(this.dateTimePicker24);
+            this.child3Groupbox.Controls.Add(this.textBox44);
+            this.child3Groupbox.Controls.Add(this.label70);
+            this.child3Groupbox.Controls.Add(this.textBox45);
+            this.child3Groupbox.Controls.Add(this.label71);
+            this.child3Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child3Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.child3Groupbox.Location = new System.Drawing.Point(3, 1397);
+            this.child3Groupbox.Name = "child3Groupbox";
+            this.child3Groupbox.Size = new System.Drawing.Size(1097, 295);
+            this.child3Groupbox.TabIndex = 56;
+            this.child3Groupbox.TabStop = false;
+            this.child3Groupbox.Text = "Child - 3";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(842, 103);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(62, 15);
+            this.label58.TabIndex = 54;
+            this.label58.Text = "WhatsApp";
+            // 
+            // textBox38
+            // 
+            this.textBox38.Location = new System.Drawing.Point(946, 98);
+            this.textBox38.Name = "textBox38";
+            this.textBox38.Size = new System.Drawing.Size(134, 23);
+            this.textBox38.TabIndex = 53;
+            // 
+            // textBox39
+            // 
+            this.textBox39.Location = new System.Drawing.Point(102, 92);
+            this.textBox39.Name = "textBox39";
+            this.textBox39.Size = new System.Drawing.Size(62, 23);
+            this.textBox39.TabIndex = 52;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Location = new System.Drawing.Point(28, 98);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(68, 15);
+            this.label59.TabIndex = 51;
+            this.label59.Text = "Class /Year";
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel12.Controls.Add(this.checkBox31);
+            this.panel12.Controls.Add(this.checkBox32);
+            this.panel12.Controls.Add(this.checkBox33);
+            this.panel12.Controls.Add(this.checkBox34);
+            this.panel12.Controls.Add(this.checkBox35);
+            this.panel12.Controls.Add(this.checkBox36);
+            this.panel12.Controls.Add(this.checkBox37);
+            this.panel12.Controls.Add(this.checkBox38);
+            this.panel12.Location = new System.Drawing.Point(33, 139);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(494, 140);
+            this.panel12.TabIndex = 50;
+            // 
+            // checkBox31
+            // 
+            this.checkBox31.AutoSize = true;
+            this.checkBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox31.Location = new System.Drawing.Point(168, 108);
+            this.checkBox31.Name = "checkBox31";
+            this.checkBox31.Size = new System.Drawing.Size(132, 19);
+            this.checkBox31.TabIndex = 42;
+            this.checkBox31.Text = "Catechism Teacher";
+            this.checkBox31.UseVisualStyleBackColor = true;
+            // 
+            // checkBox32
+            // 
+            this.checkBox32.AutoSize = true;
+            this.checkBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox32.Location = new System.Drawing.Point(330, 65);
+            this.checkBox32.Name = "checkBox32";
+            this.checkBox32.Size = new System.Drawing.Size(55, 19);
+            this.checkBox32.TabIndex = 41;
+            this.checkBox32.Text = "Choir";
+            this.checkBox32.UseVisualStyleBackColor = true;
+            // 
+            // checkBox33
+            // 
+            this.checkBox33.AutoSize = true;
+            this.checkBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox33.Location = new System.Drawing.Point(14, 108);
+            this.checkBox33.Name = "checkBox33";
+            this.checkBox33.Size = new System.Drawing.Size(129, 19);
+            this.checkBox33.TabIndex = 40;
+            this.checkBox33.Text = "Catechism Student";
+            this.checkBox33.UseVisualStyleBackColor = true;
+            // 
+            // checkBox34
+            // 
+            this.checkBox34.AutoSize = true;
+            this.checkBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox34.Location = new System.Drawing.Point(330, 20);
+            this.checkBox34.Name = "checkBox34";
+            this.checkBox34.Size = new System.Drawing.Size(94, 19);
+            this.checkBox34.TabIndex = 39;
+            this.checkBox34.Text = "Youth Group";
+            this.checkBox34.UseVisualStyleBackColor = true;
+            // 
+            // checkBox35
+            // 
+            this.checkBox35.AutoSize = true;
+            this.checkBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox35.Location = new System.Drawing.Point(166, 20);
+            this.checkBox35.Name = "checkBox35";
+            this.checkBox35.Size = new System.Drawing.Size(107, 19);
+            this.checkBox35.TabIndex = 37;
+            this.checkBox35.Text = "Legion of Mary";
+            this.checkBox35.UseVisualStyleBackColor = true;
+            // 
+            // checkBox36
+            // 
+            this.checkBox36.AutoSize = true;
+            this.checkBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox36.Location = new System.Drawing.Point(14, 20);
+            this.checkBox36.Name = "checkBox36";
+            this.checkBox36.Size = new System.Drawing.Size(146, 19);
+            this.checkBox36.TabIndex = 35;
+            this.checkBox36.Text = "Administrative Council";
+            this.checkBox36.UseVisualStyleBackColor = true;
+            // 
+            // checkBox37
+            // 
+            this.checkBox37.AutoSize = true;
+            this.checkBox37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox37.Location = new System.Drawing.Point(14, 65);
+            this.checkBox37.Name = "checkBox37";
+            this.checkBox37.Size = new System.Drawing.Size(99, 19);
+            this.checkBox37.TabIndex = 36;
+            this.checkBox37.Text = "Alter Services";
+            this.checkBox37.UseVisualStyleBackColor = true;
+            // 
+            // checkBox38
+            // 
+            this.checkBox38.AutoSize = true;
+            this.checkBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox38.Location = new System.Drawing.Point(166, 65);
+            this.checkBox38.Name = "checkBox38";
+            this.checkBox38.Size = new System.Drawing.Size(154, 19);
+            this.checkBox38.TabIndex = 38;
+            this.checkBox38.Text = "St. Vincent De Paul Soc";
+            this.checkBox38.UseVisualStyleBackColor = true;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel13.Controls.Add(this.label60);
+            this.panel13.Controls.Add(this.dateTimePicker19);
+            this.panel13.Controls.Add(this.label61);
+            this.panel13.Controls.Add(this.dateTimePicker20);
+            this.panel13.Controls.Add(this.label62);
+            this.panel13.Controls.Add(this.dateTimePicker21);
+            this.panel13.Controls.Add(this.label63);
+            this.panel13.Controls.Add(this.dateTimePicker22);
+            this.panel13.Controls.Add(this.label64);
+            this.panel13.Controls.Add(this.dateTimePicker23);
+            this.panel13.Location = new System.Drawing.Point(548, 139);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(534, 140);
+            this.panel13.TabIndex = 49;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(22, 108);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(66, 15);
+            this.label60.TabIndex = 39;
+            this.label60.Text = "Priesthood";
+            // 
+            // dateTimePicker19
+            // 
+            this.dateTimePicker19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker19.Location = new System.Drawing.Point(110, 108);
+            this.dateTimePicker19.Name = "dateTimePicker19";
+            this.dateTimePicker19.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker19.TabIndex = 40;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.Location = new System.Drawing.Point(273, 67);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(65, 15);
+            this.label61.TabIndex = 37;
+            this.label61.Text = "Matrimony";
+            // 
+            // dateTimePicker20
+            // 
+            this.dateTimePicker20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker20.Location = new System.Drawing.Point(378, 61);
+            this.dateTimePicker20.Name = "dateTimePicker20";
+            this.dateTimePicker20.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker20.TabIndex = 38;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.Location = new System.Drawing.Point(268, 25);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(101, 15);
+            this.label62.TabIndex = 35;
+            this.label62.Text = "First Communion";
+            // 
+            // dateTimePicker21
+            // 
+            this.dateTimePicker21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker21.Location = new System.Drawing.Point(378, 20);
+            this.dateTimePicker21.Name = "dateTimePicker21";
+            this.dateTimePicker21.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker21.TabIndex = 36;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(19, 24);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(81, 15);
+            this.label63.TabIndex = 33;
+            this.label63.Text = "Baptism Date";
+            // 
+            // dateTimePicker22
+            // 
+            this.dateTimePicker22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker22.Location = new System.Drawing.Point(109, 19);
+            this.dateTimePicker22.Name = "dateTimePicker22";
+            this.dateTimePicker22.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker22.TabIndex = 34;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.Location = new System.Drawing.Point(21, 61);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(77, 15);
+            this.label64.TabIndex = 31;
+            this.label64.Text = "Confirmation";
+            // 
+            // dateTimePicker23
+            // 
+            this.dateTimePicker23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker23.Location = new System.Drawing.Point(109, 61);
+            this.dateTimePicker23.Name = "dateTimePicker23";
+            this.dateTimePicker23.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker23.TabIndex = 32;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label65.Location = new System.Drawing.Point(841, 47);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(75, 15);
+            this.label65.TabIndex = 48;
+            this.label65.Text = "Qualification";
+            // 
+            // textBox40
+            // 
+            this.textBox40.Location = new System.Drawing.Point(657, 43);
+            this.textBox40.Name = "textBox40";
+            this.textBox40.Size = new System.Drawing.Size(118, 23);
+            this.textBox40.TabIndex = 47;
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label66.Location = new System.Drawing.Point(580, 49);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(53, 15);
+            this.label66.TabIndex = 46;
+            this.label66.Text = "Relation";
+            // 
+            // textBox41
+            // 
+            this.textBox41.Location = new System.Drawing.Point(263, 93);
+            this.textBox41.Name = "textBox41";
+            this.textBox41.Size = new System.Drawing.Size(160, 23);
+            this.textBox41.TabIndex = 44;
+            // 
+            // textBox42
+            // 
+            this.textBox42.Location = new System.Drawing.Point(761, 99);
+            this.textBox42.Name = "textBox42";
+            this.textBox42.Size = new System.Drawing.Size(54, 23);
+            this.textBox42.TabIndex = 45;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label67.Location = new System.Drawing.Point(198, 98);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(59, 15);
+            this.label67.TabIndex = 42;
+            this.label67.Text = "Institution";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label68.Location = new System.Drawing.Point(684, 104);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(71, 15);
+            this.label68.TabIndex = 43;
+            this.label68.Text = "Bloodgroup";
+            // 
+            // textBox43
+            // 
+            this.textBox43.Location = new System.Drawing.Point(535, 93);
+            this.textBox43.Name = "textBox43";
+            this.textBox43.Size = new System.Drawing.Size(118, 23);
+            this.textBox43.TabIndex = 40;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.Location = new System.Drawing.Point(458, 99);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(69, 15);
+            this.label69.TabIndex = 38;
+            this.label69.Text = "Occupation";
+            // 
+            // dateTimePicker24
+            // 
+            this.dateTimePicker24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker24.Location = new System.Drawing.Point(378, 43);
+            this.dateTimePicker24.Name = "dateTimePicker24";
+            this.dateTimePicker24.Size = new System.Drawing.Size(160, 21);
+            this.dateTimePicker24.TabIndex = 41;
+            // 
+            // textBox44
+            // 
+            this.textBox44.Location = new System.Drawing.Point(948, 38);
+            this.textBox44.Name = "textBox44";
+            this.textBox44.Size = new System.Drawing.Size(134, 23);
+            this.textBox44.TabIndex = 35;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(315, 43);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(39, 15);
+            this.label70.TabIndex = 36;
+            this.label70.Text = "D.O.B";
+            // 
+            // textBox45
+            // 
+            this.textBox45.Location = new System.Drawing.Point(102, 38);
+            this.textBox45.Name = "textBox45";
+            this.textBox45.Size = new System.Drawing.Size(178, 23);
+            this.textBox45.TabIndex = 39;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(30, 38);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(41, 15);
+            this.label71.TabIndex = 37;
+            this.label71.Text = "Name";
+            // 
+            // child4Groupbox
+            // 
+            this.child4Groupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.child4Groupbox.Controls.Add(this.label72);
+            this.child4Groupbox.Controls.Add(this.textBox46);
+            this.child4Groupbox.Controls.Add(this.textBox47);
+            this.child4Groupbox.Controls.Add(this.label73);
+            this.child4Groupbox.Controls.Add(this.panel15);
+            this.child4Groupbox.Controls.Add(this.panel16);
+            this.child4Groupbox.Controls.Add(this.label79);
+            this.child4Groupbox.Controls.Add(this.textBox48);
+            this.child4Groupbox.Controls.Add(this.label80);
+            this.child4Groupbox.Controls.Add(this.textBox49);
+            this.child4Groupbox.Controls.Add(this.textBox50);
+            this.child4Groupbox.Controls.Add(this.label81);
+            this.child4Groupbox.Controls.Add(this.label82);
+            this.child4Groupbox.Controls.Add(this.textBox51);
+            this.child4Groupbox.Controls.Add(this.label83);
+            this.child4Groupbox.Controls.Add(this.dateTimePicker30);
+            this.child4Groupbox.Controls.Add(this.textBox52);
+            this.child4Groupbox.Controls.Add(this.label84);
+            this.child4Groupbox.Controls.Add(this.textBox53);
+            this.child4Groupbox.Controls.Add(this.label85);
+            this.child4Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child4Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.child4Groupbox.Location = new System.Drawing.Point(3, 1698);
+            this.child4Groupbox.Name = "child4Groupbox";
+            this.child4Groupbox.Size = new System.Drawing.Size(1097, 295);
+            this.child4Groupbox.TabIndex = 57;
+            this.child4Groupbox.TabStop = false;
+            this.child4Groupbox.Text = "Child - 4";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(842, 104);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(62, 15);
+            this.label72.TabIndex = 54;
+            this.label72.Text = "WhatsApp";
+            // 
+            // textBox46
+            // 
+            this.textBox46.Location = new System.Drawing.Point(946, 99);
+            this.textBox46.Name = "textBox46";
+            this.textBox46.Size = new System.Drawing.Size(134, 23);
+            this.textBox46.TabIndex = 53;
+            // 
+            // textBox47
+            // 
+            this.textBox47.Location = new System.Drawing.Point(102, 93);
+            this.textBox47.Name = "textBox47";
+            this.textBox47.Size = new System.Drawing.Size(62, 23);
+            this.textBox47.TabIndex = 52;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(28, 99);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(68, 15);
+            this.label73.TabIndex = 51;
+            this.label73.Text = "Class /Year";
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel15.Controls.Add(this.checkBox39);
+            this.panel15.Controls.Add(this.checkBox40);
+            this.panel15.Controls.Add(this.checkBox41);
+            this.panel15.Controls.Add(this.checkBox42);
+            this.panel15.Controls.Add(this.checkBox43);
+            this.panel15.Controls.Add(this.checkBox44);
+            this.panel15.Controls.Add(this.checkBox45);
+            this.panel15.Controls.Add(this.checkBox46);
+            this.panel15.Location = new System.Drawing.Point(33, 140);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(494, 140);
+            this.panel15.TabIndex = 50;
+            // 
+            // checkBox39
+            // 
+            this.checkBox39.AutoSize = true;
+            this.checkBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox39.Location = new System.Drawing.Point(168, 108);
+            this.checkBox39.Name = "checkBox39";
+            this.checkBox39.Size = new System.Drawing.Size(132, 19);
+            this.checkBox39.TabIndex = 42;
+            this.checkBox39.Text = "Catechism Teacher";
+            this.checkBox39.UseVisualStyleBackColor = true;
+            // 
+            // checkBox40
+            // 
+            this.checkBox40.AutoSize = true;
+            this.checkBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox40.Location = new System.Drawing.Point(330, 65);
+            this.checkBox40.Name = "checkBox40";
+            this.checkBox40.Size = new System.Drawing.Size(55, 19);
+            this.checkBox40.TabIndex = 41;
+            this.checkBox40.Text = "Choir";
+            this.checkBox40.UseVisualStyleBackColor = true;
+            // 
+            // checkBox41
+            // 
+            this.checkBox41.AutoSize = true;
+            this.checkBox41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox41.Location = new System.Drawing.Point(14, 108);
+            this.checkBox41.Name = "checkBox41";
+            this.checkBox41.Size = new System.Drawing.Size(129, 19);
+            this.checkBox41.TabIndex = 40;
+            this.checkBox41.Text = "Catechism Student";
+            this.checkBox41.UseVisualStyleBackColor = true;
+            // 
+            // checkBox42
+            // 
+            this.checkBox42.AutoSize = true;
+            this.checkBox42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox42.Location = new System.Drawing.Point(330, 20);
+            this.checkBox42.Name = "checkBox42";
+            this.checkBox42.Size = new System.Drawing.Size(94, 19);
+            this.checkBox42.TabIndex = 39;
+            this.checkBox42.Text = "Youth Group";
+            this.checkBox42.UseVisualStyleBackColor = true;
+            // 
+            // checkBox43
+            // 
+            this.checkBox43.AutoSize = true;
+            this.checkBox43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox43.Location = new System.Drawing.Point(166, 20);
+            this.checkBox43.Name = "checkBox43";
+            this.checkBox43.Size = new System.Drawing.Size(107, 19);
+            this.checkBox43.TabIndex = 37;
+            this.checkBox43.Text = "Legion of Mary";
+            this.checkBox43.UseVisualStyleBackColor = true;
+            // 
+            // checkBox44
+            // 
+            this.checkBox44.AutoSize = true;
+            this.checkBox44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox44.Location = new System.Drawing.Point(14, 20);
+            this.checkBox44.Name = "checkBox44";
+            this.checkBox44.Size = new System.Drawing.Size(146, 19);
+            this.checkBox44.TabIndex = 35;
+            this.checkBox44.Text = "Administrative Council";
+            this.checkBox44.UseVisualStyleBackColor = true;
+            // 
+            // checkBox45
+            // 
+            this.checkBox45.AutoSize = true;
+            this.checkBox45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox45.Location = new System.Drawing.Point(14, 65);
+            this.checkBox45.Name = "checkBox45";
+            this.checkBox45.Size = new System.Drawing.Size(99, 19);
+            this.checkBox45.TabIndex = 36;
+            this.checkBox45.Text = "Alter Services";
+            this.checkBox45.UseVisualStyleBackColor = true;
+            // 
+            // checkBox46
+            // 
+            this.checkBox46.AutoSize = true;
+            this.checkBox46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox46.Location = new System.Drawing.Point(166, 65);
+            this.checkBox46.Name = "checkBox46";
+            this.checkBox46.Size = new System.Drawing.Size(154, 19);
+            this.checkBox46.TabIndex = 38;
+            this.checkBox46.Text = "St. Vincent De Paul Soc";
+            this.checkBox46.UseVisualStyleBackColor = true;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel16.Controls.Add(this.label74);
+            this.panel16.Controls.Add(this.dateTimePicker25);
+            this.panel16.Controls.Add(this.label75);
+            this.panel16.Controls.Add(this.dateTimePicker26);
+            this.panel16.Controls.Add(this.label76);
+            this.panel16.Controls.Add(this.dateTimePicker27);
+            this.panel16.Controls.Add(this.label77);
+            this.panel16.Controls.Add(this.dateTimePicker28);
+            this.panel16.Controls.Add(this.label78);
+            this.panel16.Controls.Add(this.dateTimePicker29);
+            this.panel16.Location = new System.Drawing.Point(548, 140);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(534, 140);
+            this.panel16.TabIndex = 49;
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.Location = new System.Drawing.Point(22, 108);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(66, 15);
+            this.label74.TabIndex = 39;
+            this.label74.Text = "Priesthood";
+            // 
+            // dateTimePicker25
+            // 
+            this.dateTimePicker25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker25.Location = new System.Drawing.Point(110, 108);
+            this.dateTimePicker25.Name = "dateTimePicker25";
+            this.dateTimePicker25.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker25.TabIndex = 40;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(273, 67);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(65, 15);
+            this.label75.TabIndex = 37;
+            this.label75.Text = "Matrimony";
+            // 
+            // dateTimePicker26
+            // 
+            this.dateTimePicker26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker26.Location = new System.Drawing.Point(378, 61);
+            this.dateTimePicker26.Name = "dateTimePicker26";
+            this.dateTimePicker26.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker26.TabIndex = 38;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(268, 25);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(101, 15);
+            this.label76.TabIndex = 35;
+            this.label76.Text = "First Communion";
+            // 
+            // dateTimePicker27
+            // 
+            this.dateTimePicker27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker27.Location = new System.Drawing.Point(378, 20);
+            this.dateTimePicker27.Name = "dateTimePicker27";
+            this.dateTimePicker27.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker27.TabIndex = 36;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(19, 24);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(81, 15);
+            this.label77.TabIndex = 33;
+            this.label77.Text = "Baptism Date";
+            // 
+            // dateTimePicker28
+            // 
+            this.dateTimePicker28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker28.Location = new System.Drawing.Point(109, 19);
+            this.dateTimePicker28.Name = "dateTimePicker28";
+            this.dateTimePicker28.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker28.TabIndex = 34;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(21, 61);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(77, 15);
+            this.label78.TabIndex = 31;
+            this.label78.Text = "Confirmation";
+            // 
+            // dateTimePicker29
+            // 
+            this.dateTimePicker29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker29.Location = new System.Drawing.Point(109, 61);
+            this.dateTimePicker29.Name = "dateTimePicker29";
+            this.dateTimePicker29.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker29.TabIndex = 32;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.Location = new System.Drawing.Point(841, 48);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(75, 15);
+            this.label79.TabIndex = 48;
+            this.label79.Text = "Qualification";
+            // 
+            // textBox48
+            // 
+            this.textBox48.Location = new System.Drawing.Point(657, 44);
+            this.textBox48.Name = "textBox48";
+            this.textBox48.Size = new System.Drawing.Size(118, 23);
+            this.textBox48.TabIndex = 47;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.Location = new System.Drawing.Point(580, 50);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(53, 15);
+            this.label80.TabIndex = 46;
+            this.label80.Text = "Relation";
+            // 
+            // textBox49
+            // 
+            this.textBox49.Location = new System.Drawing.Point(263, 94);
+            this.textBox49.Name = "textBox49";
+            this.textBox49.Size = new System.Drawing.Size(160, 23);
+            this.textBox49.TabIndex = 44;
+            // 
+            // textBox50
+            // 
+            this.textBox50.Location = new System.Drawing.Point(761, 100);
+            this.textBox50.Name = "textBox50";
+            this.textBox50.Size = new System.Drawing.Size(54, 23);
+            this.textBox50.TabIndex = 45;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(198, 99);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(59, 15);
+            this.label81.TabIndex = 42;
+            this.label81.Text = "Institution";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.Location = new System.Drawing.Point(684, 105);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(71, 15);
+            this.label82.TabIndex = 43;
+            this.label82.Text = "Bloodgroup";
+            // 
+            // textBox51
+            // 
+            this.textBox51.Location = new System.Drawing.Point(535, 94);
+            this.textBox51.Name = "textBox51";
+            this.textBox51.Size = new System.Drawing.Size(118, 23);
+            this.textBox51.TabIndex = 40;
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label83.Location = new System.Drawing.Point(458, 100);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(69, 15);
+            this.label83.TabIndex = 38;
+            this.label83.Text = "Occupation";
+            // 
+            // dateTimePicker30
+            // 
+            this.dateTimePicker30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker30.Location = new System.Drawing.Point(378, 44);
+            this.dateTimePicker30.Name = "dateTimePicker30";
+            this.dateTimePicker30.Size = new System.Drawing.Size(160, 21);
+            this.dateTimePicker30.TabIndex = 41;
+            // 
+            // textBox52
+            // 
+            this.textBox52.Location = new System.Drawing.Point(948, 39);
+            this.textBox52.Name = "textBox52";
+            this.textBox52.Size = new System.Drawing.Size(134, 23);
+            this.textBox52.TabIndex = 35;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label84.Location = new System.Drawing.Point(315, 44);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(39, 15);
+            this.label84.TabIndex = 36;
+            this.label84.Text = "D.O.B";
+            // 
+            // textBox53
+            // 
+            this.textBox53.Location = new System.Drawing.Point(102, 39);
+            this.textBox53.Name = "textBox53";
+            this.textBox53.Size = new System.Drawing.Size(178, 23);
+            this.textBox53.TabIndex = 39;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label85.Location = new System.Drawing.Point(30, 39);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(41, 15);
+            this.label85.TabIndex = 37;
+            this.label85.Text = "Name";
+            // 
+            // child5Groupbox
+            // 
+            this.child5Groupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.child5Groupbox.Controls.Add(this.label86);
+            this.child5Groupbox.Controls.Add(this.textBox54);
+            this.child5Groupbox.Controls.Add(this.textBox55);
+            this.child5Groupbox.Controls.Add(this.label87);
+            this.child5Groupbox.Controls.Add(this.panel8);
+            this.child5Groupbox.Controls.Add(this.panel11);
+            this.child5Groupbox.Controls.Add(this.label93);
+            this.child5Groupbox.Controls.Add(this.textBox56);
+            this.child5Groupbox.Controls.Add(this.label94);
+            this.child5Groupbox.Controls.Add(this.textBox57);
+            this.child5Groupbox.Controls.Add(this.textBox58);
+            this.child5Groupbox.Controls.Add(this.label95);
+            this.child5Groupbox.Controls.Add(this.label96);
+            this.child5Groupbox.Controls.Add(this.textBox59);
+            this.child5Groupbox.Controls.Add(this.label97);
+            this.child5Groupbox.Controls.Add(this.dateTimePicker36);
+            this.child5Groupbox.Controls.Add(this.textBox60);
+            this.child5Groupbox.Controls.Add(this.label98);
+            this.child5Groupbox.Controls.Add(this.textBox61);
+            this.child5Groupbox.Controls.Add(this.label99);
+            this.child5Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child5Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.child5Groupbox.Location = new System.Drawing.Point(3, 1999);
+            this.child5Groupbox.Name = "child5Groupbox";
+            this.child5Groupbox.Size = new System.Drawing.Size(1097, 304);
+            this.child5Groupbox.TabIndex = 58;
+            this.child5Groupbox.TabStop = false;
+            this.child5Groupbox.Text = "Child - 5";
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label86.Location = new System.Drawing.Point(842, 107);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(62, 15);
+            this.label86.TabIndex = 54;
+            this.label86.Text = "WhatsApp";
+            // 
+            // textBox54
+            // 
+            this.textBox54.Location = new System.Drawing.Point(946, 102);
+            this.textBox54.Name = "textBox54";
+            this.textBox54.Size = new System.Drawing.Size(134, 23);
+            this.textBox54.TabIndex = 53;
+            // 
+            // textBox55
+            // 
+            this.textBox55.Location = new System.Drawing.Point(102, 96);
+            this.textBox55.Name = "textBox55";
+            this.textBox55.Size = new System.Drawing.Size(62, 23);
+            this.textBox55.TabIndex = 52;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label87.Location = new System.Drawing.Point(28, 102);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(68, 15);
+            this.label87.TabIndex = 51;
+            this.label87.Text = "Class /Year";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel8.Controls.Add(this.checkBox47);
+            this.panel8.Controls.Add(this.checkBox48);
+            this.panel8.Controls.Add(this.checkBox49);
+            this.panel8.Controls.Add(this.checkBox50);
+            this.panel8.Controls.Add(this.checkBox51);
+            this.panel8.Controls.Add(this.checkBox52);
+            this.panel8.Controls.Add(this.checkBox53);
+            this.panel8.Controls.Add(this.checkBox54);
+            this.panel8.Location = new System.Drawing.Point(33, 143);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(494, 140);
+            this.panel8.TabIndex = 50;
+            // 
+            // checkBox47
+            // 
+            this.checkBox47.AutoSize = true;
+            this.checkBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox47.Location = new System.Drawing.Point(168, 108);
+            this.checkBox47.Name = "checkBox47";
+            this.checkBox47.Size = new System.Drawing.Size(132, 19);
+            this.checkBox47.TabIndex = 42;
+            this.checkBox47.Text = "Catechism Teacher";
+            this.checkBox47.UseVisualStyleBackColor = true;
+            // 
+            // checkBox48
+            // 
+            this.checkBox48.AutoSize = true;
+            this.checkBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox48.Location = new System.Drawing.Point(330, 65);
+            this.checkBox48.Name = "checkBox48";
+            this.checkBox48.Size = new System.Drawing.Size(55, 19);
+            this.checkBox48.TabIndex = 41;
+            this.checkBox48.Text = "Choir";
+            this.checkBox48.UseVisualStyleBackColor = true;
+            // 
+            // checkBox49
+            // 
+            this.checkBox49.AutoSize = true;
+            this.checkBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox49.Location = new System.Drawing.Point(14, 108);
+            this.checkBox49.Name = "checkBox49";
+            this.checkBox49.Size = new System.Drawing.Size(129, 19);
+            this.checkBox49.TabIndex = 40;
+            this.checkBox49.Text = "Catechism Student";
+            this.checkBox49.UseVisualStyleBackColor = true;
+            // 
+            // checkBox50
+            // 
+            this.checkBox50.AutoSize = true;
+            this.checkBox50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox50.Location = new System.Drawing.Point(330, 20);
+            this.checkBox50.Name = "checkBox50";
+            this.checkBox50.Size = new System.Drawing.Size(94, 19);
+            this.checkBox50.TabIndex = 39;
+            this.checkBox50.Text = "Youth Group";
+            this.checkBox50.UseVisualStyleBackColor = true;
+            // 
+            // checkBox51
+            // 
+            this.checkBox51.AutoSize = true;
+            this.checkBox51.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox51.Location = new System.Drawing.Point(166, 20);
+            this.checkBox51.Name = "checkBox51";
+            this.checkBox51.Size = new System.Drawing.Size(107, 19);
+            this.checkBox51.TabIndex = 37;
+            this.checkBox51.Text = "Legion of Mary";
+            this.checkBox51.UseVisualStyleBackColor = true;
+            // 
+            // checkBox52
+            // 
+            this.checkBox52.AutoSize = true;
+            this.checkBox52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox52.Location = new System.Drawing.Point(14, 20);
+            this.checkBox52.Name = "checkBox52";
+            this.checkBox52.Size = new System.Drawing.Size(146, 19);
+            this.checkBox52.TabIndex = 35;
+            this.checkBox52.Text = "Administrative Council";
+            this.checkBox52.UseVisualStyleBackColor = true;
+            // 
+            // checkBox53
+            // 
+            this.checkBox53.AutoSize = true;
+            this.checkBox53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox53.Location = new System.Drawing.Point(14, 65);
+            this.checkBox53.Name = "checkBox53";
+            this.checkBox53.Size = new System.Drawing.Size(99, 19);
+            this.checkBox53.TabIndex = 36;
+            this.checkBox53.Text = "Alter Services";
+            this.checkBox53.UseVisualStyleBackColor = true;
+            // 
+            // checkBox54
+            // 
+            this.checkBox54.AutoSize = true;
+            this.checkBox54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox54.Location = new System.Drawing.Point(166, 65);
+            this.checkBox54.Name = "checkBox54";
+            this.checkBox54.Size = new System.Drawing.Size(154, 19);
+            this.checkBox54.TabIndex = 38;
+            this.checkBox54.Text = "St. Vincent De Paul Soc";
+            this.checkBox54.UseVisualStyleBackColor = true;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel11.Controls.Add(this.label88);
+            this.panel11.Controls.Add(this.dateTimePicker31);
+            this.panel11.Controls.Add(this.label89);
+            this.panel11.Controls.Add(this.dateTimePicker32);
+            this.panel11.Controls.Add(this.label90);
+            this.panel11.Controls.Add(this.dateTimePicker33);
+            this.panel11.Controls.Add(this.label91);
+            this.panel11.Controls.Add(this.dateTimePicker34);
+            this.panel11.Controls.Add(this.label92);
+            this.panel11.Controls.Add(this.dateTimePicker35);
+            this.panel11.Location = new System.Drawing.Point(548, 143);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(534, 140);
+            this.panel11.TabIndex = 49;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label88.Location = new System.Drawing.Point(22, 108);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(66, 15);
+            this.label88.TabIndex = 39;
+            this.label88.Text = "Priesthood";
+            // 
+            // dateTimePicker31
+            // 
+            this.dateTimePicker31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker31.Location = new System.Drawing.Point(110, 108);
+            this.dateTimePicker31.Name = "dateTimePicker31";
+            this.dateTimePicker31.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker31.TabIndex = 40;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label89.Location = new System.Drawing.Point(273, 67);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(65, 15);
+            this.label89.TabIndex = 37;
+            this.label89.Text = "Matrimony";
+            // 
+            // dateTimePicker32
+            // 
+            this.dateTimePicker32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker32.Location = new System.Drawing.Point(378, 61);
+            this.dateTimePicker32.Name = "dateTimePicker32";
+            this.dateTimePicker32.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker32.TabIndex = 38;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label90.Location = new System.Drawing.Point(268, 25);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(101, 15);
+            this.label90.TabIndex = 35;
+            this.label90.Text = "First Communion";
+            // 
+            // dateTimePicker33
+            // 
+            this.dateTimePicker33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker33.Location = new System.Drawing.Point(378, 20);
+            this.dateTimePicker33.Name = "dateTimePicker33";
+            this.dateTimePicker33.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker33.TabIndex = 36;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label91.Location = new System.Drawing.Point(19, 24);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(81, 15);
+            this.label91.TabIndex = 33;
+            this.label91.Text = "Baptism Date";
+            // 
+            // dateTimePicker34
+            // 
+            this.dateTimePicker34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker34.Location = new System.Drawing.Point(109, 19);
+            this.dateTimePicker34.Name = "dateTimePicker34";
+            this.dateTimePicker34.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker34.TabIndex = 34;
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label92.Location = new System.Drawing.Point(21, 61);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(77, 15);
+            this.label92.TabIndex = 31;
+            this.label92.Text = "Confirmation";
+            // 
+            // dateTimePicker35
+            // 
+            this.dateTimePicker35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker35.Location = new System.Drawing.Point(109, 61);
+            this.dateTimePicker35.Name = "dateTimePicker35";
+            this.dateTimePicker35.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker35.TabIndex = 32;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label93.Location = new System.Drawing.Point(841, 51);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(75, 15);
+            this.label93.TabIndex = 48;
+            this.label93.Text = "Qualification";
+            // 
+            // textBox56
+            // 
+            this.textBox56.Location = new System.Drawing.Point(657, 47);
+            this.textBox56.Name = "textBox56";
+            this.textBox56.Size = new System.Drawing.Size(118, 23);
+            this.textBox56.TabIndex = 47;
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label94.Location = new System.Drawing.Point(580, 53);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(53, 15);
+            this.label94.TabIndex = 46;
+            this.label94.Text = "Relation";
+            // 
+            // textBox57
+            // 
+            this.textBox57.Location = new System.Drawing.Point(263, 97);
+            this.textBox57.Name = "textBox57";
+            this.textBox57.Size = new System.Drawing.Size(160, 23);
+            this.textBox57.TabIndex = 44;
+            // 
+            // textBox58
+            // 
+            this.textBox58.Location = new System.Drawing.Point(761, 103);
+            this.textBox58.Name = "textBox58";
+            this.textBox58.Size = new System.Drawing.Size(54, 23);
+            this.textBox58.TabIndex = 45;
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label95.Location = new System.Drawing.Point(198, 102);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(59, 15);
+            this.label95.TabIndex = 42;
+            this.label95.Text = "Institution";
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label96.Location = new System.Drawing.Point(684, 108);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(71, 15);
+            this.label96.TabIndex = 43;
+            this.label96.Text = "Bloodgroup";
+            // 
+            // textBox59
+            // 
+            this.textBox59.Location = new System.Drawing.Point(535, 97);
+            this.textBox59.Name = "textBox59";
+            this.textBox59.Size = new System.Drawing.Size(118, 23);
+            this.textBox59.TabIndex = 40;
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label97.Location = new System.Drawing.Point(458, 103);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(69, 15);
+            this.label97.TabIndex = 38;
+            this.label97.Text = "Occupation";
+            // 
+            // dateTimePicker36
+            // 
+            this.dateTimePicker36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker36.Location = new System.Drawing.Point(378, 47);
+            this.dateTimePicker36.Name = "dateTimePicker36";
+            this.dateTimePicker36.Size = new System.Drawing.Size(160, 21);
+            this.dateTimePicker36.TabIndex = 41;
+            // 
+            // textBox60
+            // 
+            this.textBox60.Location = new System.Drawing.Point(948, 42);
+            this.textBox60.Name = "textBox60";
+            this.textBox60.Size = new System.Drawing.Size(134, 23);
+            this.textBox60.TabIndex = 35;
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label98.Location = new System.Drawing.Point(315, 47);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(39, 15);
+            this.label98.TabIndex = 36;
+            this.label98.Text = "D.O.B";
+            // 
+            // textBox61
+            // 
+            this.textBox61.Location = new System.Drawing.Point(102, 42);
+            this.textBox61.Name = "textBox61";
+            this.textBox61.Size = new System.Drawing.Size(178, 23);
+            this.textBox61.TabIndex = 39;
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label99.Location = new System.Drawing.Point(30, 42);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(41, 15);
+            this.label99.TabIndex = 37;
+            this.label99.Text = "Name";
+            // 
+            // otherRelation1Groupbox
+            // 
+            this.otherRelation1Groupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.otherRelation1Groupbox.Controls.Add(this.label100);
+            this.otherRelation1Groupbox.Controls.Add(this.textBox62);
+            this.otherRelation1Groupbox.Controls.Add(this.panel14);
+            this.otherRelation1Groupbox.Controls.Add(this.panel17);
+            this.otherRelation1Groupbox.Controls.Add(this.label107);
+            this.otherRelation1Groupbox.Controls.Add(this.textBox64);
+            this.otherRelation1Groupbox.Controls.Add(this.label108);
+            this.otherRelation1Groupbox.Controls.Add(this.textBox66);
+            this.otherRelation1Groupbox.Controls.Add(this.label110);
+            this.otherRelation1Groupbox.Controls.Add(this.textBox67);
+            this.otherRelation1Groupbox.Controls.Add(this.label111);
+            this.otherRelation1Groupbox.Controls.Add(this.dateTimePicker42);
+            this.otherRelation1Groupbox.Controls.Add(this.textBox68);
+            this.otherRelation1Groupbox.Controls.Add(this.label112);
+            this.otherRelation1Groupbox.Controls.Add(this.textBox69);
+            this.otherRelation1Groupbox.Controls.Add(this.label113);
+            this.otherRelation1Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otherRelation1Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.otherRelation1Groupbox.Location = new System.Drawing.Point(3, 2309);
+            this.otherRelation1Groupbox.Name = "otherRelation1Groupbox";
+            this.otherRelation1Groupbox.Size = new System.Drawing.Size(1097, 304);
+            this.otherRelation1Groupbox.TabIndex = 59;
+            this.otherRelation1Groupbox.TabStop = false;
+            this.otherRelation1Groupbox.Text = "Other Relation - 1";
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label100.Location = new System.Drawing.Point(580, 102);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(62, 15);
+            this.label100.TabIndex = 54;
+            this.label100.Text = "WhatsApp";
+            // 
+            // textBox62
+            // 
+            this.textBox62.Location = new System.Drawing.Point(657, 102);
+            this.textBox62.Name = "textBox62";
+            this.textBox62.Size = new System.Drawing.Size(118, 23);
+            this.textBox62.TabIndex = 53;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel14.Controls.Add(this.checkBox55);
+            this.panel14.Controls.Add(this.checkBox56);
+            this.panel14.Controls.Add(this.checkBox57);
+            this.panel14.Controls.Add(this.checkBox58);
+            this.panel14.Controls.Add(this.checkBox59);
+            this.panel14.Controls.Add(this.checkBox60);
+            this.panel14.Controls.Add(this.checkBox61);
+            this.panel14.Controls.Add(this.checkBox62);
+            this.panel14.Location = new System.Drawing.Point(33, 143);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(494, 140);
+            this.panel14.TabIndex = 50;
+            // 
+            // checkBox55
+            // 
+            this.checkBox55.AutoSize = true;
+            this.checkBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox55.Location = new System.Drawing.Point(168, 108);
+            this.checkBox55.Name = "checkBox55";
+            this.checkBox55.Size = new System.Drawing.Size(132, 19);
+            this.checkBox55.TabIndex = 42;
+            this.checkBox55.Text = "Catechism Teacher";
+            this.checkBox55.UseVisualStyleBackColor = true;
+            // 
+            // checkBox56
+            // 
+            this.checkBox56.AutoSize = true;
+            this.checkBox56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox56.Location = new System.Drawing.Point(330, 65);
+            this.checkBox56.Name = "checkBox56";
+            this.checkBox56.Size = new System.Drawing.Size(55, 19);
+            this.checkBox56.TabIndex = 41;
+            this.checkBox56.Text = "Choir";
+            this.checkBox56.UseVisualStyleBackColor = true;
+            // 
+            // checkBox57
+            // 
+            this.checkBox57.AutoSize = true;
+            this.checkBox57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox57.Location = new System.Drawing.Point(14, 108);
+            this.checkBox57.Name = "checkBox57";
+            this.checkBox57.Size = new System.Drawing.Size(129, 19);
+            this.checkBox57.TabIndex = 40;
+            this.checkBox57.Text = "Catechism Student";
+            this.checkBox57.UseVisualStyleBackColor = true;
+            // 
+            // checkBox58
+            // 
+            this.checkBox58.AutoSize = true;
+            this.checkBox58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox58.Location = new System.Drawing.Point(330, 20);
+            this.checkBox58.Name = "checkBox58";
+            this.checkBox58.Size = new System.Drawing.Size(94, 19);
+            this.checkBox58.TabIndex = 39;
+            this.checkBox58.Text = "Youth Group";
+            this.checkBox58.UseVisualStyleBackColor = true;
+            // 
+            // checkBox59
+            // 
+            this.checkBox59.AutoSize = true;
+            this.checkBox59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox59.Location = new System.Drawing.Point(166, 20);
+            this.checkBox59.Name = "checkBox59";
+            this.checkBox59.Size = new System.Drawing.Size(107, 19);
+            this.checkBox59.TabIndex = 37;
+            this.checkBox59.Text = "Legion of Mary";
+            this.checkBox59.UseVisualStyleBackColor = true;
+            // 
+            // checkBox60
+            // 
+            this.checkBox60.AutoSize = true;
+            this.checkBox60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox60.Location = new System.Drawing.Point(14, 20);
+            this.checkBox60.Name = "checkBox60";
+            this.checkBox60.Size = new System.Drawing.Size(146, 19);
+            this.checkBox60.TabIndex = 35;
+            this.checkBox60.Text = "Administrative Council";
+            this.checkBox60.UseVisualStyleBackColor = true;
+            // 
+            // checkBox61
+            // 
+            this.checkBox61.AutoSize = true;
+            this.checkBox61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox61.Location = new System.Drawing.Point(14, 65);
+            this.checkBox61.Name = "checkBox61";
+            this.checkBox61.Size = new System.Drawing.Size(99, 19);
+            this.checkBox61.TabIndex = 36;
+            this.checkBox61.Text = "Alter Services";
+            this.checkBox61.UseVisualStyleBackColor = true;
+            // 
+            // checkBox62
+            // 
+            this.checkBox62.AutoSize = true;
+            this.checkBox62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox62.Location = new System.Drawing.Point(166, 65);
+            this.checkBox62.Name = "checkBox62";
+            this.checkBox62.Size = new System.Drawing.Size(154, 19);
+            this.checkBox62.TabIndex = 38;
+            this.checkBox62.Text = "St. Vincent De Paul Soc";
+            this.checkBox62.UseVisualStyleBackColor = true;
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel17.Controls.Add(this.label103);
+            this.panel17.Controls.Add(this.dateTimePicker38);
+            this.panel17.Controls.Add(this.label104);
+            this.panel17.Controls.Add(this.dateTimePicker39);
+            this.panel17.Controls.Add(this.label105);
+            this.panel17.Controls.Add(this.dateTimePicker40);
+            this.panel17.Controls.Add(this.label106);
+            this.panel17.Controls.Add(this.dateTimePicker41);
+            this.panel17.Location = new System.Drawing.Point(548, 143);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(534, 140);
+            this.panel17.TabIndex = 49;
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label103.Location = new System.Drawing.Point(273, 98);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(65, 15);
+            this.label103.TabIndex = 37;
+            this.label103.Text = "Matrimony";
+            // 
+            // dateTimePicker38
+            // 
+            this.dateTimePicker38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker38.Location = new System.Drawing.Point(378, 92);
+            this.dateTimePicker38.Name = "dateTimePicker38";
+            this.dateTimePicker38.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker38.TabIndex = 38;
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label104.Location = new System.Drawing.Point(268, 41);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(101, 15);
+            this.label104.TabIndex = 35;
+            this.label104.Text = "First Communion";
+            // 
+            // dateTimePicker39
+            // 
+            this.dateTimePicker39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker39.Location = new System.Drawing.Point(378, 36);
+            this.dateTimePicker39.Name = "dateTimePicker39";
+            this.dateTimePicker39.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker39.TabIndex = 36;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label105.Location = new System.Drawing.Point(19, 40);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(81, 15);
+            this.label105.TabIndex = 33;
+            this.label105.Text = "Baptism Date";
+            // 
+            // dateTimePicker40
+            // 
+            this.dateTimePicker40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker40.Location = new System.Drawing.Point(109, 35);
+            this.dateTimePicker40.Name = "dateTimePicker40";
+            this.dateTimePicker40.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker40.TabIndex = 34;
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label106.Location = new System.Drawing.Point(21, 92);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(77, 15);
+            this.label106.TabIndex = 31;
+            this.label106.Text = "Confirmation";
+            // 
+            // dateTimePicker41
+            // 
+            this.dateTimePicker41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker41.Location = new System.Drawing.Point(109, 92);
+            this.dateTimePicker41.Name = "dateTimePicker41";
+            this.dateTimePicker41.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker41.TabIndex = 32;
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label107.Location = new System.Drawing.Point(841, 51);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(75, 15);
+            this.label107.TabIndex = 48;
+            this.label107.Text = "Qualification";
+            // 
+            // textBox64
+            // 
+            this.textBox64.Location = new System.Drawing.Point(657, 47);
+            this.textBox64.Name = "textBox64";
+            this.textBox64.Size = new System.Drawing.Size(118, 23);
+            this.textBox64.TabIndex = 47;
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label108.Location = new System.Drawing.Point(580, 53);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(53, 15);
+            this.label108.TabIndex = 46;
+            this.label108.Text = "Relation";
+            // 
+            // textBox66
+            // 
+            this.textBox66.Location = new System.Drawing.Point(403, 102);
+            this.textBox66.Name = "textBox66";
+            this.textBox66.Size = new System.Drawing.Size(135, 23);
+            this.textBox66.TabIndex = 45;
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label110.Location = new System.Drawing.Point(315, 107);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(71, 15);
+            this.label110.TabIndex = 43;
+            this.label110.Text = "Bloodgroup";
+            // 
+            // textBox67
+            // 
+            this.textBox67.Location = new System.Drawing.Point(102, 91);
+            this.textBox67.Name = "textBox67";
+            this.textBox67.Size = new System.Drawing.Size(178, 23);
+            this.textBox67.TabIndex = 40;
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label111.Location = new System.Drawing.Point(30, 97);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(69, 15);
+            this.label111.TabIndex = 38;
+            this.label111.Text = "Occupation";
+            // 
+            // dateTimePicker42
+            // 
+            this.dateTimePicker42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker42.Location = new System.Drawing.Point(378, 47);
+            this.dateTimePicker42.Name = "dateTimePicker42";
+            this.dateTimePicker42.Size = new System.Drawing.Size(160, 21);
+            this.dateTimePicker42.TabIndex = 41;
+            // 
+            // textBox68
+            // 
+            this.textBox68.Location = new System.Drawing.Point(948, 42);
+            this.textBox68.Name = "textBox68";
+            this.textBox68.Size = new System.Drawing.Size(134, 23);
+            this.textBox68.TabIndex = 35;
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label112.Location = new System.Drawing.Point(315, 47);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(39, 15);
+            this.label112.TabIndex = 36;
+            this.label112.Text = "D.O.B";
+            // 
+            // textBox69
+            // 
+            this.textBox69.Location = new System.Drawing.Point(102, 42);
+            this.textBox69.Name = "textBox69";
+            this.textBox69.Size = new System.Drawing.Size(178, 23);
+            this.textBox69.TabIndex = 39;
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label113.Location = new System.Drawing.Point(30, 42);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(41, 15);
+            this.label113.TabIndex = 37;
+            this.label113.Text = "Name";
+            // 
+            // otherRelation2Groupbox
+            // 
+            this.otherRelation2Groupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.otherRelation2Groupbox.Controls.Add(this.label101);
+            this.otherRelation2Groupbox.Controls.Add(this.textBox63);
+            this.otherRelation2Groupbox.Controls.Add(this.panel18);
+            this.otherRelation2Groupbox.Controls.Add(this.panel19);
+            this.otherRelation2Groupbox.Controls.Add(this.label116);
+            this.otherRelation2Groupbox.Controls.Add(this.textBox65);
+            this.otherRelation2Groupbox.Controls.Add(this.label117);
+            this.otherRelation2Groupbox.Controls.Add(this.textBox70);
+            this.otherRelation2Groupbox.Controls.Add(this.label118);
+            this.otherRelation2Groupbox.Controls.Add(this.textBox71);
+            this.otherRelation2Groupbox.Controls.Add(this.label119);
+            this.otherRelation2Groupbox.Controls.Add(this.dateTimePicker46);
+            this.otherRelation2Groupbox.Controls.Add(this.textBox72);
+            this.otherRelation2Groupbox.Controls.Add(this.label120);
+            this.otherRelation2Groupbox.Controls.Add(this.textBox73);
+            this.otherRelation2Groupbox.Controls.Add(this.label121);
+            this.otherRelation2Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otherRelation2Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.otherRelation2Groupbox.Location = new System.Drawing.Point(3, 2619);
+            this.otherRelation2Groupbox.Name = "otherRelation2Groupbox";
+            this.otherRelation2Groupbox.Size = new System.Drawing.Size(1097, 304);
+            this.otherRelation2Groupbox.TabIndex = 60;
+            this.otherRelation2Groupbox.TabStop = false;
+            this.otherRelation2Groupbox.Text = "Other Relation - 2";
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label101.Location = new System.Drawing.Point(580, 102);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(62, 15);
+            this.label101.TabIndex = 54;
+            this.label101.Text = "WhatsApp";
+            // 
+            // textBox63
+            // 
+            this.textBox63.Location = new System.Drawing.Point(657, 102);
+            this.textBox63.Name = "textBox63";
+            this.textBox63.Size = new System.Drawing.Size(118, 23);
+            this.textBox63.TabIndex = 53;
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel18.Controls.Add(this.checkBox63);
+            this.panel18.Controls.Add(this.checkBox64);
+            this.panel18.Controls.Add(this.checkBox65);
+            this.panel18.Controls.Add(this.checkBox66);
+            this.panel18.Controls.Add(this.checkBox67);
+            this.panel18.Controls.Add(this.checkBox68);
+            this.panel18.Controls.Add(this.checkBox69);
+            this.panel18.Controls.Add(this.checkBox70);
+            this.panel18.Location = new System.Drawing.Point(33, 143);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(494, 140);
+            this.panel18.TabIndex = 50;
+            // 
+            // checkBox63
+            // 
+            this.checkBox63.AutoSize = true;
+            this.checkBox63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox63.Location = new System.Drawing.Point(168, 108);
+            this.checkBox63.Name = "checkBox63";
+            this.checkBox63.Size = new System.Drawing.Size(132, 19);
+            this.checkBox63.TabIndex = 42;
+            this.checkBox63.Text = "Catechism Teacher";
+            this.checkBox63.UseVisualStyleBackColor = true;
+            // 
+            // checkBox64
+            // 
+            this.checkBox64.AutoSize = true;
+            this.checkBox64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox64.Location = new System.Drawing.Point(330, 65);
+            this.checkBox64.Name = "checkBox64";
+            this.checkBox64.Size = new System.Drawing.Size(55, 19);
+            this.checkBox64.TabIndex = 41;
+            this.checkBox64.Text = "Choir";
+            this.checkBox64.UseVisualStyleBackColor = true;
+            // 
+            // checkBox65
+            // 
+            this.checkBox65.AutoSize = true;
+            this.checkBox65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox65.Location = new System.Drawing.Point(14, 108);
+            this.checkBox65.Name = "checkBox65";
+            this.checkBox65.Size = new System.Drawing.Size(129, 19);
+            this.checkBox65.TabIndex = 40;
+            this.checkBox65.Text = "Catechism Student";
+            this.checkBox65.UseVisualStyleBackColor = true;
+            // 
+            // checkBox66
+            // 
+            this.checkBox66.AutoSize = true;
+            this.checkBox66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox66.Location = new System.Drawing.Point(330, 20);
+            this.checkBox66.Name = "checkBox66";
+            this.checkBox66.Size = new System.Drawing.Size(94, 19);
+            this.checkBox66.TabIndex = 39;
+            this.checkBox66.Text = "Youth Group";
+            this.checkBox66.UseVisualStyleBackColor = true;
+            // 
+            // checkBox67
+            // 
+            this.checkBox67.AutoSize = true;
+            this.checkBox67.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox67.Location = new System.Drawing.Point(166, 20);
+            this.checkBox67.Name = "checkBox67";
+            this.checkBox67.Size = new System.Drawing.Size(107, 19);
+            this.checkBox67.TabIndex = 37;
+            this.checkBox67.Text = "Legion of Mary";
+            this.checkBox67.UseVisualStyleBackColor = true;
+            // 
+            // checkBox68
+            // 
+            this.checkBox68.AutoSize = true;
+            this.checkBox68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox68.Location = new System.Drawing.Point(14, 20);
+            this.checkBox68.Name = "checkBox68";
+            this.checkBox68.Size = new System.Drawing.Size(146, 19);
+            this.checkBox68.TabIndex = 35;
+            this.checkBox68.Text = "Administrative Council";
+            this.checkBox68.UseVisualStyleBackColor = true;
+            // 
+            // checkBox69
+            // 
+            this.checkBox69.AutoSize = true;
+            this.checkBox69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox69.Location = new System.Drawing.Point(14, 65);
+            this.checkBox69.Name = "checkBox69";
+            this.checkBox69.Size = new System.Drawing.Size(99, 19);
+            this.checkBox69.TabIndex = 36;
+            this.checkBox69.Text = "Alter Services";
+            this.checkBox69.UseVisualStyleBackColor = true;
+            // 
+            // checkBox70
+            // 
+            this.checkBox70.AutoSize = true;
+            this.checkBox70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox70.Location = new System.Drawing.Point(166, 65);
+            this.checkBox70.Name = "checkBox70";
+            this.checkBox70.Size = new System.Drawing.Size(154, 19);
+            this.checkBox70.TabIndex = 38;
+            this.checkBox70.Text = "St. Vincent De Paul Soc";
+            this.checkBox70.UseVisualStyleBackColor = true;
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel19.Controls.Add(this.label102);
+            this.panel19.Controls.Add(this.dateTimePicker37);
+            this.panel19.Controls.Add(this.label109);
+            this.panel19.Controls.Add(this.dateTimePicker43);
+            this.panel19.Controls.Add(this.label114);
+            this.panel19.Controls.Add(this.dateTimePicker44);
+            this.panel19.Controls.Add(this.label115);
+            this.panel19.Controls.Add(this.dateTimePicker45);
+            this.panel19.Location = new System.Drawing.Point(548, 143);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(534, 140);
+            this.panel19.TabIndex = 49;
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label102.Location = new System.Drawing.Point(273, 98);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(65, 15);
+            this.label102.TabIndex = 37;
+            this.label102.Text = "Matrimony";
+            // 
+            // dateTimePicker37
+            // 
+            this.dateTimePicker37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker37.Location = new System.Drawing.Point(378, 92);
+            this.dateTimePicker37.Name = "dateTimePicker37";
+            this.dateTimePicker37.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker37.TabIndex = 38;
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label109.Location = new System.Drawing.Point(268, 41);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(101, 15);
+            this.label109.TabIndex = 35;
+            this.label109.Text = "First Communion";
+            // 
+            // dateTimePicker43
+            // 
+            this.dateTimePicker43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker43.Location = new System.Drawing.Point(378, 36);
+            this.dateTimePicker43.Name = "dateTimePicker43";
+            this.dateTimePicker43.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker43.TabIndex = 36;
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label114.Location = new System.Drawing.Point(19, 40);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(81, 15);
+            this.label114.TabIndex = 33;
+            this.label114.Text = "Baptism Date";
+            // 
+            // dateTimePicker44
+            // 
+            this.dateTimePicker44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker44.Location = new System.Drawing.Point(109, 35);
+            this.dateTimePicker44.Name = "dateTimePicker44";
+            this.dateTimePicker44.Size = new System.Drawing.Size(148, 21);
+            this.dateTimePicker44.TabIndex = 34;
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label115.Location = new System.Drawing.Point(21, 92);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(77, 15);
+            this.label115.TabIndex = 31;
+            this.label115.Text = "Confirmation";
+            // 
+            // dateTimePicker45
+            // 
+            this.dateTimePicker45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker45.Location = new System.Drawing.Point(109, 92);
+            this.dateTimePicker45.Name = "dateTimePicker45";
+            this.dateTimePicker45.Size = new System.Drawing.Size(151, 21);
+            this.dateTimePicker45.TabIndex = 32;
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label116.Location = new System.Drawing.Point(841, 51);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(75, 15);
+            this.label116.TabIndex = 48;
+            this.label116.Text = "Qualification";
+            // 
+            // textBox65
+            // 
+            this.textBox65.Location = new System.Drawing.Point(657, 47);
+            this.textBox65.Name = "textBox65";
+            this.textBox65.Size = new System.Drawing.Size(118, 23);
+            this.textBox65.TabIndex = 47;
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label117.Location = new System.Drawing.Point(580, 53);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(53, 15);
+            this.label117.TabIndex = 46;
+            this.label117.Text = "Relation";
+            // 
+            // textBox70
+            // 
+            this.textBox70.Location = new System.Drawing.Point(403, 102);
+            this.textBox70.Name = "textBox70";
+            this.textBox70.Size = new System.Drawing.Size(135, 23);
+            this.textBox70.TabIndex = 45;
+            // 
+            // label118
+            // 
+            this.label118.AutoSize = true;
+            this.label118.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label118.Location = new System.Drawing.Point(315, 107);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(71, 15);
+            this.label118.TabIndex = 43;
+            this.label118.Text = "Bloodgroup";
+            // 
+            // textBox71
+            // 
+            this.textBox71.Location = new System.Drawing.Point(102, 91);
+            this.textBox71.Name = "textBox71";
+            this.textBox71.Size = new System.Drawing.Size(178, 23);
+            this.textBox71.TabIndex = 40;
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label119.Location = new System.Drawing.Point(30, 97);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(69, 15);
+            this.label119.TabIndex = 38;
+            this.label119.Text = "Occupation";
+            // 
+            // dateTimePicker46
+            // 
+            this.dateTimePicker46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker46.Location = new System.Drawing.Point(378, 47);
+            this.dateTimePicker46.Name = "dateTimePicker46";
+            this.dateTimePicker46.Size = new System.Drawing.Size(160, 21);
+            this.dateTimePicker46.TabIndex = 41;
+            // 
+            // textBox72
+            // 
+            this.textBox72.Location = new System.Drawing.Point(948, 42);
+            this.textBox72.Name = "textBox72";
+            this.textBox72.Size = new System.Drawing.Size(134, 23);
+            this.textBox72.TabIndex = 35;
+            // 
+            // label120
+            // 
+            this.label120.AutoSize = true;
+            this.label120.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label120.Location = new System.Drawing.Point(315, 47);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(39, 15);
+            this.label120.TabIndex = 36;
+            this.label120.Text = "D.O.B";
+            // 
+            // textBox73
+            // 
+            this.textBox73.Location = new System.Drawing.Point(102, 42);
+            this.textBox73.Name = "textBox73";
+            this.textBox73.Size = new System.Drawing.Size(178, 23);
+            this.textBox73.TabIndex = 39;
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label121.Location = new System.Drawing.Point(30, 42);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(41, 15);
+            this.label121.TabIndex = 37;
+            this.label121.Text = "Name";
             // 
             // FamilyPopup
             // 
@@ -1443,9 +3971,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1186, 901);
-            this.Controls.Add(this.panel5);
+            this.ClientSize = new System.Drawing.Size(1175, 901);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panel5);
+            this.MaximizeBox = false;
             this.Name = "FamilyPopup";
             this.generalGroupBox.ResumeLayout(false);
             this.generalGroupBox.PerformLayout();
@@ -1469,6 +3998,42 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
+            this.child2Groupbox.ResumeLayout(false);
+            this.child2Groupbox.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.child3Groupbox.ResumeLayout(false);
+            this.child3Groupbox.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.child4Groupbox.ResumeLayout(false);
+            this.child4Groupbox.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.child5Groupbox.ResumeLayout(false);
+            this.child5Groupbox.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.otherRelation1Groupbox.ResumeLayout(false);
+            this.otherRelation1Groupbox.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            this.otherRelation2Groupbox.ResumeLayout(false);
+            this.otherRelation2Groupbox.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1598,5 +4163,227 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker11;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.TextBox textBox29;
+        private System.Windows.Forms.GroupBox child2Groupbox;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox textBox30;
+        private System.Windows.Forms.TextBox textBox31;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.CheckBox checkBox23;
+        private System.Windows.Forms.CheckBox checkBox24;
+        private System.Windows.Forms.CheckBox checkBox25;
+        private System.Windows.Forms.CheckBox checkBox26;
+        private System.Windows.Forms.CheckBox checkBox27;
+        private System.Windows.Forms.CheckBox checkBox28;
+        private System.Windows.Forms.CheckBox checkBox29;
+        private System.Windows.Forms.CheckBox checkBox30;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.DateTimePicker dateTimePicker13;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.DateTimePicker dateTimePicker14;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.DateTimePicker dateTimePicker15;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.DateTimePicker dateTimePicker16;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.DateTimePicker dateTimePicker17;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.TextBox textBox34;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.DateTimePicker dateTimePicker18;
+        private System.Windows.Forms.TextBox textBox36;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.GroupBox child3Groupbox;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox textBox38;
+        private System.Windows.Forms.TextBox textBox39;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.CheckBox checkBox31;
+        private System.Windows.Forms.CheckBox checkBox32;
+        private System.Windows.Forms.CheckBox checkBox33;
+        private System.Windows.Forms.CheckBox checkBox34;
+        private System.Windows.Forms.CheckBox checkBox35;
+        private System.Windows.Forms.CheckBox checkBox36;
+        private System.Windows.Forms.CheckBox checkBox37;
+        private System.Windows.Forms.CheckBox checkBox38;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.DateTimePicker dateTimePicker19;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.DateTimePicker dateTimePicker20;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.DateTimePicker dateTimePicker21;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.DateTimePicker dateTimePicker22;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.DateTimePicker dateTimePicker23;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.TextBox textBox40;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox textBox41;
+        private System.Windows.Forms.TextBox textBox42;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox textBox43;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.DateTimePicker dateTimePicker24;
+        private System.Windows.Forms.TextBox textBox44;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox textBox45;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.GroupBox child4Groupbox;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.TextBox textBox46;
+        private System.Windows.Forms.TextBox textBox47;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.CheckBox checkBox39;
+        private System.Windows.Forms.CheckBox checkBox40;
+        private System.Windows.Forms.CheckBox checkBox41;
+        private System.Windows.Forms.CheckBox checkBox42;
+        private System.Windows.Forms.CheckBox checkBox43;
+        private System.Windows.Forms.CheckBox checkBox44;
+        private System.Windows.Forms.CheckBox checkBox45;
+        private System.Windows.Forms.CheckBox checkBox46;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.DateTimePicker dateTimePicker25;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.DateTimePicker dateTimePicker26;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.DateTimePicker dateTimePicker27;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.DateTimePicker dateTimePicker28;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.DateTimePicker dateTimePicker29;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.TextBox textBox48;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.TextBox textBox49;
+        private System.Windows.Forms.TextBox textBox50;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.TextBox textBox51;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.DateTimePicker dateTimePicker30;
+        private System.Windows.Forms.TextBox textBox52;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.TextBox textBox53;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.GroupBox child5Groupbox;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.TextBox textBox54;
+        private System.Windows.Forms.TextBox textBox55;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.CheckBox checkBox47;
+        private System.Windows.Forms.CheckBox checkBox48;
+        private System.Windows.Forms.CheckBox checkBox49;
+        private System.Windows.Forms.CheckBox checkBox50;
+        private System.Windows.Forms.CheckBox checkBox51;
+        private System.Windows.Forms.CheckBox checkBox52;
+        private System.Windows.Forms.CheckBox checkBox53;
+        private System.Windows.Forms.CheckBox checkBox54;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.DateTimePicker dateTimePicker31;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.DateTimePicker dateTimePicker32;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.DateTimePicker dateTimePicker33;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.DateTimePicker dateTimePicker34;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.DateTimePicker dateTimePicker35;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.TextBox textBox56;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.TextBox textBox57;
+        private System.Windows.Forms.TextBox textBox58;
+        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.TextBox textBox59;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.DateTimePicker dateTimePicker36;
+        private System.Windows.Forms.TextBox textBox60;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.TextBox textBox61;
+        private System.Windows.Forms.Label label99;
+        private System.Windows.Forms.GroupBox otherRelation1Groupbox;
+        private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.TextBox textBox62;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.CheckBox checkBox55;
+        private System.Windows.Forms.CheckBox checkBox56;
+        private System.Windows.Forms.CheckBox checkBox57;
+        private System.Windows.Forms.CheckBox checkBox58;
+        private System.Windows.Forms.CheckBox checkBox59;
+        private System.Windows.Forms.CheckBox checkBox60;
+        private System.Windows.Forms.CheckBox checkBox61;
+        private System.Windows.Forms.CheckBox checkBox62;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.DateTimePicker dateTimePicker38;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.DateTimePicker dateTimePicker39;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.DateTimePicker dateTimePicker40;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.DateTimePicker dateTimePicker41;
+        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.TextBox textBox64;
+        private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.TextBox textBox66;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.TextBox textBox67;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.DateTimePicker dateTimePicker42;
+        private System.Windows.Forms.TextBox textBox68;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.TextBox textBox69;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.GroupBox otherRelation2Groupbox;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.TextBox textBox63;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.CheckBox checkBox63;
+        private System.Windows.Forms.CheckBox checkBox64;
+        private System.Windows.Forms.CheckBox checkBox65;
+        private System.Windows.Forms.CheckBox checkBox66;
+        private System.Windows.Forms.CheckBox checkBox67;
+        private System.Windows.Forms.CheckBox checkBox68;
+        private System.Windows.Forms.CheckBox checkBox69;
+        private System.Windows.Forms.CheckBox checkBox70;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.DateTimePicker dateTimePicker37;
+        private System.Windows.Forms.Label label109;
+        private System.Windows.Forms.DateTimePicker dateTimePicker43;
+        private System.Windows.Forms.Label label114;
+        private System.Windows.Forms.DateTimePicker dateTimePicker44;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.DateTimePicker dateTimePicker45;
+        private System.Windows.Forms.Label label116;
+        private System.Windows.Forms.TextBox textBox65;
+        private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.TextBox textBox70;
+        private System.Windows.Forms.Label label118;
+        private System.Windows.Forms.TextBox textBox71;
+        private System.Windows.Forms.Label label119;
+        private System.Windows.Forms.DateTimePicker dateTimePicker46;
+        private System.Windows.Forms.TextBox textBox72;
+        private System.Windows.Forms.Label label120;
+        private System.Windows.Forms.TextBox textBox73;
+        private System.Windows.Forms.Label label121;
     }
 }
