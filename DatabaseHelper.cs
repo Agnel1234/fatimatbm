@@ -9,20 +9,27 @@ public static class DatabaseHelper
 
     public static DataTable ExecuteStoredProcedure(string procedureName, params SqlParameter[] parameters)
     {
-        using (var conn = new SqlConnection(ConnectionString))
-        using (var cmd = new SqlCommand(procedureName, conn))
+        try
         {
-            cmd.CommandType = CommandType.StoredProcedure;
-            if (parameters != null)
-                cmd.Parameters.AddRange(parameters);
-
-            var dt = new DataTable();
-            conn.Open();
-            using (var reader = cmd.ExecuteReader())
+            using (var conn = new SqlConnection(ConnectionString))
+            using (var cmd = new SqlCommand(procedureName, conn))
             {
-                dt.Load(reader);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (parameters != null)
+                    cmd.Parameters.AddRange(parameters);
+
+                var dt = new DataTable();
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    dt.Load(reader);
+                }
+                return dt;
             }
-            return dt;
+        }
+        catch(Exception ex)
+        {
+            throw ex;
         }
     }
 

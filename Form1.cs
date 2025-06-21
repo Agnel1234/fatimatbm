@@ -16,26 +16,36 @@ namespace TestFat
         public Form1()
         {
             InitializeComponent();
-           // LoadFamilies();
             LoadFamiliesAsync();
             LoadAnbiyam();
             LoadZoneFamilyChart();
             LoadFamilyBasicDetails();
             this.familygrid.SelectionChanged += familygrid_SelectionChanged;
+            btncreate.Image = new Bitmap(Properties.Resources.createAnbiyam, new Size(24, 24)); // Assuming you have an add icon in your resources
+            btnedit.Image = new Bitmap(Properties.Resources.editAnbiyam, new Size(24, 24)); // Replace with your actual path or resource
+
+
+            btnFamilyCreate.Image = new Bitmap(Properties.Resources.createAnbiyam, new Size(24, 24)); // Assuming you have an add icon in your resources
+            btnFamilyEdit.Image = new Bitmap(Properties.Resources.editAnbiyam, new Size(24, 24)); // Replace with your actual path or resource
+
+            btncreate.ImageAlign = ContentAlignment.MiddleLeft;
+            btncreate.TextAlign = ContentAlignment.MiddleCenter;
+
+            btnFamilyCreate.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFamilyCreate.TextAlign = ContentAlignment.MiddleCenter;
+
+            btnedit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnedit.TextAlign = ContentAlignment.MiddleCenter;
+
+            btnFamilyEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFamilyEdit.TextAlign = ContentAlignment.MiddleCenter;
+            anbiyamGrid.CellClick += anbiyamGrid_CellClick;
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        //private void LoadFamilies()
-        //{
-        //    DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
-        //    dataGridView1.DataSource = dt;
-        //    dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-        //    dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
-        //}
 
         private void LoadFamiliesAsync()
         {
@@ -68,6 +78,7 @@ namespace TestFat
                         dataGridView1.DataSource = dt;
                         dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
                         dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+                        dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                     }
                 };
 
@@ -106,6 +117,7 @@ namespace TestFat
             familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
             familygrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
             familygrid.Columns["FamilyID"].Visible = false;
+            familygrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
         }
 
         private void searchButton_Click_1(object sender, EventArgs e)
@@ -149,12 +161,12 @@ namespace TestFat
             chart1.ChartAreas[0].AxisY.Title = "Number of Families";
 
             var series = chart1.Series.Add("Families per Zone");
-            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
             foreach (DataRow row in dt.Rows)
             {
                 string zone = row["Zone"].ToString();
-                int count = Convert.ToInt32(row["FamilyCount"]);
+                int count = Convert.ToInt32(row["FamilyCount"]); 
                 series.Points.AddXY(zone, count);
             }
 
@@ -163,7 +175,7 @@ namespace TestFat
             chart2.ChartAreas[0].AxisY.Title = "Number of Families";
 
             var series2 = chart2.Series.Add("Families per Zone");
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
 
             foreach (DataRow row in dt.Rows)
             {
@@ -177,7 +189,7 @@ namespace TestFat
             chart3.ChartAreas[0].AxisY.Title = "Number of Families";
 
             var series3 = chart3.Series.Add("Families per Zone");
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
 
             foreach (DataRow row in dt.Rows)
             {
@@ -227,6 +239,7 @@ namespace TestFat
         private void btncreate_Click(object sender, EventArgs e)
         {
             ShowPopup("create");
+
         }
 
         private void btnedit_Click(object sender, EventArgs e)
@@ -241,16 +254,34 @@ namespace TestFat
             anbiyamGrid.Columns["anbiyamID"].Visible = false;
             anbiyamGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
             anbiyamGrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+            anbiyamGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
 
-            // Check if the icon column already exists to avoid duplicates
-            if (anbiyamGrid.Columns["delete"] == null)
-            {
-                DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
-                iconColumn.Name = "delete";
-                iconColumn.HeaderText = "";
-                iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
-                anbiyamGrid.Columns.Insert(7, iconColumn); // Insert at the first position, or use Add() for last
-            }
+            //// Check if the icon column already exists to avoid duplicates
+            //if (anbiyamGrid.Columns["delete"] == null)
+            //{
+            //    DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
+            //    iconColumn.Name = "delete";
+            //    iconColumn.HeaderText = "";
+            //    iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
+            //    iconColumn.Image = new Bitmap(Properties.Resources.delete3, new Size(15, 15));
+                
+            //    anbiyamGrid.Columns.Insert(7, iconColumn); // Insert at the first position, or use Add() for last
+
+            //}
+
+
+            // Remove existing delete column if present to avoid duplicates
+            if (anbiyamGrid.Columns["delete"] != null)
+                anbiyamGrid.Columns.Remove("delete");
+
+            // Add a button column for delete
+            DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
+            btnCol.Name = "delete";
+            btnCol.HeaderText = "";
+            btnCol.Text = "Delete";
+            btnCol.UseColumnTextForButtonValue = true;
+            btnCol.Width = 60;
+            anbiyamGrid.Columns.Insert(7, btnCol); // Adjust index as needed
         }
 
         private void familygrid_SelectionChanged(object sender, EventArgs e)
@@ -261,6 +292,23 @@ namespace TestFat
                 // Assuming you have a hidden column or a way to get family_id
                 int familyId = GetFamilyIdFromSelectedRow(selectedRow);
                 LoadFamilyMembersForGrid(familyId);
+            }
+        }
+
+
+        private void anbiyamGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && anbiyamGrid.Columns[e.ColumnIndex].Name == "delete")
+            {
+                var result = MessageBox.Show("Are you sure you want to delete this row?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(anbiyamGrid.Rows[e.RowIndex].Cells["anbiyamID"].Value);
+                    // Call your delete logic here (e.g., delete from database)
+                    DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
+                    // Refresh grid
+                    LoadAnbiyamGrid();
+                }
             }
         }
 
@@ -282,6 +330,7 @@ namespace TestFat
             familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10, FontStyle.Bold);
             familyMembersGrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
             familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
+            familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
         }
 
     }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36121.58
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFat", "TestFat.csproj", "{A65067F1-6768-464A-874B-01E058620BDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FatimaChurchForms", "FatimaChurchForms.csproj", "{A65067F1-6768-464A-874B-01E058620BDD}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FatimaChurch", "..\FatimaChurch\FatimaChurch.vdproj", "{4A45A387-AF3A-67DF-C5FE-144C1D4B6856}"
 EndProject
