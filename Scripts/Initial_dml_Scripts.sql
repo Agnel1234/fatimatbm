@@ -333,3 +333,31 @@ BEGIN
     WHERE family_id = @family_id;
 END
 GO
+
+CREATE PROCEDURE sp_DeleteAnbiyam
+    @anbiyamID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM Anbiyam WHERE anbiyam_id = @anbiyamID;
+END
+GO
+
+ALTER PROCEDURE sp_DeleteAnbiyam
+    @anbiyamID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Check if any families are linked to this anbiyam
+    IF EXISTS (SELECT 1 FROM family WHERE anbiyam_id = @anbiyamID)
+    BEGIN
+        -- Optionally, you can raise an error or return a status code
+        RAISERROR('Cannot delete: Families are linked to this Anbiyam.', 16, 1);
+        RETURN;
+    END
+
+    DELETE FROM anbiyam
+    WHERE anbiyam_id = @anbiyamID;
+END
