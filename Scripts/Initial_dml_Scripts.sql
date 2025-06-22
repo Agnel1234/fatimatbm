@@ -361,3 +361,172 @@ BEGIN
     DELETE FROM anbiyam
     WHERE anbiyam_id = @anbiyamID;
 END
+
+
+CREATE PROCEDURE sp_GetTotalFamilyCount
+AS
+BEGIN
+    SELECT count(a.family_code) FROM family a;
+END
+GO
+
+CREATE PROCEDURE sp_SaveFamily
+    @family_code NVARCHAR(50),
+	@anbiyam_id INT,
+    @head_of_family NVARCHAR(100),
+    @gender NVARCHAR(10),
+    @family_permanant_address NVARCHAR(200),
+	@family_temp_address NVARCHAR(200),
+	@family_perm_city NVARCHAR(50),
+	@family_perm_state NVARCHAR(50),
+	@family_perm_zipcode NVARCHAR(10),
+	@family_temp_city NVARCHAR(50),
+	@family_temp_state NVARCHAR(50),
+	@family_temp_zipcode NVARCHAR(10),
+    @phone NVARCHAR(20),
+	@email NVARCHAR(100),
+	@monthly_subscription INT,
+    @family_id INT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO family (
+        family_code,
+		anbiyam_id,
+        head_of_family,
+        gender,
+        family_permanant_address,
+		family_temp_address,
+		family_city,
+		family_state,
+		zip_code,
+		family_temp_city,
+		family_temp_state,
+		family_temp_zipcode,
+        phone,
+		email,
+        monthly_subscription,
+        created_at,
+        modified,
+		parish_member_since
+    )
+    VALUES (
+        @family_code,
+		@anbiyam_id,
+        @head_of_family,
+        @gender,
+        @family_permanant_address,
+		@family_temp_address,
+		@family_perm_city,
+		@family_perm_state,
+		@family_perm_zipcode,
+		@family_temp_city,
+		@family_temp_state,
+		@family_temp_zipcode,
+        @phone,
+		@email,
+		@monthly_subscription,
+        GETDATE(),
+        GETDATE(),
+        YEAR(GETDATE())
+    );
+
+    SET @family_id = SCOPE_IDENTITY();
+END
+GO
+
+
+CREATE PROCEDURE sp_SaveFamilyMember
+    @family_id INT,
+    @first_name NVARCHAR(100),
+    @relationship NVARCHAR(50), -- e.g., Head, Spouse, Child, Other
+    @gender NVARCHAR(10),
+    @dob DATE = NULL,
+    @member_status NVARCHAR(20) = NULL,
+	@occupation NVARCHAR(20) = NULL,
+	@qualification NVARCHAR(30) = NULL,
+	@blood_group NVARCHAR(5) = NULL,
+	@email NVARCHAR(100) = NULL,
+    @phone NVARCHAR(20) = NULL,
+	@baptized_date DATETIME = NULL,
+	@marriage_date DATETIME = NULL,
+	@first_communion_date DATETIME = NULL,
+	@confirmation_date DATETIME = NULL,
+	@priesthood_date DATETIME = NULL,
+	@isadmin BIT,
+	@legionofmary BIT,
+	@isyouth BIT,
+	@isalterservices BIT,
+	@isvencentdepaul BIT,
+	@ischoir BIT,
+	@iscatechismteacher BIT,
+	@iscatechismstudent BIT,
+	@childclass NVARCHAR(10) = NULL,
+	@child_institution NVARCHAR(100) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO family_member (
+        family_id,
+        first_name,
+        relationship,
+        gender,
+        dob,
+        member_status,
+		occupation,
+		qualification,
+		blood_group,
+		email,
+        phone,
+		baptized_date,
+		created_at,
+		modified,
+		marriage_date,
+		first_communion_date,
+		first_confirmation_date,
+		priesthood_date,
+		is_admin_council,
+		is_legion_of_mary,
+		is_youth_group,
+		is_alter_services,
+		is_vencent_de_paul_soc,
+		is_choir,
+		is_catechism_student,
+		is_catechism_teacher,
+		child_class,
+		child_institution
+    )
+    VALUES (
+        @family_id,
+        @first_name,
+        @relationship,
+        @gender,
+        @dob,
+        @member_status,
+		@occupation,
+		@qualification,
+		@blood_group,
+		@email,
+        @phone,
+		@baptized_date,
+		GETDATE(),
+		GETDATE(),
+        @marriage_date,
+        @first_communion_date,
+        @confirmation_date,
+		@priesthood_date,
+		@isadmin,
+		@legionofmary,
+		@isyouth,
+		@isalterservices,
+		@isvencentdepaul,
+		@ischoir,
+		@iscatechismteacher,
+		@iscatechismstudent,
+		@childclass,
+		@child_institution
+    );
+END
+GO

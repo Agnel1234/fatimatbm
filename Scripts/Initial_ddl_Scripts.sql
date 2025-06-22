@@ -99,13 +99,31 @@ CREATE TABLE cemetery_details (
 );
 GO
 
---CREATE TABLE church_events (
---    event_id INT PRIMARY KEY IDENTITY(1,1),
---    event_name NVARCHAR(100) NOT NULL,
---    event_date DATE NOT NULL,
---    event_time TIME NULL,
---    event_location NVARCHAR(200) NOT NULL,
---    description NVARCHAR(500) NULL,
---    created_at DATETIME DEFAULT GETDATE(),
---    modified DATETIME DEFAULT GETDATE()
---);
+ALTER TABLE family ADD family_temp_city NVARCHAR(50);
+ALTER TABLE family ADD family_temp_state NVARCHAR(50);
+ALTER TABLE family ADD family_temp_zipcode NVARCHAR(50);
+ALTER TABLE family DROP COLUMN occupation;
+ALTER TABLE family DROP COLUMN dob;
+ALTER TABLE family DROP COLUMN qualification;
+ALTER TABLE family DROP COLUMN blood_group;
+ALTER TABLE family DROP COLUMN marriage_date;
+
+
+ALTER TABLE family_member ADD marriage_date DATETIME NULL;
+ALTER TABLE family_member ADD first_communion_date DATETIME NULL;
+ALTER TABLE family_member ADD first_confirmation_date DATETIME NULL;
+ALTER TABLE family_member ADD priesthood_date DATETIME NULL;
+ALTER TABLE family_member ADD is_admin_council bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD is_legion_of_mary bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD is_youth_group bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD is_alter_services bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD is_vencent_de_paul_soc bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD is_choir bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD is_catechism_student bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD is_catechism_teacher bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD child_class NVARCHAR(50);
+ALTER TABLE family_member ADD child_institution NVARCHAR(100);
+ALTER TABLE family_member DROP COLUMN last_name;
+ALTER TABLE family_member DROP COLUMN marital_status;
+
+
