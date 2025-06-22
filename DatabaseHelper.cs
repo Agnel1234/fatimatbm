@@ -44,7 +44,7 @@ public static class DatabaseHelper
                 }
                 else
                 {
-                    throw; // rethrow for other exceptions
+                    throw ex; // rethrow for other exceptions
                 }
             }
         }

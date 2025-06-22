@@ -56,7 +56,7 @@ namespace TestFat
             }
             else
             {
-                MessageBox.Show("Information","You can only add five children.");
+                MessageBox.Show("Family can add maximum of five children", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -74,7 +74,7 @@ namespace TestFat
             }
             else
             {
-                MessageBox.Show("Information", "You Can Only Add Two Relations.");
+                MessageBox.Show("Family can add maximum of two older relations", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
