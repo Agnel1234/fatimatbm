@@ -35,7 +35,7 @@ public static class DatabaseHelper
             catch (Exception ex)
             {
                 // Only retry on specific exceptions (e.g., timeout)
-                if (ex.InnerException != null && ex.InnerException.Message.Contains("timeout"))
+                if (ex.InnerException != null && ( ex.InnerException.Message.Contains("timeout") || ex.InnerException.Message.Contains("timed out")))
                 {
                     if (attempt == maxRetries)
                         throw; // rethrow if last attempt

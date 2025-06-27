@@ -530,3 +530,25 @@ BEGIN
     );
 END
 GO
+
+ALTER PROCEDURE sp_GetFamilyMembersByFamilyId
+    @family_id INT
+AS
+BEGIN
+    SELECT 
+        member_id as memberID,
+        first_name as MemberName,
+        relationship as Relationship,
+        gender as Gender,
+        dob as MemberDOB,
+        member_status as Status,
+        phone as Phone,
+        CASE
+            WHEN marriage_date IS NULL THEN 'Un-Married'
+            ELSE 'Married' 
+        END AS MaritalStatus
+
+    FROM family_member
+    WHERE family_id = @family_id;
+END
+GO
