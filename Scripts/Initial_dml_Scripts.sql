@@ -50,14 +50,6 @@ GO
 -- family_member procedures
 -- =========================
 
-CREATE PROCEDURE sp_GetFamilyMembersByFamilyId
-    @family_id INT
-AS
-BEGIN
-    SELECT * FROM family_member WHERE family_id = @family_id;
-END
-GO
-
 CREATE PROCEDURE sp_GetFamilyMemberById
     @member_id INT
 AS
@@ -301,36 +293,22 @@ BEGIN
 END
 GO
 
-Create PROCEDURE sp_GetFamilyBasicDetails
+ALter PROCEDURE sp_GetFamilyBasicDetails
 AS
 BEGIN
-    SELECT 
+	SELECT 
         family_id as FamilyID,
-        family_code as FamilyCode, 
-        head_of_family as FamilyHead, 
-        gender as Gender, 
-        family_permanant_address as Address, 
-        phone as Phone
-    FROM family;
-END
-GO
-
-
-ALTER PROCEDURE sp_GetFamilyMembersByFamilyId
-    @family_id INT
-AS
-BEGIN
-    SELECT 
-        member_id as memberID,
-        first_name as MemberName,
-        relationship as Relationship,
-        gender as Gender,
-        dob as MemberDOB,
-        member_status as Status,
-        phone as Phone,
-        marital_status as MaritalStatus
-    FROM family_member
-    WHERE family_id = @family_id;
+        a.anbiyam_name as 'Anbiyam Name',
+        family_code as 'Family Code', 
+        head_of_family as 'Head of Family', 
+        gender as 'Gender', 
+        family_temp_address as 'Address', 
+        phone as Mobile,
+		monthly_subscription as 'Subscription Amount',
+		parish_member_since as 'Member Since'
+	FROM family f 
+	Join anbiyam a 
+	On a.anbiyam_id = f.anbiyam_id ;
 END
 GO
 
@@ -437,7 +415,7 @@ END
 GO
 
 
-CREATE PROCEDURE sp_SaveFamilyMember
+ALTER PROCEDURE sp_SaveFamilyMember
     @family_id INT,
     @first_name NVARCHAR(100),
     @relationship NVARCHAR(50), -- e.g., Head, Spouse, Child, Other
@@ -454,14 +432,14 @@ CREATE PROCEDURE sp_SaveFamilyMember
 	@first_communion_date DATETIME = NULL,
 	@confirmation_date DATETIME = NULL,
 	@priesthood_date DATETIME = NULL,
-	@isadmin BIT,
-	@legionofmary BIT,
-	@isyouth BIT,
-	@isalterservices BIT,
-	@isvencentdepaul BIT,
-	@ischoir BIT,
-	@iscatechismteacher BIT,
-	@iscatechismstudent BIT,
+    @isadmin BIT = 0,
+    @legionofmary BIT = 0,
+    @isyouth BIT = 0,
+    @isalterservices BIT = 0,
+    @isvencentdepaul BIT = 0,
+    @ischoir BIT = 0,
+    @iscatechismteacher BIT = 0,
+    @iscatechismstudent BIT = 0,
 	@childclass NVARCHAR(10) = NULL,
 	@child_institution NVARCHAR(100) = NULL
 AS
@@ -520,6 +498,7 @@ BEGIN
 		@isadmin,
 		@legionofmary,
 		@isyouth,
+        @iswomenassociation = 0, -- Assuming this is a placeholder for future use
 		@isalterservices,
 		@isvencentdepaul,
 		@ischoir,
@@ -535,20 +514,104 @@ ALTER PROCEDURE sp_GetFamilyMembersByFamilyId
     @family_id INT
 AS
 BEGIN
-    SELECT 
-        member_id as memberID,
-        first_name as MemberName,
-        relationship as Relationship,
-        gender as Gender,
-        dob as MemberDOB,
-        member_status as Status,
-        phone as Phone,
-        CASE
-            WHEN marriage_date IS NULL THEN 'Un-Married'
-            ELSE 'Married' 
-        END AS MaritalStatus
+ SELECT 
+    member_id as memberID,
+    first_name as 'Name',
+    relationship as Relationship,
+    gender as Gender,
+    DATEDIFF(YEAR, dob, GETDATE()) 
+        - CASE 
+        WHEN DATEADD(YEAR, DATEDIFF(YEAR, dob, GETDATE()), dob) > GETDATE() 
+        THEN 1 ELSE 0 
+        END AS Age,
+    member_status as Status,
+    occupation as Occupation,
+    phone as Mobile,
+    CASE
+        WHEN marriage_date IS NULL THEN 'Un-Married'
+        ELSE 'Married' 
+    END AS MaritalStatus,
+    CASE
+        WHEN is_admin_council = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Admin Council],
+    CASE
+        WHEN is_alter_services = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Alter Services],
+    CASE
+        WHEN is_legion_of_mary = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Legion of Mary],
+    CASE
+        WHEN is_youth_group = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Youth Group],
+    CASE
+        WHEN is_vencent_de_paul_soc = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Vincent De Paul],
+    CASE
+        WHEN is_choir = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Choir],
+    CASE
+        WHEN is_catechism_student = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Catechism Student],
+    CASE
+        WHEN is_catechism_teacher = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Catechism Teacher],
+    CASE
+        WHEN is_women_assoc = 1 THEN 'Yes'
+        ELSE 'No'
+    END AS [Women's Association]
+FROM family_member
+WHERE family_id = @family_id;
+END
+GO
 
-    FROM family_member
+
+CREATE PROCEDURE sp_GetAnbiyamCodeById
+    @anbiyam_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT anbiyam_code
+    FROM anbiyam
+    WHERE anbiyam_id = @anbiyam_id;
+END
+GO
+
+CREATE PROCEDURE sp_GetFamilyDetailsById
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        family_id,
+        family_code,
+        anbiyam_id,
+        head_of_family,
+        gender,
+        family_permanant_address,
+        family_temp_address,
+        family_city,
+        family_state,
+        zip_code,
+        family_temp_city,
+        family_temp_state,
+        family_temp_zipcode,
+        phone,
+        email,
+        monthly_subscription,
+        created_at,
+        modified,
+        parish_member_since
+    FROM family
     WHERE family_id = @family_id;
 END
 GO

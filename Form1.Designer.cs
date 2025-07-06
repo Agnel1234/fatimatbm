@@ -149,9 +149,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.Color.Thistle;
             this.panel6.Controls.Add(this.familyMembersGrid);
-            this.panel6.Location = new System.Drawing.Point(8, 468);
+            this.panel6.Location = new System.Drawing.Point(8, 434);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1422, 139);
+            this.panel6.Size = new System.Drawing.Size(1422, 173);
             this.panel6.TabIndex = 2;
             // 
             // familyMembersGrid
@@ -165,7 +165,7 @@
             this.familyMembersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.familyMembersGrid.Location = new System.Drawing.Point(15, 18);
             this.familyMembersGrid.Name = "familyMembersGrid";
-            this.familyMembersGrid.Size = new System.Drawing.Size(1388, 102);
+            this.familyMembersGrid.Size = new System.Drawing.Size(1388, 136);
             this.familyMembersGrid.TabIndex = 0;
             // 
             // panel5
@@ -200,6 +200,7 @@
             this.btnFamilyEdit.TabIndex = 0;
             this.btnFamilyEdit.Text = "Edit";
             this.btnFamilyEdit.UseVisualStyleBackColor = true;
+            this.btnFamilyEdit.Click += new System.EventHandler(this.btnFamilyEdit_Click);
             // 
             // panel4
             // 
@@ -210,7 +211,7 @@
             this.panel4.Controls.Add(this.familygrid);
             this.panel4.Location = new System.Drawing.Point(8, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1422, 449);
+            this.panel4.Size = new System.Drawing.Size(1422, 422);
             this.panel4.TabIndex = 0;
             // 
             // familygrid
@@ -223,7 +224,7 @@
             this.familygrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.familygrid.Location = new System.Drawing.Point(15, 19);
             this.familygrid.Name = "familygrid";
-            this.familygrid.Size = new System.Drawing.Size(1388, 416);
+            this.familygrid.Size = new System.Drawing.Size(1388, 386);
             this.familygrid.TabIndex = 0;
             // 
             // tabPage2

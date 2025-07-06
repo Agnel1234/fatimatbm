@@ -121,8 +121,10 @@ ALTER TABLE family_member ADD is_vencent_de_paul_soc bit NOT NULL DEFAULT (0);
 ALTER TABLE family_member ADD is_choir bit NOT NULL DEFAULT (0);
 ALTER TABLE family_member ADD is_catechism_student bit NOT NULL DEFAULT (0);
 ALTER TABLE family_member ADD is_catechism_teacher bit NOT NULL DEFAULT (0);
+ALTER TABLE family_member ADD is_women_assoc bit NOT NULL DEFAULT (0);
 ALTER TABLE family_member ADD child_class NVARCHAR(50);
 ALTER TABLE family_member ADD child_institution NVARCHAR(100);
+ALTER TABLE family_member ADD member_group NVARCHAR(50);
 ALTER TABLE family_member DROP COLUMN last_name;
 ALTER TABLE family_member DROP COLUMN marital_status;
 

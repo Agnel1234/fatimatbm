@@ -13,6 +13,7 @@ namespace TestFat
 {
     public partial class Form1 : Form
     {
+        private int familyIDInContext = 0;
         public Form1()
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace TestFat
             btnFamilyEdit.ImageAlign = ContentAlignment.MiddleLeft;
             btnFamilyEdit.TextAlign = ContentAlignment.MiddleCenter;
             anbiyamGrid.CellClick += anbiyamGrid_CellClick;
+
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -110,7 +112,7 @@ namespace TestFat
             dataGridView1.DataSource = dt;
         }
 
-        private void LoadFamilyBasicDetails()
+        public void LoadFamilyBasicDetails()
         {
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails");
             familygrid.DataSource = dt;
@@ -277,6 +279,7 @@ namespace TestFat
                 var selectedRow = familygrid.SelectedRows[0];
                 // Assuming you have a hidden column or a way to get family_id
                 int familyId = GetFamilyIdFromSelectedRow(selectedRow);
+                familyIDInContext = familyId; // Store the selected family ID in context
                 LoadFamilyMembersForGrid(familyId);
             }
         }
@@ -315,28 +318,50 @@ namespace TestFat
         {
             // If you have family_id as a hidden column:
             return Convert.ToInt32(row.Cells["FamilyID"].Value);
-
-            // If not, you need to fetch it based on unique fields (not recommended).
-            // Best practice: include family_id as a hidden column in your SELECT.
-            throw new NotImplementedException();
         }
 
         private void LoadFamilyMembersForGrid(int familyId)
         {
             var param = new SqlParameter("@family_id", familyId);
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyMembersByFamilyId", param);
-            familyMembersGrid.DataSource = dt;
-            familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10, FontStyle.Bold);
-            familyMembersGrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
-            familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
-            familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            if (dt.Rows.Count > 0)
+            {
+                familyMembersGrid.DataSource = dt;
+                familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold);
+                familyMembersGrid.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+                familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
+                familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            }
+            else
+            {
+                familyMembersGrid.DataSource = null;
+            }
         }
 
         private void btnFamilyCreate_Click(object sender, EventArgs e)
         {
-            using (var popup = new FamilyPopup())
+            int familyID = 0;
+            using (var popup = new FamilyPopup(familyID))
             {
-                popup.ShowDialog(); // Shows as a modal dialog
+                popup.ShowDialog(); 
+                // After closing, reload family basic details
+                LoadFamilyBasicDetails();
+            }
+        }
+
+        private void btnFamilyEdit_Click(object sender, EventArgs e)
+        {
+            if(familyIDInContext <= 0 )
+            {
+                MessageBox.Show("Please select a family to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var popup = new FamilyPopup(familyIDInContext))
+            {
+                popup.ShowDialog();
+                // After closing, reload family basic details
+                LoadFamilyBasicDetails();
             }
         }
     }
