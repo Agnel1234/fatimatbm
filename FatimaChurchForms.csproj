@@ -59,6 +59,12 @@
       <DependentUpon>AnbiyamPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="FamilyPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FamilyPopup.Designer.cs">
+      <DependentUpon>FamilyPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AnbiyamPopup.resx">
       <DependentUpon>AnbiyamPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyPopup.resx">
+      <DependentUpon>FamilyPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

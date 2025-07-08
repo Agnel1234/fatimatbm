@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,9 +149,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.Color.Thistle;
             this.panel6.Controls.Add(this.familyMembersGrid);
-            this.panel6.Location = new System.Drawing.Point(8, 468);
+            this.panel6.Location = new System.Drawing.Point(8, 434);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1422, 139);
+            this.panel6.Size = new System.Drawing.Size(1422, 173);
             this.panel6.TabIndex = 2;
             // 
             // familyMembersGrid
@@ -165,7 +165,7 @@
             this.familyMembersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.familyMembersGrid.Location = new System.Drawing.Point(15, 18);
             this.familyMembersGrid.Name = "familyMembersGrid";
-            this.familyMembersGrid.Size = new System.Drawing.Size(1388, 102);
+            this.familyMembersGrid.Size = new System.Drawing.Size(1388, 136);
             this.familyMembersGrid.TabIndex = 0;
             // 
             // panel5
@@ -189,6 +189,7 @@
             this.btnFamilyCreate.TabIndex = 1;
             this.btnFamilyCreate.Text = "Create";
             this.btnFamilyCreate.UseVisualStyleBackColor = true;
+            this.btnFamilyCreate.Click += new System.EventHandler(this.btnFamilyCreate_Click);
             // 
             // btnFamilyEdit
             // 
@@ -199,6 +200,7 @@
             this.btnFamilyEdit.TabIndex = 0;
             this.btnFamilyEdit.Text = "Edit";
             this.btnFamilyEdit.UseVisualStyleBackColor = true;
+            this.btnFamilyEdit.Click += new System.EventHandler(this.btnFamilyEdit_Click);
             // 
             // panel4
             // 
@@ -209,7 +211,7 @@
             this.panel4.Controls.Add(this.familygrid);
             this.panel4.Location = new System.Drawing.Point(8, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1422, 449);
+            this.panel4.Size = new System.Drawing.Size(1422, 422);
             this.panel4.TabIndex = 0;
             // 
             // familygrid
@@ -222,7 +224,7 @@
             this.familygrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.familygrid.Location = new System.Drawing.Point(15, 19);
             this.familygrid.Name = "familygrid";
-            this.familygrid.Size = new System.Drawing.Size(1388, 416);
+            this.familygrid.Size = new System.Drawing.Size(1388, 386);
             this.familygrid.TabIndex = 0;
             // 
             // tabPage2
@@ -407,16 +409,16 @@
             // chart3
             // 
             this.chart3.BackColor = System.Drawing.Color.Thistle;
-            chartArea10.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.chart3.Legends.Add(legend10);
+            chartArea1.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart3.Legends.Add(legend1);
             this.chart3.Location = new System.Drawing.Point(3, 8);
             this.chart3.Name = "chart3";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.chart3.Series.Add(series10);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart3.Series.Add(series1);
             this.chart3.Size = new System.Drawing.Size(357, 230);
             this.chart3.TabIndex = 4;
             this.chart3.Text = "Number of Familes";
@@ -425,16 +427,16 @@
             // 
             this.chart1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.chart1.BackColor = System.Drawing.Color.Thistle;
-            chartArea11.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.chart1.Legends.Add(legend11);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(3, 244);
             this.chart1.Name = "chart1";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            this.chart1.Series.Add(series11);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(357, 230);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
@@ -443,16 +445,16 @@
             // 
             this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chart2.BackColor = System.Drawing.Color.Thistle;
-            chartArea12.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.chart2.Legends.Add(legend12);
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
             this.chart2.Location = new System.Drawing.Point(3, 480);
             this.chart2.Name = "chart2";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            this.chart2.Series.Add(series12);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart2.Series.Add(series3);
             this.chart2.Size = new System.Drawing.Size(357, 230);
             this.chart2.TabIndex = 3;
             this.chart2.Text = "chart2";
@@ -497,7 +499,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Fatima Church - Yellowpages";
+            this.Text = "Fatima Church Tambaram";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabPage3.ResumeLayout(false);

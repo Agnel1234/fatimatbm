@@ -13,6 +13,7 @@ namespace TestFat
 {
     public partial class Form1 : Form
     {
+        private int familyIDInContext = 0;
         public Form1()
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace TestFat
             btnFamilyEdit.ImageAlign = ContentAlignment.MiddleLeft;
             btnFamilyEdit.TextAlign = ContentAlignment.MiddleCenter;
             anbiyamGrid.CellClick += anbiyamGrid_CellClick;
+
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -110,7 +112,7 @@ namespace TestFat
             dataGridView1.DataSource = dt;
         }
 
-        private void LoadFamilyBasicDetails()
+        public void LoadFamilyBasicDetails()
         {
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails");
             familygrid.DataSource = dt;
@@ -256,20 +258,6 @@ namespace TestFat
             anbiyamGrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
             anbiyamGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
 
-            //// Check if the icon column already exists to avoid duplicates
-            //if (anbiyamGrid.Columns["delete"] == null)
-            //{
-            //    DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
-            //    iconColumn.Name = "delete";
-            //    iconColumn.HeaderText = "";
-            //    iconColumn.ImageLayout = DataGridViewImageCellLayout.Normal;
-            //    iconColumn.Image = new Bitmap(Properties.Resources.delete3, new Size(15, 15));
-                
-            //    anbiyamGrid.Columns.Insert(7, iconColumn); // Insert at the first position, or use Add() for last
-
-            //}
-
-
             // Remove existing delete column if present to avoid duplicates
             if (anbiyamGrid.Columns["delete"] != null)
                 anbiyamGrid.Columns.Remove("delete");
@@ -286,11 +274,12 @@ namespace TestFat
 
         private void familygrid_SelectionChanged(object sender, EventArgs e)
         {
-            if (familygrid.SelectedRows.Count > 0)
+            if (familygrid.SelectedRows.Count == 1)
             {
                 var selectedRow = familygrid.SelectedRows[0];
                 // Assuming you have a hidden column or a way to get family_id
                 int familyId = GetFamilyIdFromSelectedRow(selectedRow);
+                familyIDInContext = familyId; // Store the selected family ID in context
                 LoadFamilyMembersForGrid(familyId);
             }
         }
@@ -298,14 +287,27 @@ namespace TestFat
 
         private void anbiyamGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && anbiyamGrid.Columns[e.ColumnIndex].Name == "delete")
+            if (e.RowIndex >= 0 && anbiyamGrid.SelectedCells.Count ==1 && anbiyamGrid.SelectedCells[0].ColumnIndex == 7 )
             {
-                var result = MessageBox.Show("Are you sure you want to delete this row?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Are you sure you want to delete this Anbiyam?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(anbiyamGrid.Rows[e.RowIndex].Cells["anbiyamID"].Value);
-                    // Call your delete logic here (e.g., delete from database)
-                    DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
+                    try
+                    {
+                        DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
+                    }
+                    catch(Exception ex)
+                    {
+                        if(ex.Message != null && ex.Message.Contains("Cannot delete"))
+                        {
+                            MessageBox.Show("This Anbiyam cannot be deleted, as families are linked to it", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            MessageBox.Show(ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     // Refresh grid
                     LoadAnbiyamGrid();
                 }
@@ -316,22 +318,51 @@ namespace TestFat
         {
             // If you have family_id as a hidden column:
             return Convert.ToInt32(row.Cells["FamilyID"].Value);
-
-            // If not, you need to fetch it based on unique fields (not recommended).
-            // Best practice: include family_id as a hidden column in your SELECT.
-            throw new NotImplementedException();
         }
 
         private void LoadFamilyMembersForGrid(int familyId)
         {
             var param = new SqlParameter("@family_id", familyId);
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyMembersByFamilyId", param);
-            familyMembersGrid.DataSource = dt;
-            familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10, FontStyle.Bold);
-            familyMembersGrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
-            familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
-            familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            if (dt.Rows.Count > 0)
+            {
+                familyMembersGrid.DataSource = dt;
+                familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold);
+                familyMembersGrid.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
+                familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
+                familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            }
+            else
+            {
+                familyMembersGrid.DataSource = null;
+            }
         }
 
+        private void btnFamilyCreate_Click(object sender, EventArgs e)
+        {
+            int familyID = 0;
+            using (var popup = new FamilyPopup(familyID))
+            {
+                popup.ShowDialog(); 
+                // After closing, reload family basic details
+                LoadFamilyBasicDetails();
+            }
+        }
+
+        private void btnFamilyEdit_Click(object sender, EventArgs e)
+        {
+            if(familyIDInContext <= 0 )
+            {
+                MessageBox.Show("Please select a family to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var popup = new FamilyPopup(familyIDInContext))
+            {
+                popup.ShowDialog();
+                // After closing, reload family basic details
+                LoadFamilyBasicDetails();
+            }
+        }
     }
 }
