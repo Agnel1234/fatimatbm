@@ -19,24 +19,22 @@ namespace TestFat
         private int otherRelationCount = 0;
         public FamilyPopup(int familyID)
         {
-            if (familyID == 0)
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            child1Groupbox.Visible = false;
+            child2Groupbox.Visible = false;
+            child3Groupbox.Visible = false;
+            child4Groupbox.Visible = false;
+            child5Groupbox.Visible = false;
+            relation1Groupbox.Visible = false;
+            otherRelation2Groupbox.Visible = false;
+            LoadAnbiyam();
+            if (familyID != 0)
             {
-                InitializeComponent();
-                this.StartPosition = FormStartPosition.CenterScreen;
-                child1Groupbox.Visible = false;
-                child2Groupbox.Visible = false;
-                child3Groupbox.Visible = false;
-                child4Groupbox.Visible = false;
-                child5Groupbox.Visible = false;
-                relation1Groupbox.Visible = false;
-                otherRelation2Groupbox.Visible = false;
-                LoadAnbiyam();
+                bool isloadedSuccess = LoadFamilyInfoById(familyID);
+                if (isloadedSuccess)
+                    LoadFamilyMemberDetails(familyID);
             }
-            else
-            {
-                GetFamilyInfoById(familyID);
-            }
-
         }
 
         private void btnAddChildren_Click(object sender, EventArgs e)
@@ -486,11 +484,11 @@ namespace TestFat
                                     memberCmd.Parameters.AddWithValue("@gender", m.Gender);
                                     memberCmd.Parameters.AddWithValue("@dob", m.DOB);
                                     memberCmd.Parameters.AddWithValue("@member_status", "Active");
-                                    memberCmd.Parameters.AddWithValue("@phone", m.Phone ?? "00000000");
+                                    memberCmd.Parameters.AddWithValue("@phone", m.Phone ?? "");
                                     memberCmd.Parameters.AddWithValue("@occupation", m.Occupation);
                                     memberCmd.Parameters.AddWithValue("@qualification", m.Qualification);
                                     memberCmd.Parameters.AddWithValue("@blood_group", m.BloodGroup);
-                                    memberCmd.Parameters.AddWithValue("@email", m.Phone ?? "samplemeil@email.com");
+                                    memberCmd.Parameters.AddWithValue("@email", m.Phone ?? "");
                                     memberCmd.Parameters.AddWithValue("@baptized_date", m.Baptismdate);
                                     memberCmd.Parameters.AddWithValue("@marriage_date", m.Marriagedate);
                                     memberCmd.Parameters.AddWithValue("@isadmin", m.IsAdmin);
@@ -498,6 +496,15 @@ namespace TestFat
                                     memberCmd.Parameters.AddWithValue("@isvencentdepaul", m.IsVDPaul);
                                     memberCmd.Parameters.AddWithValue("@ischoir", m.IsChoir);
                                     memberCmd.Parameters.AddWithValue("@iscatechismteacher", m.IsCatechismTeacher);
+                                    memberCmd.Parameters.AddWithValue("@iswomenassoc", m.IsWomenAssoc);
+                                    memberCmd.Parameters.AddWithValue("@islitergycouncil", m.IsLitergyCouncil);
+                                    memberCmd.Parameters.AddWithValue("@isalterservices", m.IsAlterServices);
+                                    memberCmd.Parameters.AddWithValue("@isyouth", m.IsYouth);
+                                    memberCmd.Parameters.AddWithValue("@confirmation_date", m.confirmation);
+                                    memberCmd.Parameters.AddWithValue("@first_communion_date", m.Communion);
+                                    memberCmd.Parameters.AddWithValue("@priesthood_date", m.Priesthood);
+                                    memberCmd.Parameters.AddWithValue("@member_group", m.MemberGroup);
+
                                     memberCmd.ExecuteNonQuery();
                                 }
                             }
@@ -540,43 +547,240 @@ namespace TestFat
             return anbiyamCode;
         }
 
-        public void GetFamilyInfoById(int familyID)
+        public bool LoadFamilyInfoById(int familyID)
         {
             var param = new SqlParameter("@family_id", familyID);
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyDetailsById", param);
             if (dt.Rows.Count > 0)
             {
-                //foreach (DataRow row in dt.Rows)
-                //{
-                //    string zone = row["Zone"].ToString();
-                //    int count = Convert.ToInt32(row["FamilyCount"]);
-
-                //}
-
                 DataRow row = dt.Rows[0];
-                familyCodetxt.Text = row["FamilyCode"].ToString();
-                familyZonetxt.Text = row["Zone"].ToString();
-                familySubscriptiontxt.Text = row["MonthlySubscription"].ToString();
-                permAddresstxt.Text = row["PermAddress"].ToString();
-                permCitytxt.Text = row["PermCity"].ToString();
-                permStatetxt.Text = row["PermState"].ToString();
-                permZipcodetxt.Text = row["PermZip"].ToString();
-                tempAddresstxt.Text = row["TempAddress"].ToString();
-                tempCitytxt.Text = row["TempCity"].ToString();
-                tempStatetxt.Text = row["TempState"].ToString();
-                tempZipcodetxt.Text = row["TempZip"].ToString();
-                txtHeadName.Text = row["HeadOfFamily"].ToString();
-                dtheadDOB.Value = Convert.ToDateTime(row["HeadDOB"]);
-                txtHeadPhone.Text = row["HeadPhone"].ToString();
-                txtHeadEmail.Text = row["HeadEmail"].ToString();
-                txtHeadBG.Text = row["HeadBloodGroup"].ToString();
-                txtHeadOccupation.Text = row["HeadOccupation"].ToString();
-                txtHeadQualification.Text = row["HeadQualification"].ToString();
+                familyCodetxt.Text = row[0] != null ? row[0].ToString(): null  ;
+                anbiyamCombobox.SelectedValue = row[1] != DBNull.Value ? Convert.ToInt32(row[1]) : 0;
+                familyZonetxt.Text = row[2] != null ? row[2].ToString() : null;
+                familySubscriptiontxt.Text = row[11] != null ? row[11].ToString() : null;
+                permAddresstxt.Text = row[3] != null ? row[3].ToString() : null;
+                permCitytxt.Text = row[5] != null ? row[5].ToString() : null;
+                permStatetxt.Text = row[6] != null ? row[6].ToString() : null;
+                permZipcodetxt.Text = row[7] != null ? row[7].ToString() : null;
+                tempAddresstxt.Text = row[4] != null ? row[4].ToString() : null;
+                tempCitytxt.Text = row[8] != null ? row[8].ToString() : null;
+                tempStatetxt.Text = row[9] != null ? row[9].ToString() : null;
+                tempZipcodetxt.Text = row[10] != null ? row[10].ToString() : null;
 
+                return true;
             }
             else
             {
                 MessageBox.Show("Something went wrong while trying to Edit this Family", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+        }
+
+        public void LoadFamilyMemberDetails(int familyID)
+        {
+            int childCount = 1;
+            int otherRelationCount = 1;
+            var param = new SqlParameter("@family_id", familyID);
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyMembersDetailsByFamilyId", param);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row[1] != null && row[1].ToString() == "Head")
+                    {
+                        txtHeadName.Text = row[0] != null ? row[0].ToString() : null;
+                        dtheadDOB.Value = row[2] != DBNull.Value ? Convert.ToDateTime(row[2]) : DateTime.Now;
+                        dtheadDOB.Checked = row[2] != DBNull.Value ? true : false;
+                        txtHeadPhone.Text = row[3] != null ? row[3].ToString() : null;
+                        txtHeadQualification.Text = row[7] != null ? row[7].ToString() : null;
+                        txtHeadEmail.Text = row[4] != null ? row[4].ToString() : null;
+                        txtHeadOccupation.Text = row[6] != null ? row[6].ToString() : null;
+                        txtHeadBG.Text = row[8] != null ? row[8].ToString() : null;
+
+                        headAdminCouncil.Checked = row[14] != DBNull.Value && Convert.ToBoolean(row[14]);
+                        headChoir.Checked = row[19] != DBNull.Value && Convert.ToBoolean(row[19]);
+                        headWomenAssc.Checked = row[22] != DBNull.Value && Convert.ToBoolean(row[22]);
+                        headCatechismTeacher.Checked = row[20] != DBNull.Value && Convert.ToBoolean(row[20]);
+                        headLiturgyCouncil.Checked = row[24] != DBNull.Value && Convert.ToBoolean(row[24]);
+                        headLOM.Checked = row[15] != DBNull.Value && Convert.ToBoolean(row[15]);
+                        headStVDPaul.Checked = row[18] != DBNull.Value && Convert.ToBoolean(row[18]);
+
+                        headBaptismDate.Checked = row[10] != DBNull.Value ? true: false ;
+                        headBaptismDate.Value = row[10] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                        headMarriageDate.Checked = row[9] != DBNull.Value ? true : false;
+                        headMarriageDate.Value = row[9] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                    }
+                    else if (row[1] != null && row[1].ToString() == "Spouse")
+                    {
+                        txtSpouseName.Text = row[0] != null ? row[0].ToString() : null;
+                        dtSpouseDOB.Value = row[2] != DBNull.Value ? Convert.ToDateTime(row[2]) : DateTime.Now;
+                        dtSpouseDOB.Checked = row[2] != DBNull.Value ? true : false;
+                        txtSpousePhone.Text = row[3] != null ? row[3].ToString() : null;
+                        txtSpouseQualification.Text = row[7] != null ? row[7].ToString() : null;
+                        txtSpouseEmail.Text = row[4] != null ? row[4].ToString() : null;
+                        txtSpouseOccupation.Text = row[6] != null ? row[6].ToString() : null;
+                        txtSpoueBG.Text = row[8] != null ? row[8].ToString() : null;
+
+                        spouseAdminCouncil.Checked = row[14] != DBNull.Value && Convert.ToBoolean(row[14]);
+                        spouseChoir.Checked = row[19] != DBNull.Value && Convert.ToBoolean(row[19]);
+                        spouseWomenAssc.Checked = row[22] != DBNull.Value && Convert.ToBoolean(row[22]);
+                        spouseCatechismTeacher.Checked = row[20] != DBNull.Value && Convert.ToBoolean(row[20]);
+                        spouseLiturgyCouncil.Checked = row[24] != DBNull.Value && Convert.ToBoolean(row[24]);
+                        spouseLOM.Checked = row[15] != DBNull.Value && Convert.ToBoolean(row[15]);
+                        spouseStVDPaul.Checked = row[18] != DBNull.Value && Convert.ToBoolean(row[18]);
+
+                        spouseBaptismDate.Checked = row[10] != DBNull.Value ? true : false;
+                        spouseBaptismDate.Value = row[10] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                        spouseMarriageDate.Checked = row[9] != DBNull.Value ? true : false;
+                        spouseMarriageDate.Value = row[9] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                    }
+                    else if (row[1] != null && ( row[1].ToString() == "Son" || row[1].ToString() == "Daughter"))
+                    {
+                        if(childCount == 1)
+                        {
+                            child1Groupbox.Visible = true;
+                            txtChild1Name.Text = row[0] != null ? row[0].ToString() : null;
+                            dtChild1DOB.Value = row[2] != DBNull.Value ? Convert.ToDateTime(row[2]) : DateTime.Now;
+                            dtChild1DOB.Checked = row[2] != DBNull.Value ? true : false;
+                            txtChild1Whatsapp.Text = row[3] != null ? row[3].ToString() : null;
+                            txtChild1Qualification.Text = row[7] != null ? row[7].ToString() : null;
+                            txtChild1Occupation.Text = row[6] != null ? row[6].ToString() : null;
+                            txtChild1BG.Text = row[8] != null ? row[8].ToString() : null;
+                            comboBoxChild1Relation.Text = row[1] != null ? row[1].ToString() : null;
+                            txtChild1Standard.Text = row[23] != null ? row[23].ToString() : null;
+                            txtChild1Institution.Text = row[25] != null ? row[25].ToString() : null;
+
+                            checkBoxChild1IsAdmin.Checked = row[14] != DBNull.Value && Convert.ToBoolean(row[14]);
+                            checkBoxChild1IsLOM.Checked = row[15] != DBNull.Value && Convert.ToBoolean(row[15]);
+                            checkBoxChild1IsYouth.Checked = row[16] != DBNull.Value && Convert.ToBoolean(row[16]);
+                            checkBoxChild1IsAlter.Checked = row[17] != DBNull.Value && Convert.ToBoolean(row[17]);
+                            checkBoxChild1VincentDePaul.Checked = row[18] != DBNull.Value && Convert.ToBoolean(row[18]);
+                            checkBoxChild1IsChoir.Checked = row[19] != DBNull.Value && Convert.ToBoolean(row[19]);
+                            checkBoxChild1IsTeacher.Checked = row[20] != DBNull.Value && Convert.ToBoolean(row[20]);
+                            checkBoxChild1IsStudnet.Checked = row[21] != DBNull.Value && Convert.ToBoolean(row[21]);
+
+                            dtChild1Baptism.Checked = row[10] != DBNull.Value ? true : false;
+                            dtChild1Baptism.Value = row[10] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                            dtChild1Marriage.Checked = row[9] != DBNull.Value ? true : false;
+                            dtChild1Marriage.Value = row[9] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                            dtChild1Communion.Checked = row[11] != DBNull.Value ? true : false;
+                            dtChild1Communion.Value = row[11] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                            dtChild1Confirmation.Checked = row[12] != DBNull.Value ? true : false;
+                            dtChild1Confirmation.Value = row[12] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                            dtChild1Priest.Checked = row[13] != DBNull.Value ? true : false;
+                            dtChild1Priest.Value = row[13] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                        }
+                        else if (childCount == 2)
+                        {
+                            child2Groupbox.Visible = true;
+                            txtChild2Name.Text = row[0] != null ? row[0].ToString() : null;
+                            dtChild2DOB.Value = row[2] != DBNull.Value ? Convert.ToDateTime(row[2]) : DateTime.Now;
+                            dtChild2DOB.Checked = row[2] != DBNull.Value ? true : false;
+                            txtChild2Whatsapp.Text = row[3] != null ? row[3].ToString() : null;
+                            txtChild2Qualification.Text = row[7] != null ? row[7].ToString() : null;
+                            txtChild2Occupation.Text = row[6] != null ? row[6].ToString() : null;
+                            txtChild2BG.Text = row[8] != null ? row[8].ToString() : null;
+                            comboBoxChild2Relation.Text = row[1] != null ? row[1].ToString() : null;
+                            txtChild2Standard.Text = row[23] != null ? row[23].ToString() : null;
+                            txtChild2Institution.Text = row[25] != null ? row[25].ToString() : null;
+
+                            checkBoxChild2IsAdmin.Checked = row[14] != DBNull.Value && Convert.ToBoolean(row[14]);
+                            checkBoxChild2IsLOM.Checked = row[15] != DBNull.Value && Convert.ToBoolean(row[15]);
+                            checkBoxChild2IsYouth.Checked = row[16] != DBNull.Value && Convert.ToBoolean(row[16]);
+                            checkBoxChild2IsAlter.Checked = row[17] != DBNull.Value && Convert.ToBoolean(row[17]);
+                            checkBoxChild2VincentDePaul.Checked = row[18] != DBNull.Value && Convert.ToBoolean(row[18]);
+                            checkBoxChild2IsChoir.Checked = row[19] != DBNull.Value && Convert.ToBoolean(row[19]);
+                            checkBoxChild2IsTeacher.Checked = row[20] != DBNull.Value && Convert.ToBoolean(row[20]);
+                            checkBoxChild2IsStudent.Checked = row[21] != DBNull.Value && Convert.ToBoolean(row[21]);
+
+                            dtChild2Baptism.Checked = row[10] != DBNull.Value ? true : false;
+                            dtChild2Baptism.Value = row[10] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                            dtChild2Marriage.Checked = row[9] != DBNull.Value ? true : false;
+                            dtChild2Marriage.Value = row[9] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                            dtChild2Commuion.Checked = row[11] != DBNull.Value ? true : false;
+                            dtChild2Commuion.Value = row[11] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                            dtChild2Confirmation.Checked = row[12] != DBNull.Value ? true : false;
+                            dtChild2Confirmation.Value = row[12] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                            dtChild2Priest.Checked = row[13] != DBNull.Value ? true : false;
+                            dtChild2Priest.Value = row[13] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                        }
+                        else if (childCount == 3)
+                        {
+
+                        }
+                        else if (childCount == 4)
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+                        childCount++;
+                    }
+                    else
+                    {
+                        if (otherRelationCount == 1)
+                        {
+                            relation1Groupbox.Visible = true;
+                            txtOther1Name.Text = row[0] != null ? row[0].ToString() : null;
+                            dtOther1dob.Value = row[2] != DBNull.Value ? Convert.ToDateTime(row[2]) : DateTime.Now;
+                            dtOther1dob.Checked = row[2] != DBNull.Value ? true : false;
+                            txtOther1Whatsapp.Text = row[3] != null ? row[3].ToString() : null;
+                            txtOther1Qualification.Text = row[7] != null ? row[7].ToString() : null;
+                            txtOther1Occupation.Text = row[6] != null ? row[6].ToString() : null;
+                            txtOther1Bloodgroup.Text = row[8] != null ? row[8].ToString() : null;
+                            relation1Combobox.Text = row[1] != null ? row[1].ToString() : null;
+
+                            checkBoxOther1IsAdmin.Checked = row[14] != DBNull.Value && Convert.ToBoolean(row[14]);
+                            checkBoxOther1IsLOM.Checked = row[15] != DBNull.Value && Convert.ToBoolean(row[15]);
+                            checkBoxOther1IsYouth.Checked = row[16] != DBNull.Value && Convert.ToBoolean(row[16]);
+                            checkBoxOther1IsAlter.Checked = row[17] != DBNull.Value && Convert.ToBoolean(row[17]);
+                            checkBoxOther1IsVencntDePaul.Checked = row[18] != DBNull.Value && Convert.ToBoolean(row[18]);
+                            checkBoxOther1IsChoir.Checked = row[19] != DBNull.Value && Convert.ToBoolean(row[19]);
+                            checkBoxOther1IsTeacher.Checked = row[20] != DBNull.Value && Convert.ToBoolean(row[20]);
+
+                            dtOther1Baptism.Checked = row[10] != DBNull.Value ? true : false;
+                            dtOther1Baptism.Value = row[10] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                            dtOther1Matrimony.Checked = row[9] != DBNull.Value ? true : false;
+                            dtOther1Matrimony.Value = row[9] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                            dtOther1Communion.Checked = row[11] != DBNull.Value ? true : false;
+                            dtOther1Communion.Value = row[11] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                            dtOther1Confirmation.Checked = row[12] != DBNull.Value ? true : false;
+                            dtOther1Confirmation.Value = row[12] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                        }
+                        else
+                        {
+                            otherRelation2Groupbox.Visible = true;
+                            txtOther2Name.Text = row[0] != null ? row[0].ToString() : null;
+                            dtother2dob.Value = row[2] != DBNull.Value ? Convert.ToDateTime(row[2]) : DateTime.Now;
+                            dtother2dob.Checked = row[2] != DBNull.Value ? true : false;
+                            txtOther2Whatsapp.Text = row[3] != null ? row[3].ToString() : null;
+                            txtOther2Qualification.Text = row[7] != null ? row[7].ToString() : null;
+                            txtOther2Occupation.Text = row[6] != null ? row[6].ToString() : null;
+                            txtOther2bloodgroup.Text = row[8] != null ? row[8].ToString() : null;
+                            other2Combobox.Text = row[1] != null ? row[1].ToString() : null;
+
+                            checkBoxOther2IsAdmin.Checked = row[14] != DBNull.Value && Convert.ToBoolean(row[14]);
+                            checkBoxOther2IsLOM.Checked = row[15] != DBNull.Value && Convert.ToBoolean(row[15]);
+                            checkBoxOther2IsYouth.Checked = row[16] != DBNull.Value && Convert.ToBoolean(row[16]);
+                            checkBoxOther2IsAlter.Checked = row[17] != DBNull.Value && Convert.ToBoolean(row[17]);
+                            checkBoxOther2IsVincentDePaul.Checked = row[18] != DBNull.Value && Convert.ToBoolean(row[18]);
+                            checkBoxOther2IsChoir.Checked = row[19] != DBNull.Value && Convert.ToBoolean(row[19]);
+                            checkBoxOther2IsTeacher.Checked = row[20] != DBNull.Value && Convert.ToBoolean(row[20]);
+
+                            dtOther2Baptism.Checked = row[10] != DBNull.Value ? true : false;
+                            dtOther2Baptism.Value = row[10] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                            dtOther2Marriage.Checked = row[9] != DBNull.Value ? true : false;
+                            dtOther2Marriage.Value = row[9] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                            dtOther2Communion.Checked = row[11] != DBNull.Value ? true : false;
+                            dtOther2Communion.Value = row[11] != DBNull.Value ? Convert.ToDateTime(row[10]) : DateTime.Now;
+                            dtOther2Confirmation.Checked = row[12] != DBNull.Value ? true : false;
+                            dtOther2Confirmation.Value = row[12] != DBNull.Value ? Convert.ToDateTime(row[9]) : DateTime.Now;
+                        }
+                        otherRelationCount++;
+                    }
+                }
             }
         }
 

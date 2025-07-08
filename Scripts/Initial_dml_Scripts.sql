@@ -437,11 +437,15 @@ ALTER PROCEDURE sp_SaveFamilyMember
     @isyouth BIT = 0,
     @isalterservices BIT = 0,
     @isvencentdepaul BIT = 0,
+    @iswomenassoc BIT = 0,
+    @islitergycouncil BIT = 0,
     @ischoir BIT = 0,
     @iscatechismteacher BIT = 0,
     @iscatechismstudent BIT = 0,
 	@childclass NVARCHAR(10) = NULL,
-	@child_institution NVARCHAR(100) = NULL
+	@child_institution NVARCHAR(100) = NULL,
+    @member_group NVARCHAR(50) = NULL -- e.g., Adult, Child, Senior, etc.
+
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -473,8 +477,11 @@ BEGIN
 		is_choir,
 		is_catechism_student,
 		is_catechism_teacher,
+        is_women_assoc,
+        is_litergy_council,
 		child_class,
-		child_institution
+		child_institution,
+        member_group
     )
     VALUES (
         @family_id,
@@ -498,14 +505,16 @@ BEGIN
 		@isadmin,
 		@legionofmary,
 		@isyouth,
-        @iswomenassociation = 0, -- Assuming this is a placeholder for future use
 		@isalterservices,
 		@isvencentdepaul,
 		@ischoir,
 		@iscatechismteacher,
 		@iscatechismstudent,
+        @iswomenassoc,
+        @islitergycouncil,
 		@childclass,
-		@child_institution
+		@child_institution,
+        @member_group
     );
 END
 GO
@@ -585,18 +594,16 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_GetFamilyDetailsById
+ALTER PROCEDURE sp_GetFamilyDetailsById
     @family_id INT
 AS
 BEGIN
     SET NOCOUNT ON;
 
     SELECT 
-        family_id,
         family_code,
         anbiyam_id,
-        head_of_family,
-        gender,
+        Zone = (SELECT anbiyam_zone FROM anbiyam WHERE anbiyam_id = family.anbiyam_id),
         family_permanant_address,
         family_temp_address,
         family_city,
@@ -605,13 +612,48 @@ BEGIN
         family_temp_city,
         family_temp_state,
         family_temp_zipcode,
+        monthly_subscription
+    FROM family
+    WHERE family_id = @family_id;
+END
+GO
+
+
+ALTER PROCEDURE sp_GetFamilyMembersDetailsByFamilyId
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        first_name AS Name,
+        relationship,
+        dob,
         phone,
         email,
-        monthly_subscription,
-        created_at,
-        modified,
-        parish_member_since
-    FROM family
+        blood_group,
+        occupation,
+        qualification,
+        blood_group,
+        marriage_date,
+        baptized_date,
+        first_communion_date,
+        first_confirmation_date,
+        priesthood_date,
+        is_admin_council,
+        is_legion_of_mary,
+        is_youth_group,
+        is_alter_services,
+        is_vencent_de_paul_soc,
+        is_choir,
+        is_catechism_teacher,
+        is_catechism_student,
+        is_women_assoc,
+        child_class,
+        is_litergy_council
+        child_institution,
+        member_group
+    FROM family_member
     WHERE family_id = @family_id;
 END
 GO
