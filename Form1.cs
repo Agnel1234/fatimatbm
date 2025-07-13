@@ -42,6 +42,8 @@ namespace TestFat
             btnFamilyEdit.TextAlign = ContentAlignment.MiddleCenter;
             anbiyamGrid.CellClick += anbiyamGrid_CellClick;
 
+            ShowAnbiyamOnMap("");
+
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -120,6 +122,21 @@ namespace TestFat
             familygrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
             familygrid.Columns["FamilyID"].Visible = false;
             familygrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+
+            // Remove existing delete column if present to avoid duplicates
+            if (familygrid.Columns["delete"] != null)
+                familygrid.Columns.Remove("delete");
+
+            // Add a button column for delete
+            DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
+            btnCol.Name = "delete";
+            btnCol.HeaderText = "";
+            btnCol.Text = "Delete";
+            btnCol.UseColumnTextForButtonValue = true;
+            btnCol.Width = 60;
+            familygrid.Columns.Insert(11, btnCol); // Adjust index as needed
+
+
         }
 
         private void searchButton_Click_1(object sender, EventArgs e)
@@ -168,7 +185,7 @@ namespace TestFat
             foreach (DataRow row in dt.Rows)
             {
                 string zone = row["Zone"].ToString();
-                int count = Convert.ToInt32(row["FamilyCount"]); 
+                int count = Convert.ToInt32(row["FamilyCount"]);
                 series.Points.AddXY(zone, count);
             }
 
@@ -287,7 +304,7 @@ namespace TestFat
 
         private void anbiyamGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && anbiyamGrid.SelectedCells.Count ==1 && anbiyamGrid.SelectedCells[0].ColumnIndex == 7 )
+            if (e.RowIndex >= 0 && anbiyamGrid.SelectedCells.Count == 1 && anbiyamGrid.SelectedCells[0].ColumnIndex == 7)
             {
                 var result = MessageBox.Show("Are you sure you want to delete this Anbiyam?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
@@ -297,9 +314,9 @@ namespace TestFat
                     {
                         DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
-                        if(ex.Message != null && ex.Message.Contains("Cannot delete"))
+                        if (ex.Message != null && ex.Message.Contains("Cannot delete"))
                         {
                             MessageBox.Show("This Anbiyam cannot be deleted, as families are linked to it", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
@@ -343,7 +360,7 @@ namespace TestFat
             int familyID = 0;
             using (var popup = new FamilyPopup(familyID))
             {
-                popup.ShowDialog(); 
+                popup.ShowDialog();
                 // After closing, reload family basic details
                 LoadFamilyBasicDetails();
             }
@@ -351,7 +368,7 @@ namespace TestFat
 
         private void btnFamilyEdit_Click(object sender, EventArgs e)
         {
-            if(familyIDInContext <= 0 )
+            if (familyIDInContext <= 0)
             {
                 MessageBox.Show("Please select a family to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -364,5 +381,64 @@ namespace TestFat
                 LoadFamilyBasicDetails();
             }
         }
+
+        private void familygrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && familygrid.SelectedCells != null && familygrid.SelectedCells.Count == 1 && familygrid.SelectedCells[0].Value == "Delete")
+            {
+                var result = MessageBox.Show("Are you sure you want to delete this Family?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(familygrid.Rows[e.RowIndex].Cells["FamilyID"].Value);
+                    try
+                    {
+                        DatabaseHelper.ExecuteStoredProcedure("sp_DeleteFamily", new SqlParameter("@familyID", id));
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                        {
+                            MessageBox.Show("This Family cannot be deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    // Refresh grid
+                    LoadFamilyBasicDetails();
+                }
+            }
+        }
+
+
+        public void ShowAnbiyamOnMap(string anbiyamAddress)
+        {
+            //string url = $"https://www.openstreetmap.org/search?query={Uri.EscapeDataString("Silver spring flats, bethelpuram, East tambaram")}";
+            //mapBrowser.ScriptErrorsSuppressed = true;
+            //mapBrowser.Navigate(url);
+
+            string url = $"https://www.bing.com/maps?q={Uri.EscapeDataString("Silver spring flats, bethelpuram, East tambaram")}";
+            mapBrowser.ScriptErrorsSuppressed = true;
+            mapBrowser.Navigate(url);
+        }
+        private void mapBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            // Optionally handle any actions after navigation
+        }
+
+        private void btnCemetery_Click(object sender, EventArgs e)
+        {
+            if (familyIDInContext <= 0)
+            {
+                MessageBox.Show("Please select a family to view cemetery details.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            using (var popup = new Cemetery(familyIDInContext))
+            {
+                popup.ShowDialog();
+            }
+        }
     }
-}
+
+    }

@@ -297,32 +297,36 @@ ALter PROCEDURE sp_GetFamilyBasicDetails
 AS
 BEGIN
 	SELECT 
-        family_id as FamilyID,
-        a.anbiyam_name as 'Anbiyam Name',
-        family_code as 'Family Code', 
-        head_of_family as 'Head of Family', 
-        gender as 'Gender', 
-        family_temp_address as 'Address', 
-        phone as Mobile,
-		monthly_subscription as 'Subscription Amount',
-		parish_member_since as 'Member Since'
-	FROM family f 
-	Join anbiyam a 
-	On a.anbiyam_id = f.anbiyam_id ;
+		f.family_id AS FamilyID,
+		a.anbiyam_name AS [Anbiyam Name],
+		f.family_code AS [Family Code], 
+		f.head_of_family AS [Head of Family], 
+		f.gender AS [Gender], 
+		f.family_temp_address AS [Address], 
+		f.phone AS [Mobile],
+		f.monthly_subscription AS [Subscription Amount],
+		f.parish_member_since AS [Member Since],
+		COUNT(DISTINCT fm.member_id) AS [Members],
+		COUNT(DISTINCT cd.cemetery_id) AS [Cemetery Count]
+	FROM family f
+	INNER JOIN anbiyam a ON a.anbiyam_id = f.anbiyam_id
+	LEFT JOIN family_member fm ON fm.family_id = f.family_id
+	LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
+	WHERE fm.member_status = 'Active'
+	GROUP BY 
+		f.family_id,
+		a.anbiyam_name,
+		f.family_code,
+		f.head_of_family,
+		f.gender,
+		f.family_temp_address,
+		f.phone,
+		f.monthly_subscription,
+		f.parish_member_since
 END
 GO
 
 CREATE PROCEDURE sp_DeleteAnbiyam
-    @anbiyamID INT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DELETE FROM Anbiyam WHERE anbiyam_id = @anbiyamID;
-END
-GO
-
-ALTER PROCEDURE sp_DeleteAnbiyam
     @anbiyamID INT
 AS
 BEGIN
@@ -339,6 +343,7 @@ BEGIN
     DELETE FROM anbiyam
     WHERE anbiyam_id = @anbiyamID;
 END
+GO
 
 
 CREATE PROCEDURE sp_GetTotalFamilyCount
@@ -655,5 +660,122 @@ BEGIN
         member_group
     FROM family_member
     WHERE family_id = @family_id;
+END
+GO
+
+ALTER PROCEDURE sp_DeleteFamily
+    @familyID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+	DELETE FROM family_subscription WHERE family_id = @familyID;
+	DELETE FROM cemetery_details where family_id = @familyID;
+	DELETE FROM family_member WHERE family_id = @familyID;
+
+    -- Check if any families are linked to this anbiyam
+    IF EXISTS (SELECT 1 FROM family_member WHERE family_id = @familyID)
+    BEGIN
+        -- Optionally, you can raise an error or return a status code
+        RAISERROR('Cannot delete: Members are linked to this Family.', 16, 1);
+        RETURN;
+    END
+
+    DELETE FROM family WHERE family_id = @familyID;
+END
+GO
+
+ALTER PROCEDURE sp_GetFamilyCemetery
+    @familyID INT
+AS
+BEGIN
+	SELECT
+		cemetery_id AS [cemeteryid],
+		deceased_name AS [Deceased Name],
+		date_of_death AS [Date of Death],
+		burial_date AS [Burial Date],
+		grave_number AS [Cemetery Code],
+		0 AS [Amount]
+	FROM cemetery_details where family_id = @familyID;
+END
+GO
+
+ALTER PROCEDURE sp_InsertOrUpdateCemetery
+    @cemeteryID INT = NULL,
+    @memberID INT = NULL,
+    @burialDate DATE,
+    @deathDate DATE,
+    @cemeteryCode NVARCHAR(50),
+    @cemeteryCharges INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @cemeteryID IS NULL OR @cemeteryID = 0
+		BEGIN
+			INSERT INTO cemetery_details 
+				(
+				family_id, 
+				member_id, 
+				deceased_name, 
+				date_of_birth, 
+				date_of_death, 
+				burial_date, 
+				burial_place,
+				grave_number,
+				remarks,
+				created_at,
+				modified
+				)
+			SELECT 
+				family_id, 
+				member_id, 
+				first_name, 
+				NULL,
+				@deathDate,
+				@burialDate,
+				'Tambaram',
+				@cemeteryCode,
+				@cemeteryCharges, 
+				GETDATE(),
+				GETDATE()
+			FROM family_member
+				WHERE member_id = @memberID;
+
+			UPDATE family_member SET member_status = 'Deceased' WHERE member_id = @memberID;
+			-- Insert new record
+		END
+    ELSE
+		BEGIN
+			-- Update existing record
+			UPDATE cemetery_details
+			SET
+				date_of_death = @deathDate,
+				burial_date = @burialDate,
+				grave_number = @cemeteryCode,
+				modified = GETDATE()
+			WHERE cemetery_id = @cemeteryID;
+
+			UPDATE family_member SET member_status = 'Deceased' WHERE member_id = @memberID;
+		END
+END
+GO
+
+
+
+ALTER PROCEDURE sp_GetFamilyMembersForDropdown
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        member_id,
+        first_name AS membername
+    FROM family_member
+    WHERE family_id = @family_id and member_id not in 
+	(
+		SELECT member_id FROM cemetery_details where family_id = @family_id
+	);
 END
 GO
