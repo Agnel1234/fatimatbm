@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.generalGroupBox = new System.Windows.Forms.GroupBox();
+            this.sameAddressCheckbox = new System.Windows.Forms.CheckBox();
             this.familyCodetxt = new System.Windows.Forms.TextBox();
             this.label122 = new System.Windows.Forms.Label();
             this.familyZonetxt = new System.Windows.Forms.TextBox();
@@ -111,6 +112,27 @@
             this.txtSpouseName = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.child1Groupbox = new System.Windows.Forms.GroupBox();
+            this.comboBoxChild1Relation = new System.Windows.Forms.ComboBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.dtChild1Marriage = new System.Windows.Forms.DateTimePicker();
+            this.dtChild1Communion = new System.Windows.Forms.DateTimePicker();
+            this.dtChild1Priest = new System.Windows.Forms.DateTimePicker();
+            this.dtChild1Confirmation = new System.Windows.Forms.DateTimePicker();
+            this.dtChild1Baptism = new System.Windows.Forms.DateTimePicker();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.checkBoxChild1IsTeacher = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild1IsChoir = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild1IsStudnet = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild1IsYouth = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild1IsLOM = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild1IsAdmin = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild1IsAlter = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild1VincentDePaul = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
             this.txtChild1Whatsapp = new System.Windows.Forms.TextBox();
             this.txtChild1Standard = new System.Windows.Forms.TextBox();
@@ -129,6 +151,28 @@
             this.txtChild1Name = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.child2Groupbox = new System.Windows.Forms.GroupBox();
+            this.comboBoxChild2Relation = new System.Windows.Forms.ComboBox();
+            this.dtChild2DOB = new System.Windows.Forms.DateTimePicker();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.dtChild2Marriage = new System.Windows.Forms.DateTimePicker();
+            this.dtChild2Commuion = new System.Windows.Forms.DateTimePicker();
+            this.dtChild2Priest = new System.Windows.Forms.DateTimePicker();
+            this.dtChild2Confirmation = new System.Windows.Forms.DateTimePicker();
+            this.dtChild2Baptism = new System.Windows.Forms.DateTimePicker();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.checkBoxChild2IsTeacher = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild2IsChoir = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild2IsStudent = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild2IsYouth = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild2IsLOM = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild2IsAdmin = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild2IsAlter = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild2VincentDePaul = new System.Windows.Forms.CheckBox();
             this.label44 = new System.Windows.Forms.Label();
             this.txtChild2Whatsapp = new System.Windows.Forms.TextBox();
             this.txtChild2Standard = new System.Windows.Forms.TextBox();
@@ -146,6 +190,28 @@
             this.txtChild2Name = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
             this.child3Groupbox = new System.Windows.Forms.GroupBox();
+            this.dtChild3DOB = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxChild3Relation = new System.Windows.Forms.ComboBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.dtChild3Marriage = new System.Windows.Forms.DateTimePicker();
+            this.dtChild3Communion = new System.Windows.Forms.DateTimePicker();
+            this.dtChild3Priest = new System.Windows.Forms.DateTimePicker();
+            this.dtChild3Confirmation = new System.Windows.Forms.DateTimePicker();
+            this.dtChild3Baptism = new System.Windows.Forms.DateTimePicker();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.checkBoxChild3IsTeacher = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild3IsChoir = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild3IsStudent = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild3IsYOuth = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild3IsLOM = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild3IsAdmin = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild3IsAlter = new System.Windows.Forms.CheckBox();
+            this.checkBoxChild3VincentDePaul = new System.Windows.Forms.CheckBox();
             this.label58 = new System.Windows.Forms.Label();
             this.txtChild3Whatsapp = new System.Windows.Forms.TextBox();
             this.txtChild3Standard = new System.Windows.Forms.TextBox();
@@ -163,6 +229,19 @@
             this.txtChild3Name = new System.Windows.Forms.TextBox();
             this.label71 = new System.Windows.Forms.Label();
             this.child4Groupbox = new System.Windows.Forms.GroupBox();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.dtChild4Marriage = new System.Windows.Forms.DateTimePicker();
+            this.dtChild4Communion = new System.Windows.Forms.DateTimePicker();
+            this.dtChild4Priest = new System.Windows.Forms.DateTimePicker();
+            this.dtChild4Confirmation = new System.Windows.Forms.DateTimePicker();
+            this.dtChild4Baptism = new System.Windows.Forms.DateTimePicker();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.comboBoxChild4Relation = new System.Windows.Forms.ComboBox();
+            this.dtChild4DOB = new System.Windows.Forms.DateTimePicker();
             this.label72 = new System.Windows.Forms.Label();
             this.txtChild4Whatsapp = new System.Windows.Forms.TextBox();
             this.txtChild4Standard = new System.Windows.Forms.TextBox();
@@ -189,6 +268,8 @@
             this.txtChild4Name = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
             this.child5Groupbox = new System.Windows.Forms.GroupBox();
+            this.child5DOB = new System.Windows.Forms.DateTimePicker();
+            this.child5Relation = new System.Windows.Forms.ComboBox();
             this.label86 = new System.Windows.Forms.Label();
             this.txtChild5Whatsapp = new System.Windows.Forms.TextBox();
             this.txtChild5Standard = new System.Windows.Forms.TextBox();
@@ -203,6 +284,11 @@
             this.checkBoxChild5IsAlter = new System.Windows.Forms.CheckBox();
             this.checkBoxChild5VincentDePaul = new System.Windows.Forms.CheckBox();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.child5Marriage = new System.Windows.Forms.DateTimePicker();
+            this.child5Communion = new System.Windows.Forms.DateTimePicker();
+            this.child5Priest = new System.Windows.Forms.DateTimePicker();
+            this.child5Confirmation = new System.Windows.Forms.DateTimePicker();
+            this.child5Baptism = new System.Windows.Forms.DateTimePicker();
             this.label88 = new System.Windows.Forms.Label();
             this.label89 = new System.Windows.Forms.Label();
             this.label90 = new System.Windows.Forms.Label();
@@ -221,6 +307,7 @@
             this.txtChild5Name = new System.Windows.Forms.TextBox();
             this.label99 = new System.Windows.Forms.Label();
             this.relation1Groupbox = new System.Windows.Forms.GroupBox();
+            this.relation1Combobox = new System.Windows.Forms.ComboBox();
             this.label100 = new System.Windows.Forms.Label();
             this.txtOther1Whatsapp = new System.Windows.Forms.TextBox();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -252,6 +339,8 @@
             this.txtOther1Name = new System.Windows.Forms.TextBox();
             this.label113 = new System.Windows.Forms.Label();
             this.otherRelation2Groupbox = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.other2Combobox = new System.Windows.Forms.ComboBox();
             this.label101 = new System.Windows.Forms.Label();
             this.txtOther2Whatsapp = new System.Windows.Forms.TextBox();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -286,93 +375,6 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnAddOtherRelation = new System.Windows.Forms.Button();
             this.btnAddChildren = new System.Windows.Forms.Button();
-            this.other2Combobox = new System.Windows.Forms.ComboBox();
-            this.relation1Combobox = new System.Windows.Forms.ComboBox();
-            this.child5Relation = new System.Windows.Forms.ComboBox();
-            this.child5DOB = new System.Windows.Forms.DateTimePicker();
-            this.child5Baptism = new System.Windows.Forms.DateTimePicker();
-            this.child5Confirmation = new System.Windows.Forms.DateTimePicker();
-            this.child5Priest = new System.Windows.Forms.DateTimePicker();
-            this.child5Communion = new System.Windows.Forms.DateTimePicker();
-            this.child5Marriage = new System.Windows.Forms.DateTimePicker();
-            this.dtChild4DOB = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxChild4Relation = new System.Windows.Forms.ComboBox();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.dtChild4Marriage = new System.Windows.Forms.DateTimePicker();
-            this.dtChild4Communion = new System.Windows.Forms.DateTimePicker();
-            this.dtChild4Priest = new System.Windows.Forms.DateTimePicker();
-            this.dtChild4Confirmation = new System.Windows.Forms.DateTimePicker();
-            this.dtChild4Baptism = new System.Windows.Forms.DateTimePicker();
-            this.label74 = new System.Windows.Forms.Label();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.checkBoxChild3IsTeacher = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild3IsChoir = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild3IsStudent = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild3IsYOuth = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild3IsLOM = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild3IsAdmin = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild3IsAlter = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild3VincentDePaul = new System.Windows.Forms.CheckBox();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.dtChild3Marriage = new System.Windows.Forms.DateTimePicker();
-            this.dtChild3Communion = new System.Windows.Forms.DateTimePicker();
-            this.dtChild3Priest = new System.Windows.Forms.DateTimePicker();
-            this.dtChild3Confirmation = new System.Windows.Forms.DateTimePicker();
-            this.dtChild3Baptism = new System.Windows.Forms.DateTimePicker();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.comboBoxChild3Relation = new System.Windows.Forms.ComboBox();
-            this.dtChild3DOB = new System.Windows.Forms.DateTimePicker();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.checkBoxChild2IsTeacher = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild2IsChoir = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild2IsStudent = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild2IsYouth = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild2IsLOM = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild2IsAdmin = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild2IsAlter = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild2VincentDePaul = new System.Windows.Forms.CheckBox();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.dtChild2Marriage = new System.Windows.Forms.DateTimePicker();
-            this.dtChild2Commuion = new System.Windows.Forms.DateTimePicker();
-            this.dtChild2Priest = new System.Windows.Forms.DateTimePicker();
-            this.dtChild2Confirmation = new System.Windows.Forms.DateTimePicker();
-            this.dtChild2Baptism = new System.Windows.Forms.DateTimePicker();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.dtChild2DOB = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxChild2Relation = new System.Windows.Forms.ComboBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.checkBoxChild1IsTeacher = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild1IsChoir = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild1IsStudnet = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild1IsYouth = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild1IsLOM = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild1IsAdmin = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild1IsAlter = new System.Windows.Forms.CheckBox();
-            this.checkBoxChild1VincentDePaul = new System.Windows.Forms.CheckBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.dtChild1Marriage = new System.Windows.Forms.DateTimePicker();
-            this.dtChild1Communion = new System.Windows.Forms.DateTimePicker();
-            this.dtChild1Priest = new System.Windows.Forms.DateTimePicker();
-            this.dtChild1Confirmation = new System.Windows.Forms.DateTimePicker();
-            this.dtChild1Baptism = new System.Windows.Forms.DateTimePicker();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.comboBoxChild1Relation = new System.Windows.Forms.ComboBox();
             this.generalGroupBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.husbandGroupBox.SuspendLayout();
@@ -382,9 +384,16 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.child1Groupbox.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.child2Groupbox.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.child3Groupbox.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.child4Groupbox.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.child5Groupbox.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -396,13 +405,6 @@
             this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // generalGroupBox
@@ -410,6 +412,7 @@
             this.generalGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.generalGroupBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.generalGroupBox.Controls.Add(this.sameAddressCheckbox);
             this.generalGroupBox.Controls.Add(this.familyCodetxt);
             this.generalGroupBox.Controls.Add(this.label122);
             this.generalGroupBox.Controls.Add(this.familyZonetxt);
@@ -438,19 +441,30 @@
             this.generalGroupBox.ForeColor = System.Drawing.SystemColors.Highlight;
             this.generalGroupBox.Location = new System.Drawing.Point(3, 3);
             this.generalGroupBox.Name = "generalGroupBox";
-            this.generalGroupBox.Size = new System.Drawing.Size(1097, 192);
+            this.generalGroupBox.Size = new System.Drawing.Size(1104, 211);
             this.generalGroupBox.TabIndex = 0;
             this.generalGroupBox.TabStop = false;
             this.generalGroupBox.Text = "General Details";
+            // 
+            // sameAddressCheckbox
+            // 
+            this.sameAddressCheckbox.AutoSize = true;
+            this.sameAddressCheckbox.Location = new System.Drawing.Point(18, 130);
+            this.sameAddressCheckbox.Name = "sameAddressCheckbox";
+            this.sameAddressCheckbox.Size = new System.Drawing.Size(126, 21);
+            this.sameAddressCheckbox.TabIndex = 8;
+            this.sameAddressCheckbox.Text = "Same as Above";
+            this.sameAddressCheckbox.UseVisualStyleBackColor = true;
+            this.sameAddressCheckbox.CheckedChanged += new System.EventHandler(this.sameAddressCheckbox_CheckedChanged);
             // 
             // familyCodetxt
             // 
             this.familyCodetxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.familyCodetxt.Enabled = false;
-            this.familyCodetxt.Location = new System.Drawing.Point(664, 38);
+            this.familyCodetxt.Location = new System.Drawing.Point(671, 38);
             this.familyCodetxt.Name = "familyCodetxt";
             this.familyCodetxt.Size = new System.Drawing.Size(77, 23);
-            this.familyCodetxt.TabIndex = 24;
+            this.familyCodetxt.TabIndex = 0;
             // 
             // label122
             // 
@@ -458,7 +472,7 @@
             this.label122.AutoSize = true;
             this.label122.Enabled = false;
             this.label122.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label122.Location = new System.Drawing.Point(573, 44);
+            this.label122.Location = new System.Drawing.Point(580, 44);
             this.label122.Name = "label122";
             this.label122.Size = new System.Drawing.Size(75, 15);
             this.label122.TabIndex = 23;
@@ -468,25 +482,25 @@
             // 
             this.familyZonetxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.familyZonetxt.Enabled = false;
-            this.familyZonetxt.Location = new System.Drawing.Point(454, 41);
+            this.familyZonetxt.Location = new System.Drawing.Point(461, 41);
             this.familyZonetxt.Name = "familyZonetxt";
             this.familyZonetxt.Size = new System.Drawing.Size(77, 23);
-            this.familyZonetxt.TabIndex = 22;
+            this.familyZonetxt.TabIndex = 2;
             // 
             // familySubscriptiontxt
             // 
             this.familySubscriptiontxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.familySubscriptiontxt.Location = new System.Drawing.Point(926, 39);
+            this.familySubscriptiontxt.Location = new System.Drawing.Point(933, 39);
             this.familySubscriptiontxt.Name = "familySubscriptiontxt";
             this.familySubscriptiontxt.Size = new System.Drawing.Size(154, 23);
-            this.familySubscriptiontxt.TabIndex = 21;
+            this.familySubscriptiontxt.TabIndex = 3;
             // 
             // label11
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(773, 44);
+            this.label11.Location = new System.Drawing.Point(780, 44);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 15);
             this.label11.TabIndex = 20;
@@ -494,16 +508,16 @@
             // 
             // tempZipcodetxt
             // 
-            this.tempZipcodetxt.Location = new System.Drawing.Point(967, 151);
+            this.tempZipcodetxt.Location = new System.Drawing.Point(969, 97);
             this.tempZipcodetxt.Name = "tempZipcodetxt";
             this.tempZipcodetxt.Size = new System.Drawing.Size(113, 23);
-            this.tempZipcodetxt.TabIndex = 19;
+            this.tempZipcodetxt.TabIndex = 7;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(910, 157);
+            this.label7.Location = new System.Drawing.Point(910, 170);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 15);
             this.label7.TabIndex = 18;
@@ -511,16 +525,16 @@
             // 
             // tempStatetxt
             // 
-            this.tempStatetxt.Location = new System.Drawing.Point(776, 146);
+            this.tempStatetxt.Location = new System.Drawing.Point(781, 96);
             this.tempStatetxt.Name = "tempStatetxt";
             this.tempStatetxt.Size = new System.Drawing.Size(113, 23);
-            this.tempStatetxt.TabIndex = 17;
+            this.tempStatetxt.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(735, 151);
+            this.label8.Location = new System.Drawing.Point(735, 170);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 15);
             this.label8.TabIndex = 16;
@@ -528,16 +542,16 @@
             // 
             // tempCitytxt
             // 
-            this.tempCitytxt.Location = new System.Drawing.Point(602, 145);
+            this.tempCitytxt.Location = new System.Drawing.Point(602, 95);
             this.tempCitytxt.Name = "tempCitytxt";
             this.tempCitytxt.Size = new System.Drawing.Size(113, 23);
-            this.tempCitytxt.TabIndex = 15;
+            this.tempCitytxt.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(570, 150);
+            this.label9.Location = new System.Drawing.Point(570, 169);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(26, 15);
             this.label9.TabIndex = 14;
@@ -545,27 +559,27 @@
             // 
             // tempAddresstxt
             // 
-            this.tempAddresstxt.Location = new System.Drawing.Point(136, 142);
+            this.tempAddresstxt.Location = new System.Drawing.Point(136, 95);
             this.tempAddresstxt.Name = "tempAddresstxt";
             this.tempAddresstxt.Size = new System.Drawing.Size(395, 23);
-            this.tempAddresstxt.TabIndex = 13;
+            this.tempAddresstxt.TabIndex = 4;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(15, 148);
+            this.label10.Location = new System.Drawing.Point(15, 167);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 15);
+            this.label10.Size = new System.Drawing.Size(115, 15);
             this.label10.TabIndex = 12;
-            this.label10.Text = "Temp Address";
+            this.label10.Text = "Permanent Address";
             // 
             // permZipcodetxt
             // 
-            this.permZipcodetxt.Location = new System.Drawing.Point(967, 97);
+            this.permZipcodetxt.Location = new System.Drawing.Point(969, 164);
             this.permZipcodetxt.Name = "permZipcodetxt";
             this.permZipcodetxt.Size = new System.Drawing.Size(113, 23);
-            this.permZipcodetxt.TabIndex = 11;
+            this.permZipcodetxt.TabIndex = 12;
             // 
             // label6
             // 
@@ -579,10 +593,10 @@
             // 
             // permStatetxt
             // 
-            this.permStatetxt.Location = new System.Drawing.Point(776, 92);
+            this.permStatetxt.Location = new System.Drawing.Point(781, 162);
             this.permStatetxt.Name = "permStatetxt";
             this.permStatetxt.Size = new System.Drawing.Size(113, 23);
-            this.permStatetxt.TabIndex = 9;
+            this.permStatetxt.TabIndex = 11;
             // 
             // label5
             // 
@@ -596,10 +610,10 @@
             // 
             // permCitytxt
             // 
-            this.permCitytxt.Location = new System.Drawing.Point(602, 91);
+            this.permCitytxt.Location = new System.Drawing.Point(602, 164);
             this.permCitytxt.Name = "permCitytxt";
             this.permCitytxt.Size = new System.Drawing.Size(113, 23);
-            this.permCitytxt.TabIndex = 7;
+            this.permCitytxt.TabIndex = 10;
             // 
             // label4
             // 
@@ -613,10 +627,10 @@
             // 
             // permAddresstxt
             // 
-            this.permAddresstxt.Location = new System.Drawing.Point(136, 88);
+            this.permAddresstxt.Location = new System.Drawing.Point(136, 164);
             this.permAddresstxt.Name = "permAddresstxt";
             this.permAddresstxt.Size = new System.Drawing.Size(395, 23);
-            this.permAddresstxt.TabIndex = 5;
+            this.permAddresstxt.TabIndex = 9;
             // 
             // label3
             // 
@@ -624,9 +638,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(15, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 15);
+            this.label3.Size = new System.Drawing.Size(86, 15);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Permanant Address";
+            this.label3.Text = "Temp Address";
             // 
             // label2
             // 
@@ -678,9 +692,9 @@
             this.flowLayoutPanel1.Controls.Add(this.relation1Groupbox);
             this.flowLayoutPanel1.Controls.Add(this.otherRelation2Groupbox);
             this.flowLayoutPanel1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 12);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1117, 797);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1127, 806);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // husbandGroupBox
@@ -706,9 +720,9 @@
             this.husbandGroupBox.Controls.Add(this.label12);
             this.husbandGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.husbandGroupBox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.husbandGroupBox.Location = new System.Drawing.Point(3, 201);
+            this.husbandGroupBox.Location = new System.Drawing.Point(3, 220);
             this.husbandGroupBox.Name = "husbandGroupBox";
-            this.husbandGroupBox.Size = new System.Drawing.Size(1097, 287);
+            this.husbandGroupBox.Size = new System.Drawing.Size(1104, 287);
             this.husbandGroupBox.TabIndex = 1;
             this.husbandGroupBox.TabStop = false;
             this.husbandGroupBox.Text = "Head of Family ( HUSBAND )";
@@ -735,7 +749,7 @@
             this.headChoir.Location = new System.Drawing.Point(397, 65);
             this.headChoir.Name = "headChoir";
             this.headChoir.Size = new System.Drawing.Size(55, 19);
-            this.headChoir.TabIndex = 41;
+            this.headChoir.TabIndex = 26;
             this.headChoir.Text = "Choir";
             this.headChoir.UseVisualStyleBackColor = true;
             // 
@@ -746,7 +760,7 @@
             this.headCatechismTeacher.Location = new System.Drawing.Point(580, 20);
             this.headCatechismTeacher.Name = "headCatechismTeacher";
             this.headCatechismTeacher.Size = new System.Drawing.Size(132, 19);
-            this.headCatechismTeacher.TabIndex = 40;
+            this.headCatechismTeacher.TabIndex = 23;
             this.headCatechismTeacher.Text = "Catechism Teacher";
             this.headCatechismTeacher.UseVisualStyleBackColor = true;
             // 
@@ -757,7 +771,7 @@
             this.headWomenAssc.Location = new System.Drawing.Point(397, 20);
             this.headWomenAssc.Name = "headWomenAssc";
             this.headWomenAssc.Size = new System.Drawing.Size(143, 19);
-            this.headWomenAssc.TabIndex = 39;
+            this.headWomenAssc.TabIndex = 22;
             this.headWomenAssc.Text = "Women\'s Association";
             this.headWomenAssc.UseVisualStyleBackColor = true;
             // 
@@ -768,7 +782,7 @@
             this.headLOM.Location = new System.Drawing.Point(197, 20);
             this.headLOM.Name = "headLOM";
             this.headLOM.Size = new System.Drawing.Size(107, 19);
-            this.headLOM.TabIndex = 37;
+            this.headLOM.TabIndex = 21;
             this.headLOM.Text = "Legion of Mary";
             this.headLOM.UseVisualStyleBackColor = true;
             // 
@@ -779,7 +793,7 @@
             this.headAdminCouncil.Location = new System.Drawing.Point(14, 20);
             this.headAdminCouncil.Name = "headAdminCouncil";
             this.headAdminCouncil.Size = new System.Drawing.Size(146, 19);
-            this.headAdminCouncil.TabIndex = 35;
+            this.headAdminCouncil.TabIndex = 20;
             this.headAdminCouncil.Text = "Administrative Council";
             this.headAdminCouncil.UseVisualStyleBackColor = true;
             // 
@@ -790,7 +804,7 @@
             this.headLiturgyCouncil.Location = new System.Drawing.Point(14, 65);
             this.headLiturgyCouncil.Name = "headLiturgyCouncil";
             this.headLiturgyCouncil.Size = new System.Drawing.Size(106, 19);
-            this.headLiturgyCouncil.TabIndex = 36;
+            this.headLiturgyCouncil.TabIndex = 24;
             this.headLiturgyCouncil.Text = "Liturgy Council";
             this.headLiturgyCouncil.UseVisualStyleBackColor = true;
             // 
@@ -801,7 +815,7 @@
             this.headStVDPaul.Location = new System.Drawing.Point(197, 65);
             this.headStVDPaul.Name = "headStVDPaul";
             this.headStVDPaul.Size = new System.Drawing.Size(154, 19);
-            this.headStVDPaul.TabIndex = 38;
+            this.headStVDPaul.TabIndex = 25;
             this.headStVDPaul.Text = "St. Vincent De Paul Soc";
             this.headStVDPaul.UseVisualStyleBackColor = true;
             // 
@@ -835,7 +849,7 @@
             this.headBaptismDate.Name = "headBaptismDate";
             this.headBaptismDate.ShowCheckBox = true;
             this.headBaptismDate.Size = new System.Drawing.Size(148, 21);
-            this.headBaptismDate.TabIndex = 34;
+            this.headBaptismDate.TabIndex = 27;
             // 
             // label16
             // 
@@ -855,7 +869,7 @@
             this.headMarriageDate.Name = "headMarriageDate";
             this.headMarriageDate.ShowCheckBox = true;
             this.headMarriageDate.Size = new System.Drawing.Size(151, 21);
-            this.headMarriageDate.TabIndex = 32;
+            this.headMarriageDate.TabIndex = 28;
             // 
             // label19
             // 
@@ -872,7 +886,7 @@
             this.txtHeadPhone.Location = new System.Drawing.Point(682, 48);
             this.txtHeadPhone.Name = "txtHeadPhone";
             this.txtHeadPhone.Size = new System.Drawing.Size(118, 23);
-            this.txtHeadPhone.TabIndex = 28;
+            this.txtHeadPhone.TabIndex = 15;
             // 
             // label15
             // 
@@ -889,14 +903,14 @@
             this.txtHeadEmail.Location = new System.Drawing.Point(73, 90);
             this.txtHeadEmail.Name = "txtHeadEmail";
             this.txtHeadEmail.Size = new System.Drawing.Size(198, 23);
-            this.txtHeadEmail.TabIndex = 26;
+            this.txtHeadEmail.TabIndex = 17;
             // 
             // txtHeadBG
             // 
             this.txtHeadBG.Location = new System.Drawing.Point(683, 96);
             this.txtHeadBG.Name = "txtHeadBG";
             this.txtHeadBG.Size = new System.Drawing.Size(117, 23);
-            this.txtHeadBG.TabIndex = 26;
+            this.txtHeadBG.TabIndex = 19;
             // 
             // label17
             // 
@@ -923,7 +937,7 @@
             this.txtHeadOccupation.Location = new System.Drawing.Point(408, 96);
             this.txtHeadOccupation.Name = "txtHeadOccupation";
             this.txtHeadOccupation.Size = new System.Drawing.Size(134, 23);
-            this.txtHeadOccupation.TabIndex = 24;
+            this.txtHeadOccupation.TabIndex = 18;
             // 
             // label18
             // 
@@ -943,14 +957,14 @@
             this.dtheadDOB.Name = "dtheadDOB";
             this.dtheadDOB.ShowCheckBox = true;
             this.dtheadDOB.Size = new System.Drawing.Size(134, 21);
-            this.dtheadDOB.TabIndex = 24;
+            this.dtheadDOB.TabIndex = 14;
             // 
             // txtHeadQualification
             // 
             this.txtHeadQualification.Location = new System.Drawing.Point(944, 42);
             this.txtHeadQualification.Name = "txtHeadQualification";
             this.txtHeadQualification.Size = new System.Drawing.Size(134, 23);
-            this.txtHeadQualification.TabIndex = 22;
+            this.txtHeadQualification.TabIndex = 16;
             // 
             // label13
             // 
@@ -967,7 +981,7 @@
             this.txtHeadName.Location = new System.Drawing.Point(73, 41);
             this.txtHeadName.Name = "txtHeadName";
             this.txtHeadName.Size = new System.Drawing.Size(198, 23);
-            this.txtHeadName.TabIndex = 23;
+            this.txtHeadName.TabIndex = 13;
             // 
             // label12
             // 
@@ -1002,9 +1016,9 @@
             this.wifeGroupbox.Controls.Add(this.label29);
             this.wifeGroupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wifeGroupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.wifeGroupbox.Location = new System.Drawing.Point(3, 494);
+            this.wifeGroupbox.Location = new System.Drawing.Point(3, 513);
             this.wifeGroupbox.Name = "wifeGroupbox";
-            this.wifeGroupbox.Size = new System.Drawing.Size(1097, 295);
+            this.wifeGroupbox.Size = new System.Drawing.Size(1101, 295);
             this.wifeGroupbox.TabIndex = 2;
             this.wifeGroupbox.TabStop = false;
             this.wifeGroupbox.Text = "Head of Family ( WIFE )";
@@ -1031,7 +1045,7 @@
             this.spouseChoir.Location = new System.Drawing.Point(397, 65);
             this.spouseChoir.Name = "spouseChoir";
             this.spouseChoir.Size = new System.Drawing.Size(55, 19);
-            this.spouseChoir.TabIndex = 41;
+            this.spouseChoir.TabIndex = 43;
             this.spouseChoir.Text = "Choir";
             this.spouseChoir.UseVisualStyleBackColor = true;
             // 
@@ -1075,7 +1089,7 @@
             this.spouseAdminCouncil.Location = new System.Drawing.Point(14, 20);
             this.spouseAdminCouncil.Name = "spouseAdminCouncil";
             this.spouseAdminCouncil.Size = new System.Drawing.Size(146, 19);
-            this.spouseAdminCouncil.TabIndex = 35;
+            this.spouseAdminCouncil.TabIndex = 36;
             this.spouseAdminCouncil.Text = "Administrative Council";
             this.spouseAdminCouncil.UseVisualStyleBackColor = true;
             // 
@@ -1086,7 +1100,7 @@
             this.spouseLiturgyCouncil.Location = new System.Drawing.Point(14, 65);
             this.spouseLiturgyCouncil.Name = "spouseLiturgyCouncil";
             this.spouseLiturgyCouncil.Size = new System.Drawing.Size(106, 19);
-            this.spouseLiturgyCouncil.TabIndex = 36;
+            this.spouseLiturgyCouncil.TabIndex = 41;
             this.spouseLiturgyCouncil.Text = "Liturgy Council";
             this.spouseLiturgyCouncil.UseVisualStyleBackColor = true;
             // 
@@ -1097,7 +1111,7 @@
             this.spouseStVDPaul.Location = new System.Drawing.Point(197, 65);
             this.spouseStVDPaul.Name = "spouseStVDPaul";
             this.spouseStVDPaul.Size = new System.Drawing.Size(154, 19);
-            this.spouseStVDPaul.TabIndex = 38;
+            this.spouseStVDPaul.TabIndex = 42;
             this.spouseStVDPaul.Text = "St. Vincent De Paul Soc";
             this.spouseStVDPaul.UseVisualStyleBackColor = true;
             // 
@@ -1131,7 +1145,7 @@
             this.spouseBaptismDate.Name = "spouseBaptismDate";
             this.spouseBaptismDate.ShowCheckBox = true;
             this.spouseBaptismDate.Size = new System.Drawing.Size(148, 21);
-            this.spouseBaptismDate.TabIndex = 34;
+            this.spouseBaptismDate.TabIndex = 44;
             // 
             // label22
             // 
@@ -1151,7 +1165,7 @@
             this.spouseMarriageDate.Name = "spouseMarriageDate";
             this.spouseMarriageDate.ShowCheckBox = true;
             this.spouseMarriageDate.Size = new System.Drawing.Size(151, 21);
-            this.spouseMarriageDate.TabIndex = 32;
+            this.spouseMarriageDate.TabIndex = 45;
             // 
             // label23
             // 
@@ -1168,7 +1182,7 @@
             this.txtSpousePhone.Location = new System.Drawing.Point(686, 54);
             this.txtSpousePhone.Name = "txtSpousePhone";
             this.txtSpousePhone.Size = new System.Drawing.Size(118, 23);
-            this.txtSpousePhone.TabIndex = 47;
+            this.txtSpousePhone.TabIndex = 31;
             // 
             // label24
             // 
@@ -1185,14 +1199,14 @@
             this.txtSpouseEmail.Location = new System.Drawing.Point(77, 96);
             this.txtSpouseEmail.Name = "txtSpouseEmail";
             this.txtSpouseEmail.Size = new System.Drawing.Size(198, 23);
-            this.txtSpouseEmail.TabIndex = 44;
+            this.txtSpouseEmail.TabIndex = 33;
             // 
             // txtSpoueBG
             // 
             this.txtSpoueBG.Location = new System.Drawing.Point(687, 102);
             this.txtSpoueBG.Name = "txtSpoueBG";
             this.txtSpoueBG.Size = new System.Drawing.Size(117, 23);
-            this.txtSpoueBG.TabIndex = 45;
+            this.txtSpoueBG.TabIndex = 35;
             // 
             // label25
             // 
@@ -1219,7 +1233,7 @@
             this.txtSpouseOccupation.Location = new System.Drawing.Point(412, 102);
             this.txtSpouseOccupation.Name = "txtSpouseOccupation";
             this.txtSpouseOccupation.Size = new System.Drawing.Size(134, 23);
-            this.txtSpouseOccupation.TabIndex = 40;
+            this.txtSpouseOccupation.TabIndex = 34;
             // 
             // label27
             // 
@@ -1239,14 +1253,14 @@
             this.dtSpouseDOB.Name = "dtSpouseDOB";
             this.dtSpouseDOB.ShowCheckBox = true;
             this.dtSpouseDOB.Size = new System.Drawing.Size(134, 21);
-            this.dtSpouseDOB.TabIndex = 41;
+            this.dtSpouseDOB.TabIndex = 30;
             // 
             // txtSpouseQualification
             // 
             this.txtSpouseQualification.Location = new System.Drawing.Point(948, 48);
             this.txtSpouseQualification.Name = "txtSpouseQualification";
             this.txtSpouseQualification.Size = new System.Drawing.Size(134, 23);
-            this.txtSpouseQualification.TabIndex = 35;
+            this.txtSpouseQualification.TabIndex = 32;
             // 
             // label28
             // 
@@ -1263,7 +1277,7 @@
             this.txtSpouseName.Location = new System.Drawing.Point(77, 47);
             this.txtSpouseName.Name = "txtSpouseName";
             this.txtSpouseName.Size = new System.Drawing.Size(198, 23);
-            this.txtSpouseName.TabIndex = 39;
+            this.txtSpouseName.TabIndex = 29;
             // 
             // label29
             // 
@@ -1300,12 +1314,246 @@
             this.child1Groupbox.Controls.Add(this.label38);
             this.child1Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child1Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child1Groupbox.Location = new System.Drawing.Point(3, 795);
+            this.child1Groupbox.Location = new System.Drawing.Point(3, 814);
             this.child1Groupbox.Name = "child1Groupbox";
-            this.child1Groupbox.Size = new System.Drawing.Size(1097, 295);
+            this.child1Groupbox.Size = new System.Drawing.Size(1101, 295);
             this.child1Groupbox.TabIndex = 51;
             this.child1Groupbox.TabStop = false;
             this.child1Groupbox.Text = "Child-1";
+            // 
+            // comboBoxChild1Relation
+            // 
+            this.comboBoxChild1Relation.FormattingEnabled = true;
+            this.comboBoxChild1Relation.Items.AddRange(new object[] {
+            "Son",
+            "Daughter",
+            "Others"});
+            this.comboBoxChild1Relation.Location = new System.Drawing.Point(657, 46);
+            this.comboBoxChild1Relation.Name = "comboBoxChild1Relation";
+            this.comboBoxChild1Relation.Size = new System.Drawing.Size(157, 24);
+            this.comboBoxChild1Relation.TabIndex = 66;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel7.Controls.Add(this.dtChild1Marriage);
+            this.panel7.Controls.Add(this.dtChild1Communion);
+            this.panel7.Controls.Add(this.dtChild1Priest);
+            this.panel7.Controls.Add(this.dtChild1Confirmation);
+            this.panel7.Controls.Add(this.dtChild1Baptism);
+            this.panel7.Controls.Add(this.label30);
+            this.panel7.Controls.Add(this.label31);
+            this.panel7.Controls.Add(this.label40);
+            this.panel7.Controls.Add(this.label41);
+            this.panel7.Controls.Add(this.label42);
+            this.panel7.Location = new System.Drawing.Point(548, 142);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(534, 140);
+            this.panel7.TabIndex = 66;
+            // 
+            // dtChild1Marriage
+            // 
+            this.dtChild1Marriage.Checked = false;
+            this.dtChild1Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild1Marriage.Location = new System.Drawing.Point(378, 63);
+            this.dtChild1Marriage.Name = "dtChild1Marriage";
+            this.dtChild1Marriage.ShowCheckBox = true;
+            this.dtChild1Marriage.Size = new System.Drawing.Size(151, 21);
+            this.dtChild1Marriage.TabIndex = 62;
+            // 
+            // dtChild1Communion
+            // 
+            this.dtChild1Communion.Checked = false;
+            this.dtChild1Communion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild1Communion.Location = new System.Drawing.Point(378, 24);
+            this.dtChild1Communion.Name = "dtChild1Communion";
+            this.dtChild1Communion.ShowCheckBox = true;
+            this.dtChild1Communion.Size = new System.Drawing.Size(151, 21);
+            this.dtChild1Communion.TabIndex = 61;
+            // 
+            // dtChild1Priest
+            // 
+            this.dtChild1Priest.Checked = false;
+            this.dtChild1Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild1Priest.Location = new System.Drawing.Point(109, 103);
+            this.dtChild1Priest.Name = "dtChild1Priest";
+            this.dtChild1Priest.ShowCheckBox = true;
+            this.dtChild1Priest.Size = new System.Drawing.Size(151, 21);
+            this.dtChild1Priest.TabIndex = 60;
+            // 
+            // dtChild1Confirmation
+            // 
+            this.dtChild1Confirmation.Checked = false;
+            this.dtChild1Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild1Confirmation.Location = new System.Drawing.Point(109, 61);
+            this.dtChild1Confirmation.Name = "dtChild1Confirmation";
+            this.dtChild1Confirmation.ShowCheckBox = true;
+            this.dtChild1Confirmation.Size = new System.Drawing.Size(151, 21);
+            this.dtChild1Confirmation.TabIndex = 59;
+            // 
+            // dtChild1Baptism
+            // 
+            this.dtChild1Baptism.Checked = false;
+            this.dtChild1Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild1Baptism.Location = new System.Drawing.Point(109, 24);
+            this.dtChild1Baptism.Name = "dtChild1Baptism";
+            this.dtChild1Baptism.ShowCheckBox = true;
+            this.dtChild1Baptism.Size = new System.Drawing.Size(151, 21);
+            this.dtChild1Baptism.TabIndex = 58;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(22, 108);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(66, 15);
+            this.label30.TabIndex = 39;
+            this.label30.Text = "Priesthood";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(273, 67);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(65, 15);
+            this.label31.TabIndex = 37;
+            this.label31.Text = "Matrimony";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(268, 25);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(101, 15);
+            this.label40.TabIndex = 35;
+            this.label40.Text = "First Communion";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(19, 24);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(81, 15);
+            this.label41.TabIndex = 33;
+            this.label41.Text = "Baptism Date";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(21, 61);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(77, 15);
+            this.label42.TabIndex = 31;
+            this.label42.Text = "Confirmation";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel6.Controls.Add(this.checkBoxChild1IsTeacher);
+            this.panel6.Controls.Add(this.checkBoxChild1IsChoir);
+            this.panel6.Controls.Add(this.checkBoxChild1IsStudnet);
+            this.panel6.Controls.Add(this.checkBoxChild1IsYouth);
+            this.panel6.Controls.Add(this.checkBoxChild1IsLOM);
+            this.panel6.Controls.Add(this.checkBoxChild1IsAdmin);
+            this.panel6.Controls.Add(this.checkBoxChild1IsAlter);
+            this.panel6.Controls.Add(this.checkBoxChild1VincentDePaul);
+            this.panel6.Location = new System.Drawing.Point(31, 142);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(494, 140);
+            this.panel6.TabIndex = 53;
+            // 
+            // checkBoxChild1IsTeacher
+            // 
+            this.checkBoxChild1IsTeacher.AutoSize = true;
+            this.checkBoxChild1IsTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild1IsTeacher.Location = new System.Drawing.Point(168, 108);
+            this.checkBoxChild1IsTeacher.Name = "checkBoxChild1IsTeacher";
+            this.checkBoxChild1IsTeacher.Size = new System.Drawing.Size(132, 19);
+            this.checkBoxChild1IsTeacher.TabIndex = 42;
+            this.checkBoxChild1IsTeacher.Text = "Catechism Teacher";
+            this.checkBoxChild1IsTeacher.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild1IsChoir
+            // 
+            this.checkBoxChild1IsChoir.AutoSize = true;
+            this.checkBoxChild1IsChoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild1IsChoir.Location = new System.Drawing.Point(330, 65);
+            this.checkBoxChild1IsChoir.Name = "checkBoxChild1IsChoir";
+            this.checkBoxChild1IsChoir.Size = new System.Drawing.Size(55, 19);
+            this.checkBoxChild1IsChoir.TabIndex = 41;
+            this.checkBoxChild1IsChoir.Text = "Choir";
+            this.checkBoxChild1IsChoir.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild1IsStudnet
+            // 
+            this.checkBoxChild1IsStudnet.AutoSize = true;
+            this.checkBoxChild1IsStudnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild1IsStudnet.Location = new System.Drawing.Point(14, 108);
+            this.checkBoxChild1IsStudnet.Name = "checkBoxChild1IsStudnet";
+            this.checkBoxChild1IsStudnet.Size = new System.Drawing.Size(129, 19);
+            this.checkBoxChild1IsStudnet.TabIndex = 40;
+            this.checkBoxChild1IsStudnet.Text = "Catechism Student";
+            this.checkBoxChild1IsStudnet.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild1IsYouth
+            // 
+            this.checkBoxChild1IsYouth.AutoSize = true;
+            this.checkBoxChild1IsYouth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild1IsYouth.Location = new System.Drawing.Point(330, 20);
+            this.checkBoxChild1IsYouth.Name = "checkBoxChild1IsYouth";
+            this.checkBoxChild1IsYouth.Size = new System.Drawing.Size(94, 19);
+            this.checkBoxChild1IsYouth.TabIndex = 39;
+            this.checkBoxChild1IsYouth.Text = "Youth Group";
+            this.checkBoxChild1IsYouth.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild1IsLOM
+            // 
+            this.checkBoxChild1IsLOM.AutoSize = true;
+            this.checkBoxChild1IsLOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild1IsLOM.Location = new System.Drawing.Point(166, 20);
+            this.checkBoxChild1IsLOM.Name = "checkBoxChild1IsLOM";
+            this.checkBoxChild1IsLOM.Size = new System.Drawing.Size(107, 19);
+            this.checkBoxChild1IsLOM.TabIndex = 37;
+            this.checkBoxChild1IsLOM.Text = "Legion of Mary";
+            this.checkBoxChild1IsLOM.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild1IsAdmin
+            // 
+            this.checkBoxChild1IsAdmin.AutoSize = true;
+            this.checkBoxChild1IsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild1IsAdmin.Location = new System.Drawing.Point(14, 20);
+            this.checkBoxChild1IsAdmin.Name = "checkBoxChild1IsAdmin";
+            this.checkBoxChild1IsAdmin.Size = new System.Drawing.Size(146, 19);
+            this.checkBoxChild1IsAdmin.TabIndex = 35;
+            this.checkBoxChild1IsAdmin.Text = "Administrative Council";
+            this.checkBoxChild1IsAdmin.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild1IsAlter
+            // 
+            this.checkBoxChild1IsAlter.AutoSize = true;
+            this.checkBoxChild1IsAlter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild1IsAlter.Location = new System.Drawing.Point(14, 65);
+            this.checkBoxChild1IsAlter.Name = "checkBoxChild1IsAlter";
+            this.checkBoxChild1IsAlter.Size = new System.Drawing.Size(99, 19);
+            this.checkBoxChild1IsAlter.TabIndex = 36;
+            this.checkBoxChild1IsAlter.Text = "Alter Services";
+            this.checkBoxChild1IsAlter.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild1VincentDePaul
+            // 
+            this.checkBoxChild1VincentDePaul.AutoSize = true;
+            this.checkBoxChild1VincentDePaul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild1VincentDePaul.Location = new System.Drawing.Point(166, 65);
+            this.checkBoxChild1VincentDePaul.Name = "checkBoxChild1VincentDePaul";
+            this.checkBoxChild1VincentDePaul.Size = new System.Drawing.Size(154, 19);
+            this.checkBoxChild1VincentDePaul.TabIndex = 38;
+            this.checkBoxChild1VincentDePaul.Text = "St. Vincent De Paul Soc";
+            this.checkBoxChild1VincentDePaul.UseVisualStyleBackColor = true;
             // 
             // label43
             // 
@@ -1322,14 +1570,14 @@
             this.txtChild1Whatsapp.Location = new System.Drawing.Point(946, 98);
             this.txtChild1Whatsapp.Name = "txtChild1Whatsapp";
             this.txtChild1Whatsapp.Size = new System.Drawing.Size(134, 23);
-            this.txtChild1Whatsapp.TabIndex = 53;
+            this.txtChild1Whatsapp.TabIndex = 72;
             // 
             // txtChild1Standard
             // 
             this.txtChild1Standard.Location = new System.Drawing.Point(102, 95);
             this.txtChild1Standard.Name = "txtChild1Standard";
             this.txtChild1Standard.Size = new System.Drawing.Size(62, 23);
-            this.txtChild1Standard.TabIndex = 52;
+            this.txtChild1Standard.TabIndex = 68;
             // 
             // label39
             // 
@@ -1366,14 +1614,14 @@
             this.txtChild1Institution.Location = new System.Drawing.Point(263, 96);
             this.txtChild1Institution.Name = "txtChild1Institution";
             this.txtChild1Institution.Size = new System.Drawing.Size(160, 23);
-            this.txtChild1Institution.TabIndex = 44;
+            this.txtChild1Institution.TabIndex = 69;
             // 
             // txtChild1BG
             // 
             this.txtChild1BG.Location = new System.Drawing.Point(761, 99);
             this.txtChild1BG.Name = "txtChild1BG";
             this.txtChild1BG.Size = new System.Drawing.Size(54, 23);
-            this.txtChild1BG.TabIndex = 45;
+            this.txtChild1BG.TabIndex = 71;
             // 
             // label34
             // 
@@ -1400,7 +1648,7 @@
             this.txtChild1Occupation.Location = new System.Drawing.Point(535, 96);
             this.txtChild1Occupation.Name = "txtChild1Occupation";
             this.txtChild1Occupation.Size = new System.Drawing.Size(118, 23);
-            this.txtChild1Occupation.TabIndex = 40;
+            this.txtChild1Occupation.TabIndex = 70;
             // 
             // label36
             // 
@@ -1427,7 +1675,7 @@
             this.txtChild1Qualification.Location = new System.Drawing.Point(948, 41);
             this.txtChild1Qualification.Name = "txtChild1Qualification";
             this.txtChild1Qualification.Size = new System.Drawing.Size(134, 23);
-            this.txtChild1Qualification.TabIndex = 35;
+            this.txtChild1Qualification.TabIndex = 67;
             // 
             // label37
             // 
@@ -1481,12 +1729,256 @@
             this.child2Groupbox.Controls.Add(this.label57);
             this.child2Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child2Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child2Groupbox.Location = new System.Drawing.Point(3, 1096);
+            this.child2Groupbox.Location = new System.Drawing.Point(3, 1115);
             this.child2Groupbox.Name = "child2Groupbox";
-            this.child2Groupbox.Size = new System.Drawing.Size(1097, 295);
+            this.child2Groupbox.Size = new System.Drawing.Size(1101, 295);
             this.child2Groupbox.TabIndex = 55;
             this.child2Groupbox.TabStop = false;
             this.child2Groupbox.Text = "Child-2";
+            // 
+            // comboBoxChild2Relation
+            // 
+            this.comboBoxChild2Relation.FormattingEnabled = true;
+            this.comboBoxChild2Relation.Items.AddRange(new object[] {
+            "Son",
+            "Daughter",
+            "Others"});
+            this.comboBoxChild2Relation.Location = new System.Drawing.Point(657, 41);
+            this.comboBoxChild2Relation.Name = "comboBoxChild2Relation";
+            this.comboBoxChild2Relation.Size = new System.Drawing.Size(157, 24);
+            this.comboBoxChild2Relation.TabIndex = 65;
+            // 
+            // dtChild2DOB
+            // 
+            this.dtChild2DOB.Checked = false;
+            this.dtChild2DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild2DOB.Location = new System.Drawing.Point(378, 44);
+            this.dtChild2DOB.Name = "dtChild2DOB";
+            this.dtChild2DOB.ShowCheckBox = true;
+            this.dtChild2DOB.Size = new System.Drawing.Size(160, 21);
+            this.dtChild2DOB.TabIndex = 65;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel10.Controls.Add(this.dtChild2Marriage);
+            this.panel10.Controls.Add(this.dtChild2Commuion);
+            this.panel10.Controls.Add(this.dtChild2Priest);
+            this.panel10.Controls.Add(this.dtChild2Confirmation);
+            this.panel10.Controls.Add(this.dtChild2Baptism);
+            this.panel10.Controls.Add(this.label46);
+            this.panel10.Controls.Add(this.label47);
+            this.panel10.Controls.Add(this.label48);
+            this.panel10.Controls.Add(this.label49);
+            this.panel10.Controls.Add(this.label50);
+            this.panel10.Location = new System.Drawing.Point(548, 140);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(534, 140);
+            this.panel10.TabIndex = 65;
+            // 
+            // dtChild2Marriage
+            // 
+            this.dtChild2Marriage.Checked = false;
+            this.dtChild2Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild2Marriage.Location = new System.Drawing.Point(378, 63);
+            this.dtChild2Marriage.Name = "dtChild2Marriage";
+            this.dtChild2Marriage.ShowCheckBox = true;
+            this.dtChild2Marriage.Size = new System.Drawing.Size(151, 21);
+            this.dtChild2Marriage.TabIndex = 62;
+            // 
+            // dtChild2Commuion
+            // 
+            this.dtChild2Commuion.Checked = false;
+            this.dtChild2Commuion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild2Commuion.Location = new System.Drawing.Point(378, 24);
+            this.dtChild2Commuion.Name = "dtChild2Commuion";
+            this.dtChild2Commuion.ShowCheckBox = true;
+            this.dtChild2Commuion.Size = new System.Drawing.Size(151, 21);
+            this.dtChild2Commuion.TabIndex = 61;
+            // 
+            // dtChild2Priest
+            // 
+            this.dtChild2Priest.Checked = false;
+            this.dtChild2Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild2Priest.Location = new System.Drawing.Point(109, 103);
+            this.dtChild2Priest.Name = "dtChild2Priest";
+            this.dtChild2Priest.ShowCheckBox = true;
+            this.dtChild2Priest.Size = new System.Drawing.Size(151, 21);
+            this.dtChild2Priest.TabIndex = 60;
+            // 
+            // dtChild2Confirmation
+            // 
+            this.dtChild2Confirmation.Checked = false;
+            this.dtChild2Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild2Confirmation.Location = new System.Drawing.Point(109, 61);
+            this.dtChild2Confirmation.Name = "dtChild2Confirmation";
+            this.dtChild2Confirmation.ShowCheckBox = true;
+            this.dtChild2Confirmation.Size = new System.Drawing.Size(151, 21);
+            this.dtChild2Confirmation.TabIndex = 59;
+            // 
+            // dtChild2Baptism
+            // 
+            this.dtChild2Baptism.Checked = false;
+            this.dtChild2Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild2Baptism.Location = new System.Drawing.Point(109, 24);
+            this.dtChild2Baptism.Name = "dtChild2Baptism";
+            this.dtChild2Baptism.ShowCheckBox = true;
+            this.dtChild2Baptism.Size = new System.Drawing.Size(151, 21);
+            this.dtChild2Baptism.TabIndex = 58;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(22, 108);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(66, 15);
+            this.label46.TabIndex = 39;
+            this.label46.Text = "Priesthood";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(273, 67);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(65, 15);
+            this.label47.TabIndex = 37;
+            this.label47.Text = "Matrimony";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(268, 25);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(101, 15);
+            this.label48.TabIndex = 35;
+            this.label48.Text = "First Communion";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(19, 24);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(81, 15);
+            this.label49.TabIndex = 33;
+            this.label49.Text = "Baptism Date";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(21, 61);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(77, 15);
+            this.label50.TabIndex = 31;
+            this.label50.Text = "Confirmation";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel9.Controls.Add(this.checkBoxChild2IsTeacher);
+            this.panel9.Controls.Add(this.checkBoxChild2IsChoir);
+            this.panel9.Controls.Add(this.checkBoxChild2IsStudent);
+            this.panel9.Controls.Add(this.checkBoxChild2IsYouth);
+            this.panel9.Controls.Add(this.checkBoxChild2IsLOM);
+            this.panel9.Controls.Add(this.checkBoxChild2IsAdmin);
+            this.panel9.Controls.Add(this.checkBoxChild2IsAlter);
+            this.panel9.Controls.Add(this.checkBoxChild2VincentDePaul);
+            this.panel9.Location = new System.Drawing.Point(31, 140);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(494, 140);
+            this.panel9.TabIndex = 52;
+            // 
+            // checkBoxChild2IsTeacher
+            // 
+            this.checkBoxChild2IsTeacher.AutoSize = true;
+            this.checkBoxChild2IsTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild2IsTeacher.Location = new System.Drawing.Point(168, 108);
+            this.checkBoxChild2IsTeacher.Name = "checkBoxChild2IsTeacher";
+            this.checkBoxChild2IsTeacher.Size = new System.Drawing.Size(132, 19);
+            this.checkBoxChild2IsTeacher.TabIndex = 42;
+            this.checkBoxChild2IsTeacher.Text = "Catechism Teacher";
+            this.checkBoxChild2IsTeacher.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild2IsChoir
+            // 
+            this.checkBoxChild2IsChoir.AutoSize = true;
+            this.checkBoxChild2IsChoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild2IsChoir.Location = new System.Drawing.Point(330, 65);
+            this.checkBoxChild2IsChoir.Name = "checkBoxChild2IsChoir";
+            this.checkBoxChild2IsChoir.Size = new System.Drawing.Size(55, 19);
+            this.checkBoxChild2IsChoir.TabIndex = 41;
+            this.checkBoxChild2IsChoir.Text = "Choir";
+            this.checkBoxChild2IsChoir.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild2IsStudent
+            // 
+            this.checkBoxChild2IsStudent.AutoSize = true;
+            this.checkBoxChild2IsStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild2IsStudent.Location = new System.Drawing.Point(14, 108);
+            this.checkBoxChild2IsStudent.Name = "checkBoxChild2IsStudent";
+            this.checkBoxChild2IsStudent.Size = new System.Drawing.Size(129, 19);
+            this.checkBoxChild2IsStudent.TabIndex = 40;
+            this.checkBoxChild2IsStudent.Text = "Catechism Student";
+            this.checkBoxChild2IsStudent.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild2IsYouth
+            // 
+            this.checkBoxChild2IsYouth.AutoSize = true;
+            this.checkBoxChild2IsYouth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild2IsYouth.Location = new System.Drawing.Point(330, 20);
+            this.checkBoxChild2IsYouth.Name = "checkBoxChild2IsYouth";
+            this.checkBoxChild2IsYouth.Size = new System.Drawing.Size(94, 19);
+            this.checkBoxChild2IsYouth.TabIndex = 39;
+            this.checkBoxChild2IsYouth.Text = "Youth Group";
+            this.checkBoxChild2IsYouth.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild2IsLOM
+            // 
+            this.checkBoxChild2IsLOM.AutoSize = true;
+            this.checkBoxChild2IsLOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild2IsLOM.Location = new System.Drawing.Point(166, 20);
+            this.checkBoxChild2IsLOM.Name = "checkBoxChild2IsLOM";
+            this.checkBoxChild2IsLOM.Size = new System.Drawing.Size(107, 19);
+            this.checkBoxChild2IsLOM.TabIndex = 37;
+            this.checkBoxChild2IsLOM.Text = "Legion of Mary";
+            this.checkBoxChild2IsLOM.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild2IsAdmin
+            // 
+            this.checkBoxChild2IsAdmin.AutoSize = true;
+            this.checkBoxChild2IsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild2IsAdmin.Location = new System.Drawing.Point(14, 20);
+            this.checkBoxChild2IsAdmin.Name = "checkBoxChild2IsAdmin";
+            this.checkBoxChild2IsAdmin.Size = new System.Drawing.Size(146, 19);
+            this.checkBoxChild2IsAdmin.TabIndex = 35;
+            this.checkBoxChild2IsAdmin.Text = "Administrative Council";
+            this.checkBoxChild2IsAdmin.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild2IsAlter
+            // 
+            this.checkBoxChild2IsAlter.AutoSize = true;
+            this.checkBoxChild2IsAlter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild2IsAlter.Location = new System.Drawing.Point(14, 65);
+            this.checkBoxChild2IsAlter.Name = "checkBoxChild2IsAlter";
+            this.checkBoxChild2IsAlter.Size = new System.Drawing.Size(99, 19);
+            this.checkBoxChild2IsAlter.TabIndex = 36;
+            this.checkBoxChild2IsAlter.Text = "Alter Services";
+            this.checkBoxChild2IsAlter.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild2VincentDePaul
+            // 
+            this.checkBoxChild2VincentDePaul.AutoSize = true;
+            this.checkBoxChild2VincentDePaul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild2VincentDePaul.Location = new System.Drawing.Point(166, 65);
+            this.checkBoxChild2VincentDePaul.Name = "checkBoxChild2VincentDePaul";
+            this.checkBoxChild2VincentDePaul.Size = new System.Drawing.Size(154, 19);
+            this.checkBoxChild2VincentDePaul.TabIndex = 38;
+            this.checkBoxChild2VincentDePaul.Text = "St. Vincent De Paul Soc";
+            this.checkBoxChild2VincentDePaul.UseVisualStyleBackColor = true;
             // 
             // label44
             // 
@@ -1652,12 +2144,256 @@
             this.child3Groupbox.Controls.Add(this.label71);
             this.child3Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child3Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child3Groupbox.Location = new System.Drawing.Point(3, 1397);
+            this.child3Groupbox.Location = new System.Drawing.Point(3, 1416);
             this.child3Groupbox.Name = "child3Groupbox";
-            this.child3Groupbox.Size = new System.Drawing.Size(1097, 295);
+            this.child3Groupbox.Size = new System.Drawing.Size(1101, 295);
             this.child3Groupbox.TabIndex = 56;
             this.child3Groupbox.TabStop = false;
             this.child3Groupbox.Text = "Child - 3";
+            // 
+            // dtChild3DOB
+            // 
+            this.dtChild3DOB.Checked = false;
+            this.dtChild3DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild3DOB.Location = new System.Drawing.Point(378, 38);
+            this.dtChild3DOB.Name = "dtChild3DOB";
+            this.dtChild3DOB.ShowCheckBox = true;
+            this.dtChild3DOB.Size = new System.Drawing.Size(160, 21);
+            this.dtChild3DOB.TabIndex = 64;
+            // 
+            // comboBoxChild3Relation
+            // 
+            this.comboBoxChild3Relation.FormattingEnabled = true;
+            this.comboBoxChild3Relation.Items.AddRange(new object[] {
+            "Son",
+            "Daughter",
+            "Others"});
+            this.comboBoxChild3Relation.Location = new System.Drawing.Point(658, 45);
+            this.comboBoxChild3Relation.Name = "comboBoxChild3Relation";
+            this.comboBoxChild3Relation.Size = new System.Drawing.Size(157, 24);
+            this.comboBoxChild3Relation.TabIndex = 64;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel13.Controls.Add(this.dtChild3Marriage);
+            this.panel13.Controls.Add(this.dtChild3Communion);
+            this.panel13.Controls.Add(this.dtChild3Priest);
+            this.panel13.Controls.Add(this.dtChild3Confirmation);
+            this.panel13.Controls.Add(this.dtChild3Baptism);
+            this.panel13.Controls.Add(this.label60);
+            this.panel13.Controls.Add(this.label61);
+            this.panel13.Controls.Add(this.label62);
+            this.panel13.Controls.Add(this.label63);
+            this.panel13.Controls.Add(this.label64);
+            this.panel13.Location = new System.Drawing.Point(548, 139);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(534, 140);
+            this.panel13.TabIndex = 64;
+            // 
+            // dtChild3Marriage
+            // 
+            this.dtChild3Marriage.Checked = false;
+            this.dtChild3Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild3Marriage.Location = new System.Drawing.Point(378, 63);
+            this.dtChild3Marriage.Name = "dtChild3Marriage";
+            this.dtChild3Marriage.ShowCheckBox = true;
+            this.dtChild3Marriage.Size = new System.Drawing.Size(151, 21);
+            this.dtChild3Marriage.TabIndex = 62;
+            // 
+            // dtChild3Communion
+            // 
+            this.dtChild3Communion.Checked = false;
+            this.dtChild3Communion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild3Communion.Location = new System.Drawing.Point(378, 24);
+            this.dtChild3Communion.Name = "dtChild3Communion";
+            this.dtChild3Communion.ShowCheckBox = true;
+            this.dtChild3Communion.Size = new System.Drawing.Size(151, 21);
+            this.dtChild3Communion.TabIndex = 61;
+            // 
+            // dtChild3Priest
+            // 
+            this.dtChild3Priest.Checked = false;
+            this.dtChild3Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild3Priest.Location = new System.Drawing.Point(109, 103);
+            this.dtChild3Priest.Name = "dtChild3Priest";
+            this.dtChild3Priest.ShowCheckBox = true;
+            this.dtChild3Priest.Size = new System.Drawing.Size(151, 21);
+            this.dtChild3Priest.TabIndex = 60;
+            // 
+            // dtChild3Confirmation
+            // 
+            this.dtChild3Confirmation.Checked = false;
+            this.dtChild3Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild3Confirmation.Location = new System.Drawing.Point(109, 61);
+            this.dtChild3Confirmation.Name = "dtChild3Confirmation";
+            this.dtChild3Confirmation.ShowCheckBox = true;
+            this.dtChild3Confirmation.Size = new System.Drawing.Size(151, 21);
+            this.dtChild3Confirmation.TabIndex = 59;
+            // 
+            // dtChild3Baptism
+            // 
+            this.dtChild3Baptism.Checked = false;
+            this.dtChild3Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild3Baptism.Location = new System.Drawing.Point(109, 24);
+            this.dtChild3Baptism.Name = "dtChild3Baptism";
+            this.dtChild3Baptism.ShowCheckBox = true;
+            this.dtChild3Baptism.Size = new System.Drawing.Size(151, 21);
+            this.dtChild3Baptism.TabIndex = 58;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(22, 108);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(66, 15);
+            this.label60.TabIndex = 39;
+            this.label60.Text = "Priesthood";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.Location = new System.Drawing.Point(273, 67);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(65, 15);
+            this.label61.TabIndex = 37;
+            this.label61.Text = "Matrimony";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.Location = new System.Drawing.Point(268, 25);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(101, 15);
+            this.label62.TabIndex = 35;
+            this.label62.Text = "First Communion";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(19, 24);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(81, 15);
+            this.label63.TabIndex = 33;
+            this.label63.Text = "Baptism Date";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.Location = new System.Drawing.Point(21, 61);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(77, 15);
+            this.label64.TabIndex = 31;
+            this.label64.Text = "Confirmation";
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel12.Controls.Add(this.checkBoxChild3IsTeacher);
+            this.panel12.Controls.Add(this.checkBoxChild3IsChoir);
+            this.panel12.Controls.Add(this.checkBoxChild3IsStudent);
+            this.panel12.Controls.Add(this.checkBoxChild3IsYOuth);
+            this.panel12.Controls.Add(this.checkBoxChild3IsLOM);
+            this.panel12.Controls.Add(this.checkBoxChild3IsAdmin);
+            this.panel12.Controls.Add(this.checkBoxChild3IsAlter);
+            this.panel12.Controls.Add(this.checkBoxChild3VincentDePaul);
+            this.panel12.Location = new System.Drawing.Point(33, 139);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(494, 140);
+            this.panel12.TabIndex = 51;
+            // 
+            // checkBoxChild3IsTeacher
+            // 
+            this.checkBoxChild3IsTeacher.AutoSize = true;
+            this.checkBoxChild3IsTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild3IsTeacher.Location = new System.Drawing.Point(168, 108);
+            this.checkBoxChild3IsTeacher.Name = "checkBoxChild3IsTeacher";
+            this.checkBoxChild3IsTeacher.Size = new System.Drawing.Size(132, 19);
+            this.checkBoxChild3IsTeacher.TabIndex = 42;
+            this.checkBoxChild3IsTeacher.Text = "Catechism Teacher";
+            this.checkBoxChild3IsTeacher.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild3IsChoir
+            // 
+            this.checkBoxChild3IsChoir.AutoSize = true;
+            this.checkBoxChild3IsChoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild3IsChoir.Location = new System.Drawing.Point(330, 65);
+            this.checkBoxChild3IsChoir.Name = "checkBoxChild3IsChoir";
+            this.checkBoxChild3IsChoir.Size = new System.Drawing.Size(55, 19);
+            this.checkBoxChild3IsChoir.TabIndex = 41;
+            this.checkBoxChild3IsChoir.Text = "Choir";
+            this.checkBoxChild3IsChoir.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild3IsStudent
+            // 
+            this.checkBoxChild3IsStudent.AutoSize = true;
+            this.checkBoxChild3IsStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild3IsStudent.Location = new System.Drawing.Point(14, 108);
+            this.checkBoxChild3IsStudent.Name = "checkBoxChild3IsStudent";
+            this.checkBoxChild3IsStudent.Size = new System.Drawing.Size(129, 19);
+            this.checkBoxChild3IsStudent.TabIndex = 40;
+            this.checkBoxChild3IsStudent.Text = "Catechism Student";
+            this.checkBoxChild3IsStudent.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild3IsYOuth
+            // 
+            this.checkBoxChild3IsYOuth.AutoSize = true;
+            this.checkBoxChild3IsYOuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild3IsYOuth.Location = new System.Drawing.Point(330, 20);
+            this.checkBoxChild3IsYOuth.Name = "checkBoxChild3IsYOuth";
+            this.checkBoxChild3IsYOuth.Size = new System.Drawing.Size(94, 19);
+            this.checkBoxChild3IsYOuth.TabIndex = 39;
+            this.checkBoxChild3IsYOuth.Text = "Youth Group";
+            this.checkBoxChild3IsYOuth.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild3IsLOM
+            // 
+            this.checkBoxChild3IsLOM.AutoSize = true;
+            this.checkBoxChild3IsLOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild3IsLOM.Location = new System.Drawing.Point(166, 20);
+            this.checkBoxChild3IsLOM.Name = "checkBoxChild3IsLOM";
+            this.checkBoxChild3IsLOM.Size = new System.Drawing.Size(107, 19);
+            this.checkBoxChild3IsLOM.TabIndex = 37;
+            this.checkBoxChild3IsLOM.Text = "Legion of Mary";
+            this.checkBoxChild3IsLOM.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild3IsAdmin
+            // 
+            this.checkBoxChild3IsAdmin.AutoSize = true;
+            this.checkBoxChild3IsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild3IsAdmin.Location = new System.Drawing.Point(14, 20);
+            this.checkBoxChild3IsAdmin.Name = "checkBoxChild3IsAdmin";
+            this.checkBoxChild3IsAdmin.Size = new System.Drawing.Size(146, 19);
+            this.checkBoxChild3IsAdmin.TabIndex = 35;
+            this.checkBoxChild3IsAdmin.Text = "Administrative Council";
+            this.checkBoxChild3IsAdmin.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild3IsAlter
+            // 
+            this.checkBoxChild3IsAlter.AutoSize = true;
+            this.checkBoxChild3IsAlter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild3IsAlter.Location = new System.Drawing.Point(14, 65);
+            this.checkBoxChild3IsAlter.Name = "checkBoxChild3IsAlter";
+            this.checkBoxChild3IsAlter.Size = new System.Drawing.Size(99, 19);
+            this.checkBoxChild3IsAlter.TabIndex = 36;
+            this.checkBoxChild3IsAlter.Text = "Alter Services";
+            this.checkBoxChild3IsAlter.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxChild3VincentDePaul
+            // 
+            this.checkBoxChild3VincentDePaul.AutoSize = true;
+            this.checkBoxChild3VincentDePaul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChild3VincentDePaul.Location = new System.Drawing.Point(166, 65);
+            this.checkBoxChild3VincentDePaul.Name = "checkBoxChild3VincentDePaul";
+            this.checkBoxChild3VincentDePaul.Size = new System.Drawing.Size(154, 19);
+            this.checkBoxChild3VincentDePaul.TabIndex = 38;
+            this.checkBoxChild3VincentDePaul.Text = "St. Vincent De Paul Soc";
+            this.checkBoxChild3VincentDePaul.UseVisualStyleBackColor = true;
             // 
             // label58
             // 
@@ -1823,12 +2559,152 @@
             this.child4Groupbox.Controls.Add(this.label85);
             this.child4Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child4Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child4Groupbox.Location = new System.Drawing.Point(3, 1698);
+            this.child4Groupbox.Location = new System.Drawing.Point(3, 1717);
             this.child4Groupbox.Name = "child4Groupbox";
-            this.child4Groupbox.Size = new System.Drawing.Size(1097, 295);
+            this.child4Groupbox.Size = new System.Drawing.Size(1101, 295);
             this.child4Groupbox.TabIndex = 57;
             this.child4Groupbox.TabStop = false;
             this.child4Groupbox.Text = "Child - 4";
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel16.Controls.Add(this.dtChild4Marriage);
+            this.panel16.Controls.Add(this.dtChild4Communion);
+            this.panel16.Controls.Add(this.dtChild4Priest);
+            this.panel16.Controls.Add(this.dtChild4Confirmation);
+            this.panel16.Controls.Add(this.dtChild4Baptism);
+            this.panel16.Controls.Add(this.label74);
+            this.panel16.Controls.Add(this.label75);
+            this.panel16.Controls.Add(this.label76);
+            this.panel16.Controls.Add(this.label77);
+            this.panel16.Controls.Add(this.label78);
+            this.panel16.Location = new System.Drawing.Point(548, 140);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(534, 140);
+            this.panel16.TabIndex = 63;
+            // 
+            // dtChild4Marriage
+            // 
+            this.dtChild4Marriage.Checked = false;
+            this.dtChild4Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild4Marriage.Location = new System.Drawing.Point(378, 63);
+            this.dtChild4Marriage.Name = "dtChild4Marriage";
+            this.dtChild4Marriage.ShowCheckBox = true;
+            this.dtChild4Marriage.Size = new System.Drawing.Size(151, 21);
+            this.dtChild4Marriage.TabIndex = 62;
+            // 
+            // dtChild4Communion
+            // 
+            this.dtChild4Communion.Checked = false;
+            this.dtChild4Communion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild4Communion.Location = new System.Drawing.Point(378, 24);
+            this.dtChild4Communion.Name = "dtChild4Communion";
+            this.dtChild4Communion.ShowCheckBox = true;
+            this.dtChild4Communion.Size = new System.Drawing.Size(151, 21);
+            this.dtChild4Communion.TabIndex = 61;
+            // 
+            // dtChild4Priest
+            // 
+            this.dtChild4Priest.Checked = false;
+            this.dtChild4Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild4Priest.Location = new System.Drawing.Point(109, 103);
+            this.dtChild4Priest.Name = "dtChild4Priest";
+            this.dtChild4Priest.ShowCheckBox = true;
+            this.dtChild4Priest.Size = new System.Drawing.Size(151, 21);
+            this.dtChild4Priest.TabIndex = 60;
+            // 
+            // dtChild4Confirmation
+            // 
+            this.dtChild4Confirmation.Checked = false;
+            this.dtChild4Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild4Confirmation.Location = new System.Drawing.Point(109, 61);
+            this.dtChild4Confirmation.Name = "dtChild4Confirmation";
+            this.dtChild4Confirmation.ShowCheckBox = true;
+            this.dtChild4Confirmation.Size = new System.Drawing.Size(151, 21);
+            this.dtChild4Confirmation.TabIndex = 59;
+            // 
+            // dtChild4Baptism
+            // 
+            this.dtChild4Baptism.Checked = false;
+            this.dtChild4Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild4Baptism.Location = new System.Drawing.Point(109, 24);
+            this.dtChild4Baptism.Name = "dtChild4Baptism";
+            this.dtChild4Baptism.ShowCheckBox = true;
+            this.dtChild4Baptism.Size = new System.Drawing.Size(151, 21);
+            this.dtChild4Baptism.TabIndex = 58;
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.Location = new System.Drawing.Point(22, 108);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(66, 15);
+            this.label74.TabIndex = 39;
+            this.label74.Text = "Priesthood";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(273, 67);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(65, 15);
+            this.label75.TabIndex = 37;
+            this.label75.Text = "Matrimony";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(268, 25);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(101, 15);
+            this.label76.TabIndex = 35;
+            this.label76.Text = "First Communion";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(19, 24);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(81, 15);
+            this.label77.TabIndex = 33;
+            this.label77.Text = "Baptism Date";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(21, 61);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(77, 15);
+            this.label78.TabIndex = 31;
+            this.label78.Text = "Confirmation";
+            // 
+            // comboBoxChild4Relation
+            // 
+            this.comboBoxChild4Relation.FormattingEnabled = true;
+            this.comboBoxChild4Relation.Items.AddRange(new object[] {
+            "Son",
+            "Daughter",
+            "Others"});
+            this.comboBoxChild4Relation.Location = new System.Drawing.Point(658, 48);
+            this.comboBoxChild4Relation.Name = "comboBoxChild4Relation";
+            this.comboBoxChild4Relation.Size = new System.Drawing.Size(157, 24);
+            this.comboBoxChild4Relation.TabIndex = 58;
+            // 
+            // dtChild4DOB
+            // 
+            this.dtChild4DOB.Checked = false;
+            this.dtChild4DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtChild4DOB.Location = new System.Drawing.Point(378, 41);
+            this.dtChild4DOB.Name = "dtChild4DOB";
+            this.dtChild4DOB.ShowCheckBox = true;
+            this.dtChild4DOB.Size = new System.Drawing.Size(160, 21);
+            this.dtChild4DOB.TabIndex = 58;
             // 
             // label72
             // 
@@ -2099,12 +2975,34 @@
             this.child5Groupbox.Controls.Add(this.label99);
             this.child5Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child5Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child5Groupbox.Location = new System.Drawing.Point(3, 1999);
+            this.child5Groupbox.Location = new System.Drawing.Point(3, 2018);
             this.child5Groupbox.Name = "child5Groupbox";
-            this.child5Groupbox.Size = new System.Drawing.Size(1097, 304);
+            this.child5Groupbox.Size = new System.Drawing.Size(1101, 304);
             this.child5Groupbox.TabIndex = 58;
             this.child5Groupbox.TabStop = false;
             this.child5Groupbox.Text = "Child - 5";
+            // 
+            // child5DOB
+            // 
+            this.child5DOB.Checked = false;
+            this.child5DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child5DOB.Location = new System.Drawing.Point(378, 48);
+            this.child5DOB.Name = "child5DOB";
+            this.child5DOB.ShowCheckBox = true;
+            this.child5DOB.Size = new System.Drawing.Size(160, 21);
+            this.child5DOB.TabIndex = 57;
+            // 
+            // child5Relation
+            // 
+            this.child5Relation.FormattingEnabled = true;
+            this.child5Relation.Items.AddRange(new object[] {
+            "Son",
+            "Daughter",
+            "Others"});
+            this.child5Relation.Location = new System.Drawing.Point(657, 47);
+            this.child5Relation.Name = "child5Relation";
+            this.child5Relation.Size = new System.Drawing.Size(158, 24);
+            this.child5Relation.TabIndex = 57;
             // 
             // label86
             // 
@@ -2261,6 +3159,56 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(534, 140);
             this.panel11.TabIndex = 49;
+            // 
+            // child5Marriage
+            // 
+            this.child5Marriage.Checked = false;
+            this.child5Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child5Marriage.Location = new System.Drawing.Point(378, 63);
+            this.child5Marriage.Name = "child5Marriage";
+            this.child5Marriage.ShowCheckBox = true;
+            this.child5Marriage.Size = new System.Drawing.Size(151, 21);
+            this.child5Marriage.TabIndex = 62;
+            // 
+            // child5Communion
+            // 
+            this.child5Communion.Checked = false;
+            this.child5Communion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child5Communion.Location = new System.Drawing.Point(378, 24);
+            this.child5Communion.Name = "child5Communion";
+            this.child5Communion.ShowCheckBox = true;
+            this.child5Communion.Size = new System.Drawing.Size(151, 21);
+            this.child5Communion.TabIndex = 61;
+            // 
+            // child5Priest
+            // 
+            this.child5Priest.Checked = false;
+            this.child5Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child5Priest.Location = new System.Drawing.Point(109, 103);
+            this.child5Priest.Name = "child5Priest";
+            this.child5Priest.ShowCheckBox = true;
+            this.child5Priest.Size = new System.Drawing.Size(151, 21);
+            this.child5Priest.TabIndex = 60;
+            // 
+            // child5Confirmation
+            // 
+            this.child5Confirmation.Checked = false;
+            this.child5Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child5Confirmation.Location = new System.Drawing.Point(109, 61);
+            this.child5Confirmation.Name = "child5Confirmation";
+            this.child5Confirmation.ShowCheckBox = true;
+            this.child5Confirmation.Size = new System.Drawing.Size(151, 21);
+            this.child5Confirmation.TabIndex = 59;
+            // 
+            // child5Baptism
+            // 
+            this.child5Baptism.Checked = false;
+            this.child5Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.child5Baptism.Location = new System.Drawing.Point(109, 24);
+            this.child5Baptism.Name = "child5Baptism";
+            this.child5Baptism.ShowCheckBox = true;
+            this.child5Baptism.Size = new System.Drawing.Size(151, 21);
+            this.child5Baptism.TabIndex = 58;
             // 
             // label88
             // 
@@ -2438,12 +3386,30 @@
             this.relation1Groupbox.Controls.Add(this.label113);
             this.relation1Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.relation1Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.relation1Groupbox.Location = new System.Drawing.Point(3, 2309);
+            this.relation1Groupbox.Location = new System.Drawing.Point(3, 2328);
             this.relation1Groupbox.Name = "relation1Groupbox";
-            this.relation1Groupbox.Size = new System.Drawing.Size(1097, 304);
+            this.relation1Groupbox.Size = new System.Drawing.Size(1101, 304);
             this.relation1Groupbox.TabIndex = 59;
             this.relation1Groupbox.TabStop = false;
             this.relation1Groupbox.Text = "Other Relation - 1";
+            // 
+            // relation1Combobox
+            // 
+            this.relation1Combobox.FormattingEnabled = true;
+            this.relation1Combobox.Items.AddRange(new object[] {
+            "Brother",
+            "Sister",
+            "Brother-In-Law",
+            "Sister-In-Law",
+            "Father",
+            "Mother",
+            "Father-In-Law",
+            "Mother-In-Law",
+            "Others"});
+            this.relation1Combobox.Location = new System.Drawing.Point(657, 49);
+            this.relation1Combobox.Name = "relation1Combobox";
+            this.relation1Combobox.Size = new System.Drawing.Size(118, 24);
+            this.relation1Combobox.TabIndex = 56;
             // 
             // label100
             // 
@@ -2751,6 +3717,7 @@
             // otherRelation2Groupbox
             // 
             this.otherRelation2Groupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.otherRelation2Groupbox.Controls.Add(this.checkBox1);
             this.otherRelation2Groupbox.Controls.Add(this.other2Combobox);
             this.otherRelation2Groupbox.Controls.Add(this.label101);
             this.otherRelation2Groupbox.Controls.Add(this.txtOther2Whatsapp);
@@ -2769,12 +3736,40 @@
             this.otherRelation2Groupbox.Controls.Add(this.label121);
             this.otherRelation2Groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.otherRelation2Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.otherRelation2Groupbox.Location = new System.Drawing.Point(3, 2619);
+            this.otherRelation2Groupbox.Location = new System.Drawing.Point(3, 2638);
             this.otherRelation2Groupbox.Name = "otherRelation2Groupbox";
-            this.otherRelation2Groupbox.Size = new System.Drawing.Size(1097, 304);
+            this.otherRelation2Groupbox.Size = new System.Drawing.Size(1101, 304);
             this.otherRelation2Groupbox.TabIndex = 60;
             this.otherRelation2Groupbox.TabStop = false;
             this.otherRelation2Groupbox.Text = "Other Relation - 2";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(3, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(95, 21);
+            this.checkBox1.TabIndex = 56;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // other2Combobox
+            // 
+            this.other2Combobox.FormattingEnabled = true;
+            this.other2Combobox.Items.AddRange(new object[] {
+            "Brother",
+            "Sister",
+            "Brother-In-Law",
+            "Sister-In-Law",
+            "Father",
+            "Mother",
+            "Father-In-Law",
+            "Mother-In-Law",
+            "Others"});
+            this.other2Combobox.Location = new System.Drawing.Point(657, 53);
+            this.other2Combobox.Name = "other2Combobox";
+            this.other2Combobox.Size = new System.Drawing.Size(118, 24);
+            this.other2Combobox.TabIndex = 55;
             // 
             // label101
             // 
@@ -3090,7 +4085,7 @@
             this.panel5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel5.Location = new System.Drawing.Point(23, 832);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1128, 57);
+            this.panel5.Size = new System.Drawing.Size(1138, 57);
             this.panel5.TabIndex = 2;
             // 
             // btnSubmit
@@ -3099,7 +4094,7 @@
             this.btnSubmit.BackColor = System.Drawing.Color.White;
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnSubmit.Location = new System.Drawing.Point(940, 14);
+            this.btnSubmit.Location = new System.Drawing.Point(950, 14);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(160, 27);
             this.btnSubmit.TabIndex = 2;
@@ -3113,7 +4108,7 @@
             this.btnAddOtherRelation.BackColor = System.Drawing.Color.White;
             this.btnAddOtherRelation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddOtherRelation.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddOtherRelation.Location = new System.Drawing.Point(764, 14);
+            this.btnAddOtherRelation.Location = new System.Drawing.Point(774, 14);
             this.btnAddOtherRelation.Name = "btnAddOtherRelation";
             this.btnAddOtherRelation.Size = new System.Drawing.Size(160, 27);
             this.btnAddOtherRelation.TabIndex = 1;
@@ -3127,7 +4122,7 @@
             this.btnAddChildren.BackColor = System.Drawing.Color.White;
             this.btnAddChildren.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddChildren.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnAddChildren.Location = new System.Drawing.Point(580, 14);
+            this.btnAddChildren.Location = new System.Drawing.Point(590, 14);
             this.btnAddChildren.Name = "btnAddChildren";
             this.btnAddChildren.Size = new System.Drawing.Size(160, 27);
             this.btnAddChildren.TabIndex = 0;
@@ -3135,983 +4130,13 @@
             this.btnAddChildren.UseVisualStyleBackColor = false;
             this.btnAddChildren.Click += new System.EventHandler(this.btnAddChildren_Click);
             // 
-            // other2Combobox
-            // 
-            this.other2Combobox.FormattingEnabled = true;
-            this.other2Combobox.Items.AddRange(new object[] {
-            "Brother",
-            "Sister",
-            "Brother-In-Law",
-            "Sister-In-Law",
-            "Father",
-            "Mother",
-            "Father-In-Law",
-            "Mother-In-Law",
-            "Others"});
-            this.other2Combobox.Location = new System.Drawing.Point(657, 53);
-            this.other2Combobox.Name = "other2Combobox";
-            this.other2Combobox.Size = new System.Drawing.Size(118, 24);
-            this.other2Combobox.TabIndex = 55;
-            // 
-            // relation1Combobox
-            // 
-            this.relation1Combobox.FormattingEnabled = true;
-            this.relation1Combobox.Items.AddRange(new object[] {
-            "Brother",
-            "Sister",
-            "Brother-In-Law",
-            "Sister-In-Law",
-            "Father",
-            "Mother",
-            "Father-In-Law",
-            "Mother-In-Law",
-            "Others"});
-            this.relation1Combobox.Location = new System.Drawing.Point(657, 49);
-            this.relation1Combobox.Name = "relation1Combobox";
-            this.relation1Combobox.Size = new System.Drawing.Size(118, 24);
-            this.relation1Combobox.TabIndex = 56;
-            // 
-            // child5Relation
-            // 
-            this.child5Relation.FormattingEnabled = true;
-            this.child5Relation.Items.AddRange(new object[] {
-            "Son",
-            "Daughter",
-            "Others"});
-            this.child5Relation.Location = new System.Drawing.Point(657, 47);
-            this.child5Relation.Name = "child5Relation";
-            this.child5Relation.Size = new System.Drawing.Size(158, 24);
-            this.child5Relation.TabIndex = 57;
-            // 
-            // child5DOB
-            // 
-            this.child5DOB.Checked = false;
-            this.child5DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.child5DOB.Location = new System.Drawing.Point(378, 48);
-            this.child5DOB.Name = "child5DOB";
-            this.child5DOB.ShowCheckBox = true;
-            this.child5DOB.Size = new System.Drawing.Size(160, 21);
-            this.child5DOB.TabIndex = 57;
-            // 
-            // child5Baptism
-            // 
-            this.child5Baptism.Checked = false;
-            this.child5Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.child5Baptism.Location = new System.Drawing.Point(109, 24);
-            this.child5Baptism.Name = "child5Baptism";
-            this.child5Baptism.ShowCheckBox = true;
-            this.child5Baptism.Size = new System.Drawing.Size(151, 21);
-            this.child5Baptism.TabIndex = 58;
-            // 
-            // child5Confirmation
-            // 
-            this.child5Confirmation.Checked = false;
-            this.child5Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.child5Confirmation.Location = new System.Drawing.Point(109, 61);
-            this.child5Confirmation.Name = "child5Confirmation";
-            this.child5Confirmation.ShowCheckBox = true;
-            this.child5Confirmation.Size = new System.Drawing.Size(151, 21);
-            this.child5Confirmation.TabIndex = 59;
-            // 
-            // child5Priest
-            // 
-            this.child5Priest.Checked = false;
-            this.child5Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.child5Priest.Location = new System.Drawing.Point(109, 103);
-            this.child5Priest.Name = "child5Priest";
-            this.child5Priest.ShowCheckBox = true;
-            this.child5Priest.Size = new System.Drawing.Size(151, 21);
-            this.child5Priest.TabIndex = 60;
-            // 
-            // child5Communion
-            // 
-            this.child5Communion.Checked = false;
-            this.child5Communion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.child5Communion.Location = new System.Drawing.Point(378, 24);
-            this.child5Communion.Name = "child5Communion";
-            this.child5Communion.ShowCheckBox = true;
-            this.child5Communion.Size = new System.Drawing.Size(151, 21);
-            this.child5Communion.TabIndex = 61;
-            // 
-            // child5Marriage
-            // 
-            this.child5Marriage.Checked = false;
-            this.child5Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.child5Marriage.Location = new System.Drawing.Point(378, 63);
-            this.child5Marriage.Name = "child5Marriage";
-            this.child5Marriage.ShowCheckBox = true;
-            this.child5Marriage.Size = new System.Drawing.Size(151, 21);
-            this.child5Marriage.TabIndex = 62;
-            // 
-            // dtChild4DOB
-            // 
-            this.dtChild4DOB.Checked = false;
-            this.dtChild4DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild4DOB.Location = new System.Drawing.Point(378, 41);
-            this.dtChild4DOB.Name = "dtChild4DOB";
-            this.dtChild4DOB.ShowCheckBox = true;
-            this.dtChild4DOB.Size = new System.Drawing.Size(160, 21);
-            this.dtChild4DOB.TabIndex = 58;
-            // 
-            // comboBoxChild4Relation
-            // 
-            this.comboBoxChild4Relation.FormattingEnabled = true;
-            this.comboBoxChild4Relation.Items.AddRange(new object[] {
-            "Son",
-            "Daughter",
-            "Others"});
-            this.comboBoxChild4Relation.Location = new System.Drawing.Point(658, 48);
-            this.comboBoxChild4Relation.Name = "comboBoxChild4Relation";
-            this.comboBoxChild4Relation.Size = new System.Drawing.Size(157, 24);
-            this.comboBoxChild4Relation.TabIndex = 58;
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel16.Controls.Add(this.dtChild4Marriage);
-            this.panel16.Controls.Add(this.dtChild4Communion);
-            this.panel16.Controls.Add(this.dtChild4Priest);
-            this.panel16.Controls.Add(this.dtChild4Confirmation);
-            this.panel16.Controls.Add(this.dtChild4Baptism);
-            this.panel16.Controls.Add(this.label74);
-            this.panel16.Controls.Add(this.label75);
-            this.panel16.Controls.Add(this.label76);
-            this.panel16.Controls.Add(this.label77);
-            this.panel16.Controls.Add(this.label78);
-            this.panel16.Location = new System.Drawing.Point(548, 140);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(534, 140);
-            this.panel16.TabIndex = 63;
-            // 
-            // dtChild4Marriage
-            // 
-            this.dtChild4Marriage.Checked = false;
-            this.dtChild4Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild4Marriage.Location = new System.Drawing.Point(378, 63);
-            this.dtChild4Marriage.Name = "dtChild4Marriage";
-            this.dtChild4Marriage.ShowCheckBox = true;
-            this.dtChild4Marriage.Size = new System.Drawing.Size(151, 21);
-            this.dtChild4Marriage.TabIndex = 62;
-            // 
-            // dtChild4Communion
-            // 
-            this.dtChild4Communion.Checked = false;
-            this.dtChild4Communion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild4Communion.Location = new System.Drawing.Point(378, 24);
-            this.dtChild4Communion.Name = "dtChild4Communion";
-            this.dtChild4Communion.ShowCheckBox = true;
-            this.dtChild4Communion.Size = new System.Drawing.Size(151, 21);
-            this.dtChild4Communion.TabIndex = 61;
-            // 
-            // dtChild4Priest
-            // 
-            this.dtChild4Priest.Checked = false;
-            this.dtChild4Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild4Priest.Location = new System.Drawing.Point(109, 103);
-            this.dtChild4Priest.Name = "dtChild4Priest";
-            this.dtChild4Priest.ShowCheckBox = true;
-            this.dtChild4Priest.Size = new System.Drawing.Size(151, 21);
-            this.dtChild4Priest.TabIndex = 60;
-            // 
-            // dtChild4Confirmation
-            // 
-            this.dtChild4Confirmation.Checked = false;
-            this.dtChild4Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild4Confirmation.Location = new System.Drawing.Point(109, 61);
-            this.dtChild4Confirmation.Name = "dtChild4Confirmation";
-            this.dtChild4Confirmation.ShowCheckBox = true;
-            this.dtChild4Confirmation.Size = new System.Drawing.Size(151, 21);
-            this.dtChild4Confirmation.TabIndex = 59;
-            // 
-            // dtChild4Baptism
-            // 
-            this.dtChild4Baptism.Checked = false;
-            this.dtChild4Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild4Baptism.Location = new System.Drawing.Point(109, 24);
-            this.dtChild4Baptism.Name = "dtChild4Baptism";
-            this.dtChild4Baptism.ShowCheckBox = true;
-            this.dtChild4Baptism.Size = new System.Drawing.Size(151, 21);
-            this.dtChild4Baptism.TabIndex = 58;
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label74.Location = new System.Drawing.Point(22, 108);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(66, 15);
-            this.label74.TabIndex = 39;
-            this.label74.Text = "Priesthood";
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.Location = new System.Drawing.Point(273, 67);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(65, 15);
-            this.label75.TabIndex = 37;
-            this.label75.Text = "Matrimony";
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.Location = new System.Drawing.Point(268, 25);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(101, 15);
-            this.label76.TabIndex = 35;
-            this.label76.Text = "First Communion";
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.Location = new System.Drawing.Point(19, 24);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(81, 15);
-            this.label77.TabIndex = 33;
-            this.label77.Text = "Baptism Date";
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.Location = new System.Drawing.Point(21, 61);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(77, 15);
-            this.label78.TabIndex = 31;
-            this.label78.Text = "Confirmation";
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel12.Controls.Add(this.checkBoxChild3IsTeacher);
-            this.panel12.Controls.Add(this.checkBoxChild3IsChoir);
-            this.panel12.Controls.Add(this.checkBoxChild3IsStudent);
-            this.panel12.Controls.Add(this.checkBoxChild3IsYOuth);
-            this.panel12.Controls.Add(this.checkBoxChild3IsLOM);
-            this.panel12.Controls.Add(this.checkBoxChild3IsAdmin);
-            this.panel12.Controls.Add(this.checkBoxChild3IsAlter);
-            this.panel12.Controls.Add(this.checkBoxChild3VincentDePaul);
-            this.panel12.Location = new System.Drawing.Point(33, 139);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(494, 140);
-            this.panel12.TabIndex = 51;
-            // 
-            // checkBoxChild3IsTeacher
-            // 
-            this.checkBoxChild3IsTeacher.AutoSize = true;
-            this.checkBoxChild3IsTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild3IsTeacher.Location = new System.Drawing.Point(168, 108);
-            this.checkBoxChild3IsTeacher.Name = "checkBoxChild3IsTeacher";
-            this.checkBoxChild3IsTeacher.Size = new System.Drawing.Size(132, 19);
-            this.checkBoxChild3IsTeacher.TabIndex = 42;
-            this.checkBoxChild3IsTeacher.Text = "Catechism Teacher";
-            this.checkBoxChild3IsTeacher.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild3IsChoir
-            // 
-            this.checkBoxChild3IsChoir.AutoSize = true;
-            this.checkBoxChild3IsChoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild3IsChoir.Location = new System.Drawing.Point(330, 65);
-            this.checkBoxChild3IsChoir.Name = "checkBoxChild3IsChoir";
-            this.checkBoxChild3IsChoir.Size = new System.Drawing.Size(55, 19);
-            this.checkBoxChild3IsChoir.TabIndex = 41;
-            this.checkBoxChild3IsChoir.Text = "Choir";
-            this.checkBoxChild3IsChoir.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild3IsStudent
-            // 
-            this.checkBoxChild3IsStudent.AutoSize = true;
-            this.checkBoxChild3IsStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild3IsStudent.Location = new System.Drawing.Point(14, 108);
-            this.checkBoxChild3IsStudent.Name = "checkBoxChild3IsStudent";
-            this.checkBoxChild3IsStudent.Size = new System.Drawing.Size(129, 19);
-            this.checkBoxChild3IsStudent.TabIndex = 40;
-            this.checkBoxChild3IsStudent.Text = "Catechism Student";
-            this.checkBoxChild3IsStudent.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild3IsYOuth
-            // 
-            this.checkBoxChild3IsYOuth.AutoSize = true;
-            this.checkBoxChild3IsYOuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild3IsYOuth.Location = new System.Drawing.Point(330, 20);
-            this.checkBoxChild3IsYOuth.Name = "checkBoxChild3IsYOuth";
-            this.checkBoxChild3IsYOuth.Size = new System.Drawing.Size(94, 19);
-            this.checkBoxChild3IsYOuth.TabIndex = 39;
-            this.checkBoxChild3IsYOuth.Text = "Youth Group";
-            this.checkBoxChild3IsYOuth.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild3IsLOM
-            // 
-            this.checkBoxChild3IsLOM.AutoSize = true;
-            this.checkBoxChild3IsLOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild3IsLOM.Location = new System.Drawing.Point(166, 20);
-            this.checkBoxChild3IsLOM.Name = "checkBoxChild3IsLOM";
-            this.checkBoxChild3IsLOM.Size = new System.Drawing.Size(107, 19);
-            this.checkBoxChild3IsLOM.TabIndex = 37;
-            this.checkBoxChild3IsLOM.Text = "Legion of Mary";
-            this.checkBoxChild3IsLOM.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild3IsAdmin
-            // 
-            this.checkBoxChild3IsAdmin.AutoSize = true;
-            this.checkBoxChild3IsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild3IsAdmin.Location = new System.Drawing.Point(14, 20);
-            this.checkBoxChild3IsAdmin.Name = "checkBoxChild3IsAdmin";
-            this.checkBoxChild3IsAdmin.Size = new System.Drawing.Size(146, 19);
-            this.checkBoxChild3IsAdmin.TabIndex = 35;
-            this.checkBoxChild3IsAdmin.Text = "Administrative Council";
-            this.checkBoxChild3IsAdmin.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild3IsAlter
-            // 
-            this.checkBoxChild3IsAlter.AutoSize = true;
-            this.checkBoxChild3IsAlter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild3IsAlter.Location = new System.Drawing.Point(14, 65);
-            this.checkBoxChild3IsAlter.Name = "checkBoxChild3IsAlter";
-            this.checkBoxChild3IsAlter.Size = new System.Drawing.Size(99, 19);
-            this.checkBoxChild3IsAlter.TabIndex = 36;
-            this.checkBoxChild3IsAlter.Text = "Alter Services";
-            this.checkBoxChild3IsAlter.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild3VincentDePaul
-            // 
-            this.checkBoxChild3VincentDePaul.AutoSize = true;
-            this.checkBoxChild3VincentDePaul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild3VincentDePaul.Location = new System.Drawing.Point(166, 65);
-            this.checkBoxChild3VincentDePaul.Name = "checkBoxChild3VincentDePaul";
-            this.checkBoxChild3VincentDePaul.Size = new System.Drawing.Size(154, 19);
-            this.checkBoxChild3VincentDePaul.TabIndex = 38;
-            this.checkBoxChild3VincentDePaul.Text = "St. Vincent De Paul Soc";
-            this.checkBoxChild3VincentDePaul.UseVisualStyleBackColor = true;
-            // 
-            // panel13
-            // 
-            this.panel13.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel13.Controls.Add(this.dtChild3Marriage);
-            this.panel13.Controls.Add(this.dtChild3Communion);
-            this.panel13.Controls.Add(this.dtChild3Priest);
-            this.panel13.Controls.Add(this.dtChild3Confirmation);
-            this.panel13.Controls.Add(this.dtChild3Baptism);
-            this.panel13.Controls.Add(this.label60);
-            this.panel13.Controls.Add(this.label61);
-            this.panel13.Controls.Add(this.label62);
-            this.panel13.Controls.Add(this.label63);
-            this.panel13.Controls.Add(this.label64);
-            this.panel13.Location = new System.Drawing.Point(548, 139);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(534, 140);
-            this.panel13.TabIndex = 64;
-            // 
-            // dtChild3Marriage
-            // 
-            this.dtChild3Marriage.Checked = false;
-            this.dtChild3Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild3Marriage.Location = new System.Drawing.Point(378, 63);
-            this.dtChild3Marriage.Name = "dtChild3Marriage";
-            this.dtChild3Marriage.ShowCheckBox = true;
-            this.dtChild3Marriage.Size = new System.Drawing.Size(151, 21);
-            this.dtChild3Marriage.TabIndex = 62;
-            // 
-            // dtChild3Communion
-            // 
-            this.dtChild3Communion.Checked = false;
-            this.dtChild3Communion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild3Communion.Location = new System.Drawing.Point(378, 24);
-            this.dtChild3Communion.Name = "dtChild3Communion";
-            this.dtChild3Communion.ShowCheckBox = true;
-            this.dtChild3Communion.Size = new System.Drawing.Size(151, 21);
-            this.dtChild3Communion.TabIndex = 61;
-            // 
-            // dtChild3Priest
-            // 
-            this.dtChild3Priest.Checked = false;
-            this.dtChild3Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild3Priest.Location = new System.Drawing.Point(109, 103);
-            this.dtChild3Priest.Name = "dtChild3Priest";
-            this.dtChild3Priest.ShowCheckBox = true;
-            this.dtChild3Priest.Size = new System.Drawing.Size(151, 21);
-            this.dtChild3Priest.TabIndex = 60;
-            // 
-            // dtChild3Confirmation
-            // 
-            this.dtChild3Confirmation.Checked = false;
-            this.dtChild3Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild3Confirmation.Location = new System.Drawing.Point(109, 61);
-            this.dtChild3Confirmation.Name = "dtChild3Confirmation";
-            this.dtChild3Confirmation.ShowCheckBox = true;
-            this.dtChild3Confirmation.Size = new System.Drawing.Size(151, 21);
-            this.dtChild3Confirmation.TabIndex = 59;
-            // 
-            // dtChild3Baptism
-            // 
-            this.dtChild3Baptism.Checked = false;
-            this.dtChild3Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild3Baptism.Location = new System.Drawing.Point(109, 24);
-            this.dtChild3Baptism.Name = "dtChild3Baptism";
-            this.dtChild3Baptism.ShowCheckBox = true;
-            this.dtChild3Baptism.Size = new System.Drawing.Size(151, 21);
-            this.dtChild3Baptism.TabIndex = 58;
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(22, 108);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(66, 15);
-            this.label60.TabIndex = 39;
-            this.label60.Text = "Priesthood";
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.Location = new System.Drawing.Point(273, 67);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(65, 15);
-            this.label61.TabIndex = 37;
-            this.label61.Text = "Matrimony";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.Location = new System.Drawing.Point(268, 25);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(101, 15);
-            this.label62.TabIndex = 35;
-            this.label62.Text = "First Communion";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(19, 24);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(81, 15);
-            this.label63.TabIndex = 33;
-            this.label63.Text = "Baptism Date";
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(21, 61);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(77, 15);
-            this.label64.TabIndex = 31;
-            this.label64.Text = "Confirmation";
-            // 
-            // comboBoxChild3Relation
-            // 
-            this.comboBoxChild3Relation.FormattingEnabled = true;
-            this.comboBoxChild3Relation.Items.AddRange(new object[] {
-            "Son",
-            "Daughter",
-            "Others"});
-            this.comboBoxChild3Relation.Location = new System.Drawing.Point(658, 45);
-            this.comboBoxChild3Relation.Name = "comboBoxChild3Relation";
-            this.comboBoxChild3Relation.Size = new System.Drawing.Size(157, 24);
-            this.comboBoxChild3Relation.TabIndex = 64;
-            // 
-            // dtChild3DOB
-            // 
-            this.dtChild3DOB.Checked = false;
-            this.dtChild3DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild3DOB.Location = new System.Drawing.Point(378, 38);
-            this.dtChild3DOB.Name = "dtChild3DOB";
-            this.dtChild3DOB.ShowCheckBox = true;
-            this.dtChild3DOB.Size = new System.Drawing.Size(160, 21);
-            this.dtChild3DOB.TabIndex = 64;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel9.Controls.Add(this.checkBoxChild2IsTeacher);
-            this.panel9.Controls.Add(this.checkBoxChild2IsChoir);
-            this.panel9.Controls.Add(this.checkBoxChild2IsStudent);
-            this.panel9.Controls.Add(this.checkBoxChild2IsYouth);
-            this.panel9.Controls.Add(this.checkBoxChild2IsLOM);
-            this.panel9.Controls.Add(this.checkBoxChild2IsAdmin);
-            this.panel9.Controls.Add(this.checkBoxChild2IsAlter);
-            this.panel9.Controls.Add(this.checkBoxChild2VincentDePaul);
-            this.panel9.Location = new System.Drawing.Point(31, 140);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(494, 140);
-            this.panel9.TabIndex = 52;
-            // 
-            // checkBoxChild2IsTeacher
-            // 
-            this.checkBoxChild2IsTeacher.AutoSize = true;
-            this.checkBoxChild2IsTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild2IsTeacher.Location = new System.Drawing.Point(168, 108);
-            this.checkBoxChild2IsTeacher.Name = "checkBoxChild2IsTeacher";
-            this.checkBoxChild2IsTeacher.Size = new System.Drawing.Size(132, 19);
-            this.checkBoxChild2IsTeacher.TabIndex = 42;
-            this.checkBoxChild2IsTeacher.Text = "Catechism Teacher";
-            this.checkBoxChild2IsTeacher.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild2IsChoir
-            // 
-            this.checkBoxChild2IsChoir.AutoSize = true;
-            this.checkBoxChild2IsChoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild2IsChoir.Location = new System.Drawing.Point(330, 65);
-            this.checkBoxChild2IsChoir.Name = "checkBoxChild2IsChoir";
-            this.checkBoxChild2IsChoir.Size = new System.Drawing.Size(55, 19);
-            this.checkBoxChild2IsChoir.TabIndex = 41;
-            this.checkBoxChild2IsChoir.Text = "Choir";
-            this.checkBoxChild2IsChoir.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild2IsStudent
-            // 
-            this.checkBoxChild2IsStudent.AutoSize = true;
-            this.checkBoxChild2IsStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild2IsStudent.Location = new System.Drawing.Point(14, 108);
-            this.checkBoxChild2IsStudent.Name = "checkBoxChild2IsStudent";
-            this.checkBoxChild2IsStudent.Size = new System.Drawing.Size(129, 19);
-            this.checkBoxChild2IsStudent.TabIndex = 40;
-            this.checkBoxChild2IsStudent.Text = "Catechism Student";
-            this.checkBoxChild2IsStudent.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild2IsYouth
-            // 
-            this.checkBoxChild2IsYouth.AutoSize = true;
-            this.checkBoxChild2IsYouth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild2IsYouth.Location = new System.Drawing.Point(330, 20);
-            this.checkBoxChild2IsYouth.Name = "checkBoxChild2IsYouth";
-            this.checkBoxChild2IsYouth.Size = new System.Drawing.Size(94, 19);
-            this.checkBoxChild2IsYouth.TabIndex = 39;
-            this.checkBoxChild2IsYouth.Text = "Youth Group";
-            this.checkBoxChild2IsYouth.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild2IsLOM
-            // 
-            this.checkBoxChild2IsLOM.AutoSize = true;
-            this.checkBoxChild2IsLOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild2IsLOM.Location = new System.Drawing.Point(166, 20);
-            this.checkBoxChild2IsLOM.Name = "checkBoxChild2IsLOM";
-            this.checkBoxChild2IsLOM.Size = new System.Drawing.Size(107, 19);
-            this.checkBoxChild2IsLOM.TabIndex = 37;
-            this.checkBoxChild2IsLOM.Text = "Legion of Mary";
-            this.checkBoxChild2IsLOM.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild2IsAdmin
-            // 
-            this.checkBoxChild2IsAdmin.AutoSize = true;
-            this.checkBoxChild2IsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild2IsAdmin.Location = new System.Drawing.Point(14, 20);
-            this.checkBoxChild2IsAdmin.Name = "checkBoxChild2IsAdmin";
-            this.checkBoxChild2IsAdmin.Size = new System.Drawing.Size(146, 19);
-            this.checkBoxChild2IsAdmin.TabIndex = 35;
-            this.checkBoxChild2IsAdmin.Text = "Administrative Council";
-            this.checkBoxChild2IsAdmin.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild2IsAlter
-            // 
-            this.checkBoxChild2IsAlter.AutoSize = true;
-            this.checkBoxChild2IsAlter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild2IsAlter.Location = new System.Drawing.Point(14, 65);
-            this.checkBoxChild2IsAlter.Name = "checkBoxChild2IsAlter";
-            this.checkBoxChild2IsAlter.Size = new System.Drawing.Size(99, 19);
-            this.checkBoxChild2IsAlter.TabIndex = 36;
-            this.checkBoxChild2IsAlter.Text = "Alter Services";
-            this.checkBoxChild2IsAlter.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild2VincentDePaul
-            // 
-            this.checkBoxChild2VincentDePaul.AutoSize = true;
-            this.checkBoxChild2VincentDePaul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild2VincentDePaul.Location = new System.Drawing.Point(166, 65);
-            this.checkBoxChild2VincentDePaul.Name = "checkBoxChild2VincentDePaul";
-            this.checkBoxChild2VincentDePaul.Size = new System.Drawing.Size(154, 19);
-            this.checkBoxChild2VincentDePaul.TabIndex = 38;
-            this.checkBoxChild2VincentDePaul.Text = "St. Vincent De Paul Soc";
-            this.checkBoxChild2VincentDePaul.UseVisualStyleBackColor = true;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel10.Controls.Add(this.dtChild2Marriage);
-            this.panel10.Controls.Add(this.dtChild2Commuion);
-            this.panel10.Controls.Add(this.dtChild2Priest);
-            this.panel10.Controls.Add(this.dtChild2Confirmation);
-            this.panel10.Controls.Add(this.dtChild2Baptism);
-            this.panel10.Controls.Add(this.label46);
-            this.panel10.Controls.Add(this.label47);
-            this.panel10.Controls.Add(this.label48);
-            this.panel10.Controls.Add(this.label49);
-            this.panel10.Controls.Add(this.label50);
-            this.panel10.Location = new System.Drawing.Point(548, 140);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(534, 140);
-            this.panel10.TabIndex = 65;
-            // 
-            // dtChild2Marriage
-            // 
-            this.dtChild2Marriage.Checked = false;
-            this.dtChild2Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild2Marriage.Location = new System.Drawing.Point(378, 63);
-            this.dtChild2Marriage.Name = "dtChild2Marriage";
-            this.dtChild2Marriage.ShowCheckBox = true;
-            this.dtChild2Marriage.Size = new System.Drawing.Size(151, 21);
-            this.dtChild2Marriage.TabIndex = 62;
-            // 
-            // dtChild2Commuion
-            // 
-            this.dtChild2Commuion.Checked = false;
-            this.dtChild2Commuion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild2Commuion.Location = new System.Drawing.Point(378, 24);
-            this.dtChild2Commuion.Name = "dtChild2Commuion";
-            this.dtChild2Commuion.ShowCheckBox = true;
-            this.dtChild2Commuion.Size = new System.Drawing.Size(151, 21);
-            this.dtChild2Commuion.TabIndex = 61;
-            // 
-            // dtChild2Priest
-            // 
-            this.dtChild2Priest.Checked = false;
-            this.dtChild2Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild2Priest.Location = new System.Drawing.Point(109, 103);
-            this.dtChild2Priest.Name = "dtChild2Priest";
-            this.dtChild2Priest.ShowCheckBox = true;
-            this.dtChild2Priest.Size = new System.Drawing.Size(151, 21);
-            this.dtChild2Priest.TabIndex = 60;
-            // 
-            // dtChild2Confirmation
-            // 
-            this.dtChild2Confirmation.Checked = false;
-            this.dtChild2Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild2Confirmation.Location = new System.Drawing.Point(109, 61);
-            this.dtChild2Confirmation.Name = "dtChild2Confirmation";
-            this.dtChild2Confirmation.ShowCheckBox = true;
-            this.dtChild2Confirmation.Size = new System.Drawing.Size(151, 21);
-            this.dtChild2Confirmation.TabIndex = 59;
-            // 
-            // dtChild2Baptism
-            // 
-            this.dtChild2Baptism.Checked = false;
-            this.dtChild2Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild2Baptism.Location = new System.Drawing.Point(109, 24);
-            this.dtChild2Baptism.Name = "dtChild2Baptism";
-            this.dtChild2Baptism.ShowCheckBox = true;
-            this.dtChild2Baptism.Size = new System.Drawing.Size(151, 21);
-            this.dtChild2Baptism.TabIndex = 58;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(22, 108);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(66, 15);
-            this.label46.TabIndex = 39;
-            this.label46.Text = "Priesthood";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(273, 67);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(65, 15);
-            this.label47.TabIndex = 37;
-            this.label47.Text = "Matrimony";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(268, 25);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(101, 15);
-            this.label48.TabIndex = 35;
-            this.label48.Text = "First Communion";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(19, 24);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(81, 15);
-            this.label49.TabIndex = 33;
-            this.label49.Text = "Baptism Date";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(21, 61);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(77, 15);
-            this.label50.TabIndex = 31;
-            this.label50.Text = "Confirmation";
-            // 
-            // dtChild2DOB
-            // 
-            this.dtChild2DOB.Checked = false;
-            this.dtChild2DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild2DOB.Location = new System.Drawing.Point(378, 44);
-            this.dtChild2DOB.Name = "dtChild2DOB";
-            this.dtChild2DOB.ShowCheckBox = true;
-            this.dtChild2DOB.Size = new System.Drawing.Size(160, 21);
-            this.dtChild2DOB.TabIndex = 65;
-            // 
-            // comboBoxChild2Relation
-            // 
-            this.comboBoxChild2Relation.FormattingEnabled = true;
-            this.comboBoxChild2Relation.Items.AddRange(new object[] {
-            "Son",
-            "Daughter",
-            "Others"});
-            this.comboBoxChild2Relation.Location = new System.Drawing.Point(657, 41);
-            this.comboBoxChild2Relation.Name = "comboBoxChild2Relation";
-            this.comboBoxChild2Relation.Size = new System.Drawing.Size(157, 24);
-            this.comboBoxChild2Relation.TabIndex = 65;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel6.Controls.Add(this.checkBoxChild1IsTeacher);
-            this.panel6.Controls.Add(this.checkBoxChild1IsChoir);
-            this.panel6.Controls.Add(this.checkBoxChild1IsStudnet);
-            this.panel6.Controls.Add(this.checkBoxChild1IsYouth);
-            this.panel6.Controls.Add(this.checkBoxChild1IsLOM);
-            this.panel6.Controls.Add(this.checkBoxChild1IsAdmin);
-            this.panel6.Controls.Add(this.checkBoxChild1IsAlter);
-            this.panel6.Controls.Add(this.checkBoxChild1VincentDePaul);
-            this.panel6.Location = new System.Drawing.Point(31, 142);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(494, 140);
-            this.panel6.TabIndex = 53;
-            // 
-            // checkBoxChild1IsTeacher
-            // 
-            this.checkBoxChild1IsTeacher.AutoSize = true;
-            this.checkBoxChild1IsTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild1IsTeacher.Location = new System.Drawing.Point(168, 108);
-            this.checkBoxChild1IsTeacher.Name = "checkBoxChild1IsTeacher";
-            this.checkBoxChild1IsTeacher.Size = new System.Drawing.Size(132, 19);
-            this.checkBoxChild1IsTeacher.TabIndex = 42;
-            this.checkBoxChild1IsTeacher.Text = "Catechism Teacher";
-            this.checkBoxChild1IsTeacher.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild1IsChoir
-            // 
-            this.checkBoxChild1IsChoir.AutoSize = true;
-            this.checkBoxChild1IsChoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild1IsChoir.Location = new System.Drawing.Point(330, 65);
-            this.checkBoxChild1IsChoir.Name = "checkBoxChild1IsChoir";
-            this.checkBoxChild1IsChoir.Size = new System.Drawing.Size(55, 19);
-            this.checkBoxChild1IsChoir.TabIndex = 41;
-            this.checkBoxChild1IsChoir.Text = "Choir";
-            this.checkBoxChild1IsChoir.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild1IsStudnet
-            // 
-            this.checkBoxChild1IsStudnet.AutoSize = true;
-            this.checkBoxChild1IsStudnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild1IsStudnet.Location = new System.Drawing.Point(14, 108);
-            this.checkBoxChild1IsStudnet.Name = "checkBoxChild1IsStudnet";
-            this.checkBoxChild1IsStudnet.Size = new System.Drawing.Size(129, 19);
-            this.checkBoxChild1IsStudnet.TabIndex = 40;
-            this.checkBoxChild1IsStudnet.Text = "Catechism Student";
-            this.checkBoxChild1IsStudnet.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild1IsYouth
-            // 
-            this.checkBoxChild1IsYouth.AutoSize = true;
-            this.checkBoxChild1IsYouth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild1IsYouth.Location = new System.Drawing.Point(330, 20);
-            this.checkBoxChild1IsYouth.Name = "checkBoxChild1IsYouth";
-            this.checkBoxChild1IsYouth.Size = new System.Drawing.Size(94, 19);
-            this.checkBoxChild1IsYouth.TabIndex = 39;
-            this.checkBoxChild1IsYouth.Text = "Youth Group";
-            this.checkBoxChild1IsYouth.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild1IsLOM
-            // 
-            this.checkBoxChild1IsLOM.AutoSize = true;
-            this.checkBoxChild1IsLOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild1IsLOM.Location = new System.Drawing.Point(166, 20);
-            this.checkBoxChild1IsLOM.Name = "checkBoxChild1IsLOM";
-            this.checkBoxChild1IsLOM.Size = new System.Drawing.Size(107, 19);
-            this.checkBoxChild1IsLOM.TabIndex = 37;
-            this.checkBoxChild1IsLOM.Text = "Legion of Mary";
-            this.checkBoxChild1IsLOM.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild1IsAdmin
-            // 
-            this.checkBoxChild1IsAdmin.AutoSize = true;
-            this.checkBoxChild1IsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild1IsAdmin.Location = new System.Drawing.Point(14, 20);
-            this.checkBoxChild1IsAdmin.Name = "checkBoxChild1IsAdmin";
-            this.checkBoxChild1IsAdmin.Size = new System.Drawing.Size(146, 19);
-            this.checkBoxChild1IsAdmin.TabIndex = 35;
-            this.checkBoxChild1IsAdmin.Text = "Administrative Council";
-            this.checkBoxChild1IsAdmin.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild1IsAlter
-            // 
-            this.checkBoxChild1IsAlter.AutoSize = true;
-            this.checkBoxChild1IsAlter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild1IsAlter.Location = new System.Drawing.Point(14, 65);
-            this.checkBoxChild1IsAlter.Name = "checkBoxChild1IsAlter";
-            this.checkBoxChild1IsAlter.Size = new System.Drawing.Size(99, 19);
-            this.checkBoxChild1IsAlter.TabIndex = 36;
-            this.checkBoxChild1IsAlter.Text = "Alter Services";
-            this.checkBoxChild1IsAlter.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxChild1VincentDePaul
-            // 
-            this.checkBoxChild1VincentDePaul.AutoSize = true;
-            this.checkBoxChild1VincentDePaul.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChild1VincentDePaul.Location = new System.Drawing.Point(166, 65);
-            this.checkBoxChild1VincentDePaul.Name = "checkBoxChild1VincentDePaul";
-            this.checkBoxChild1VincentDePaul.Size = new System.Drawing.Size(154, 19);
-            this.checkBoxChild1VincentDePaul.TabIndex = 38;
-            this.checkBoxChild1VincentDePaul.Text = "St. Vincent De Paul Soc";
-            this.checkBoxChild1VincentDePaul.UseVisualStyleBackColor = true;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel7.Controls.Add(this.dtChild1Marriage);
-            this.panel7.Controls.Add(this.dtChild1Communion);
-            this.panel7.Controls.Add(this.dtChild1Priest);
-            this.panel7.Controls.Add(this.dtChild1Confirmation);
-            this.panel7.Controls.Add(this.dtChild1Baptism);
-            this.panel7.Controls.Add(this.label30);
-            this.panel7.Controls.Add(this.label31);
-            this.panel7.Controls.Add(this.label40);
-            this.panel7.Controls.Add(this.label41);
-            this.panel7.Controls.Add(this.label42);
-            this.panel7.Location = new System.Drawing.Point(548, 142);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(534, 140);
-            this.panel7.TabIndex = 66;
-            // 
-            // dtChild1Marriage
-            // 
-            this.dtChild1Marriage.Checked = false;
-            this.dtChild1Marriage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild1Marriage.Location = new System.Drawing.Point(378, 63);
-            this.dtChild1Marriage.Name = "dtChild1Marriage";
-            this.dtChild1Marriage.ShowCheckBox = true;
-            this.dtChild1Marriage.Size = new System.Drawing.Size(151, 21);
-            this.dtChild1Marriage.TabIndex = 62;
-            // 
-            // dtChild1Communion
-            // 
-            this.dtChild1Communion.Checked = false;
-            this.dtChild1Communion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild1Communion.Location = new System.Drawing.Point(378, 24);
-            this.dtChild1Communion.Name = "dtChild1Communion";
-            this.dtChild1Communion.ShowCheckBox = true;
-            this.dtChild1Communion.Size = new System.Drawing.Size(151, 21);
-            this.dtChild1Communion.TabIndex = 61;
-            // 
-            // dtChild1Priest
-            // 
-            this.dtChild1Priest.Checked = false;
-            this.dtChild1Priest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild1Priest.Location = new System.Drawing.Point(109, 103);
-            this.dtChild1Priest.Name = "dtChild1Priest";
-            this.dtChild1Priest.ShowCheckBox = true;
-            this.dtChild1Priest.Size = new System.Drawing.Size(151, 21);
-            this.dtChild1Priest.TabIndex = 60;
-            // 
-            // dtChild1Confirmation
-            // 
-            this.dtChild1Confirmation.Checked = false;
-            this.dtChild1Confirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild1Confirmation.Location = new System.Drawing.Point(109, 61);
-            this.dtChild1Confirmation.Name = "dtChild1Confirmation";
-            this.dtChild1Confirmation.ShowCheckBox = true;
-            this.dtChild1Confirmation.Size = new System.Drawing.Size(151, 21);
-            this.dtChild1Confirmation.TabIndex = 59;
-            // 
-            // dtChild1Baptism
-            // 
-            this.dtChild1Baptism.Checked = false;
-            this.dtChild1Baptism.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtChild1Baptism.Location = new System.Drawing.Point(109, 24);
-            this.dtChild1Baptism.Name = "dtChild1Baptism";
-            this.dtChild1Baptism.ShowCheckBox = true;
-            this.dtChild1Baptism.Size = new System.Drawing.Size(151, 21);
-            this.dtChild1Baptism.TabIndex = 58;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(22, 108);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(66, 15);
-            this.label30.TabIndex = 39;
-            this.label30.Text = "Priesthood";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(273, 67);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(65, 15);
-            this.label31.TabIndex = 37;
-            this.label31.Text = "Matrimony";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(268, 25);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(101, 15);
-            this.label40.TabIndex = 35;
-            this.label40.Text = "First Communion";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(19, 24);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(81, 15);
-            this.label41.TabIndex = 33;
-            this.label41.Text = "Baptism Date";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(21, 61);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(77, 15);
-            this.label42.TabIndex = 31;
-            this.label42.Text = "Confirmation";
-            // 
-            // comboBoxChild1Relation
-            // 
-            this.comboBoxChild1Relation.FormattingEnabled = true;
-            this.comboBoxChild1Relation.Items.AddRange(new object[] {
-            "Son",
-            "Daughter",
-            "Others"});
-            this.comboBoxChild1Relation.Location = new System.Drawing.Point(657, 46);
-            this.comboBoxChild1Relation.Name = "comboBoxChild1Relation";
-            this.comboBoxChild1Relation.Size = new System.Drawing.Size(157, 24);
-            this.comboBoxChild1Relation.TabIndex = 66;
-            // 
             // FamilyPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1175, 901);
+            this.ClientSize = new System.Drawing.Size(1185, 901);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel5);
             this.MaximizeBox = false;
@@ -4133,12 +4158,26 @@
             this.panel4.PerformLayout();
             this.child1Groupbox.ResumeLayout(false);
             this.child1Groupbox.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.child2Groupbox.ResumeLayout(false);
             this.child2Groupbox.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.child3Groupbox.ResumeLayout(false);
             this.child3Groupbox.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.child4Groupbox.ResumeLayout(false);
             this.child4Groupbox.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.child5Groupbox.ResumeLayout(false);
@@ -4160,20 +4199,6 @@
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             this.panel5.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4525,5 +4550,7 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ComboBox comboBoxChild1Relation;
+        private System.Windows.Forms.CheckBox sameAddressCheckbox;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

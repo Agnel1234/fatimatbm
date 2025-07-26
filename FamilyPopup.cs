@@ -20,6 +20,33 @@ namespace TestFat
         public FamilyPopup(int familyID)
         {
             InitializeComponent();
+
+            permZipcodetxt.KeyPress += NumberOnlyTextBox_KeyPress;
+            tempZipcodetxt.KeyPress += NumberOnlyTextBox_KeyPress;
+            familySubscriptiontxt.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtHeadPhone.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtSpousePhone.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtChild1Whatsapp.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtChild2Whatsapp.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtChild3Whatsapp.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtChild4Whatsapp.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtChild5Whatsapp.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtOther1Whatsapp.KeyPress += NumberOnlyTextBox_KeyPress;
+            txtOther2Whatsapp.KeyPress += NumberOnlyTextBox_KeyPress;
+
+            permZipcodetxt.MaxLength = 6;
+            tempZipcodetxt.MaxLength = 6;
+            familySubscriptiontxt.MaxLength = 5;
+            txtHeadPhone.MaxLength = 10;
+            txtSpousePhone.MaxLength = 10;
+            txtChild1Whatsapp.MaxLength = 10;
+            txtChild2Whatsapp.MaxLength = 10;
+            txtChild3Whatsapp.MaxLength = 10;
+            txtChild4Whatsapp.MaxLength = 10;
+            txtChild5Whatsapp.MaxLength = 10;
+            txtOther1Whatsapp.MaxLength = 10;
+            txtOther2Whatsapp.MaxLength = 10;
+
             this.StartPosition = FormStartPosition.CenterScreen;
             child1Groupbox.Visible = false;
             child2Groupbox.Visible = false;
@@ -112,8 +139,17 @@ namespace TestFat
 
         private void anbiyamCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string code = "";
             int nextFamilyID = GetMaxFamilyId() + 1;
-            string code = GetAnbiyamCodeById((anbiyamCombobox.SelectedIndex));
+            if(anbiyamCombobox.SelectedIndex == 0)
+            {
+                familyCodetxt.Text = "Select Anbiyam";
+                return;
+            } else
+            {
+                code = GetAnbiyamCodeById(int.Parse(anbiyamCombobox.SelectedValue.ToString(), 0));
+            }
+                
             familyCodetxt.Text = code + nextFamilyID.ToString();
         }
 
@@ -795,6 +831,39 @@ namespace TestFat
                 return "Female";
             }
         }
+
+        private void sameAddressCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(sender is CheckBox checkBox)
+            {
+                if (checkBox.Checked)
+                {
+                    permAddresstxt.Text = tempAddresstxt.Text.Trim();
+                    permCitytxt.Text = tempCitytxt.Text.Trim();
+                    permStatetxt.Text = tempStatetxt.Text.Trim();
+                    permZipcodetxt.Text = tempZipcodetxt.Text.Trim();
+                }
+                else
+                {
+                    permAddresstxt.Text = "";
+                    permCitytxt.Text = "";
+                    permStatetxt.Text = "";
+                    permZipcodetxt.Text = "";
+                }
+            }
+        }
+
+
+        private void NumberOnlyTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only digits and control keys (e.g., backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
     }
     // Change the access modifier of the FamilyMemberDto class from private to internal  
     internal class FamilyMemberDto

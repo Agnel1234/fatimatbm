@@ -14,6 +14,7 @@ namespace TestFat
     public partial class Form1 : Form
     {
         private int familyIDInContext = 0;
+        public string anbiyamAddress = "";
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +26,13 @@ namespace TestFat
             btncreate.Image = new Bitmap(Properties.Resources.createAnbiyam, new Size(24, 24)); // Assuming you have an add icon in your resources
             btnedit.Image = new Bitmap(Properties.Resources.editAnbiyam, new Size(24, 24)); // Replace with your actual path or resource
 
+            familytab.Dock = DockStyle.Fill;
+            familytab.SizeMode = TabSizeMode.Fixed;
+            familytab.ItemSize = new Size(familytab.Width / (familytab.TabCount - 1 ), 40); // 40 is the tab header height
+
+            // Enable custom drawing for tab headers
+            familytab.DrawMode = TabDrawMode.OwnerDrawFixed;
+            familytab.DrawItem += Familytab_DrawItem;
 
             btnFamilyCreate.Image = new Bitmap(Properties.Resources.createAnbiyam, new Size(24, 24)); // Assuming you have an add icon in your resources
             btnFamilyEdit.Image = new Bitmap(Properties.Resources.editAnbiyam, new Size(24, 24)); // Replace with your actual path or resource
@@ -42,8 +50,44 @@ namespace TestFat
             btnFamilyEdit.TextAlign = ContentAlignment.MiddleCenter;
             anbiyamGrid.CellClick += anbiyamGrid_CellClick;
 
-            ShowAnbiyamOnMap("");
+            ShowAnbiyamOnMap(anbiyamAddress);
 
+        }
+
+        private void Familytab_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabControl tabControl = sender as TabControl;
+            for (int i = 0; i < tabControl.TabCount; i++)
+            {
+                Rectangle tabRect = tabControl.GetTabRect(i);
+                bool isSelected = (i == tabControl.SelectedIndex);
+
+                // Choose colors
+                Color backColor = isSelected ? Color.Black : Color.LightGray;
+                Color textColor = isSelected ? Color.White : Color.Black;
+
+                using (SolidBrush brush = new SolidBrush(backColor))
+                {
+                    e.Graphics.FillRectangle(brush, tabRect);
+                }
+
+                string tabText = tabControl.TabPages[i].Text;
+                using (SolidBrush textBrush = new SolidBrush(textColor))
+                {
+                    StringFormat sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+                    e.Graphics.DrawString(tabText, tabControl.Font, textBrush, tabRect, sf);
+                }
+
+                // Optional: Draw border for selected tab
+                if (isSelected)
+                {
+                    using (Pen pen = new Pen(Color.DeepSkyBlue, 2))
+                    {
+                        e.Graphics.DrawRectangle(pen, tabRect);
+                    }
+                }
+            }
+            e.DrawFocusRectangle();
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)

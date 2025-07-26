@@ -46,6 +46,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.familyMembersGrid = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnCemetery = new System.Windows.Forms.Button();
             this.btnFamilyCreate = new System.Windows.Forms.Button();
             this.btnFamilyEdit = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -72,7 +73,7 @@
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.familytab = new System.Windows.Forms.TabControl();
-            this.btnCemetery = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -182,6 +183,17 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1422, 100);
             this.panel5.TabIndex = 1;
+            // 
+            // btnCemetery
+            // 
+            this.btnCemetery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCemetery.Location = new System.Drawing.Point(847, 38);
+            this.btnCemetery.Name = "btnCemetery";
+            this.btnCemetery.Size = new System.Drawing.Size(153, 36);
+            this.btnCemetery.TabIndex = 2;
+            this.btnCemetery.Text = "Cemetery Info";
+            this.btnCemetery.UseVisualStyleBackColor = true;
+            this.btnCemetery.Click += new System.EventHandler(this.btnCemetery_Click);
             // 
             // btnFamilyCreate
             // 
@@ -492,6 +504,7 @@
             this.familytab.Controls.Add(this.tabPage1);
             this.familytab.Controls.Add(this.tabPage2);
             this.familytab.Controls.Add(this.tabPage3);
+            this.familytab.Controls.Add(this.tabPage4);
             this.familytab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.familytab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.familytab.ItemSize = new System.Drawing.Size(200, 40);
@@ -503,16 +516,15 @@
             this.familytab.TabIndex = 1;
             this.familytab.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // btnCemetery
+            // tabPage4
             // 
-            this.btnCemetery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCemetery.Location = new System.Drawing.Point(847, 38);
-            this.btnCemetery.Name = "btnCemetery";
-            this.btnCemetery.Size = new System.Drawing.Size(153, 36);
-            this.btnCemetery.TabIndex = 2;
-            this.btnCemetery.Text = "Cemetery Info";
-            this.btnCemetery.UseVisualStyleBackColor = true;
-            this.btnCemetery.Click += new System.EventHandler(this.btnCemetery_Click);
+            this.tabPage4.Location = new System.Drawing.Point(4, 44);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1438, 736);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Cemetery Management";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -587,6 +599,7 @@
         private System.Windows.Forms.DataGridView familyMembersGrid;
         private System.Windows.Forms.WebBrowser mapBrowser;
         private System.Windows.Forms.Button btnCemetery;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }
 
