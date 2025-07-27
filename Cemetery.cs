@@ -55,23 +55,21 @@ namespace TestFat
 
         private void btnAddCemetery_Click(object sender, EventArgs e)
         {
-
             if (cemeteryIDInContext != 0)
             {
-                int memberID = int.Parse(comboMemberName.SelectedValue.ToString());
-                string deceasedDate = dtDeceasedDate.Value.ToString();
-                string burialDate = dtBurialDate.Value.ToString();
-                string amount = txtCemeteryCharge.Text.Trim();
+                DateTime deceasedDate = dtDeceasedDate.Value;
+                DateTime burialDate = dtBurialDate.Value;
+                string remark = txtCemeteryCharge.Text.Trim();
                 string cemeterycode = txtCemeteryCode.Text.Trim();
 
                 var parameters = new[]
                 {
                     new SqlParameter("@cemeteryID", cemeteryIDInContext),
-                    new SqlParameter("@memberID", memberID),
+                    new SqlParameter("@memberID", ""),
                     new SqlParameter("@burialDate", burialDate),
                     new SqlParameter("@deathDate", deceasedDate),
                     new SqlParameter("@cemeteryCode", cemeterycode),
-                    new SqlParameter("@cemeteryCharges", amount)
+                    new SqlParameter("@remarks", remark)
                 };
 
                 DatabaseHelper.ExecuteStoredProcedure("sp_InsertOrUpdateCemetery", parameters);
@@ -81,9 +79,9 @@ namespace TestFat
             else
             {
                 int memberID = int.Parse(comboMemberName.SelectedValue.ToString());
-                string deceasedDate = dtDeceasedDate.Value.ToString();
-                string burialDate = dtBurialDate.Value.ToString();
-                string amount = txtCemeteryCharge.Text.Trim();
+                DateTime deceasedDate = dtDeceasedDate.Value;
+                DateTime burialDate = dtBurialDate.Value;
+                string remark = txtCemeteryCharge.Text.Trim();
                 string cemeterycode = txtCemeteryCode.Text.Trim();
 
                 if (comboMemberName.SelectedItem == null)
@@ -99,7 +97,7 @@ namespace TestFat
                     new SqlParameter("@burialDate", burialDate),
                     new SqlParameter("@deathDate", deceasedDate),
                     new SqlParameter("@cemeteryCode", cemeterycode),
-                    new SqlParameter("@cemeteryCharges", amount)
+                    new SqlParameter("@remarks", remark)
                 };
 
                 DatabaseHelper.ExecuteStoredProcedure("sp_InsertOrUpdateCemetery", parameters);

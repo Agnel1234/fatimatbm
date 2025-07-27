@@ -31,6 +31,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.cemeteryGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtBurialDate = new System.Windows.Forms.DateTimePicker();
             this.lblAnbiyamName = new System.Windows.Forms.Label();
             this.btnAddCemetery = new System.Windows.Forms.Button();
             this.dtDeceasedDate = new System.Windows.Forms.DateTimePicker();
@@ -41,8 +43,6 @@
             this.txtCemeteryCharge = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.dtBurialDate = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cemeteryGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -88,6 +88,24 @@
             this.groupBox1.Size = new System.Drawing.Size(647, 189);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Burial Date *";
+            // 
+            // dtBurialDate
+            // 
+            this.dtBurialDate.Checked = false;
+            this.dtBurialDate.Location = new System.Drawing.Point(123, 104);
+            this.dtBurialDate.Name = "dtBurialDate";
+            this.dtBurialDate.Size = new System.Drawing.Size(200, 20);
+            this.dtBurialDate.TabIndex = 18;
             // 
             // lblAnbiyamName
             // 
@@ -162,10 +180,9 @@
             // txtCemeteryCharge
             // 
             this.txtCemeteryCharge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCemeteryCharge.Enabled = false;
-            this.txtCemeteryCharge.Location = new System.Drawing.Point(454, 73);
+            this.txtCemeteryCharge.Location = new System.Drawing.Point(350, 104);
             this.txtCemeteryCharge.Name = "txtCemeteryCharge";
-            this.txtCemeteryCharge.Size = new System.Drawing.Size(172, 20);
+            this.txtCemeteryCharge.Size = new System.Drawing.Size(276, 20);
             this.txtCemeteryCharge.TabIndex = 7;
             // 
             // label1
@@ -174,27 +191,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(347, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 16;
-            this.label1.Text = "Cemetery Charge";
-            // 
-            // dtBurialDate
-            // 
-            this.dtBurialDate.Checked = false;
-            this.dtBurialDate.Location = new System.Drawing.Point(123, 104);
-            this.dtBurialDate.Name = "dtBurialDate";
-            this.dtBurialDate.Size = new System.Drawing.Size(200, 20);
-            this.dtBurialDate.TabIndex = 18;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Burial Date *";
+            this.label1.Text = "Remark";
             // 
             // Cemetery
             // 

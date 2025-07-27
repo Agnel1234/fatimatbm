@@ -542,8 +542,12 @@ BEGIN
     occupation as Occupation,
     phone as Mobile,
     CASE
-        WHEN marriage_date IS NULL THEN 'Un-Married'
-        ELSE 'Married' 
+        WHEN marriage_date IS NOT NULL THEN 'Married'
+        ELSE  
+			CASE 
+              WHEN relationship IN ('Spouse', 'Head','Mother','Father','Father-In-Law','Mother-In-Law') THEN 'Married'
+              ELSE 'Un-Married'
+			END
     END AS MaritalStatus,
     CASE
         WHEN is_admin_council = 1 THEN 'Yes'
@@ -695,10 +699,11 @@ BEGIN
 		date_of_death AS [Date of Death],
 		burial_date AS [Burial Date],
 		grave_number AS [Cemetery Code],
-		0 AS [Amount]
+		remarks as [Remarks]
 	FROM cemetery_details where family_id = @familyID;
 END
 GO
+
 
 ALTER PROCEDURE sp_InsertOrUpdateCemetery
     @cemeteryID INT = NULL,
@@ -706,7 +711,7 @@ ALTER PROCEDURE sp_InsertOrUpdateCemetery
     @burialDate DATE,
     @deathDate DATE,
     @cemeteryCode NVARCHAR(50),
-    @cemeteryCharges INT
+    @remarks NVARCHAR(50)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -736,7 +741,7 @@ BEGIN
 				@burialDate,
 				'Tambaram',
 				@cemeteryCode,
-				@cemeteryCharges, 
+				@remarks, 
 				GETDATE(),
 				GETDATE()
 			FROM family_member
@@ -753,7 +758,8 @@ BEGIN
 				date_of_death = @deathDate,
 				burial_date = @burialDate,
 				grave_number = @cemeteryCode,
-				modified = GETDATE()
+				modified = GETDATE(),
+				remarks = @remarks
 			WHERE cemetery_id = @cemeteryID;
 
 			UPDATE family_member SET member_status = 'Deceased' WHERE member_id = @memberID;
@@ -777,5 +783,20 @@ BEGIN
 	(
 		SELECT member_id FROM cemetery_details where family_id = @family_id
 	);
+END
+GO
+
+
+ALTER PROCEDURE sp_GetAllCemeteries
+AS
+BEGIN
+	SELECT
+		cemetery_id AS [cemeteryid],
+        grave_number AS [Cemetery Code],
+		deceased_name AS [Deceased Name],
+		date_of_death AS [Date of Death],
+		burial_date AS [Burial Date],		
+		remarks as [Remarks]
+	FROM cemetery_details
 END
 GO

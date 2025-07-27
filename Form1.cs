@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace TestFat
 {
@@ -22,17 +23,11 @@ namespace TestFat
             LoadAnbiyam();
             LoadZoneFamilyChart();
             LoadFamilyBasicDetails();
+            LoadAllCemeteryData();
+
             this.familygrid.SelectionChanged += familygrid_SelectionChanged;
             btncreate.Image = new Bitmap(Properties.Resources.createAnbiyam, new Size(24, 24)); // Assuming you have an add icon in your resources
             btnedit.Image = new Bitmap(Properties.Resources.editAnbiyam, new Size(24, 24)); // Replace with your actual path or resource
-
-            familytab.Dock = DockStyle.Fill;
-            familytab.SizeMode = TabSizeMode.Fixed;
-            familytab.ItemSize = new Size(familytab.Width / (familytab.TabCount - 1 ), 40); // 40 is the tab header height
-
-            // Enable custom drawing for tab headers
-            familytab.DrawMode = TabDrawMode.OwnerDrawFixed;
-            familytab.DrawItem += Familytab_DrawItem;
 
             btnFamilyCreate.Image = new Bitmap(Properties.Resources.createAnbiyam, new Size(24, 24)); // Assuming you have an add icon in your resources
             btnFamilyEdit.Image = new Bitmap(Properties.Resources.editAnbiyam, new Size(24, 24)); // Replace with your actual path or resource
@@ -50,44 +45,13 @@ namespace TestFat
             btnFamilyEdit.TextAlign = ContentAlignment.MiddleCenter;
             anbiyamGrid.CellClick += anbiyamGrid_CellClick;
 
-            ShowAnbiyamOnMap(anbiyamAddress);
-
-        }
-
-        private void Familytab_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            TabControl tabControl = sender as TabControl;
-            for (int i = 0; i < tabControl.TabCount; i++)
+            string showMap = ConfigurationManager.AppSettings["showMap"];
+            if (showMap != null && showMap == "true")
             {
-                Rectangle tabRect = tabControl.GetTabRect(i);
-                bool isSelected = (i == tabControl.SelectedIndex);
-
-                // Choose colors
-                Color backColor = isSelected ? Color.Black : Color.LightGray;
-                Color textColor = isSelected ? Color.White : Color.Black;
-
-                using (SolidBrush brush = new SolidBrush(backColor))
-                {
-                    e.Graphics.FillRectangle(brush, tabRect);
-                }
-
-                string tabText = tabControl.TabPages[i].Text;
-                using (SolidBrush textBrush = new SolidBrush(textColor))
-                {
-                    StringFormat sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-                    e.Graphics.DrawString(tabText, tabControl.Font, textBrush, tabRect, sf);
-                }
-
-                // Optional: Draw border for selected tab
-                if (isSelected)
-                {
-                    using (Pen pen = new Pen(Color.DeepSkyBlue, 2))
-                    {
-                        e.Graphics.DrawRectangle(pen, tabRect);
-                    }
-                }
+                ShowAnbiyamOnMap(anbiyamAddress);
+                mapBrowser.Dock = DockStyle.Bottom;
             }
-            e.DrawFocusRectangle();
+
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -481,7 +445,19 @@ namespace TestFat
             using (var popup = new Cemetery(familyIDInContext))
             {
                 popup.ShowDialog();
+                LoadFamilyBasicDetails();
             }
+        }
+
+        private void LoadAllCemeteryData()
+        {
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAllCemeteries");
+
+            cemeteryGridView.DataSource = dt;
+            cemeteryGridView.Columns["cemeteryid"].Visible = false;
+            cemeteryGridView.ColumnHeadersDefaultCellStyle.Font = new Font("#333333", 12, FontStyle.Bold);
+            cemeteryGridView.DefaultCellStyle.Font = new Font("#333333", 9, FontStyle.Regular);
+            cemeteryGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
         }
     }
 
