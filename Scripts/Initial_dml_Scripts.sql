@@ -124,6 +124,7 @@ AS
 BEGIN
     SELECT
         a.anbiyam_name AS Anbiyam,
+        a.anbiyam_id AS anbiyam_id,
         a.anbiyam_code AS Code,
         a.anbiyam_zone AS Zone,
         a.anbiyam_coordinator_name AS Coordinator,
