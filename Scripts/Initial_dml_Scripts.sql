@@ -292,39 +292,6 @@ BEGIN
 END
 GO
 
-ALter PROCEDURE sp_GetFamilyBasicDetails
-AS
-BEGIN
-	SELECT 
-		f.family_id AS FamilyID,
-		a.anbiyam_name AS [Anbiyam Name],
-		f.family_code AS [Family Code], 
-		f.head_of_family AS [Head of Family], 
-		f.gender AS [Gender], 
-		f.family_temp_address AS [Address], 
-		f.phone AS [Mobile],
-		f.monthly_subscription AS [Subscription Amount],
-		f.parish_member_since AS [Member Since],
-		COUNT(DISTINCT fm.member_id) AS [Members],
-		COUNT(DISTINCT cd.cemetery_id) AS [Cemetery Count]
-	FROM family f
-	INNER JOIN anbiyam a ON a.anbiyam_id = f.anbiyam_id
-	LEFT JOIN family_member fm ON fm.family_id = f.family_id
-	LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
-	WHERE fm.member_status = 'Active'
-	GROUP BY 
-		f.family_id,
-		a.anbiyam_name,
-		f.family_code,
-		f.head_of_family,
-		f.gender,
-		f.family_temp_address,
-		f.phone,
-		f.monthly_subscription,
-		f.parish_member_since
-END
-GO
-
 CREATE PROCEDURE sp_DeleteAnbiyam
     @anbiyamID INT
 AS
@@ -867,5 +834,93 @@ AS
 BEGIN
     SELECT SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS MaleCount, SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS FemaleCount
     FROM family_member WHERE member_status = 'Active';
+END
+GO
+
+
+--ALter PROCEDURE sp_GetFamilyBasicDetails
+--AS
+--BEGIN
+--	SELECT 
+--		f.family_id AS FamilyID,
+--		a.anbiyam_name AS [Anbiyam Name],
+--		f.family_code AS [Family Code], 
+--		f.head_of_family AS [Head of Family], 
+--		f.gender AS [Gender], 
+--		f.family_temp_address AS [Address], 
+--		f.phone AS [Mobile],
+--		f.monthly_subscription AS [Subscription Amount],
+--		f.parish_member_since AS [Member Since],
+--		COUNT(DISTINCT fm.member_id) AS [Members],
+--		COUNT(DISTINCT cd.cemetery_id) AS [Cemetery Count]
+--	FROM family f
+--	INNER JOIN anbiyam a ON a.anbiyam_id = f.anbiyam_id
+--	LEFT JOIN family_member fm ON fm.family_id = f.family_id
+--	LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
+--	WHERE fm.member_status = 'Active'
+--	GROUP BY 
+--		f.family_id,
+--		a.anbiyam_name,
+--		f.family_code,
+--		f.head_of_family,
+--		f.gender,
+--		f.family_temp_address,
+--		f.phone,
+--		f.monthly_subscription,
+--		f.parish_member_since
+--END
+--GO
+
+
+
+ALTER PROCEDURE sp_GetFamilyBasicDetails
+    @anbiyam_id INT = 0,
+    @family_head NVARCHAR(100) = NULL,
+    @occupation NVARCHAR(100) = NULL,
+    @cemetery_available BIT = NULL
+AS
+BEGIN
+    SELECT 
+        f.family_id AS FamilyID,
+        a.anbiyam_name AS [Anbiyam Name],
+        f.family_code AS [Family Code], 
+        f.head_of_family AS [Head of Family], 
+        f.gender AS [Gender], 
+        f.family_temp_address AS [Address], 
+        f.phone AS [Mobile],
+        f.monthly_subscription AS [Subscription Amount],
+        f.parish_member_since AS [Member Since],
+        COUNT(DISTINCT fm.member_id) AS [Members],
+        COUNT(DISTINCT cd.cemetery_id) AS [Cemetery Count]
+    FROM family f
+    INNER JOIN anbiyam a ON a.anbiyam_id = f.anbiyam_id
+    LEFT JOIN family_member fm ON fm.family_id = f.family_id
+    LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
+    WHERE fm.member_status = 'Active'
+        AND (@anbiyam_id = a.anbiyam_id)
+        AND (@family_head IS NULL OR f.head_of_family LIKE '%' + @family_head + '%')
+        AND (@occupation IS NULL OR EXISTS (
+            SELECT 1 FROM family_member fm2 
+            WHERE fm2.family_id = f.family_id AND fm2.occupation LIKE '%' + @occupation + '%'
+        ))
+        AND (
+            @cemetery_available IS NULL
+            OR (@cemetery_available = 1 AND EXISTS (
+                SELECT 1 FROM cemetery_details cd2 WHERE cd2.family_id = f.family_id
+            ))
+            OR (@cemetery_available = 0 AND NOT EXISTS (
+                SELECT 1 FROM cemetery_details cd3 WHERE cd3.family_id = f.family_id
+            ))
+        )
+    GROUP BY 
+        f.family_id,
+        a.anbiyam_name,
+        f.family_code,
+        f.head_of_family,
+        f.gender,
+        f.family_temp_address,
+        f.phone,
+        f.monthly_subscription,
+        f.parish_member_since
 END
 GO

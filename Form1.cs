@@ -24,9 +24,9 @@ namespace TestFat
             LoadAnbiyam();
 
             LoadAgeGroupChart();
-            LoadAgeGroup2Chart();
+            LoadGenderGroupChart();
 
-            LoadFamilyBasicDetails();
+            LoadFamilyBasicDetails(null);
             LoadAllCemeteryData();
 
             this.familygrid.SelectionChanged += familygrid_SelectionChanged;
@@ -118,6 +118,12 @@ namespace TestFat
             anbiyamCombobox.DisplayMember = dt.Columns[0].ColumnName;
             anbiyamCombobox.ValueMember = dt.Columns[1].ColumnName;
             anbiyamCombobox.SelectedIndex = 0; // Ensure "Select" is shown by default
+
+
+            familyAnbiyamCombobox.DataSource = dt;
+            familyAnbiyamCombobox.DisplayMember = dt.Columns[0].ColumnName;
+            familyAnbiyamCombobox.ValueMember = dt.Columns[1].ColumnName;
+            familyAnbiyamCombobox.SelectedIndex = 0; // Ensure "Select" is shown by default
         }
 
         private void LoadFamilyMembers(int familyId)
@@ -127,9 +133,13 @@ namespace TestFat
            // dataGridView1.DataSource = dt;
         }
 
-        public void LoadFamilyBasicDetails()
+        public void LoadFamilyBasicDetails(DataTable dt)
         {
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails");
+            if (dt == null)
+            {
+                dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails");
+            }
+
             familygrid.DataSource = dt;
 
             familygrid.Columns["FamilyID"].Visible = false;
@@ -223,7 +233,7 @@ namespace TestFat
             chart3.BorderlineColor = Color.Transparent;
         }
 
-        private void LoadAgeGroup2Chart()
+        private void LoadGenderGroupChart()
         {
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GenderData");
 
@@ -440,7 +450,7 @@ namespace TestFat
             {
                 popup.ShowDialog();
                 // After closing, reload family basic details
-                LoadFamilyBasicDetails();
+                LoadFamilyBasicDetails(null);
             }
         }
 
@@ -456,7 +466,7 @@ namespace TestFat
             {
                 popup.ShowDialog();
                 // After closing, reload family basic details
-                LoadFamilyBasicDetails();
+                LoadFamilyBasicDetails(null);
             }
         }
 
@@ -484,7 +494,7 @@ namespace TestFat
                         }
                     }
                     // Refresh grid
-                    LoadFamilyBasicDetails();
+                    LoadFamilyBasicDetails(null);
                 }
             }
         }
@@ -512,7 +522,7 @@ namespace TestFat
             using (var popup = new Cemetery(familyIDInContext))
             {
                 popup.ShowDialog();
-                LoadFamilyBasicDetails();
+                LoadFamilyBasicDetails(null);
             }
         }
 
@@ -554,6 +564,34 @@ namespace TestFat
                 LoadAnbiyamGrid(dt);
             }
         }
-    }
+
+        private void searchFamily_Click(object sender, EventArgs e)
+        {
+            using (var progress = new ProgressForm("Searching..."))
+            {
+                // Get selected anbiyam_id (handle "Select" as null)
+                object anbiyamIdObj = familyAnbiyamCombobox.SelectedValue;
+                int? anbiyamId = null;
+                if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
+                    anbiyamId = parsedId;
+
+                string familyHead = txtFamilyHead.Text.Trim();
+                string occupation = familyOccupationComboxbox.SelectedValue.ToString().Trim();
+                bool isCemeteryAvailable = cemeteryAvailable.Checked ? true : false;
+
+                var parameters = new[]
+                {
+                new SqlParameter("@anbiyam_id", (object)anbiyamId ?? DBNull.Value),
+                new SqlParameter("@family_head", string.IsNullOrEmpty(familyHead) ? (object)DBNull.Value : familyHead),
+                new SqlParameter("@occupation", string.IsNullOrEmpty(occupation) ? (object)DBNull.Value : occupation),
+                new SqlParameter("@cemetery_available", isCemeteryAvailable),
+            };
+
+                DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_SearchFamilyWithAnbiyam", parameters);
+                LoadFamilyBasicDetails(dt);
+            }
+
+        }
+}
 
     }
