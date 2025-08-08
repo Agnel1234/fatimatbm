@@ -680,7 +680,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoScrollMargin = new System.Drawing.Size(1, 0);
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Thistle;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
             this.flowLayoutPanel1.Controls.Add(this.generalGroupBox);
             this.flowLayoutPanel1.Controls.Add(this.husbandGroupBox);
             this.flowLayoutPanel1.Controls.Add(this.wifeGroupbox);

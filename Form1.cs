@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TestFat
 {
@@ -21,7 +22,10 @@ namespace TestFat
             InitializeComponent();
             LoadFamiliesAsync();
             LoadAnbiyam();
-            LoadZoneFamilyChart();
+
+            LoadAgeGroupChart();
+            LoadAgeGroup2Chart();
+
             LoadFamilyBasicDetails();
             LoadAllCemeteryData();
 
@@ -49,7 +53,7 @@ namespace TestFat
             if (showMap != null && showMap == "true")
             {
                 ShowAnbiyamOnMap(anbiyamAddress);
-                mapBrowser.Dock = DockStyle.Bottom;
+                webBrowser1.Dock = DockStyle.Fill;
             }
 
         }
@@ -87,10 +91,11 @@ namespace TestFat
                     }
                     else
                     {
-                        dataGridView1.DataSource = dt;
-                        dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-                        dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
-                        dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                        //dataGridView1.DataSource = dt;
+                        //dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                        //dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+                        //dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                        //dataGridView1.Columns["anbiyam_id"].Visible = false;
                     }
                 };
 
@@ -117,19 +122,22 @@ namespace TestFat
 
         private void LoadFamilyMembers(int familyId)
         {
-            var param = new SqlParameter("@family_id", familyId);
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyMembersByFamilyId", param);
-            dataGridView1.DataSource = dt;
+           // var param = new SqlParameter("@family_id", familyId);
+           // DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyMembersByFamilyId", param);
+           // dataGridView1.DataSource = dt;
         }
 
         public void LoadFamilyBasicDetails()
         {
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails");
             familygrid.DataSource = dt;
-            familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-            familygrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
+
             familygrid.Columns["FamilyID"].Visible = false;
-            familygrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
+            familygrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+            familygrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
+            familygrid.BackgroundColor = Color.WhiteSmoke;
+            familygrid.DefaultCellStyle.ForeColor = Color.Black;
 
             // Remove existing delete column if present to avoid duplicates
             if (familygrid.Columns["delete"] != null)
@@ -147,83 +155,137 @@ namespace TestFat
 
         }
 
-        private void searchButton_Click_1(object sender, EventArgs e)
-        {
-            using (var progress = new ProgressForm("Searching..."))
-            {
-                // Get selected anbiyam_id (handle "Select" as null)
-                object anbiyamIdObj = anbiyamCombobox.SelectedValue;
-                int? anbiyamId = null;
-                if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
-                    anbiyamId = parsedId;
-
-                // Get coordinator name and head of family from textboxes
-                string coordinatorName = coordinatorTetbox.Text.Trim();
-                string headOfFamily = familyHeadTextbox.Text.Trim();
-
-                // Use DBNull.Value for empty parameters
-                var parameters = new[]
-                {
-                new SqlParameter("@anbiyam_id", (object)anbiyamId ?? DBNull.Value),
-                new SqlParameter("@coordinator_name", string.IsNullOrEmpty(coordinatorName) ? (object)DBNull.Value : coordinatorName),
-                new SqlParameter("@head_of_family", string.IsNullOrEmpty(headOfFamily) ? (object)DBNull.Value : headOfFamily)
-            };
-
-                DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_SearchFamilyWithAnbiyam", parameters);
-                dataGridView1.DataSource = dt;
-            }
-        }
-
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadAnbiyamGrid();
+            LoadAnbiyamGrid(null);
         }
 
-        private void LoadZoneFamilyChart()
+        private void LoadAgeGroupChart()
         {
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyCountByZone");
-
-            chart1.Series.Clear();
-            chart1.ChartAreas[0].AxisX.Title = "Zone";
-            chart1.ChartAreas[0].AxisY.Title = "Number of Families";
-
-            var series = chart1.Series.Add("Families per Zone");
-            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-
-            foreach (DataRow row in dt.Rows)
-            {
-                string zone = row["Zone"].ToString();
-                int count = Convert.ToInt32(row["FamilyCount"]);
-                series.Points.AddXY(zone, count);
-            }
-
-            chart2.Series.Clear();
-            chart2.ChartAreas[0].AxisX.Title = "Zone";
-            chart2.ChartAreas[0].AxisY.Title = "Number of Families";
-
-            var series2 = chart2.Series.Add("Families per Zone");
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-
-            foreach (DataRow row in dt.Rows)
-            {
-                string zone = row["Zone"].ToString();
-                int count = Convert.ToInt32(row["FamilyCount"]);
-                series2.Points.AddXY(zone, count);
-            }
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAgeGroupChartData");
 
             chart3.Series.Clear();
-            chart3.ChartAreas[0].AxisX.Title = "Zone";
-            chart3.ChartAreas[0].AxisY.Title = "Number of Families";
+            chart3.ChartAreas[0].AxisX.Title = "Age Group";
+            chart3.ChartAreas[0].AxisY.Title = "Members";
 
-            var series3 = chart3.Series.Add("Families per Zone");
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            // Aesthetic: Set chart area background and border
+            chart3.ChartAreas[0].BackColor = Color.WhiteSmoke;
+            chart3.ChartAreas[0].BorderColor = Color.DarkGray;
+            chart3.ChartAreas[0].BorderDashStyle = ChartDashStyle.Solid;
+            chart3.ChartAreas[0].BorderWidth = 2;
+
+            // Aesthetic: Set chart control background
+            chart3.BackColor = Color.White;
+
+            // Aesthetic: Add a legend
+            chart3.Legends.Clear();
+            var legend = chart3.Legends.Add("AgeGroups");
+            legend.Docking = Docking.Right;
+            legend.Font = new Font("Georgia", 10, FontStyle.Bold);
+            legend.BackColor = Color.Transparent;
+
+            // Aesthetic: Pie chart with soft edge and outside labels
+            var series = chart3.Series.Add("Members Age Group1");
+            series.ChartType = SeriesChartType.Pie;
+            series["PieDrawingStyle"] = "SoftEdge";
+            series["PieLabelStyle"] = "Outside";
+            series.Font = new Font("Georgia", 10, FontStyle.Bold);
+
+            // Aesthetic: Custom colors for slices
+            Color[] pieColors = { Color.SkyBlue, Color.Orange, Color.LimeGreen, Color.MediumPurple, Color.Gold, Color.Coral };
+            int colorIndex = 0;
 
             foreach (DataRow row in dt.Rows)
             {
-                string zone = row["Zone"].ToString();
-                int count = Convert.ToInt32(row["FamilyCount"]);
-                series3.Points.AddXY(zone, count);
+                string ageGroup = row["AgeGroup"].ToString();
+                string ageGroupWithDesc = row["AgeGroupWithDesc"].ToString();
+                int count = Convert.ToInt32(row["MemberCount"]);
+                int pointIndex = series.Points.AddXY(ageGroup, count);
+
+                // Set color for each slice
+                series.Points[pointIndex].Color = pieColors[colorIndex % pieColors.Length];
+
+                // Aesthetic: Show value and percentage in label
+                series.Points[pointIndex].Label = $"{ageGroupWithDesc}\n{count} ({series.Points[pointIndex].YValues[0] / dt.AsEnumerable().Sum(r => r.Field<int>("MemberCount")):P0})";
+                series.Points[pointIndex].LegendText = ageGroupWithDesc;
+                colorIndex++;
             }
+
+            // Aesthetic: Explode largest slice for emphasis
+            if (series.Points.Count > 0)
+            {
+                int maxIndex = series.Points.IndexOf(series.Points.OrderByDescending(p => p.YValues[0]).First());
+               // series.Points[maxIndex].ex = true;
+            }
+
+            // Aesthetic: Remove border around the chart control
+            chart3.BorderlineDashStyle = ChartDashStyle.NotSet;
+            chart3.BorderlineColor = Color.Transparent;
+        }
+
+        private void LoadAgeGroup2Chart()
+        {
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GenderData");
+
+            chart2.Series.Clear();
+            chart2.ChartAreas[0].AxisX.Title = "Gender";
+            chart2.ChartAreas[0].AxisY.Title = "Count";
+
+            // Aesthetic: Set chart area background and border
+            chart2.ChartAreas[0].BackColor = Color.WhiteSmoke;
+            chart2.ChartAreas[0].BorderColor = Color.DarkGray;
+            chart2.ChartAreas[0].BorderDashStyle = ChartDashStyle.Solid;
+            chart2.ChartAreas[0].BorderWidth = 2;
+
+            // Aesthetic: Set chart control background
+            chart2.BackColor = Color.White;
+
+            // Aesthetic: Add a legend
+            chart2.Legends.Clear();
+            var legend = chart2.Legends.Add("GenderGroups");
+            legend.Docking = Docking.Top;
+            legend.Font = new Font("Georgia", 10, FontStyle.Bold);
+            legend.BackColor = Color.Transparent;
+
+            // Aesthetic: Column chart with custom colors and value labels
+            var series = chart2.Series.Add("Gender Count");
+            series.ChartType = SeriesChartType.Column;
+            series.Font = new Font("Georgia", 10, FontStyle.Bold);
+            series.IsValueShownAsLabel = true;
+            series.LabelForeColor = Color.Black;
+            series.IsVisibleInLegend = false;
+
+            // Custom colors for columns
+            Color[] columnColors = { Color.SkyBlue, Color.Orange };
+            int colorIndex = 0;
+
+            // Add Male and Female counts
+            if (dt.Rows.Count > 0)
+            {
+                int maleCount = Convert.ToInt32(dt.Rows[0]["MaleCount"]);
+                int femaleCount = Convert.ToInt32(dt.Rows[0]["FemaleCount"]);
+
+                int pointIndexMale = series.Points.AddXY("Male", maleCount);
+                series.Points[pointIndexMale].Color = columnColors[0];
+                series.Points[pointIndexMale].Label = maleCount.ToString();
+                series.Points[pointIndexMale].LegendText = "Male";
+
+                int pointIndexFemale = series.Points.AddXY("Female", femaleCount);
+                series.Points[pointIndexFemale].Color = columnColors[1];
+                series.Points[pointIndexFemale].Label = femaleCount.ToString();
+                series.Points[pointIndexFemale].LegendText = "Female";
+            }
+
+            // Axis label font and grid lines
+            chart2.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Georgia", 10, FontStyle.Bold);
+            chart2.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Georgia", 10, FontStyle.Bold);
+            chart2.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+            chart2.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+
+            // Remove border around the chart control
+            chart2.BorderlineDashStyle = ChartDashStyle.NotSet;
+            chart2.BorderlineColor = Color.Transparent;
+
 
         }
 
@@ -235,7 +297,7 @@ namespace TestFat
                 {
                     popup.ShowDialog(); // Shows as a modal dialog
                 }
-                LoadAnbiyamGrid();
+                LoadAnbiyamGrid(null);
             }
             else if (action == "edit")
             {
@@ -245,16 +307,16 @@ namespace TestFat
                     return;
                 }
                 var selectedId = anbiyamGrid.SelectedRows[0];
-                if (selectedId == null || selectedId.Cells["anbiyamID"].Value == null || selectedId.Cells["anbiyamID"].Value == "")
+                if (selectedId == null || selectedId.Cells["anbiyam_id"].Value == null || selectedId.Cells["anbiyam_id"].Value == "")
                 {
                     MessageBox.Show("Please select an Anbiyam to edit.");
                     return;
                 }
-                using (var popup = new AnbiyamPopup((int)selectedId.Cells["anbiyamID"].Value))
+                using (var popup = new AnbiyamPopup((int)selectedId.Cells["anbiyam_id"].Value))
                 {
                     popup.ShowDialog(); // Shows as a modal dialog
                 }
-                LoadAnbiyamGrid();
+                LoadAnbiyamGrid(null);
             }
             else
             {
@@ -274,14 +336,20 @@ namespace TestFat
             ShowPopup("edit");
         }
 
-        private void LoadAnbiyamGrid()
+        private void LoadAnbiyamGrid(DataTable dt)
         {
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAllAnbiyams");
+            if(dt == null)
+            {
+                dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
+            }
+            
             anbiyamGrid.DataSource = dt;
-            anbiyamGrid.Columns["anbiyamID"].Visible = false;
-            anbiyamGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-            anbiyamGrid.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
-            anbiyamGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            anbiyamGrid.Columns["anbiyam_id"].Visible = false;
+            anbiyamGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
+            anbiyamGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+            anbiyamGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
+            anbiyamGrid.BackgroundColor = Color.WhiteSmoke;
+            anbiyamGrid.DefaultCellStyle.ForeColor = Color.Black;
 
             // Remove existing delete column if present to avoid duplicates
             if (anbiyamGrid.Columns["delete"] != null)
@@ -294,7 +362,7 @@ namespace TestFat
             btnCol.Text = "Delete";
             btnCol.UseColumnTextForButtonValue = true;
             btnCol.Width = 60;
-            anbiyamGrid.Columns.Insert(7, btnCol); // Adjust index as needed
+            anbiyamGrid.Columns.Insert(10, btnCol); // Adjust index as needed
         }
 
         private void familygrid_SelectionChanged(object sender, EventArgs e)
@@ -309,15 +377,14 @@ namespace TestFat
             }
         }
 
-
         private void anbiyamGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && anbiyamGrid.SelectedCells.Count == 1 && anbiyamGrid.SelectedCells[0].ColumnIndex == 7)
+            if (e.RowIndex >= 0 && anbiyamGrid.SelectedCells.Count == 1 && anbiyamGrid.SelectedCells[0].ColumnIndex == 10)
             {
                 var result = MessageBox.Show("Are you sure you want to delete this Anbiyam?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    int id = Convert.ToInt32(anbiyamGrid.Rows[e.RowIndex].Cells["anbiyamID"].Value);
+                    int id = Convert.ToInt32(anbiyamGrid.Rows[e.RowIndex].Cells["anbiyam_id"].Value);
                     try
                     {
                         DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
@@ -334,7 +401,7 @@ namespace TestFat
                         }
                     }
                     // Refresh grid
-                    LoadAnbiyamGrid();
+                    LoadAnbiyamGrid(null);
                 }
             }
         }
@@ -352,10 +419,13 @@ namespace TestFat
             if (dt.Rows.Count > 0)
             {
                 familyMembersGrid.DataSource = dt;
-                familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold);
-                familyMembersGrid.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular);
                 familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
-                familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
+                familyMembersGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+                familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
+                familyMembersGrid.BackgroundColor = Color.WhiteSmoke;
+                familyMembersGrid.DefaultCellStyle.ForeColor = Color.Black;
+
             }
             else
             {
@@ -422,13 +492,10 @@ namespace TestFat
 
         public void ShowAnbiyamOnMap(string anbiyamAddress)
         {
-            //string url = $"https://www.openstreetmap.org/search?query={Uri.EscapeDataString("Silver spring flats, bethelpuram, East tambaram")}";
-            //mapBrowser.ScriptErrorsSuppressed = true;
-            //mapBrowser.Navigate(url);
-
             string url = $"https://www.bing.com/maps?q={Uri.EscapeDataString("Silver spring flats, bethelpuram, East tambaram")}";
-            mapBrowser.ScriptErrorsSuppressed = true;
-            mapBrowser.Navigate(url);
+            webBrowser1.ScriptErrorsSuppressed = true;
+            webBrowser1.Navigate(url);
+            webBrowser1.Dock = DockStyle.Fill;
         }
         private void mapBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
@@ -455,9 +522,37 @@ namespace TestFat
 
             cemeteryGridView.DataSource = dt;
             cemeteryGridView.Columns["cemeteryid"].Visible = false;
-            cemeteryGridView.ColumnHeadersDefaultCellStyle.Font = new Font("#333333", 12, FontStyle.Bold);
-            cemeteryGridView.DefaultCellStyle.Font = new Font("#333333", 9, FontStyle.Regular);
-            cemeteryGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            cemeteryGridView.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
+            cemeteryGridView.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+            cemeteryGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
+            cemeteryGridView.BackgroundColor = Color.WhiteSmoke;
+            cemeteryGridView.DefaultCellStyle.ForeColor = Color.Black;
+
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            using (var progress = new ProgressForm("Searching..."))
+            {
+                // Get selected anbiyam_id (handle "Select" as null)
+                object anbiyamIdObj = anbiyamCombobox.SelectedValue;
+                int? anbiyamId = null;
+                if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
+                    anbiyamId = parsedId;
+
+                // Get coordinator name and head of family from textboxes
+                string coordinatorName = coordinatorTetbox.Text.Trim();
+
+                // Use DBNull.Value for empty parameters
+                var parameters = new[]
+                {
+                new SqlParameter("@anbiyam_id", (object)anbiyamId ?? DBNull.Value),
+                new SqlParameter("@coordinator_name", string.IsNullOrEmpty(coordinatorName) ? (object)DBNull.Value : coordinatorName),
+            };
+
+                DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_SearchFamilyWithAnbiyam", parameters);
+                LoadAnbiyamGrid(dt);
+            }
         }
     }
 

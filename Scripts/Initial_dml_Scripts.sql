@@ -117,10 +117,9 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_SearchFamilyWithAnbiyam
+ALTER PROCEDURE sp_SearchFamilyWithAnbiyam
     @anbiyam_id INT = NULL,
-    @coordinator_name NVARCHAR(50) = NULL,
-    @head_of_family NVARCHAR(100) = NULL
+    @coordinator_name NVARCHAR(50) = NULL
 AS
 BEGIN
     SELECT
@@ -138,8 +137,7 @@ BEGIN
         INNER JOIN anbiyam a ON f.anbiyam_id = a.anbiyam_id
     WHERE
         (@anbiyam_id IS NULL OR a.anbiyam_id = @anbiyam_id)
-        AND (@coordinator_name IS NULL OR a.anbiyam_coordinator_name LIKE '%' + @coordinator_name + '%')
-        AND (@head_of_family IS NULL OR f.head_of_family LIKE '%' + @head_of_family + '%');
+        AND (@coordinator_name IS NULL OR a.anbiyam_coordinator_name LIKE '%' + @coordinator_name + '%');
 END
 GO
 
@@ -798,5 +796,75 @@ BEGIN
 		burial_date AS [Burial Date],		
 		remarks as [Remarks]
 	FROM cemetery_details
+END
+GO
+
+
+ALTER PROCEDURE sp_GetFamilyWithAnbiyam
+AS
+BEGIN
+    SELECT 
+    a.anbiyam_id,
+	a.anbiyam_zone as [Zone],
+	a.anbiyam_name as [Name],
+	a.anbiyam_coordinator_name as [Coordinator],
+    COUNT(DISTINCT f.family_id) AS [Families],
+	COUNT(f.family_id) AS [Members],
+    COUNT(CASE WHEN fm.gender = 'Male' THEN 1 END) AS [Male],
+    COUNT(CASE WHEN fm.gender = 'Female' THEN 1 END) AS [Female],
+	a.coordinator_phone as [Mobile],
+	a.created_at as [Created At]
+FROM anbiyam a
+left JOIN family f  ON a.anbiyam_id = f.anbiyam_id
+LEFT JOIN family_member fm ON fm.family_id = f.family_id
+GROUP BY 
+    a.anbiyam_id,
+    a.anbiyam_name,
+    a.anbiyam_zone,
+    a.anbiyam_coordinator_name,
+	a.coordinator_phone,
+	a.created_at;
+END
+GO
+
+
+ALTER PROCEDURE sp_GetAgeGroupChartData
+AS
+BEGIN
+	SELECT
+    AgeGroupWithDesc,
+	AgeGroup,
+    COUNT(*) AS MemberCount
+FROM (
+    SELECT
+        DATEDIFF(YEAR, dob, GETDATE()) 
+            - CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, dob, GETDATE()), dob) > GETDATE() THEN 1 ELSE 0 END AS Age,
+        CASE
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Golden Wisdom Circle'
+            ELSE 'Unknown'
+        END AS AgeGroup,
+		        CASE
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts (0-12)'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens (13-19)'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers (20-35)'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers (36-59)'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Golden Wisdom Circle (60+)'
+            ELSE 'Unknown'
+        END AS AgeGroupWithDesc
+    FROM family_member
+) AS AgeData
+GROUP BY AgeGroup, AgeGroupWithDesc;
+END
+GO
+
+CREATE PROCEDURE sp_GenderData
+AS
+BEGIN
+    SELECT SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS MaleCount, SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS FemaleCount
+    FROM family_member WHERE member_status = 'Active';
 END
 GO
