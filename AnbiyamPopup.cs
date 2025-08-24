@@ -17,6 +17,9 @@ namespace TestFat
         public AnbiyamPopup(int selected = 0)
         {
             InitializeComponent();
+
+            txtPhone.KeyPress += NumberOnlyTextBox_KeyPress;
+
             this.StartPosition = FormStartPosition.CenterScreen;
             selectedAnbiyamId = selected;
             // Example: Populate with zones 1-10
@@ -34,6 +37,15 @@ namespace TestFat
                 btnSave.Text = "Register Anbiyam";
             }
 
+        }
+
+        private void NumberOnlyTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only digits and control keys (e.g., backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

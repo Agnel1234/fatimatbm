@@ -117,14 +117,14 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_SearchFamilyWithAnbiyam
+ALTER PROCEDURE sp_SearchFamilyWithAnbiyam
     @anbiyam_id INT = NULL,
-    @coordinator_name NVARCHAR(50) = NULL,
-    @head_of_family NVARCHAR(100) = NULL
+    @coordinator_name NVARCHAR(50) = NULL
 AS
 BEGIN
     SELECT
         a.anbiyam_name AS Anbiyam,
+        a.anbiyam_id AS anbiyam_id,
         a.anbiyam_code AS Code,
         a.anbiyam_zone AS Zone,
         a.anbiyam_coordinator_name AS Coordinator,
@@ -138,8 +138,7 @@ BEGIN
         INNER JOIN anbiyam a ON f.anbiyam_id = a.anbiyam_id
     WHERE
         (@anbiyam_id IS NULL OR a.anbiyam_id = @anbiyam_id)
-        AND (@coordinator_name IS NULL OR a.anbiyam_coordinator_name LIKE '%' + @coordinator_name + '%')
-        AND (@head_of_family IS NULL OR f.head_of_family LIKE '%' + @head_of_family + '%');
+        AND (@coordinator_name IS NULL OR a.anbiyam_coordinator_name LIKE '%' + @coordinator_name + '%');
 END
 GO
 
@@ -293,36 +292,7 @@ BEGIN
 END
 GO
 
-ALter PROCEDURE sp_GetFamilyBasicDetails
-AS
-BEGIN
-	SELECT 
-        family_id as FamilyID,
-        a.anbiyam_name as 'Anbiyam Name',
-        family_code as 'Family Code', 
-        head_of_family as 'Head of Family', 
-        gender as 'Gender', 
-        family_temp_address as 'Address', 
-        phone as Mobile,
-		monthly_subscription as 'Subscription Amount',
-		parish_member_since as 'Member Since'
-	FROM family f 
-	Join anbiyam a 
-	On a.anbiyam_id = f.anbiyam_id ;
-END
-GO
-
 CREATE PROCEDURE sp_DeleteAnbiyam
-    @anbiyamID INT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DELETE FROM Anbiyam WHERE anbiyam_id = @anbiyamID;
-END
-GO
-
-ALTER PROCEDURE sp_DeleteAnbiyam
     @anbiyamID INT
 AS
 BEGIN
@@ -339,6 +309,7 @@ BEGIN
     DELETE FROM anbiyam
     WHERE anbiyam_id = @anbiyamID;
 END
+GO
 
 
 CREATE PROCEDURE sp_GetTotalFamilyCount
@@ -537,8 +508,12 @@ BEGIN
     occupation as Occupation,
     phone as Mobile,
     CASE
-        WHEN marriage_date IS NULL THEN 'Un-Married'
-        ELSE 'Married' 
+        WHEN marriage_date IS NOT NULL THEN 'Married'
+        ELSE  
+			CASE 
+              WHEN relationship IN ('Spouse', 'Head','Mother','Father','Father-In-Law','Mother-In-Law') THEN 'Married'
+              ELSE 'Un-Married'
+			END
     END AS MaritalStatus,
     CASE
         WHEN is_admin_council = 1 THEN 'Yes'
@@ -655,5 +630,314 @@ BEGIN
         member_group
     FROM family_member
     WHERE family_id = @family_id;
+END
+GO
+
+ALTER PROCEDURE sp_DeleteFamily
+    @familyID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+	DELETE FROM family_subscription WHERE family_id = @familyID;
+	DELETE FROM cemetery_details where family_id = @familyID;
+	DELETE FROM family_member WHERE family_id = @familyID;
+
+    -- Check if any families are linked to this anbiyam
+    IF EXISTS (SELECT 1 FROM family_member WHERE family_id = @familyID)
+    BEGIN
+        -- Optionally, you can raise an error or return a status code
+        RAISERROR('Cannot delete: Members are linked to this Family.', 16, 1);
+        RETURN;
+    END
+
+    DELETE FROM family WHERE family_id = @familyID;
+END
+GO
+
+ALTER PROCEDURE sp_GetFamilyCemetery
+    @familyID INT
+AS
+BEGIN
+	SELECT
+		cemetery_id AS [cemeteryid],
+		deceased_name AS [Deceased Name],
+		date_of_death AS [Date of Death],
+		burial_date AS [Burial Date],
+		grave_number AS [Cemetery Code],
+		remarks as [Remarks]
+	FROM cemetery_details where family_id = @familyID;
+END
+GO
+
+
+ALTER PROCEDURE sp_InsertOrUpdateCemetery
+    @cemeteryID INT = NULL,
+    @memberID INT = NULL,
+    @burialDate DATE,
+    @deathDate DATE,
+    @cemeteryCode NVARCHAR(50),
+    @remarks NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @cemeteryID IS NULL OR @cemeteryID = 0
+		BEGIN
+			INSERT INTO cemetery_details 
+				(
+				family_id, 
+				member_id, 
+				deceased_name, 
+				date_of_birth, 
+				date_of_death, 
+				burial_date, 
+				burial_place,
+				grave_number,
+				remarks,
+				created_at,
+				modified
+				)
+			SELECT 
+				family_id, 
+				member_id, 
+				first_name, 
+				NULL,
+				@deathDate,
+				@burialDate,
+				'Tambaram',
+				@cemeteryCode,
+				@remarks, 
+				GETDATE(),
+				GETDATE()
+			FROM family_member
+				WHERE member_id = @memberID;
+
+			UPDATE family_member SET member_status = 'Deceased' WHERE member_id = @memberID;
+			-- Insert new record
+		END
+    ELSE
+		BEGIN
+			-- Update existing record
+			UPDATE cemetery_details
+			SET
+				date_of_death = @deathDate,
+				burial_date = @burialDate,
+				grave_number = @cemeteryCode,
+				modified = GETDATE(),
+				remarks = @remarks
+			WHERE cemetery_id = @cemeteryID;
+
+			UPDATE family_member SET member_status = 'Deceased' WHERE member_id = @memberID;
+		END
+END
+GO
+
+
+
+ALTER PROCEDURE sp_GetFamilyMembersForDropdown
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        member_id,
+        first_name AS membername
+    FROM family_member
+    WHERE family_id = @family_id and member_id not in 
+	(
+		SELECT member_id FROM cemetery_details where family_id = @family_id
+	);
+END
+GO
+
+
+ALTER PROCEDURE sp_GetAllCemeteries
+AS
+BEGIN
+	SELECT
+		cemetery_id AS [cemeteryid],
+        grave_number AS [Cemetery Code],
+		deceased_name AS [Deceased Name],
+		date_of_death AS [Date of Death],
+		burial_date AS [Burial Date],		
+		remarks as [Remarks]
+	FROM cemetery_details
+END
+GO
+
+
+ALTER PROCEDURE sp_GetFamilyWithAnbiyam
+AS
+BEGIN
+    SELECT 
+    a.anbiyam_id,
+	a.anbiyam_zone as [Zone],
+	a.anbiyam_name as [Name],
+	a.anbiyam_coordinator_name as [Coordinator],
+    COUNT(DISTINCT f.family_id) AS [Families],
+	COUNT(f.family_id) AS [Members],
+    COUNT(CASE WHEN fm.gender = 'Male' THEN 1 END) AS [Male],
+    COUNT(CASE WHEN fm.gender = 'Female' THEN 1 END) AS [Female],
+	a.coordinator_phone as [Mobile],
+	a.created_at as [Created At]
+FROM anbiyam a
+left JOIN family f  ON a.anbiyam_id = f.anbiyam_id
+LEFT JOIN family_member fm ON fm.family_id = f.family_id
+GROUP BY 
+    a.anbiyam_id,
+    a.anbiyam_name,
+    a.anbiyam_zone,
+    a.anbiyam_coordinator_name,
+	a.coordinator_phone,
+	a.created_at;
+END
+GO
+
+
+ALTER PROCEDURE sp_GetAgeGroupChartData
+AS
+BEGIN
+	SELECT
+    AgeGroupWithDesc,
+	AgeGroup,
+    COUNT(*) AS MemberCount
+FROM (
+    SELECT
+        DATEDIFF(YEAR, dob, GETDATE()) 
+            - CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, dob, GETDATE()), dob) > GETDATE() THEN 1 ELSE 0 END AS Age,
+        CASE
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Golden Wisdom Circle'
+            ELSE 'Unknown'
+        END AS AgeGroup,
+		        CASE
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts (0-12)'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens (13-19)'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers (20-35)'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers (36-59)'
+            WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Golden Wisdom Circle (60+)'
+            ELSE 'Unknown'
+        END AS AgeGroupWithDesc
+    FROM family_member
+) AS AgeData
+GROUP BY AgeGroup, AgeGroupWithDesc;
+END
+GO
+
+CREATE PROCEDURE sp_GenderData
+AS
+BEGIN
+    SELECT SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS MaleCount, SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS FemaleCount
+    FROM family_member WHERE member_status = 'Active';
+END
+GO
+
+
+ALTER PROCEDURE sp_GetFamilyBasicDetails
+    @anbiyam_id INT = 0,
+    @family_head NVARCHAR(100) = NULL,
+    @occupation NVARCHAR(100) = NULL,
+    @cemetery_available BIT = NULL
+AS
+BEGIN
+    SELECT 
+        f.family_id AS FamilyID,
+        a.anbiyam_name AS [Anbiyam Name],
+        f.family_code AS [Family Code], 
+        f.head_of_family AS [Head of Family], 
+        f.gender AS [Gender], 
+        f.family_temp_address AS [Address], 
+        f.phone AS [Mobile],
+        f.monthly_subscription AS [Subscription Amount],
+        f.parish_member_since AS [Member Since],
+        COUNT(DISTINCT fm.member_id) AS [Members],
+        COUNT(DISTINCT cd.cemetery_id) AS [Cemetery Count]
+    FROM family f
+    INNER JOIN anbiyam a ON a.anbiyam_id = f.anbiyam_id
+    LEFT JOIN family_member fm ON fm.family_id = f.family_id
+    LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
+    WHERE fm.member_status = 'Active'
+        AND (@anbiyam_id = 0 OR @anbiyam_id = a.anbiyam_id)
+        AND (@family_head IS NULL OR f.head_of_family LIKE '%' + @family_head + '%')
+        AND (@occupation IS NULL OR EXISTS (
+            SELECT 1 FROM family_member fm2 
+            WHERE fm2.family_id = f.family_id AND fm2.occupation LIKE '%' + @occupation + '%'
+        ))
+        AND (
+            @cemetery_available IS NULL
+            OR (@cemetery_available = 1 AND EXISTS (
+                SELECT 1 FROM cemetery_details cd2 WHERE cd2.family_id = f.family_id
+            ))
+            OR (@cemetery_available = 0 AND NOT EXISTS (
+                SELECT 1 FROM cemetery_details cd3 WHERE cd3.family_id = f.family_id
+            ))
+        )
+    GROUP BY 
+        f.family_id,
+        a.anbiyam_name,
+        f.family_code,
+        f.head_of_family,
+        f.gender,
+        f.family_temp_address,
+        f.phone,
+        f.monthly_subscription,
+        f.parish_member_since
+END
+GO
+
+CREATE PROCEDURE sp_AggregateOccupations
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT 
+        Distinct Upper(Occupation)
+    FROM 
+        dbo.family_member 	
+    WHERE 
+        Occupation IS NOT NULL AND Occupation <> ''
+    GROUP BY 
+        Occupation 
+END
+
+ALTER PROCEDURE sp_GetAllCemeteries
+
+@burial_date_from datetime = null,
+@burial_date_to datetime = null,
+@deceased_date_from datetime = null,
+@deceased_date_to datetime = null,
+@IsOurparish BIT = null
+
+AS
+BEGIN
+
+	SELECT
+		cemetery_id AS [cemeteryid],
+        grave_number AS [Cemetery Code],
+		deceased_name AS [Deceased Name],
+		date_of_death AS [Deceased Date],
+		burial_date AS [Burial Date],		
+		remarks as [Remarks]
+	FROM cemetery_details cd
+	inner join family f on cd.family_id = f.family_id
+	WHERE
+        ((@burial_date_from IS NULL and @burial_date_to is null) OR cd.burial_date between @burial_date_from and @burial_date_to) 
+		AND
+        ((@deceased_date_from IS NULL and @deceased_date_to is null) OR cd.burial_date between @burial_date_from and @burial_date_to)
+        AND (
+            @IsOurparish IS NULL
+            OR (@IsOurparish = 1 AND EXISTS (
+                SELECT 1 FROM cemetery_details cd2 WHERE cd2.family_id = f.family_id
+            ))
+            OR (@IsOurparish = 0 AND NOT EXISTS (
+                SELECT 1 FROM cemetery_details cd3 WHERE cd3.family_id = f.family_id
+            ))
+        )
+	order by grave_number desc
+
 END
 GO
