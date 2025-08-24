@@ -838,41 +838,6 @@ END
 GO
 
 
---ALter PROCEDURE sp_GetFamilyBasicDetails
---AS
---BEGIN
---	SELECT 
---		f.family_id AS FamilyID,
---		a.anbiyam_name AS [Anbiyam Name],
---		f.family_code AS [Family Code], 
---		f.head_of_family AS [Head of Family], 
---		f.gender AS [Gender], 
---		f.family_temp_address AS [Address], 
---		f.phone AS [Mobile],
---		f.monthly_subscription AS [Subscription Amount],
---		f.parish_member_since AS [Member Since],
---		COUNT(DISTINCT fm.member_id) AS [Members],
---		COUNT(DISTINCT cd.cemetery_id) AS [Cemetery Count]
---	FROM family f
---	INNER JOIN anbiyam a ON a.anbiyam_id = f.anbiyam_id
---	LEFT JOIN family_member fm ON fm.family_id = f.family_id
---	LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
---	WHERE fm.member_status = 'Active'
---	GROUP BY 
---		f.family_id,
---		a.anbiyam_name,
---		f.family_code,
---		f.head_of_family,
---		f.gender,
---		f.family_temp_address,
---		f.phone,
---		f.monthly_subscription,
---		f.parish_member_since
---END
---GO
-
-
-
 ALTER PROCEDURE sp_GetFamilyBasicDetails
     @anbiyam_id INT = 0,
     @family_head NVARCHAR(100) = NULL,
@@ -897,7 +862,7 @@ BEGIN
     LEFT JOIN family_member fm ON fm.family_id = f.family_id
     LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
     WHERE fm.member_status = 'Active'
-        AND (@anbiyam_id = a.anbiyam_id)
+        AND (@anbiyam_id = 0 OR @anbiyam_id = a.anbiyam_id)
         AND (@family_head IS NULL OR f.head_of_family LIKE '%' + @family_head + '%')
         AND (@occupation IS NULL OR EXISTS (
             SELECT 1 FROM family_member fm2 
@@ -922,5 +887,57 @@ BEGIN
         f.phone,
         f.monthly_subscription,
         f.parish_member_since
+END
+GO
+
+CREATE PROCEDURE sp_AggregateOccupations
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT 
+        Distinct Upper(Occupation)
+    FROM 
+        dbo.family_member 	
+    WHERE 
+        Occupation IS NOT NULL AND Occupation <> ''
+    GROUP BY 
+        Occupation 
+END
+
+ALTER PROCEDURE sp_GetAllCemeteries
+
+@burial_date_from datetime = null,
+@burial_date_to datetime = null,
+@deceased_date_from datetime = null,
+@deceased_date_to datetime = null,
+@IsOurparish BIT = null
+
+AS
+BEGIN
+
+	SELECT
+		cemetery_id AS [cemeteryid],
+        grave_number AS [Cemetery Code],
+		deceased_name AS [Deceased Name],
+		date_of_death AS [Deceased Date],
+		burial_date AS [Burial Date],		
+		remarks as [Remarks]
+	FROM cemetery_details cd
+	inner join family f on cd.family_id = f.family_id
+	WHERE
+        ((@burial_date_from IS NULL and @burial_date_to is null) OR cd.burial_date between @burial_date_from and @burial_date_to) 
+		AND
+        ((@deceased_date_from IS NULL and @deceased_date_to is null) OR cd.burial_date between @burial_date_from and @burial_date_to)
+        AND (
+            @IsOurparish IS NULL
+            OR (@IsOurparish = 1 AND EXISTS (
+                SELECT 1 FROM cemetery_details cd2 WHERE cd2.family_id = f.family_id
+            ))
+            OR (@IsOurparish = 0 AND NOT EXISTS (
+                SELECT 1 FROM cemetery_details cd3 WHERE cd3.family_id = f.family_id
+            ))
+        )
+	order by grave_number desc
+
 END
 GO

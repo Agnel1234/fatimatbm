@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +20,17 @@ namespace TestFat
         public string anbiyamAddress = "";
         public Form1()
         {
+
             InitializeComponent();
-            LoadFamiliesAsync();
+
+            LoadOccupation();
             LoadAnbiyam();
 
             LoadAgeGroupChart();
             LoadGenderGroupChart();
 
             LoadFamilyBasicDetails(null);
-            LoadAllCemeteryData();
+            LoadAllCemeteryData(null);
 
             this.familygrid.SelectionChanged += familygrid_SelectionChanged;
             btncreate.Image = new Bitmap(Properties.Resources.createAnbiyam, new Size(24, 24)); // Assuming you have an add icon in your resources
@@ -63,45 +66,33 @@ namespace TestFat
             Application.Exit();
         }
 
-        private void LoadFamiliesAsync()
+        private void familytab_DrawItem(object sender, DrawItemEventArgs e)
         {
-            using (var progress = new ProgressForm("Connecting Database..."))
+            for (int i = 0; i < familytab.TabCount; i++)
             {
-                DataTable dt = null;
-                Exception dbException = null;
+                Rectangle tabRect = familytab.GetTabRect(i);
+                bool isSelected = (i == familytab.SelectedIndex);
 
-                var worker = new System.ComponentModel.BackgroundWorker();
-                worker.DoWork += (s, e) =>
+                // Draw tab text
+                string tabText = familytab.TabPages[i].Text;
+                using (SolidBrush textBrush = new SolidBrush(Color.White))
                 {
-                    try
-                    {
-                        dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
-                    }
-                    catch (Exception ex)
-                    {
-                        dbException = ex;
-                    }
-                };
-                worker.RunWorkerCompleted += (s, e) =>
-                {
-                    progress.Close();
-                    if (dbException != null)
-                    {
-                        MessageBox.Show("Database connection failed:\n" + dbException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        //dataGridView1.DataSource = dt;
-                        //dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                        //dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Regular);
-                        //dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-                        //dataGridView1.Columns["anbiyam_id"].Visible = false;
-                    }
-                };
-
-                worker.RunWorkerAsync();
-                progress.ShowDialog(this);
+                    StringFormat sf = new StringFormat { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Near };
+                    e.Graphics.DrawString(tabText, familytab.Font, textBrush, tabRect, sf);
+                }
             }
+        }
+
+        private void LoadOccupation()
+        {
+            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_AggregateOccupations");
+            // Insert a default "Select" row at the top
+            DataRow newRow = dt.NewRow();
+            newRow[dt.Columns[0].ColumnName] = "Select";
+            dt.Rows.InsertAt(newRow, 0);
+            familyOccupationComboxbox.DataSource = dt;
+            familyOccupationComboxbox.DisplayMember = dt.Columns[0].ColumnName;
+            familyOccupationComboxbox.SelectedIndex = 0; // Ensure "Select" is shown by default
         }
 
         private void LoadAnbiyam()
@@ -126,13 +117,6 @@ namespace TestFat
             familyAnbiyamCombobox.SelectedIndex = 0; // Ensure "Select" is shown by default
         }
 
-        private void LoadFamilyMembers(int familyId)
-        {
-           // var param = new SqlParameter("@family_id", familyId);
-           // DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyMembersByFamilyId", param);
-           // dataGridView1.DataSource = dt;
-        }
-
         public void LoadFamilyBasicDetails(DataTable dt)
         {
             if (dt == null)
@@ -141,7 +125,6 @@ namespace TestFat
             }
 
             familygrid.DataSource = dt;
-
             familygrid.Columns["FamilyID"].Visible = false;
             familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
             familygrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
@@ -160,6 +143,8 @@ namespace TestFat
             btnCol.Text = "Delete";
             btnCol.UseColumnTextForButtonValue = true;
             btnCol.Width = 60;
+            btnCol.DefaultCellStyle.BackColor = Color.DarkRed;
+            btnCol.DefaultCellStyle.ForeColor = Color.DarkRed;
             familygrid.Columns.Insert(11, btnCol); // Adjust index as needed
 
 
@@ -372,6 +357,8 @@ namespace TestFat
             btnCol.Text = "Delete";
             btnCol.UseColumnTextForButtonValue = true;
             btnCol.Width = 60;
+            btnCol.DefaultCellStyle.BackColor = Color.DarkRed;
+            btnCol.DefaultCellStyle.ForeColor = Color.DarkRed;
             anbiyamGrid.Columns.Insert(10, btnCol); // Adjust index as needed
         }
 
@@ -430,7 +417,7 @@ namespace TestFat
             {
                 familyMembersGrid.DataSource = dt;
                 familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
-                familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
+                familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Bold);
                 familyMembersGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
                 familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
                 familyMembersGrid.BackgroundColor = Color.WhiteSmoke;
@@ -526,9 +513,17 @@ namespace TestFat
             }
         }
 
-        private void LoadAllCemeteryData()
+        private void LoadAllCemeteryData(DataTable dtInput)
         {
-            DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAllCemeteries");
+            DataTable dt = null;
+            if (dtInput != null)
+            {
+                dt = dtInput;
+            }
+            else
+            {
+                dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAllCemeteries");
+            }
 
             cemeteryGridView.DataSource = dt;
             cemeteryGridView.Columns["cemeteryid"].Visible = false;
@@ -571,27 +566,80 @@ namespace TestFat
             {
                 // Get selected anbiyam_id (handle "Select" as null)
                 object anbiyamIdObj = familyAnbiyamCombobox.SelectedValue;
-                int? anbiyamId = null;
+                int anbiyamId = 0;
+                bool? isCemeteryAvailable = null; // Default to null for "Not Applicable"
+
                 if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
                     anbiyamId = parsedId;
 
-                string familyHead = txtFamilyHead.Text.Trim();
-                string occupation = familyOccupationComboxbox.SelectedValue.ToString().Trim();
-                bool isCemeteryAvailable = cemeteryAvailable.Checked ? true : false;
+                string familyHead = txtFamilyHead.Text == "" ? null : txtFamilyHead.Text.Trim();
+                string occupation = familyOccupationComboxbox.SelectedText == "" ? null : familyOccupationComboxbox.SelectedText.Trim(); ;
+
+                switch(cemeteryComboBox.SelectedItem)
+                {
+                    case "Not Applicable":
+                        isCemeteryAvailable = null; // Handle "Select" as null
+                        break;
+                    case "":
+                        isCemeteryAvailable = null; // Handle "Select" as null
+                        break;
+                    case "Yes":
+                        isCemeteryAvailable = true; // Handle "Not Applicable" as null
+                        break;
+                    default:
+                        isCemeteryAvailable = false;
+                        break;
+                }
 
                 var parameters = new[]
                 {
-                new SqlParameter("@anbiyam_id", (object)anbiyamId ?? DBNull.Value),
+                new SqlParameter("@anbiyam_id", anbiyamId),
                 new SqlParameter("@family_head", string.IsNullOrEmpty(familyHead) ? (object)DBNull.Value : familyHead),
                 new SqlParameter("@occupation", string.IsNullOrEmpty(occupation) ? (object)DBNull.Value : occupation),
                 new SqlParameter("@cemetery_available", isCemeteryAvailable),
             };
 
-                DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_SearchFamilyWithAnbiyam", parameters);
+                DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails", parameters);
                 LoadFamilyBasicDetails(dt);
             }
 
         }
-}
+
+        private void cemeterySearchBtn_Click(object sender, EventArgs e)
+        {
+            using (var progress = new ProgressForm("Searching..."))
+            {
+                bool? isOurParish = null; // Default to null for "Not Applicable"
+
+                switch (parishCombobox.SelectedItem)
+                {
+                    case "Not Applicable":
+                        isOurParish = null; // Handle "Select" as null
+                        break;
+                    case "":
+                        isOurParish = null; // Handle "Select" as null
+                        break;
+                    case "Fatima Church Parish":
+                        isOurParish = true; // Handle "Not Applicable" as null
+                        break;
+                    default:
+                        isOurParish = false;
+                        break;
+                }
+
+                var parameters = new[]
+                {
+                new SqlParameter("@burial_date_from", dtBurialStart.Checked ? dtBurialStart.Value :  (DateTime?)null),
+                new SqlParameter("@burial_date_to", dtBurialEnd.Checked ? dtBurialEnd.Value :  (DateTime?)null),
+                new SqlParameter("@deceased_date_from", dtDeceasedStart.Checked ? dtDeceasedStart.Value :  (DateTime?)null),
+                new SqlParameter("@deceased_date_to", dtDeceasedEnd.Checked ? dtDeceasedEnd.Value :  (DateTime?)null),
+                new SqlParameter("@IsOurparish", isOurParish),
+            };
+
+                DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAllCemeteries", parameters);
+                LoadAllCemeteryData(dt);
+            }
+        }
+    }
 
     }

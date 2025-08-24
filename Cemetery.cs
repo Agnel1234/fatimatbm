@@ -35,6 +35,13 @@ namespace TestFat
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyCemetery", param);
             cemeteryGrid.DataSource = dt;
             cemeteryGrid.Columns["cemeteryid"].Visible = false;
+
+            cemeteryGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Bold);
+            cemeteryGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+            cemeteryGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
+            cemeteryGrid.BackgroundColor = Color.WhiteSmoke;
+            cemeteryGrid.DefaultCellStyle.ForeColor = Color.Black;
+
         }
 
         private void LoadMemberDropdown()

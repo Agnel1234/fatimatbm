@@ -93,28 +93,29 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(6, 104);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(83, 15);
             this.label3.TabIndex = 19;
             this.label3.Text = "Burial Date *";
             // 
             // dtBurialDate
             // 
             this.dtBurialDate.Checked = false;
+            this.dtBurialDate.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtBurialDate.Location = new System.Drawing.Point(123, 104);
             this.dtBurialDate.Name = "dtBurialDate";
-            this.dtBurialDate.Size = new System.Drawing.Size(200, 20);
+            this.dtBurialDate.Size = new System.Drawing.Size(200, 21);
             this.dtBurialDate.TabIndex = 18;
             // 
             // lblAnbiyamName
             // 
             this.lblAnbiyamName.AutoSize = true;
-            this.lblAnbiyamName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnbiyamName.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnbiyamName.Location = new System.Drawing.Point(6, 32);
             this.lblAnbiyamName.Name = "lblAnbiyamName";
-            this.lblAnbiyamName.Size = new System.Drawing.Size(96, 13);
+            this.lblAnbiyamName.Size = new System.Drawing.Size(102, 15);
             this.lblAnbiyamName.TabIndex = 10;
             this.lblAnbiyamName.Text = "Member Name *";
             // 
@@ -122,8 +123,9 @@
             // 
             this.btnAddCemetery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddCemetery.BackColor = System.Drawing.Color.DarkGray;
-            this.btnAddCemetery.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCemetery.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddCemetery.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCemetery.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAddCemetery.Location = new System.Drawing.Point(454, 141);
             this.btnAddCemetery.Name = "btnAddCemetery";
             this.btnAddCemetery.Size = new System.Drawing.Size(172, 29);
@@ -135,64 +137,68 @@
             // dtDeceasedDate
             // 
             this.dtDeceasedDate.Checked = false;
+            this.dtDeceasedDate.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtDeceasedDate.Location = new System.Drawing.Point(123, 67);
             this.dtDeceasedDate.Name = "dtDeceasedDate";
-            this.dtDeceasedDate.Size = new System.Drawing.Size(200, 20);
+            this.dtDeceasedDate.Size = new System.Drawing.Size(200, 21);
             this.dtDeceasedDate.TabIndex = 17;
             // 
             // comboMemberName
             // 
             this.comboMemberName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboMemberName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboMemberName.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboMemberName.Location = new System.Drawing.Point(123, 32);
             this.comboMemberName.Name = "comboMemberName";
-            this.comboMemberName.Size = new System.Drawing.Size(200, 21);
+            this.comboMemberName.Size = new System.Drawing.Size(200, 23);
             this.comboMemberName.TabIndex = 2;
             // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhone.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhone.Location = new System.Drawing.Point(347, 40);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(101, 13);
+            this.lblPhone.Size = new System.Drawing.Size(103, 15);
             this.lblPhone.TabIndex = 15;
             this.lblPhone.Text = "Cemetery Code *";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(6, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.Size = new System.Drawing.Size(98, 15);
             this.label2.TabIndex = 13;
             this.label2.Text = "Deceased Date *";
             // 
             // txtCemeteryCode
             // 
             this.txtCemeteryCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCemeteryCode.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCemeteryCode.Location = new System.Drawing.Point(454, 37);
             this.txtCemeteryCode.MaxLength = 10;
             this.txtCemeteryCode.Name = "txtCemeteryCode";
-            this.txtCemeteryCode.Size = new System.Drawing.Size(172, 20);
+            this.txtCemeteryCode.Size = new System.Drawing.Size(172, 21);
             this.txtCemeteryCode.TabIndex = 6;
             // 
             // txtCemeteryCharge
             // 
             this.txtCemeteryCharge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCemeteryCharge.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCemeteryCharge.Location = new System.Drawing.Point(350, 104);
             this.txtCemeteryCharge.Name = "txtCemeteryCharge";
-            this.txtCemeteryCharge.Size = new System.Drawing.Size(276, 20);
+            this.txtCemeteryCharge.Size = new System.Drawing.Size(276, 21);
             this.txtCemeteryCharge.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(347, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(53, 15);
             this.label1.TabIndex = 16;
             this.label1.Text = "Remark";
             // 
