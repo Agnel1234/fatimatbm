@@ -9,7 +9,7 @@ public static class DatabaseHelper
 
     public static DataTable ExecuteStoredProcedure(string procedureName, params SqlParameter[] parameters)
     {
-        int maxRetries = 3;
+        int maxRetries = 13;
         int delayMs = 1000; // 1 second delay between retries
 
         for (int attempt = 1; attempt <= maxRetries; attempt++)

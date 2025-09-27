@@ -1,4 +1,4 @@
-﻿CREATE DATABASE fatimachurchtbm;
+﻿--CREATE DATABASE fatimachurchtbm;
 GO
 
 USE fatimachurchtbm;
@@ -128,5 +128,10 @@ ALTER TABLE family_member ADD child_institution NVARCHAR(100);
 ALTER TABLE family_member ADD member_group NVARCHAR(50);
 ALTER TABLE family_member DROP COLUMN last_name;
 ALTER TABLE family_member DROP COLUMN marital_status;
+
+
+ALTER TABLE family ADD family_notes NVARCHAR(200);
+ALTER TABLE family ADD multiple_familycards bit NOT NULL DEFAULT (0);
+ALTER TABLE family ADD last_subscription_date DATETIME NULL;
 
 

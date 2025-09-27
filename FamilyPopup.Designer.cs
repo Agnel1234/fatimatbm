@@ -29,12 +29,18 @@
         private void InitializeComponent()
         {
             this.generalGroupBox = new System.Windows.Forms.GroupBox();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.label125 = new System.Windows.Forms.Label();
+            this.dtLastSubscription = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.familySubscriptiontxt = new System.Windows.Forms.TextBox();
+            this.multipleCardsCheckbox = new System.Windows.Forms.CheckBox();
+            this.label123 = new System.Windows.Forms.Label();
+            this.txtFamilyNotes = new System.Windows.Forms.TextBox();
             this.sameAddressCheckbox = new System.Windows.Forms.CheckBox();
             this.familyCodetxt = new System.Windows.Forms.TextBox();
             this.label122 = new System.Windows.Forms.Label();
             this.familyZonetxt = new System.Windows.Forms.TextBox();
-            this.familySubscriptiontxt = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.tempZipcodetxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tempStatetxt = new System.Windows.Forms.TextBox();
@@ -339,7 +345,6 @@
             this.txtOther1Name = new System.Windows.Forms.TextBox();
             this.label113 = new System.Windows.Forms.Label();
             this.otherRelation2Groupbox = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.other2Combobox = new System.Windows.Forms.ComboBox();
             this.label101 = new System.Windows.Forms.Label();
             this.txtOther2Whatsapp = new System.Windows.Forms.TextBox();
@@ -372,10 +377,12 @@
             this.txtOther2Name = new System.Windows.Forms.TextBox();
             this.label121 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_disable = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnAddOtherRelation = new System.Windows.Forms.Button();
             this.btnAddChildren = new System.Windows.Forms.Button();
             this.generalGroupBox.SuspendLayout();
+            this.panel20.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.husbandGroupBox.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -412,12 +419,14 @@
             this.generalGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.generalGroupBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.generalGroupBox.Controls.Add(this.panel20);
+            this.generalGroupBox.Controls.Add(this.multipleCardsCheckbox);
+            this.generalGroupBox.Controls.Add(this.label123);
+            this.generalGroupBox.Controls.Add(this.txtFamilyNotes);
             this.generalGroupBox.Controls.Add(this.sameAddressCheckbox);
             this.generalGroupBox.Controls.Add(this.familyCodetxt);
             this.generalGroupBox.Controls.Add(this.label122);
             this.generalGroupBox.Controls.Add(this.familyZonetxt);
-            this.generalGroupBox.Controls.Add(this.familySubscriptiontxt);
-            this.generalGroupBox.Controls.Add(this.label11);
             this.generalGroupBox.Controls.Add(this.tempZipcodetxt);
             this.generalGroupBox.Controls.Add(this.label7);
             this.generalGroupBox.Controls.Add(this.tempStatetxt);
@@ -441,20 +450,104 @@
             this.generalGroupBox.ForeColor = System.Drawing.SystemColors.Highlight;
             this.generalGroupBox.Location = new System.Drawing.Point(3, 3);
             this.generalGroupBox.Name = "generalGroupBox";
-            this.generalGroupBox.Size = new System.Drawing.Size(1104, 211);
+            this.generalGroupBox.Size = new System.Drawing.Size(1104, 300);
             this.generalGroupBox.TabIndex = 0;
             this.generalGroupBox.TabStop = false;
             this.generalGroupBox.Text = "General Details";
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel20.Controls.Add(this.label125);
+            this.panel20.Controls.Add(this.dtLastSubscription);
+            this.panel20.Controls.Add(this.label11);
+            this.panel20.Controls.Add(this.familySubscriptiontxt);
+            this.panel20.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel20.Location = new System.Drawing.Point(671, 205);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(411, 89);
+            this.panel20.TabIndex = 34;
+            // 
+            // label125
+            // 
+            this.label125.AutoSize = true;
+            this.label125.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label125.Location = new System.Drawing.Point(34, 62);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(135, 15);
+            this.label125.TabIndex = 31;
+            this.label125.Text = "Last subscription Date";
+            // 
+            // dtLastSubscription
+            // 
+            this.dtLastSubscription.Checked = false;
+            this.dtLastSubscription.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtLastSubscription.Location = new System.Drawing.Point(187, 56);
+            this.dtLastSubscription.Name = "dtLastSubscription";
+            this.dtLastSubscription.ShowCheckBox = true;
+            this.dtLastSubscription.Size = new System.Drawing.Size(197, 21);
+            this.dtLastSubscription.TabIndex = 28;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(34, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(133, 15);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Monthly Subscription";
+            // 
+            // familySubscriptiontxt
+            // 
+            this.familySubscriptiontxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.familySubscriptiontxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.familySubscriptiontxt.Location = new System.Drawing.Point(189, 19);
+            this.familySubscriptiontxt.Name = "familySubscriptiontxt";
+            this.familySubscriptiontxt.Size = new System.Drawing.Size(197, 21);
+            this.familySubscriptiontxt.TabIndex = 3;
+            // 
+            // multipleCardsCheckbox
+            // 
+            this.multipleCardsCheckbox.AutoSize = true;
+            this.multipleCardsCheckbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.multipleCardsCheckbox.ForeColor = System.Drawing.Color.Red;
+            this.multipleCardsCheckbox.Location = new System.Drawing.Point(19, 205);
+            this.multipleCardsCheckbox.Name = "multipleCardsCheckbox";
+            this.multipleCardsCheckbox.Size = new System.Drawing.Size(203, 19);
+            this.multipleCardsCheckbox.TabIndex = 24;
+            this.multipleCardsCheckbox.Text = "Family Having Multiple Cards";
+            this.multipleCardsCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // label123
+            // 
+            this.label123.AutoSize = true;
+            this.label123.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label123.Location = new System.Drawing.Point(19, 241);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(84, 15);
+            this.label123.TabIndex = 26;
+            this.label123.Text = "Family Notes";
+            // 
+            // txtFamilyNotes
+            // 
+            this.txtFamilyNotes.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFamilyNotes.Location = new System.Drawing.Point(118, 241);
+            this.txtFamilyNotes.Multiline = true;
+            this.txtFamilyNotes.Name = "txtFamilyNotes";
+            this.txtFamilyNotes.Size = new System.Drawing.Size(517, 40);
+            this.txtFamilyNotes.TabIndex = 25;
             // 
             // sameAddressCheckbox
             // 
             this.sameAddressCheckbox.AutoSize = true;
             this.sameAddressCheckbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sameAddressCheckbox.Location = new System.Drawing.Point(18, 130);
+            this.sameAddressCheckbox.Location = new System.Drawing.Point(18, 127);
             this.sameAddressCheckbox.Name = "sameAddressCheckbox";
-            this.sameAddressCheckbox.Size = new System.Drawing.Size(112, 19);
+            this.sameAddressCheckbox.Size = new System.Drawing.Size(106, 19);
             this.sameAddressCheckbox.TabIndex = 8;
-            this.sameAddressCheckbox.Text = "Same as Above";
+            this.sameAddressCheckbox.Text = "Same Address";
             this.sameAddressCheckbox.UseVisualStyleBackColor = true;
             this.sameAddressCheckbox.CheckedChanged += new System.EventHandler(this.sameAddressCheckbox_CheckedChanged);
             // 
@@ -463,9 +556,9 @@
             this.familyCodetxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.familyCodetxt.Enabled = false;
             this.familyCodetxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.familyCodetxt.Location = new System.Drawing.Point(671, 38);
+            this.familyCodetxt.Location = new System.Drawing.Point(781, 35);
             this.familyCodetxt.Name = "familyCodetxt";
-            this.familyCodetxt.Size = new System.Drawing.Size(77, 21);
+            this.familyCodetxt.Size = new System.Drawing.Size(113, 21);
             this.familyCodetxt.TabIndex = 0;
             // 
             // label122
@@ -474,46 +567,26 @@
             this.label122.AutoSize = true;
             this.label122.Enabled = false;
             this.label122.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label122.Location = new System.Drawing.Point(580, 44);
+            this.label122.Location = new System.Drawing.Point(735, 39);
             this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(79, 15);
+            this.label122.Size = new System.Drawing.Size(34, 15);
             this.label122.TabIndex = 23;
-            this.label122.Text = "Family Code";
+            this.label122.Text = "Code";
             // 
             // familyZonetxt
             // 
             this.familyZonetxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.familyZonetxt.Enabled = false;
             this.familyZonetxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.familyZonetxt.Location = new System.Drawing.Point(461, 41);
+            this.familyZonetxt.Location = new System.Drawing.Point(602, 36);
             this.familyZonetxt.Name = "familyZonetxt";
-            this.familyZonetxt.Size = new System.Drawing.Size(77, 21);
+            this.familyZonetxt.Size = new System.Drawing.Size(113, 21);
             this.familyZonetxt.TabIndex = 2;
-            // 
-            // familySubscriptiontxt
-            // 
-            this.familySubscriptiontxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.familySubscriptiontxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.familySubscriptiontxt.Location = new System.Drawing.Point(933, 39);
-            this.familySubscriptiontxt.Name = "familySubscriptiontxt";
-            this.familySubscriptiontxt.Size = new System.Drawing.Size(154, 21);
-            this.familySubscriptiontxt.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(780, 44);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(133, 15);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Monthly Subscription";
             // 
             // tempZipcodetxt
             // 
             this.tempZipcodetxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempZipcodetxt.Location = new System.Drawing.Point(969, 97);
+            this.tempZipcodetxt.Location = new System.Drawing.Point(969, 89);
             this.tempZipcodetxt.Name = "tempZipcodetxt";
             this.tempZipcodetxt.Size = new System.Drawing.Size(113, 21);
             this.tempZipcodetxt.TabIndex = 7;
@@ -522,7 +595,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(910, 170);
+            this.label7.Location = new System.Drawing.Point(910, 161);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 15);
             this.label7.TabIndex = 18;
@@ -531,7 +604,7 @@
             // tempStatetxt
             // 
             this.tempStatetxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempStatetxt.Location = new System.Drawing.Point(781, 96);
+            this.tempStatetxt.Location = new System.Drawing.Point(781, 88);
             this.tempStatetxt.Name = "tempStatetxt";
             this.tempStatetxt.Size = new System.Drawing.Size(113, 21);
             this.tempStatetxt.TabIndex = 6;
@@ -540,7 +613,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(735, 170);
+            this.label8.Location = new System.Drawing.Point(735, 161);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 15);
             this.label8.TabIndex = 16;
@@ -549,7 +622,7 @@
             // tempCitytxt
             // 
             this.tempCitytxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempCitytxt.Location = new System.Drawing.Point(602, 95);
+            this.tempCitytxt.Location = new System.Drawing.Point(602, 87);
             this.tempCitytxt.Name = "tempCitytxt";
             this.tempCitytxt.Size = new System.Drawing.Size(113, 21);
             this.tempCitytxt.TabIndex = 5;
@@ -558,7 +631,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(570, 169);
+            this.label9.Location = new System.Drawing.Point(570, 160);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 15);
             this.label9.TabIndex = 14;
@@ -567,7 +640,7 @@
             // tempAddresstxt
             // 
             this.tempAddresstxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempAddresstxt.Location = new System.Drawing.Point(136, 95);
+            this.tempAddresstxt.Location = new System.Drawing.Point(142, 87);
             this.tempAddresstxt.Name = "tempAddresstxt";
             this.tempAddresstxt.Size = new System.Drawing.Size(395, 21);
             this.tempAddresstxt.TabIndex = 4;
@@ -576,7 +649,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(15, 167);
+            this.label10.Location = new System.Drawing.Point(15, 158);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(120, 15);
             this.label10.TabIndex = 12;
@@ -585,7 +658,7 @@
             // permZipcodetxt
             // 
             this.permZipcodetxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.permZipcodetxt.Location = new System.Drawing.Point(969, 164);
+            this.permZipcodetxt.Location = new System.Drawing.Point(969, 155);
             this.permZipcodetxt.Name = "permZipcodetxt";
             this.permZipcodetxt.Size = new System.Drawing.Size(113, 21);
             this.permZipcodetxt.TabIndex = 12;
@@ -594,7 +667,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(910, 103);
+            this.label6.Location = new System.Drawing.Point(910, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 15);
             this.label6.TabIndex = 10;
@@ -603,7 +676,7 @@
             // permStatetxt
             // 
             this.permStatetxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.permStatetxt.Location = new System.Drawing.Point(781, 162);
+            this.permStatetxt.Location = new System.Drawing.Point(781, 153);
             this.permStatetxt.Name = "permStatetxt";
             this.permStatetxt.Size = new System.Drawing.Size(113, 21);
             this.permStatetxt.TabIndex = 11;
@@ -612,7 +685,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(735, 97);
+            this.label5.Location = new System.Drawing.Point(735, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 8;
@@ -621,7 +694,7 @@
             // permCitytxt
             // 
             this.permCitytxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.permCitytxt.Location = new System.Drawing.Point(602, 164);
+            this.permCitytxt.Location = new System.Drawing.Point(602, 155);
             this.permCitytxt.Name = "permCitytxt";
             this.permCitytxt.Size = new System.Drawing.Size(113, 21);
             this.permCitytxt.TabIndex = 10;
@@ -630,7 +703,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(570, 96);
+            this.label4.Location = new System.Drawing.Point(570, 88);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 15);
             this.label4.TabIndex = 6;
@@ -639,7 +712,7 @@
             // permAddresstxt
             // 
             this.permAddresstxt.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.permAddresstxt.Location = new System.Drawing.Point(136, 164);
+            this.permAddresstxt.Location = new System.Drawing.Point(142, 155);
             this.permAddresstxt.Name = "permAddresstxt";
             this.permAddresstxt.Size = new System.Drawing.Size(395, 21);
             this.permAddresstxt.TabIndex = 9;
@@ -648,7 +721,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 94);
+            this.label3.Location = new System.Drawing.Point(15, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 15);
             this.label3.TabIndex = 4;
@@ -660,7 +733,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(407, 44);
+            this.label2.Location = new System.Drawing.Point(565, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 15);
             this.label2.TabIndex = 2;
@@ -670,7 +743,7 @@
             // 
             this.anbiyamCombobox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.anbiyamCombobox.FormattingEnabled = true;
-            this.anbiyamCombobox.Location = new System.Drawing.Point(136, 38);
+            this.anbiyamCombobox.Location = new System.Drawing.Point(142, 35);
             this.anbiyamCombobox.Name = "anbiyamCombobox";
             this.anbiyamCombobox.Size = new System.Drawing.Size(238, 23);
             this.anbiyamCombobox.TabIndex = 1;
@@ -680,7 +753,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 38);
+            this.label1.Location = new System.Drawing.Point(21, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 15);
             this.label1.TabIndex = 0;
@@ -734,7 +807,7 @@
             this.husbandGroupBox.Controls.Add(this.label12);
             this.husbandGroupBox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.husbandGroupBox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.husbandGroupBox.Location = new System.Drawing.Point(3, 220);
+            this.husbandGroupBox.Location = new System.Drawing.Point(3, 309);
             this.husbandGroupBox.Name = "husbandGroupBox";
             this.husbandGroupBox.Size = new System.Drawing.Size(1104, 287);
             this.husbandGroupBox.TabIndex = 1;
@@ -1038,7 +1111,7 @@
             this.wifeGroupbox.Controls.Add(this.label29);
             this.wifeGroupbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wifeGroupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.wifeGroupbox.Location = new System.Drawing.Point(3, 513);
+            this.wifeGroupbox.Location = new System.Drawing.Point(3, 602);
             this.wifeGroupbox.Name = "wifeGroupbox";
             this.wifeGroupbox.Size = new System.Drawing.Size(1101, 295);
             this.wifeGroupbox.TabIndex = 2;
@@ -1344,7 +1417,7 @@
             this.child1Groupbox.Controls.Add(this.label38);
             this.child1Groupbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child1Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child1Groupbox.Location = new System.Drawing.Point(3, 814);
+            this.child1Groupbox.Location = new System.Drawing.Point(3, 903);
             this.child1Groupbox.Name = "child1Groupbox";
             this.child1Groupbox.Size = new System.Drawing.Size(1101, 295);
             this.child1Groupbox.TabIndex = 51;
@@ -1769,7 +1842,7 @@
             this.child2Groupbox.Controls.Add(this.label57);
             this.child2Groupbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child2Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child2Groupbox.Location = new System.Drawing.Point(3, 1115);
+            this.child2Groupbox.Location = new System.Drawing.Point(3, 1204);
             this.child2Groupbox.Name = "child2Groupbox";
             this.child2Groupbox.Size = new System.Drawing.Size(1101, 295);
             this.child2Groupbox.TabIndex = 55;
@@ -2194,7 +2267,7 @@
             this.child3Groupbox.Controls.Add(this.label71);
             this.child3Groupbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child3Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child3Groupbox.Location = new System.Drawing.Point(3, 1416);
+            this.child3Groupbox.Location = new System.Drawing.Point(3, 1505);
             this.child3Groupbox.Name = "child3Groupbox";
             this.child3Groupbox.Size = new System.Drawing.Size(1101, 295);
             this.child3Groupbox.TabIndex = 56;
@@ -2619,7 +2692,7 @@
             this.child4Groupbox.Controls.Add(this.label85);
             this.child4Groupbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child4Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child4Groupbox.Location = new System.Drawing.Point(3, 1717);
+            this.child4Groupbox.Location = new System.Drawing.Point(3, 1806);
             this.child4Groupbox.Name = "child4Groupbox";
             this.child4Groupbox.Size = new System.Drawing.Size(1101, 295);
             this.child4Groupbox.TabIndex = 57;
@@ -3045,7 +3118,7 @@
             this.child5Groupbox.Controls.Add(this.label99);
             this.child5Groupbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.child5Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.child5Groupbox.Location = new System.Drawing.Point(3, 2018);
+            this.child5Groupbox.Location = new System.Drawing.Point(3, 2107);
             this.child5Groupbox.Name = "child5Groupbox";
             this.child5Groupbox.Size = new System.Drawing.Size(1101, 304);
             this.child5Groupbox.TabIndex = 58;
@@ -3466,7 +3539,7 @@
             this.relation1Groupbox.Controls.Add(this.label113);
             this.relation1Groupbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.relation1Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.relation1Groupbox.Location = new System.Drawing.Point(3, 2328);
+            this.relation1Groupbox.Location = new System.Drawing.Point(3, 2417);
             this.relation1Groupbox.Name = "relation1Groupbox";
             this.relation1Groupbox.Size = new System.Drawing.Size(1101, 304);
             this.relation1Groupbox.TabIndex = 59;
@@ -3805,7 +3878,6 @@
             // otherRelation2Groupbox
             // 
             this.otherRelation2Groupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.otherRelation2Groupbox.Controls.Add(this.checkBox1);
             this.otherRelation2Groupbox.Controls.Add(this.other2Combobox);
             this.otherRelation2Groupbox.Controls.Add(this.label101);
             this.otherRelation2Groupbox.Controls.Add(this.txtOther2Whatsapp);
@@ -3824,23 +3896,12 @@
             this.otherRelation2Groupbox.Controls.Add(this.label121);
             this.otherRelation2Groupbox.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.otherRelation2Groupbox.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.otherRelation2Groupbox.Location = new System.Drawing.Point(3, 2638);
+            this.otherRelation2Groupbox.Location = new System.Drawing.Point(3, 2727);
             this.otherRelation2Groupbox.Name = "otherRelation2Groupbox";
             this.otherRelation2Groupbox.Size = new System.Drawing.Size(1101, 304);
             this.otherRelation2Groupbox.TabIndex = 60;
             this.otherRelation2Groupbox.TabStop = false;
             this.otherRelation2Groupbox.Text = "Other Relation - 2";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(3, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(87, 19);
-            this.checkBox1.TabIndex = 56;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // other2Combobox
             // 
@@ -4176,6 +4237,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel5.Controls.Add(this.btn_disable);
             this.panel5.Controls.Add(this.btnSubmit);
             this.panel5.Controls.Add(this.btnAddOtherRelation);
             this.panel5.Controls.Add(this.btnAddChildren);
@@ -4183,8 +4245,23 @@
             this.panel5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel5.Location = new System.Drawing.Point(23, 832);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1138, 57);
+            this.panel5.Size = new System.Drawing.Size(1107, 57);
             this.panel5.TabIndex = 2;
+            // 
+            // btn_disable
+            // 
+            this.btn_disable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_disable.BackColor = System.Drawing.Color.White;
+            this.btn_disable.Enabled = false;
+            this.btn_disable.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_disable.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_disable.Location = new System.Drawing.Point(370, 15);
+            this.btn_disable.Name = "btn_disable";
+            this.btn_disable.Size = new System.Drawing.Size(160, 27);
+            this.btn_disable.TabIndex = 3;
+            this.btn_disable.Text = "Disable family";
+            this.btn_disable.UseVisualStyleBackColor = false;
+            this.btn_disable.Click += new System.EventHandler(this.btn_disable_Click);
             // 
             // btnSubmit
             // 
@@ -4192,7 +4269,7 @@
             this.btnSubmit.BackColor = System.Drawing.Color.White;
             this.btnSubmit.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnSubmit.Location = new System.Drawing.Point(950, 14);
+            this.btnSubmit.Location = new System.Drawing.Point(919, 14);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(160, 27);
             this.btnSubmit.TabIndex = 2;
@@ -4206,7 +4283,7 @@
             this.btnAddOtherRelation.BackColor = System.Drawing.Color.White;
             this.btnAddOtherRelation.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddOtherRelation.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnAddOtherRelation.Location = new System.Drawing.Point(774, 14);
+            this.btnAddOtherRelation.Location = new System.Drawing.Point(743, 14);
             this.btnAddOtherRelation.Name = "btnAddOtherRelation";
             this.btnAddOtherRelation.Size = new System.Drawing.Size(160, 27);
             this.btnAddOtherRelation.TabIndex = 1;
@@ -4220,7 +4297,7 @@
             this.btnAddChildren.BackColor = System.Drawing.Color.White;
             this.btnAddChildren.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddChildren.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnAddChildren.Location = new System.Drawing.Point(590, 14);
+            this.btnAddChildren.Location = new System.Drawing.Point(559, 14);
             this.btnAddChildren.Name = "btnAddChildren";
             this.btnAddChildren.Size = new System.Drawing.Size(160, 27);
             this.btnAddChildren.TabIndex = 0;
@@ -4241,6 +4318,8 @@
             this.Name = "FamilyPopup";
             this.generalGroupBox.ResumeLayout(false);
             this.generalGroupBox.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.husbandGroupBox.ResumeLayout(false);
             this.husbandGroupBox.PerformLayout();
@@ -4649,6 +4728,12 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ComboBox comboBoxChild1Relation;
         private System.Windows.Forms.CheckBox sameAddressCheckbox;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox multipleCardsCheckbox;
+        private System.Windows.Forms.Label label123;
+        private System.Windows.Forms.TextBox txtFamilyNotes;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Label label125;
+        private System.Windows.Forms.DateTimePicker dtLastSubscription;
+        private System.Windows.Forms.Button btn_disable;
     }
 }
