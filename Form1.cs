@@ -22,7 +22,7 @@ namespace TestFat
         {
 
             InitializeComponent();
-
+            LoadAnbiyamGrid(null);
             LoadOccupation();
             LoadAnbiyam();
 
@@ -153,7 +153,25 @@ namespace TestFat
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadAnbiyamGrid(null);
+            if(((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "dashboardPage")
+            {
+                LoadAgeGroupChart();
+                LoadGenderGroupChart();
+            }
+            else if(((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "anbiyamPage")
+            {
+                LoadAnbiyam();
+                LoadAnbiyamGrid(null);
+            }
+            else if (((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "familyPage")
+            {
+                LoadOccupation();
+                LoadFamilyBasicDetails(null);
+            }
+            else
+            {
+                LoadAllCemeteryData(null);
+            }
         }
 
         private void LoadAgeGroupChart()

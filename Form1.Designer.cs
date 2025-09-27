@@ -38,7 +38,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.familyPage = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.familyMembersGrid = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -57,7 +57,7 @@
             this.familyAnbiyamCombobox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.familygrid = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.anbiyamPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.anbiyamGrid = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -70,7 +70,7 @@
             this.btncreate = new System.Windows.Forms.Button();
             this.btnedit = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dashboardPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -80,7 +80,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.familytab = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.cemeteryPage = new System.Windows.Forms.TabPage();
             this.cemeteryGridView = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -95,18 +95,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cemeterySearchBtn = new System.Windows.Forms.Button();
-            this.tabPage3.SuspendLayout();
+            this.familyPage.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.familyMembersGrid)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.familygrid)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.anbiyamPage.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anbiyamGrid)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.dashboardPage.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
@@ -115,23 +115,23 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.familytab.SuspendLayout();
-            this.tabPage4.SuspendLayout();
+            this.cemeteryPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cemeteryGridView)).BeginInit();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabPage3
+            // familyPage
             // 
-            this.tabPage3.Controls.Add(this.panel6);
-            this.tabPage3.Controls.Add(this.panel5);
-            this.tabPage3.Controls.Add(this.panel4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 44);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1292, 672);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Families";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.familyPage.Controls.Add(this.panel6);
+            this.familyPage.Controls.Add(this.panel5);
+            this.familyPage.Controls.Add(this.panel4);
+            this.familyPage.Location = new System.Drawing.Point(4, 44);
+            this.familyPage.Name = "familyPage";
+            this.familyPage.Padding = new System.Windows.Forms.Padding(3);
+            this.familyPage.Size = new System.Drawing.Size(1292, 672);
+            this.familyPage.TabIndex = 2;
+            this.familyPage.Text = "Families";
+            this.familyPage.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
@@ -339,16 +339,16 @@
             this.familygrid.TabIndex = 0;
             this.familygrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.familygrid_CellClick);
             // 
-            // tabPage2
+            // anbiyamPage
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.Thistle;
-            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 44);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1292, 672);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Anbiyams";
+            this.anbiyamPage.BackColor = System.Drawing.Color.Thistle;
+            this.anbiyamPage.Controls.Add(this.tableLayoutPanel2);
+            this.anbiyamPage.Location = new System.Drawing.Point(4, 44);
+            this.anbiyamPage.Name = "anbiyamPage";
+            this.anbiyamPage.Padding = new System.Windows.Forms.Padding(3);
+            this.anbiyamPage.Size = new System.Drawing.Size(1292, 672);
+            this.anbiyamPage.TabIndex = 1;
+            this.anbiyamPage.Text = "Anbiyams";
             // 
             // tableLayoutPanel2
             // 
@@ -488,20 +488,20 @@
             this.webBrowser1.Size = new System.Drawing.Size(1280, 261);
             this.webBrowser1.TabIndex = 4;
             // 
-            // tabPage1
+            // dashboardPage
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage1.Controls.Add(this.chart2);
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPage1.Location = new System.Drawing.Point(4, 44);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1292, 672);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Dashboard";
+            this.dashboardPage.BackColor = System.Drawing.Color.White;
+            this.dashboardPage.Controls.Add(this.tableLayoutPanel3);
+            this.dashboardPage.Controls.Add(this.chart2);
+            this.dashboardPage.Controls.Add(this.panel1);
+            this.dashboardPage.Controls.Add(this.tableLayoutPanel1);
+            this.dashboardPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dashboardPage.Location = new System.Drawing.Point(4, 44);
+            this.dashboardPage.Name = "dashboardPage";
+            this.dashboardPage.Padding = new System.Windows.Forms.Padding(3);
+            this.dashboardPage.Size = new System.Drawing.Size(1292, 672);
+            this.dashboardPage.TabIndex = 0;
+            this.dashboardPage.Text = "Dashboard";
             // 
             // tableLayoutPanel3
             // 
@@ -629,10 +629,10 @@
             // 
             // familytab
             // 
-            this.familytab.Controls.Add(this.tabPage1);
-            this.familytab.Controls.Add(this.tabPage2);
-            this.familytab.Controls.Add(this.tabPage3);
-            this.familytab.Controls.Add(this.tabPage4);
+            this.familytab.Controls.Add(this.dashboardPage);
+            this.familytab.Controls.Add(this.anbiyamPage);
+            this.familytab.Controls.Add(this.familyPage);
+            this.familytab.Controls.Add(this.cemeteryPage);
             this.familytab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.familytab.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.familytab.ItemSize = new System.Drawing.Size(200, 40);
@@ -645,17 +645,17 @@
             this.familytab.TabIndex = 1;
             this.familytab.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // tabPage4
+            // cemeteryPage
             // 
-            this.tabPage4.Controls.Add(this.cemeteryGridView);
-            this.tabPage4.Controls.Add(this.panel7);
-            this.tabPage4.Location = new System.Drawing.Point(4, 44);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1292, 672);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Cemetery Management";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.cemeteryPage.Controls.Add(this.cemeteryGridView);
+            this.cemeteryPage.Controls.Add(this.panel7);
+            this.cemeteryPage.Location = new System.Drawing.Point(4, 44);
+            this.cemeteryPage.Name = "cemeteryPage";
+            this.cemeteryPage.Padding = new System.Windows.Forms.Padding(3);
+            this.cemeteryPage.Size = new System.Drawing.Size(1292, 672);
+            this.cemeteryPage.TabIndex = 3;
+            this.cemeteryPage.Text = "Cemetery Management";
+            this.cemeteryPage.UseVisualStyleBackColor = true;
             // 
             // cemeteryGridView
             // 
@@ -843,20 +843,20 @@
             this.Name = "Form1";
             this.Text = "Fatima Church Tambaram";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.tabPage3.ResumeLayout(false);
+            this.familyPage.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.familyMembersGrid)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.familygrid)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.anbiyamPage.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.anbiyamGrid)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.dashboardPage.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
@@ -866,7 +866,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.familytab.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
+            this.cemeteryPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cemeteryGridView)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -875,13 +875,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage familyPage;
+        private System.Windows.Forms.TabPage anbiyamPage;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btncreate;
         private System.Windows.Forms.Button btnedit;
         private System.Windows.Forms.DataGridView anbiyamGrid;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage dashboardPage;
         private System.Windows.Forms.TabControl familytab;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnFamilyEdit;
@@ -891,7 +891,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.DataGridView familyMembersGrid;
         private System.Windows.Forms.Button btnCemetery;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage cemeteryPage;
         private System.Windows.Forms.DataGridView cemeteryGridView;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label5;
