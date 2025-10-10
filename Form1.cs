@@ -60,7 +60,7 @@ namespace TestFat
                 ShowAnbiyamOnMap(anbiyamAddress);
                 webBrowser1.Dock = DockStyle.Fill;
             }
-
+            parishCombobox.SelectedIndex = 0;
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -685,6 +685,15 @@ namespace TestFat
             }
         }
 
+        private void btnOutsideParsihMember_Click(object sender, EventArgs e)
+        {
+            using (var popup = new NonParishFamily())
+            {
+                popup.ShowDialog();
+                // After closing, reload family basic details
+               // LoadFamilyBasicDetails(null);
+            }
+        }
     }
 
     }

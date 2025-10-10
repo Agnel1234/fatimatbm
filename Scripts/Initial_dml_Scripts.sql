@@ -955,47 +955,6 @@ BEGIN
         Occupation 
 END
 
-DROP PROCEDURE sp_GetAllCemeteries
-GO
-
-CREATE PROCEDURE sp_GetAllCemeteries
-@burial_date_from datetime = null,
-@burial_date_to datetime = null,
-@deceased_date_from datetime = null,
-@deceased_date_to datetime = null,
-@IsOurparish BIT = null
-
-AS
-BEGIN
-
-	SELECT
-		cemetery_id AS [cemeteryid],
-        grave_number AS [Cemetery Code],
-		deceased_name AS [Deceased Name],
-		date_of_death AS [Deceased Date],
-		burial_date AS [Burial Date],		
-		remarks as [Remarks]
-	FROM cemetery_details cd
-	inner join family f on cd.family_id = f.family_id
-	WHERE
-        ((@burial_date_from IS NULL and @burial_date_to is null) OR cd.burial_date between @burial_date_from and @burial_date_to) 
-		AND
-        ((@deceased_date_from IS NULL and @deceased_date_to is null) OR cd.burial_date between @burial_date_from and @burial_date_to)
-        AND (
-            @IsOurparish IS NULL
-            OR (@IsOurparish = 1 AND EXISTS (
-                SELECT 1 FROM cemetery_details cd2 WHERE cd2.family_id = f.family_id
-            ))
-            OR (@IsOurparish = 0 AND NOT EXISTS (
-                SELECT 1 FROM cemetery_details cd3 WHERE cd3.family_id = f.family_id
-            ))
-        )
-	order by grave_number desc
-
-END
-GO
-
-
 
 ALTER PROCEDURE sp_SaveFamily
     @family_code NVARCHAR(50),
@@ -1071,3 +1030,86 @@ BEGIN
     SET @family_id = SCOPE_IDENTITY();
 END
 GO
+
+
+
+ALTER PROCEDURE sp_SaveNonParishCemetery
+    @Name NVARCHAR(100),
+    @DOB DATE = NULL,
+    @Address NVARCHAR(200) = NULL,
+    @City NVARCHAR(100) = NULL,
+    @State NVARCHAR(50) = NULL,
+    @ZipCode NVARCHAR(20) = NULL,
+    @Remarks NVARCHAR(500) = NULL,
+    @ContactPerson NVARCHAR(100) = NULL,
+    @ContactPhone NVARCHAR(20) = NULL,
+    @DeceasedDate DATE = NULL,
+    @BuriedDate DATE = NULL,
+    @gender NVARCHAR(6) = NULL,
+    @cemeterycode NVARCHAR(6) = NULL
+AS
+BEGIN
+    INSERT INTO nonparishcemetery (
+        Name, DOB, Address, City, State, ZipCode, Remarks,
+        ContactPerson, ContactPhone, DeceasedDate, BuriedDate,gender,cemeterycode
+    )
+    VALUES (
+        @Name, @DOB, @Address, @City, @State, @ZipCode, @Remarks,
+        @ContactPerson, @ContactPhone, @DeceasedDate, @BuriedDate,@gender,@cemeterycode
+    );
+END
+GO
+
+
+
+DROP PROCEDURE sp_GetAllCemeteries
+GO
+
+CREATE PROCEDURE sp_GetAllCemeteries
+    @burial_date_from datetime = null,
+    @burial_date_to datetime = null,
+    @deceased_date_from datetime = null,
+    @deceased_date_to datetime = null,
+    @IsOurparish BIT = null
+AS
+BEGIN
+    IF @IsOurparish = 0
+		BEGIN
+			SELECT
+				CemeteryId AS [cemeteryid],
+				cemeterycode AS [Cemetery Code],
+				Name AS [Deceased Name],
+				DeceasedDate AS [Deceased Date],
+				BuriedDate AS [Burial Date],
+				Remarks AS [Remarks],
+                ContactPerson AS [Contact Person],
+                ContactPhone AS [Contact Mobile]
+			FROM nonparishcemetery
+			WHERE
+				((@burial_date_from IS NULL AND @burial_date_to IS NULL) OR BuriedDate BETWEEN @burial_date_from AND @burial_date_to)
+				AND
+				((@deceased_date_from IS NULL AND @deceased_date_to IS NULL) OR DeceasedDate BETWEEN @deceased_date_from AND @deceased_date_to)
+			ORDER BY cemeterycode DESC
+		END
+    ELSE
+		BEGIN
+			SELECT
+				cemetery_id AS [cemeteryid],
+				grave_number AS [Cemetery Code],
+				deceased_name AS [Deceased Name],
+				date_of_death AS [Deceased Date],
+				burial_date AS [Burial Date],
+				remarks AS [Remarks],
+                f.head_of_family AS [Contact Person],
+                f.phone AS [Contact Mobile]
+			FROM cemetery_details cd
+			INNER JOIN family f ON cd.family_id = f.family_id
+			WHERE
+				((@burial_date_from IS NULL AND @burial_date_to IS NULL) OR cd.burial_date BETWEEN @burial_date_from AND @burial_date_to)
+				AND
+				((@deceased_date_from IS NULL AND @deceased_date_to IS NULL) OR cd.date_of_death BETWEEN @deceased_date_from AND @deceased_date_to)
+			ORDER BY grave_number DESC
+		END
+END
+GO
+

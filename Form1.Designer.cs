@@ -83,6 +83,8 @@
             this.cemeteryPage = new System.Windows.Forms.TabPage();
             this.cemeteryGridView = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnOutsideParsihMember = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.parishCombobox = new System.Windows.Forms.ComboBox();
             this.dtBurialStart = new System.Windows.Forms.DateTimePicker();
@@ -118,6 +120,7 @@
             this.cemeteryPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cemeteryGridView)).BeginInit();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // familyPage
@@ -677,6 +680,7 @@
             this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
+            this.panel7.Controls.Add(this.panel8);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Controls.Add(this.parishCombobox);
             this.panel7.Controls.Add(this.dtBurialStart);
@@ -695,6 +699,26 @@
             this.panel7.Size = new System.Drawing.Size(1286, 133);
             this.panel7.TabIndex = 15;
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btnOutsideParsihMember);
+            this.panel8.Location = new System.Drawing.Point(835, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(448, 127);
+            this.panel8.TabIndex = 31;
+            // 
+            // btnOutsideParsihMember
+            // 
+            this.btnOutsideParsihMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOutsideParsihMember.ForeColor = System.Drawing.Color.Black;
+            this.btnOutsideParsihMember.Location = new System.Drawing.Point(150, 43);
+            this.btnOutsideParsihMember.Name = "btnOutsideParsihMember";
+            this.btnOutsideParsihMember.Size = new System.Drawing.Size(208, 36);
+            this.btnOutsideParsihMember.TabIndex = 31;
+            this.btnOutsideParsihMember.Text = "Add Outside Parish Member";
+            this.btnOutsideParsihMember.UseVisualStyleBackColor = true;
+            this.btnOutsideParsihMember.Click += new System.EventHandler(this.btnOutsideParsihMember_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -710,10 +734,9 @@
             // 
             this.parishCombobox.FormattingEnabled = true;
             this.parishCombobox.Items.AddRange(new object[] {
-            "Not Applicable",
             "Fatima Church Parish",
             "Other Parish"});
-            this.parishCombobox.Location = new System.Drawing.Point(577, 43);
+            this.parishCombobox.Location = new System.Drawing.Point(584, 46);
             this.parishCombobox.Name = "parishCombobox";
             this.parishCombobox.Size = new System.Drawing.Size(209, 26);
             this.parishCombobox.TabIndex = 29;
@@ -870,6 +893,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cemeteryGridView)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -932,6 +956,8 @@
         private System.Windows.Forms.ComboBox cemeteryComboBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox parishCombobox;
+        private System.Windows.Forms.Button btnOutsideParsihMember;
+        private System.Windows.Forms.Panel panel8;
     }
 }
 
