@@ -1,4 +1,4 @@
-﻿CREATE DATABASE fatimachurchtbm;
+﻿--CREATE DATABASE fatimachurchtbm;
 GO
 
 USE fatimachurchtbm;
@@ -128,5 +128,38 @@ ALTER TABLE family_member ADD child_institution NVARCHAR(100);
 ALTER TABLE family_member ADD member_group NVARCHAR(50);
 ALTER TABLE family_member DROP COLUMN last_name;
 ALTER TABLE family_member DROP COLUMN marital_status;
+
+
+ALTER TABLE family ADD family_notes NVARCHAR(200);
+ALTER TABLE family ADD multiple_familycards bit NOT NULL DEFAULT (0);
+ALTER TABLE family ADD last_subscription_date DATETIME NULL;
+
+-- Table creation
+CREATE TABLE nonparishcemetery (
+    CemeteryId INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    DOB DATE NULL,
+    Address NVARCHAR(200) NULL,
+    City NVARCHAR(100) NULL,
+    State NVARCHAR(50) NULL,
+    ZipCode NVARCHAR(20) NULL,
+    Remarks NVARCHAR(500) NULL,
+    ContactPerson NVARCHAR(100) NULL,
+    ContactPhone NVARCHAR(20) NULL,
+    DeceasedDate DATE NULL,
+    BuriedDate DATE NULL
+);
+GO
+
+ALTER TABLE nonparishcemetery ADD gender nvarchar(6);
+GO
+ALTER TABLE nonparishcemetery ADD cemeterycode nvarchar(6);
+GO
+
+ALTER TABLE family ADD isactive BIT NOT NULL DEFAULT (1);
+GO
+ALTER TABLE family ADD disabled_date DATETIME NULL;
+GO
+
 
 

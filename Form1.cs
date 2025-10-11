@@ -22,7 +22,7 @@ namespace TestFat
         {
 
             InitializeComponent();
-
+            LoadAnbiyamGrid(null);
             LoadOccupation();
             LoadAnbiyam();
 
@@ -33,6 +33,8 @@ namespace TestFat
             LoadAllCemeteryData(null);
 
             this.familygrid.SelectionChanged += familygrid_SelectionChanged;
+            this.familygrid.RowPrePaint += familygrid_RowPrePaint;
+
             btncreate.Image = new Bitmap(Properties.Resources.createAnbiyam, new Size(24, 24)); // Assuming you have an add icon in your resources
             btnedit.Image = new Bitmap(Properties.Resources.editAnbiyam, new Size(24, 24)); // Replace with your actual path or resource
 
@@ -58,7 +60,7 @@ namespace TestFat
                 ShowAnbiyamOnMap(anbiyamAddress);
                 webBrowser1.Dock = DockStyle.Fill;
             }
-
+            parishCombobox.SelectedIndex = 0;
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -145,14 +147,31 @@ namespace TestFat
             btnCol.Width = 60;
             btnCol.DefaultCellStyle.BackColor = Color.DarkRed;
             btnCol.DefaultCellStyle.ForeColor = Color.DarkRed;
-            familygrid.Columns.Insert(11, btnCol); // Adjust index as needed
-
-
+            familygrid.Columns.Insert(10, btnCol); // Adjust index as needed
         }
+
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadAnbiyamGrid(null);
+            if(((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "dashboardPage")
+            {
+                LoadAgeGroupChart();
+                LoadGenderGroupChart();
+            }
+            else if(((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "anbiyamPage")
+            {
+                LoadAnbiyam();
+                LoadAnbiyamGrid(null);
+            }
+            else if (((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "familyPage")
+            {
+                LoadOccupation();
+                LoadFamilyBasicDetails(null);
+            }
+            else
+            {
+                LoadAllCemeteryData(null);
+            }
         }
 
         private void LoadAgeGroupChart()
@@ -257,8 +276,19 @@ namespace TestFat
             // Add Male and Female counts
             if (dt.Rows.Count > 0)
             {
-                int maleCount = Convert.ToInt32(dt.Rows[0]["MaleCount"]);
-                int femaleCount = Convert.ToInt32(dt.Rows[0]["FemaleCount"]);
+                int maleCount = 0;
+                int femaleCount = 0;
+
+                object maleValue = dt.Rows[0]["MaleCount"];
+                if (maleValue != DBNull.Value)
+                {
+                    maleCount = Convert.ToInt32(maleValue);
+                }
+                object femaleValue = dt.Rows[0]["FemaleCount"];
+                if (femaleValue != DBNull.Value)
+                {
+                    femaleCount = Convert.ToInt32(femaleValue);
+                }
 
                 int pointIndexMale = series.Points.AddXY("Male", maleCount);
                 series.Points[pointIndexMale].Color = columnColors[0];
@@ -638,6 +668,30 @@ namespace TestFat
 
                 DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAllCemeteries", parameters);
                 LoadAllCemeteryData(dt);
+            }
+        }
+
+
+        private void familygrid_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            if (grid.Rows[e.RowIndex].DataBoundItem is DataRowView drv)
+            {
+                // Replace "IsSpecial" with your actual boolean column name
+                if (drv.Row.Table.Columns.Contains("Multiple Family Cards") && drv.Row.Field<bool>("Multiple Family Cards"))
+                {
+                    grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+            }
+        }
+
+        private void btnOutsideParsihMember_Click(object sender, EventArgs e)
+        {
+            using (var popup = new NonParishFamily())
+            {
+                popup.ShowDialog();
+                // After closing, reload family basic details
+               // LoadFamilyBasicDetails(null);
             }
         }
     }

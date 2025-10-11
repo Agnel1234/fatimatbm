@@ -137,20 +137,11 @@ namespace TestFat
             }
         }
 
-        private void txtAnbiyamName_TextChanged(object sender, EventArgs e)
+        private void txtAnbiyamName_Leave(object sender, EventArgs e)
         {
-            int nextAnbiyamID = GetMaxAnbiyamId() + 1;
-            string anbiyamName = txtAnbiyamName.Text.Trim();
-            string codePrefix = "";
-            if (anbiyamName.Split(' ').Length > 1)
+            if (txtAnbiyamName.Text.Length > 0)
             {
-                // If the name contains spaces, use the first two characters of the first word
-                codePrefix = anbiyamName.Split(' ')[0].Substring(0, Math.Min(1, anbiyamName.Length)).ToUpper() + anbiyamName.Split(' ')[1].Substring(0, Math.Min(1, anbiyamName.Length)).ToUpper();
-                anbiyamCode.Text = codePrefix + nextAnbiyamID;
-            }
-            else
-            {
-                anbiyamCode.Text = anbiyamName.Substring(0, Math.Min(2, anbiyamName.Length)).ToUpper() + nextAnbiyamID.ToString();
+                anbiyamCode.Text = txtAnbiyamName.Text.Trim().ToUpper().Substring(0, 2);
             }
         }
     }

@@ -18,6 +18,7 @@ namespace TestFat
         private int childCount = 0;
         private int otherRelationCount = 0;
         public FamilyPopup(int familyID)
+
         {
             InitializeComponent();
 
@@ -97,10 +98,10 @@ namespace TestFat
             }
         }
 
-        private int GetMaxFamilyId()
+        private int GetMaxFamilyId(int anbiyamiD)
         {
-            // Get the maximum Anbiyam ID from the database
-            return DatabaseHelper.ExecuteScalarStoredProcedure("sp_GetTotalFamilyCount");
+            var param = new SqlParameter("@anbiyam_id", anbiyamiD);
+            return DatabaseHelper.ExecuteScalarStoredProcedure("sp_GetTotalFamilyCount", param);
         }
 
         private void btnAddOtherRelation_Click(object sender, EventArgs e)
@@ -140,13 +141,16 @@ namespace TestFat
         private void anbiyamCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string code = "";
-            int nextFamilyID = GetMaxFamilyId() + 1;
-            if(anbiyamCombobox.SelectedIndex == 0)
+            int nextFamilyID = 0;
+
+            if (anbiyamCombobox.SelectedIndex == 0)
             {
                 familyCodetxt.Text = "Select Anbiyam";
                 return;
             } else
             {
+                int selectedAnbiyamId = int.Parse(anbiyamCombobox.SelectedValue.ToString(), 0);
+                nextFamilyID = GetMaxFamilyId(selectedAnbiyamId) + 1;
                 code = GetAnbiyamCodeById(int.Parse(anbiyamCombobox.SelectedValue.ToString(), 0));
             }
                 
@@ -173,6 +177,7 @@ namespace TestFat
                 int anbiyamId = (anbiyamCombobox.SelectedValue != null && anbiyamCombobox.SelectedValue.ToString() != "200")
                     ? Convert.ToInt32(anbiyamCombobox.SelectedValue)
                     : 0;
+                DateTime? lastSubscriptionDate = dtLastSubscription.Checked ? dtLastSubscription.Value : (DateTime?)null;
 
                 // 2. Collect head of family (husband) details
                 string headName = txtHeadName.Text.Trim();
@@ -485,11 +490,14 @@ namespace TestFat
                             familyCmd.Parameters.AddWithValue("@family_temp_state", tempStatetxt.Text.Trim());
                             familyCmd.Parameters.AddWithValue("@family_temp_zipcode", tempZipcodetxt.Text.Trim());
                             familyCmd.Parameters.AddWithValue("@monthly_subscription", subscription);
+                            familyCmd.Parameters.AddWithValue("@is_multiple_cards", multipleCardsCheckbox.Checked);
+                            familyCmd.Parameters.AddWithValue("@family_notes", txtFamilyNotes.Text.Trim());
+                            familyCmd.Parameters.AddWithValue("@last_subscriptin_date", lastSubscriptionDate);
 
                             var familyIdParam = new SqlParameter("@family_id", SqlDbType.Int) { Direction = ParameterDirection.Output };
                             familyCmd.Parameters.Add(familyIdParam);
 
-                            if (spouseName != "" && spousePhone != null && spouseMarriageDate != null)
+                            if (spouseName != "" && headMarriageDate != null)
                             {
                                 familyCmd.ExecuteNonQuery();
                                 familyId = (int)familyIdParam.Value;
@@ -863,7 +871,17 @@ namespace TestFat
             }
         }
 
+        private void btn_disable_Click(object sender, EventArgs e)
+        {
+            int familyId = 123; // The ID of the row to update
+            string newName = "New Family Name";
 
+            DatabaseHelper.ExecuteStoredProcedure(
+                "sp_UpdateFamilyName",
+                new SqlParameter("@FamilyID", familyId),
+                new SqlParameter("@Name", newName)
+            );
+        }
     }
     // Change the access modifier of the FamilyMemberDto class from private to internal  
     internal class FamilyMemberDto
