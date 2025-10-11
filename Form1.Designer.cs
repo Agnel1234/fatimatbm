@@ -701,6 +701,7 @@
             // 
             // panel8
             // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel8.Controls.Add(this.btnOutsideParsihMember);
             this.panel8.Location = new System.Drawing.Point(835, 3);
             this.panel8.Name = "panel8";
@@ -711,7 +712,7 @@
             // 
             this.btnOutsideParsihMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOutsideParsihMember.ForeColor = System.Drawing.Color.Black;
-            this.btnOutsideParsihMember.Location = new System.Drawing.Point(150, 43);
+            this.btnOutsideParsihMember.Location = new System.Drawing.Point(146, 39);
             this.btnOutsideParsihMember.Name = "btnOutsideParsihMember";
             this.btnOutsideParsihMember.Size = new System.Drawing.Size(208, 36);
             this.btnOutsideParsihMember.TabIndex = 31;
