@@ -61,6 +61,15 @@ namespace TestFat
                 webBrowser1.Dock = DockStyle.Fill;
             }
             parishCombobox.SelectedIndex = 0;
+
+            // panel7 - Top Left
+            this.panel7.Location = new System.Drawing.Point(10, 10); // 10px from top and left
+            this.panel7.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+            // panel8 - Top Right
+            this.panel8.Location = new System.Drawing.Point(this.ClientSize.Width - this.panel8.Width - 10, 10); // 10px from top and right
+            this.panel8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -219,7 +228,15 @@ namespace TestFat
             series.IsValueShownAsLabel = false;
 
             // Custom colors for slices
-            Color[] pieColors = { Color.SkyBlue, Color.Orange, Color.LimeGreen, Color.MediumPurple, Color.Gold, Color.Coral };
+            Color[] pieColors = {
+                Color.RoyalBlue,         // Youngest group
+                Color.MediumVioletRed,   // Teens
+                Color.Teal,              // Young adults
+                Color.Goldenrod,         // Middle age
+                Color.DarkOrange,        // Seniors
+                Color.SlateGray          // Elders/Unknown
+            };
+
             int colorIndex = 0;
             int totalCount = dt.AsEnumerable().Sum(r => r.Field<int>("MemberCount"));
 
@@ -297,8 +314,8 @@ namespace TestFat
             series.BorderColor = Color.White;
             series.BorderWidth = 2;
 
-            // Custom colors for columns
-            Color[] columnColors = { Color.SkyBlue, Color.Orange };
+            Color[] columnColors = { Color.RoyalBlue, Color.MediumVioletRed };
+
 
             // Add Male and Female counts
             if (dt.Rows.Count > 0)
@@ -716,9 +733,10 @@ namespace TestFat
         {
             using (var popup = new NonParishFamily())
             {
+                popup.StartPosition = FormStartPosition.CenterScreen; // Show in the middle of the screen
                 popup.ShowDialog();
                 // After closing, reload family basic details
-               // LoadFamilyBasicDetails(null);
+                // LoadFamilyBasicDetails(null);
             }
         }
     }
