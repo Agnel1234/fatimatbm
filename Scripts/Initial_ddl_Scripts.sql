@@ -1,4 +1,4 @@
-﻿--CREATE DATABASE fatimachurchtbm;
+﻿CREATE DATABASE fatimachurchtbm;
 GO
 
 USE fatimachurchtbm;

@@ -246,6 +246,17 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Prevent duplicate anbiyam_code for other records (and for inserts)
+    IF EXISTS (
+        SELECT 1 FROM anbiyam
+        WHERE anbiyam_code = @anbiyam_code
+          AND (@anbiyam_id IS NULL OR anbiyam_id <> @anbiyam_id)
+    )
+    BEGIN
+        RAISERROR('Please Change the Anbiyam Name to avoid the duplicate anbiyam code: %s', 16, 1, @anbiyam_code);
+        RETURN;
+    END
+
     IF @anbiyam_id IS NULL OR @anbiyam_id = 0
     BEGIN
         -- Insert new record
@@ -289,6 +300,7 @@ BEGIN
     END
 END
 GO
+
 
 CREATE OR ALTER PROCEDURE sp_DeleteAnbiyam
     @anbiyamID INT
@@ -779,26 +791,25 @@ AS
 BEGIN
     SELECT 
         a.anbiyam_id,
-	    a.anbiyam_zone as [Zone],
-	    a.anbiyam_name as [Name],
-        a.anbiyam_code as [Code],
-	    a.anbiyam_coordinator_name as [Coordinator],
-        a.coordinator_phone as [Mobile],
+        a.anbiyam_zone AS [Zone],
+        a.anbiyam_name AS [Name],
+        a.anbiyam_code AS [Code],
+        a.anbiyam_coordinator_name AS [Coordinator],
+        a.coordinator_phone AS [Mobile],
         COUNT(DISTINCT f.family_id) AS [Families],
-	    COUNT(f.family_id) AS [Members],
-        COUNT(CASE WHEN fm.gender = 'Male' THEN 1 END) AS [Male],
-        COUNT(CASE WHEN fm.gender = 'Female' THEN 1 END) AS [Female]
+        COUNT(CASE WHEN fm.member_id IS NOT NULL AND fm.member_status != 'Deceased' THEN fm.member_id END) AS [Members],
+        COUNT(CASE WHEN fm.gender = 'Male' AND fm.member_status != 'Deceased' THEN 1 END) AS [Male],
+        COUNT(CASE WHEN fm.gender = 'Female' AND fm.member_status != 'Deceased' THEN 1 END) AS [Female]
     FROM anbiyam a
-    left JOIN family f  ON a.anbiyam_id = f.anbiyam_id
+    LEFT JOIN family f ON a.anbiyam_id = f.anbiyam_id
     LEFT JOIN family_member fm ON fm.family_id = f.family_id
-    WHERE fm.member_status != 'Deceased'
     GROUP BY 
         a.anbiyam_id,
         a.anbiyam_name,
         a.anbiyam_zone,
         a.anbiyam_coordinator_name,
-	    a.coordinator_phone,
-	    a.anbiyam_code
+        a.coordinator_phone,
+        a.anbiyam_code
 END
 GO
 

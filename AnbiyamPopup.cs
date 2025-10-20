@@ -23,7 +23,7 @@ namespace TestFat
             this.StartPosition = FormStartPosition.CenterScreen;
             selectedAnbiyamId = selected;
             // Example: Populate with zones 1-10
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 8; i++)
                 cmbAnbiyamZone.Items.Add(i.ToString());
             cmbAnbiyamZone.SelectedIndex = 0;
 
@@ -50,21 +50,22 @@ namespace TestFat
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            if (selectedAnbiyamId != 0)
+            try
             {
-                //MessageBox.Show("Selected id = ", selectedAnbiyamId.ToString());
-
-                string anbiyamName = txtAnbiyamName.Text.Trim();
-                int anbiyamZone = int.Parse(cmbAnbiyamZone.SelectedItem.ToString());
-                string coordinatorName = txtCoordinator.Text.Trim();
-                string assistantCoordinatorName = txtAssistantCo.Text.Trim();
-                string email = txtEmail.Text.Trim();
-                string phone = txtPhone.Text.Trim();
-                string code = anbiyamCode.Text.Trim();
-
-                var parameters = new[]
+                if (selectedAnbiyamId != 0)
                 {
+                    //MessageBox.Show("Selected id = ", selectedAnbiyamId.ToString());
+
+                    string anbiyamName = txtAnbiyamName.Text.Trim();
+                    int anbiyamZone = int.Parse(cmbAnbiyamZone.SelectedItem.ToString());
+                    string coordinatorName = txtCoordinator.Text.Trim();
+                    string assistantCoordinatorName = txtAssistantCo.Text.Trim();
+                    string email = txtEmail.Text.Trim();
+                    string phone = txtPhone.Text.Trim();
+                    string code = anbiyamCode.Text.Trim();
+
+                    var parameters = new[]
+                    {
                     new SqlParameter("@anbiyam_id", selectedAnbiyamId),
                     new SqlParameter("@anbiyam_name", anbiyamName),
                     new SqlParameter("@anbiyam_zone", anbiyamZone),
@@ -75,28 +76,28 @@ namespace TestFat
                     new SqlParameter("@anbiyam_code", code)
                 };
 
-                DatabaseHelper.ExecuteStoredProcedure("sp_InsertOrUpdateAnbiyam", parameters);
-                MessageBox.Show("Anbiyam Updated successfully!");
-                this.Close();
-            }
-            else
-            {
-                string anbiyamName = txtAnbiyamName.Text.Trim();
-                int anbiyamZone = int.Parse(cmbAnbiyamZone.SelectedItem.ToString());
-                string coordinatorName = txtCoordinator.Text.Trim();
-                string assistantCoordinatorName = txtAssistantCo.Text.Trim();
-                string email = txtEmail.Text.Trim();
-                string phone = txtPhone.Text.Trim();
-                string code = anbiyamCode.Text.Trim();
-
-                if(anbiyamName == "" || coordinatorName == "" || phone == "")
-                {
-                    MessageBox.Show("Please add all the mandatory fields");
-                    return;
+                    DatabaseHelper.ExecuteStoredProcedure("sp_InsertOrUpdateAnbiyam", parameters);
+                    MessageBox.Show("Anbiyam Updated successfully!");
+                    this.Close();
                 }
-
-                var parameters = new[]
+                else
                 {
+                    string anbiyamName = txtAnbiyamName.Text.Trim();
+                    int anbiyamZone = int.Parse(cmbAnbiyamZone.SelectedItem.ToString());
+                    string coordinatorName = txtCoordinator.Text.Trim();
+                    string assistantCoordinatorName = txtAssistantCo.Text.Trim();
+                    string email = txtEmail.Text.Trim();
+                    string phone = txtPhone.Text.Trim();
+                    string code = anbiyamCode.Text.Trim();
+
+                    if (anbiyamName == "" || coordinatorName == "" || phone == "")
+                    {
+                        MessageBox.Show("Please add all the mandatory fields");
+                        return;
+                    }
+
+                    var parameters = new[]
+                    {
                 new SqlParameter("@anbiyam_name", anbiyamName),
                 new SqlParameter("@anbiyam_zone", anbiyamZone),
                 new SqlParameter("@anbiyam_coordinator_name", coordinatorName),
@@ -106,9 +107,14 @@ namespace TestFat
                 new SqlParameter("@anbiyam_code", code)
                 };
 
-                DatabaseHelper.ExecuteStoredProcedure("sp_InsertOrUpdateAnbiyam", parameters);
-                MessageBox.Show("Anbiyam Registered successfully!");
-                this.Close();
+                    DatabaseHelper.ExecuteStoredProcedure("sp_InsertOrUpdateAnbiyam", parameters);
+                    MessageBox.Show("Anbiyam Registered successfully!");
+                    this.Close();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

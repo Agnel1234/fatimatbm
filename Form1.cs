@@ -22,6 +22,13 @@ namespace TestFat
         {
 
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; // or Sizable if you want resizable window
+            this.ControlBox = true;      // enables the whole control box (minimize, maximize, close)
+            this.MaximizeBox = false;    // keep maximize disabled (optional)
+            this.MinimizeBox = true;     // enable minimize (optional)
+            this.ShowIcon = true;
+
             LoadAnbiyamGrid(null);
             LoadOccupation();
             LoadAnbiyam();
@@ -31,6 +38,12 @@ namespace TestFat
 
             LoadFamilyBasicDetails(null);
             LoadAllCemeteryData(null);
+
+            // Make all grids read-only
+            familygrid.ReadOnly = true;
+            anbiyamGrid.ReadOnly = true;
+            familyMembersGrid.ReadOnly = true;
+            cemeteryGridView.ReadOnly = true;
 
             this.familygrid.SelectionChanged += familygrid_SelectionChanged;
             this.familygrid.RowPrePaint += familygrid_RowPrePaint;
@@ -407,8 +420,9 @@ namespace TestFat
 
         private void LoadAnbiyamGrid(DataTable dt)
         {
-            if(dt == null)
+            if(dt == null || (dt != null & dt.Rows.Count == 0))
             {
+                anbiyamGrid.DataSource = null;
                 dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
             }
             
