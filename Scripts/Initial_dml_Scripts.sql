@@ -830,16 +830,16 @@ BEGIN
                 WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens'
                 WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers'
                 WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers'
-                WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Golden Wisdom Circle'
-                ELSE 'Unknown'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Wisdom Circle'
+                ELSE 'Unknown Age Group'
             END AS AgeGroup,
 		            CASE
                 WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts (0-12)'
                 WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens (13-19)'
                 WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers (20-35)'
                 WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers (36-59)'
-                WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Golden Wisdom Circle (60+)'
-                ELSE 'Unknown'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Wisdom Circle (60+)'
+                ELSE 'Unknown Age Group'
             END AS AgeGroupWithDesc
         FROM family_member where member_status != 'Deceased'
     ) AS AgeData

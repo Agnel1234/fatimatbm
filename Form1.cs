@@ -151,7 +151,7 @@ namespace TestFat
             familygrid.DataSource = dt;
             familygrid.Columns["FamilyID"].Visible = false;
             familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
-            familygrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+            familygrid.DefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Regular);
             familygrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
             familygrid.BackgroundColor = Color.WhiteSmoke;
             familygrid.DefaultCellStyle.ForeColor = Color.Black;
@@ -429,7 +429,7 @@ namespace TestFat
             anbiyamGrid.DataSource = dt;
             anbiyamGrid.Columns["anbiyam_id"].Visible = false;
             anbiyamGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
-            anbiyamGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+            anbiyamGrid.DefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Regular);
             anbiyamGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
             anbiyamGrid.BackgroundColor = Color.WhiteSmoke;
             anbiyamGrid.DefaultCellStyle.ForeColor = Color.Black;
@@ -506,7 +506,7 @@ namespace TestFat
                 familyMembersGrid.DataSource = dt;
                 familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
                 familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Bold);
-                familyMembersGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+                familyMembersGrid.DefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Regular);
                 familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
                 familyMembersGrid.BackgroundColor = Color.WhiteSmoke;
                 familyMembersGrid.DefaultCellStyle.ForeColor = Color.Black;
