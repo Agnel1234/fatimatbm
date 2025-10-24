@@ -234,7 +234,7 @@ END
 GO
 
 CREATE OR ALTER PROCEDURE sp_InsertOrUpdateAnbiyam
-    @anbiyam_id INT = NULL,
+    @anbiyam_id INT = 0,
     @anbiyam_name NVARCHAR(50),
     @anbiyam_zone INT,
     @anbiyam_coordinator_name NVARCHAR(50),

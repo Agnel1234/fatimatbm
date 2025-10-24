@@ -12,7 +12,7 @@ CREATE TABLE anbiyam (
 	anbiyam_zone INT NOT NULL,
 	anbiyam_coordinator_name NVARCHAR(50) NOT NULL,
 	anbiyam_ass_coordinator_name NVARCHAR(50) NULL,
-	coordinator_email NVARCHAR(100) UNIQUE NULL,
+	coordinator_email NVARCHAR(100) NULL,
 	coordinator_phone NVARCHAR(15),
 	modified DATE DEFAULT GETDATE()
 );
@@ -160,6 +160,7 @@ ALTER TABLE family ADD isactive BIT NOT NULL DEFAULT (1);
 GO
 ALTER TABLE family ADD disabled_date DATETIME NULL;
 GO
+
 
 
 
