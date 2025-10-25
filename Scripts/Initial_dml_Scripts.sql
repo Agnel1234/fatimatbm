@@ -1077,3 +1077,343 @@ BEGIN
 END
 GO
 
+
+------------------------------------------------------------------------------------------------------
+---------V2 Changes----------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+
+CREATE OR ALTER PROCEDURE sp_SaveFamily
+    @family_code NVARCHAR(50),
+	@anbiyam_id INT,
+    @head_of_family NVARCHAR(100),
+    @gender NVARCHAR(10),
+    @family_permanant_address NVARCHAR(200),
+	@family_temp_address NVARCHAR(200),
+	@family_perm_city NVARCHAR(50),
+	@family_perm_state NVARCHAR(50),
+	@family_perm_zipcode NVARCHAR(10),
+	@family_temp_city NVARCHAR(50),
+	@family_temp_state NVARCHAR(50),
+	@family_temp_zipcode NVARCHAR(10),
+    @phone NVARCHAR(20),
+	@email NVARCHAR(100),
+	@monthly_subscription INT,
+    @is_multiple_cards bit,
+	@family_notes NVARCHAR(200),
+	@last_subscriptin_date DATE,
+    @family_id INT = 0 OUTPUT,
+    @ishusbandactive bit,
+    @iswifeactive bit
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @family_id IS NOT NULL AND @family_id > 0 AND EXISTS (SELECT 1 FROM dbo.family WHERE family_id = @family_id)
+        BEGIN
+            UPDATE dbo.family
+            SET
+                family_code = @family_code,
+			    anbiyam_id = @anbiyam_id,
+                head_of_family = @head_of_family,
+                gender = @gender,
+                family_permanant_address = @family_permanant_address,
+			    family_temp_address = @family_temp_address,
+			    family_city = @family_perm_city,
+			    family_state = @family_perm_state,
+			    zip_code = @family_perm_zipcode,
+			    family_temp_city = @family_temp_city,
+			    family_temp_state = @family_temp_state,
+			    family_temp_zipcode = @family_temp_zipcode,
+                phone = @phone,
+			    email = @email,
+			    monthly_subscription = @monthly_subscription,
+                modified = GETDATE(),
+			    family_notes = @family_notes,
+			    multiple_familycards = @is_multiple_cards,
+			    last_subscription_date = @last_subscriptin_date,
+                ishusbandactive = @ishusbandactive,
+                iswifeactive = @iswifeactive
+            WHERE family_id = @family_id;
+
+        END
+    ELSE
+        BEGIN
+
+            INSERT INTO dbo.family (
+                family_code,
+			    anbiyam_id,
+                head_of_family,
+                gender,
+                family_permanant_address,
+			    family_temp_address,
+			    family_city,
+			    family_state,
+			    zip_code,
+			    family_temp_city,
+			    family_temp_state,
+			    family_temp_zipcode,
+                phone,
+			    email,
+			    monthly_subscription,
+			    created_at,
+			    modified,
+			    parish_member_since,
+			    family_notes,
+			    multiple_familycards,
+			    last_subscription_date,
+                ishusbandactive,
+                iswifeactive
+            )
+            VALUES (
+                @family_code,
+			    @anbiyam_id,
+                @head_of_family,
+                @gender,
+                @family_permanant_address,
+			    @family_temp_address,
+			    @family_perm_city,
+			    @family_perm_state,
+			    @family_perm_zipcode,
+			    @family_temp_city,
+			    @family_temp_state,
+			    @family_temp_zipcode,
+                @phone,
+			    @email,
+			    @monthly_subscription,
+                GETDATE(),
+                GETDATE(),
+                YEAR(GETDATE()),
+			    @family_notes,
+			    @is_multiple_cards,
+			    @last_subscriptin_date,
+                @ishusbandactive,
+                @iswifeactive
+            );
+
+            SET @family_id = SCOPE_IDENTITY();
+        END
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE sp_SaveFamilyMember
+    @member_id INT = 0 OUTPUT,
+    @family_id INT,
+    @first_name NVARCHAR(100),
+    @relationship NVARCHAR(50), 
+    @gender NVARCHAR(10),
+    @dob DATE = NULL,
+    @member_status NVARCHAR(20) = NULL,
+	@occupation NVARCHAR(20) = NULL,
+	@qualification NVARCHAR(30) = NULL,
+	@blood_group NVARCHAR(5) = NULL,
+	@email NVARCHAR(100) = NULL,
+    @phone NVARCHAR(20) = NULL,
+	@baptized_date DATETIME = NULL,
+	@marriage_date DATETIME = NULL,
+	@first_communion_date DATETIME = NULL,
+	@confirmation_date DATETIME = NULL,
+	@priesthood_date DATETIME = NULL,
+    @isadmin BIT = 0,
+    @legionofmary BIT = 0,
+    @isyouth BIT = 0,
+    @isalterservices BIT = 0,
+    @isvencentdepaul BIT = 0,
+    @iswomenassoc BIT = 0,
+    @islitergycouncil BIT = 0,
+    @ischoir BIT = 0,
+    @iscatechismteacher BIT = 0,
+    @iscatechismstudent BIT = 0,
+	@childclass NVARCHAR(10) = NULL,
+	@child_institution NVARCHAR(100) = NULL,
+    @member_group NVARCHAR(50) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @member_id IS NOT NULL AND @member_id > 0 AND EXISTS (SELECT 1 FROM dbo.family_member WHERE member_id = @member_id)
+    BEGIN
+        UPDATE dbo.family_member
+        SET
+            family_id = @family_id,
+            first_name = @first_name,
+            relationship = @relationship,
+            gender = @gender,
+            dob = @dob,
+            member_status = @member_status,
+            occupation = @occupation,
+            qualification = @qualification,
+            blood_group = @blood_group,
+            email = @email,
+            phone = @phone,
+            baptized_date = @baptized_date,
+            modified = GETDATE(),
+            marriage_date = @marriage_date,
+            first_communion_date = @first_communion_date,
+            first_confirmation_date = @confirmation_date,
+            priesthood_date = @priesthood_date,
+            is_admin_council = @isadmin,
+            is_legion_of_mary = @legionofmary,
+            is_youth_group = @isyouth,
+            is_alter_services = @isalterservices,
+            is_vencent_de_paul_soc = @isvencentdepaul,
+            is_choir = @ischoir,
+            is_catechism_teacher = @iscatechismteacher,
+            is_catechism_student = @iscatechismstudent,
+            is_women_assoc = @iswomenassoc,
+            is_litergy_council = @islitergycouncil,
+            child_class = @childclass,
+            child_institution = @child_institution,
+            member_group = @member_group
+        WHERE member_id = @member_id;
+    END
+    ELSE
+    BEGIN
+        INSERT INTO family_member (
+            family_id,
+            first_name,
+            relationship,
+            gender,
+            dob,
+            member_status,
+            occupation,
+            qualification,
+            blood_group,
+            email,
+            phone,
+            baptized_date,
+            created_at,
+            modified,
+            marriage_date,
+            first_communion_date,
+            first_confirmation_date,
+            priesthood_date,
+            is_admin_council,
+            is_legion_of_mary,
+            is_youth_group,
+            is_alter_services,
+            is_vencent_de_paul_soc,
+            is_choir,
+            is_catechism_student,
+            is_catechism_teacher,
+            is_women_assoc,
+            is_litergy_council,
+            child_class,
+            child_institution,
+            member_group
+        )
+        VALUES (
+            @family_id,
+            @first_name,
+            @relationship,
+            @gender,
+            @dob,
+            @member_status,
+            @occupation,
+            @qualification,
+            @blood_group,
+            @email,
+            @phone,
+            @baptized_date,
+            GETDATE(),
+            GETDATE(),
+            @marriage_date,
+            @first_communion_date,
+            @confirmation_date,
+            @priesthood_date,
+            @isadmin,
+            @legionofmary,
+            @isyouth,
+            @isalterservices,
+            @isvencentdepaul,
+            @ischoir,
+            @iscatechismstudent,
+            @iscatechismteacher,
+            @iswomenassoc,
+            @islitergycouncil,
+            @childclass,
+            @child_institution,
+            @member_group
+        );
+
+        SET @member_id = SCOPE_IDENTITY();
+    END
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE sp_GetFamilyMembersDetailsByFamilyId
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+        SELECT 
+        first_name AS Name,
+        relationship,
+        dob,
+        fm.phone,
+        fm.email,
+        blood_group,
+        occupation,
+        qualification,
+        blood_group,
+        marriage_date,
+        baptized_date,
+        first_communion_date,
+        first_confirmation_date,
+        priesthood_date,
+        is_admin_council,
+        is_legion_of_mary,
+        is_youth_group,
+        is_alter_services,
+        is_vencent_de_paul_soc,
+        is_choir,
+        is_catechism_teacher,
+        is_catechism_student,
+        is_women_assoc,
+        child_class,
+        is_litergy_council
+        child_institution,
+        member_group,
+        ishusbandactive,
+        iswifeactive,
+		member_id,
+		child_class
+    FROM family_member fm left join
+    family f on f.family_id = fm.family_id
+    WHERE fm.family_id = @family_id;
+
+END
+GO
+
+
+
+CREATE OR ALTER PROCEDURE sp_GetFamilyDetailsById
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        family_code,
+        anbiyam_id,
+        Zone = (SELECT anbiyam_zone FROM anbiyam WHERE anbiyam_id = family.anbiyam_id),
+        family_permanant_address,
+        family_temp_address,
+        family_city,
+        family_state,
+        zip_code,
+        family_temp_city,
+        family_temp_state,
+        family_temp_zipcode,
+        monthly_subscription,
+		multiple_familycards,
+		family_notes,
+		last_subscription_date,
+		isactive		
+    FROM family
+    WHERE family_id = @family_id;
+
+END
+GO

@@ -381,6 +381,8 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnAddOtherRelation = new System.Windows.Forms.Button();
             this.btnAddChildren = new System.Windows.Forms.Button();
+            this.checkBoxEnableHusband = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableWife = new System.Windows.Forms.CheckBox();
             this.generalGroupBox.SuspendLayout();
             this.panel20.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -789,6 +791,7 @@
             this.husbandGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.husbandGroupBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.husbandGroupBox.Controls.Add(this.checkBoxEnableHusband);
             this.husbandGroupBox.Controls.Add(this.panel2);
             this.husbandGroupBox.Controls.Add(this.panel1);
             this.husbandGroupBox.Controls.Add(this.label19);
@@ -812,7 +815,6 @@
             this.husbandGroupBox.Size = new System.Drawing.Size(1104, 287);
             this.husbandGroupBox.TabIndex = 1;
             this.husbandGroupBox.TabStop = false;
-            this.husbandGroupBox.Text = "Head of Family ( HUSBAND )";
             // 
             // panel2
             // 
@@ -1093,6 +1095,7 @@
             this.wifeGroupbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wifeGroupbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.wifeGroupbox.Controls.Add(this.checkBoxEnableWife);
             this.wifeGroupbox.Controls.Add(this.panel3);
             this.wifeGroupbox.Controls.Add(this.panel4);
             this.wifeGroupbox.Controls.Add(this.label23);
@@ -1116,7 +1119,6 @@
             this.wifeGroupbox.Size = new System.Drawing.Size(1101, 295);
             this.wifeGroupbox.TabIndex = 2;
             this.wifeGroupbox.TabStop = false;
-            this.wifeGroupbox.Text = "Head of Family ( WIFE )";
             // 
             // panel3
             // 
@@ -4305,6 +4307,30 @@
             this.btnAddChildren.UseVisualStyleBackColor = false;
             this.btnAddChildren.Click += new System.EventHandler(this.btnAddChildren_Click);
             // 
+            // checkBoxEnableHusband
+            // 
+            this.checkBoxEnableHusband.AutoSize = true;
+            this.checkBoxEnableHusband.Checked = true;
+            this.checkBoxEnableHusband.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxEnableHusband.Location = new System.Drawing.Point(6, 0);
+            this.checkBoxEnableHusband.Name = "checkBoxEnableHusband";
+            this.checkBoxEnableHusband.Size = new System.Drawing.Size(195, 19);
+            this.checkBoxEnableHusband.TabIndex = 35;
+            this.checkBoxEnableHusband.Text = "Head of Family ( HUSBAND )";
+            this.checkBoxEnableHusband.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnableWife
+            // 
+            this.checkBoxEnableWife.AutoSize = true;
+            this.checkBoxEnableWife.Checked = true;
+            this.checkBoxEnableWife.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxEnableWife.Location = new System.Drawing.Point(6, 0);
+            this.checkBoxEnableWife.Name = "checkBoxEnableWife";
+            this.checkBoxEnableWife.Size = new System.Drawing.Size(164, 19);
+            this.checkBoxEnableWife.TabIndex = 36;
+            this.checkBoxEnableWife.Text = "Head of Family ( WIFE )";
+            this.checkBoxEnableWife.UseVisualStyleBackColor = true;
+            // 
             // FamilyPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4735,5 +4761,7 @@
         private System.Windows.Forms.Label label125;
         private System.Windows.Forms.DateTimePicker dtLastSubscription;
         private System.Windows.Forms.Button btn_disable;
+        private System.Windows.Forms.CheckBox checkBoxEnableHusband;
+        private System.Windows.Forms.CheckBox checkBoxEnableWife;
     }
 }

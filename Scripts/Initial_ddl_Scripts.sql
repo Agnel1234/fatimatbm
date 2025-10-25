@@ -162,5 +162,15 @@ ALTER TABLE family ADD disabled_date DATETIME NULL;
 GO
 
 
+------------------------------------------------------------------------------------------------------
+---------V2 Changes----------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+
+ALTER TABLE family ADD ishusbandactive BIT NOT NULL DEFAULT (1);
+GO
+ALTER TABLE family ADD iswifeactive BIT NOT NULL DEFAULT (1);
+GO
+
+
 
 
