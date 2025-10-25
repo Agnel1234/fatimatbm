@@ -18,10 +18,29 @@ namespace TestFat
     {
         private int familyIDInContext = 0;
         public string anbiyamAddress = "";
-        public Form1()
-        {
 
+        // Add these members to the Form1 class (e.g., near the top of the class)
+        public string LoggedInUser { get; private set; }
+        public Form1(string loggedInUser)
+        {
             InitializeComponent();
+            LoggedInUser = loggedInUser ?? string.Empty;
+
+            // Optionally show username in the title bar so it's visible:
+            if (!string.IsNullOrWhiteSpace(LoggedInUser))
+            {
+                this.Text = $"{this.Text} - {LoggedInUser}";
+
+                if(LoggedInUser == "GUEST")
+                {
+                    btncreate.Enabled = false;
+                    btnedit.Enabled = false;
+                    btnCemetery.Enabled = false;
+                    btnFamilyCreate.Enabled = false;
+                    btnFamilyEdit.Enabled = false;
+                    btnOutsideParsihMember.Enabled = false;
+                }
+            }
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // or Sizable if you want resizable window
             this.ControlBox = true;      // enables the whole control box (minimize, maximize, close)
@@ -82,7 +101,6 @@ namespace TestFat
             // panel8 - Top Right
             this.panel8.Location = new System.Drawing.Point(this.ClientSize.Width - this.panel8.Width - 10, 10); // 10px from top and right
             this.panel8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -466,27 +484,30 @@ namespace TestFat
         {
             if (e.RowIndex >= 0 && anbiyamGrid.SelectedCells.Count == 1 && anbiyamGrid.SelectedCells[0].ColumnIndex == 10)
             {
-                var result = MessageBox.Show("Are you sure you want to delete this Anbiyam?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                if (LoggedInUser != "GUEST")
                 {
-                    int id = Convert.ToInt32(anbiyamGrid.Rows[e.RowIndex].Cells["anbiyam_id"].Value);
-                    try
+                    var result = MessageBox.Show("Are you sure you want to delete this Anbiyam?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                        int id = Convert.ToInt32(anbiyamGrid.Rows[e.RowIndex].Cells["anbiyam_id"].Value);
+                        try
                         {
-                            MessageBox.Show("This Anbiyam cannot be deleted, as families are linked to it", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show(ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                            {
+                                MessageBox.Show("This Anbiyam cannot be deleted, as families are linked to it", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                MessageBox.Show(ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+                        // Refresh grid
+                        LoadAnbiyamGrid(null);
                     }
-                    // Refresh grid
-                    LoadAnbiyamGrid(null);
                 }
             }
         }
@@ -549,27 +570,30 @@ namespace TestFat
         {
             if (e.RowIndex >= 0 && familygrid.SelectedCells != null && familygrid.SelectedCells.Count == 1 && familygrid.SelectedCells[0].Value == "Delete")
             {
-                var result = MessageBox.Show("Are you sure you want to delete this Family?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                if (LoggedInUser != "GUEST")
                 {
-                    int id = Convert.ToInt32(familygrid.Rows[e.RowIndex].Cells["FamilyID"].Value);
-                    try
+                    var result = MessageBox.Show("Are you sure you want to delete this Family?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        DatabaseHelper.ExecuteStoredProcedure("sp_DeleteFamily", new SqlParameter("@familyID", id));
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                        int id = Convert.ToInt32(familygrid.Rows[e.RowIndex].Cells["FamilyID"].Value);
+                        try
                         {
-                            MessageBox.Show("This Family cannot be deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            DatabaseHelper.ExecuteStoredProcedure("sp_DeleteFamily", new SqlParameter("@familyID", id));
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                            {
+                                MessageBox.Show("This Family cannot be deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+                        // Refresh grid
+                        LoadFamilyBasicDetails(null);
                     }
-                    // Refresh grid
-                    LoadFamilyBasicDetails(null);
                 }
             }
         }

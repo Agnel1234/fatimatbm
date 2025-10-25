@@ -1,22 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TestFat
 {
-    internal static class Program
+    static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            using (var login = new LoginForm())
+            {
+                // Ensure login is shown centered
+                login.StartPosition = FormStartPosition.CenterScreen;
+
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    // Pass successful username into Form1
+                    var main = new Form1(login.LoggedInUser);
+                    main.StartPosition = FormStartPosition.CenterScreen;
+                    Application.Run(main);
+                }
+            }
         }
     }
 }
