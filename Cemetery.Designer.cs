@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cemetery));
             this.panel1 = new System.Windows.Forms.Panel();
             this.cemeteryGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,7 +57,7 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(653, 416);
+            this.panel1.Size = new System.Drawing.Size(653, 407);
             this.panel1.TabIndex = 11;
             // 
             // cemeteryGrid
@@ -208,6 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 423);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Cemetery";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cemeteryGrid)).EndInit();
