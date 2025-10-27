@@ -1,17 +1,11 @@
-﻿-- =========================
--- anbiyam procedures
--- =========================
-DROP PROCEDURE sp_GetAllAnbiyam;
-GO
-
-CREATE PROCEDURE sp_GetAllAnbiyam
+﻿CREATE OR ALTER PROCEDURE sp_GetAllAnbiyam
 AS
 BEGIN
     SELECT concat(a.anbiyam_code, '-', a.anbiyam_name), a.anbiyam_id FROM anbiyam a;
 END
 GO
 
-CREATE PROCEDURE sp_GetAnbiyamById
+CREATE OR ALTER PROCEDURE sp_GetAnbiyamById
     @anbiyam_id INT
 AS
 BEGIN
@@ -23,14 +17,14 @@ GO
 -- family procedures
 -- =========================
 
-CREATE PROCEDURE sp_GetAllFamilies
+CREATE OR ALTER PROCEDURE sp_GetAllFamilies
 AS
 BEGIN
     SELECT * FROM family;
 END
 GO
 
-CREATE PROCEDURE sp_GetFamilyById
+CREATE OR ALTER PROCEDURE sp_GetFamilyById
     @family_id INT
 AS
 BEGIN
@@ -38,7 +32,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_GetFamiliesByAnbiyam
+CREATE OR ALTER PROCEDURE sp_GetFamiliesByAnbiyam
     @anbiyam_id INT
 AS
 BEGIN
@@ -50,7 +44,7 @@ GO
 -- family_member procedures
 -- =========================
 
-CREATE PROCEDURE sp_GetFamilyMemberById
+CREATE OR ALTER PROCEDURE sp_GetFamilyMemberById
     @member_id INT
 AS
 BEGIN
@@ -62,7 +56,7 @@ GO
 -- family_subscription procedures
 -- =========================
 
-CREATE PROCEDURE sp_GetSubscriptionsByFamilyId
+CREATE OR ALTER PROCEDURE sp_GetSubscriptionsByFamilyId
     @family_id INT
 AS
 BEGIN
@@ -70,7 +64,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_GetSubscriptionById
+CREATE OR ALTER PROCEDURE sp_GetSubscriptionById
     @subscription_id INT
 AS
 BEGIN
@@ -82,7 +76,7 @@ GO
 -- cemetery_details procedures
 -- =========================
 
-CREATE PROCEDURE sp_GetCemeteryDetailsByFamilyId
+CREATE OR ALTER PROCEDURE sp_GetCemeteryDetailsByFamilyId
     @family_id INT
 AS
 BEGIN
@@ -90,7 +84,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_GetCemeteryDetailsByMemberId
+CREATE OR ALTER PROCEDURE sp_GetCemeteryDetailsByMemberId
     @member_id INT
 AS
 BEGIN
@@ -98,7 +92,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_GetFamilyWithAnbiyam
+CREATE OR ALTER PROCEDURE sp_GetFamilyWithAnbiyam
 AS
 BEGIN
     SELECT
@@ -117,10 +111,7 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE sp_SearchFamilyWithAnbiyam
-Go
-
-CREATE PROCEDURE sp_SearchFamilyWithAnbiyam
+CREATE OR ALTER PROCEDURE sp_SearchFamilyWithAnbiyam
     @anbiyam_id INT = NULL,
     @coordinator_name NVARCHAR(50) = NULL
 AS
@@ -151,10 +142,8 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE [dbo].[sp_GetAllAnbiyams];
-GO
 
-CREATE PROCEDURE sp_GetAllAnbiyams
+CREATE OR ALTER PROCEDURE sp_GetAllAnbiyams
 AS
 BEGIN
     SELECT
@@ -169,7 +158,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_GetFamilyCountByZone
+CREATE OR ALTER PROCEDURE sp_GetFamilyCountByZone
 AS
 BEGIN
     SELECT 
@@ -186,7 +175,7 @@ END
 GO
 
 
-CREATE PROCEDURE sp_InsertAnbiyam
+CREATE OR ALTER PROCEDURE sp_InsertAnbiyam
     @anbiyam_name NVARCHAR(50),
     @anbiyam_zone INT,
     @anbiyam_coordinator_name NVARCHAR(50),
@@ -221,14 +210,14 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_GetTotalAnbiyamsCount
+CREATE OR ALTER PROCEDURE sp_GetTotalAnbiyamsCount
 AS
 BEGIN
     SELECT count(a.anbiyam_name) FROM anbiyam a;
 END
 GO
 
-CREATE PROCEDURE sp_GetSelectedAnbiyam
+CREATE OR ALTER PROCEDURE sp_GetSelectedAnbiyam
     @anbiyam_id INT
 AS
 BEGIN
@@ -244,8 +233,8 @@ FROM Anbiyam Where anbiyam_id = @anbiyam_id
 END
 GO
 
-CREATE PROCEDURE sp_InsertOrUpdateAnbiyam
-    @anbiyam_id INT = NULL,
+CREATE OR ALTER PROCEDURE sp_InsertOrUpdateAnbiyam
+    @anbiyam_id INT = 0,
     @anbiyam_name NVARCHAR(50),
     @anbiyam_zone INT,
     @anbiyam_coordinator_name NVARCHAR(50),
@@ -256,6 +245,17 @@ CREATE PROCEDURE sp_InsertOrUpdateAnbiyam
 AS
 BEGIN
     SET NOCOUNT ON;
+
+    -- Prevent duplicate anbiyam_code for other records (and for inserts)
+    IF EXISTS (
+        SELECT 1 FROM anbiyam
+        WHERE anbiyam_code = @anbiyam_code
+          AND (@anbiyam_id IS NULL OR anbiyam_id <> @anbiyam_id)
+    )
+    BEGIN
+        RAISERROR('Please Change the Anbiyam Name to avoid the duplicate anbiyam code: %s', 16, 1, @anbiyam_code);
+        RETURN;
+    END
 
     IF @anbiyam_id IS NULL OR @anbiyam_id = 0
     BEGIN
@@ -301,7 +301,8 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_DeleteAnbiyam
+
+CREATE OR ALTER PROCEDURE sp_DeleteAnbiyam
     @anbiyamID INT
 AS
 BEGIN
@@ -320,10 +321,8 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE sp_GetTotalFamilyCount
-GO
 
-CREATE PROCEDURE sp_GetTotalFamilyCount
+CREATE OR ALTER PROCEDURE sp_GetTotalFamilyCount
     @anbiyam_id INT
 AS
 BEGIN
@@ -331,7 +330,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_SaveFamily
+CREATE OR ALTER PROCEDURE sp_SaveFamily
     @family_code NVARCHAR(50),
 	@anbiyam_id INT,
     @head_of_family NVARCHAR(100),
@@ -397,10 +396,8 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_SaveFamilyMember
-GO
 
-CREATE PROCEDURE sp_SaveFamilyMember
+CREATE OR ALTER PROCEDURE sp_SaveFamilyMember
     @family_id INT,
     @first_name NVARCHAR(100),
     @relationship NVARCHAR(50), -- e.g., Head, Spouse, Child, Other
@@ -504,10 +501,8 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE sp_GetFamilyMembersByFamilyId
-GO
 
-CREATE PROCEDURE sp_GetFamilyMembersByFamilyId
+CREATE OR ALTER PROCEDURE sp_GetFamilyMembersByFamilyId
     @family_id INT
 AS
 BEGIN
@@ -579,7 +574,7 @@ END
 GO
 
 
-CREATE PROCEDURE sp_GetAnbiyamCodeById
+CREATE OR ALTER PROCEDURE sp_GetAnbiyamCodeById
     @anbiyam_id INT
 AS
 BEGIN
@@ -591,10 +586,8 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE sp_GetFamilyDetailsById
-GO
 
-CREATE PROCEDURE sp_GetFamilyDetailsById
+CREATE OR ALTER PROCEDURE sp_GetFamilyDetailsById
     @family_id INT
 AS
 BEGIN
@@ -618,10 +611,8 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE sp_GetFamilyMembersDetailsByFamilyId
-GO
 
-CREATE PROCEDURE sp_GetFamilyMembersDetailsByFamilyId
+CREATE OR ALTER PROCEDURE sp_GetFamilyMembersDetailsByFamilyId
     @family_id INT
 AS
 BEGIN
@@ -660,10 +651,7 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE sp_DeleteFamily
-GO
-
-CREATE PROCEDURE sp_DeleteFamily
+CREATE OR ALTER PROCEDURE sp_DeleteFamily
     @familyID INT
 AS
 BEGIN
@@ -685,10 +673,8 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE sp_GetFamilyCemetery
-GO
 
-CREATE PROCEDURE sp_GetFamilyCemetery
+CREATE OR ALTER PROCEDURE sp_GetFamilyCemetery
     @familyID INT
 AS
 BEGIN
@@ -704,10 +690,7 @@ END
 GO
 
 
-DROP PROCEDURE sp_InsertOrUpdateCemetery
-GO
-
-CREATE PROCEDURE sp_InsertOrUpdateCemetery
+CREATE OR ALTER PROCEDURE sp_InsertOrUpdateCemetery
     @cemeteryID INT = NULL,
     @memberID INT = NULL,
     @burialDate DATE,
@@ -770,10 +753,7 @@ END
 GO
 
 
-DROP PROCEDURE sp_GetFamilyMembersForDropdown
-GO
-
-CREATE PROCEDURE sp_GetFamilyMembersForDropdown
+CREATE OR ALTER PROCEDURE sp_GetFamilyMembersForDropdown
     @family_id INT
 AS
 BEGIN
@@ -791,10 +771,7 @@ END
 GO
 
 
-DROP PROCEDURE sp_GetAllCemeteries
-GO
-
-CREATE PROCEDURE sp_GetAllCemeteries
+CREATE OR ALTER PROCEDURE sp_GetAllCemeteries
 AS
 BEGIN
 	SELECT
@@ -809,86 +786,79 @@ END
 GO
 
 
-DROP PROCEDURE sp_GetFamilyWithAnbiyam
-GO
-
-CREATE PROCEDURE sp_GetFamilyWithAnbiyam
+CREATE OR ALTER PROCEDURE sp_GetFamilyWithAnbiyam
 AS
 BEGIN
     SELECT 
-    a.anbiyam_id,
-	a.anbiyam_zone as [Zone],
-	a.anbiyam_name as [Name],
-    a.anbiyam_code as [Code],
-	a.anbiyam_coordinator_name as [Coordinator],
-    a.coordinator_phone as [Mobile],
-    COUNT(DISTINCT f.family_id) AS [Families],
-	COUNT(f.family_id) AS [Members],
-    COUNT(CASE WHEN fm.gender = 'Male' THEN 1 END) AS [Male],
-    COUNT(CASE WHEN fm.gender = 'Female' THEN 1 END) AS [Female]
-FROM anbiyam a
-left JOIN family f  ON a.anbiyam_id = f.anbiyam_id
-LEFT JOIN family_member fm ON fm.family_id = f.family_id
-GROUP BY 
-    a.anbiyam_id,
-    a.anbiyam_name,
-    a.anbiyam_zone,
-    a.anbiyam_coordinator_name,
-	a.coordinator_phone,
-	a.anbiyam_code
+        a.anbiyam_id,
+        a.anbiyam_zone AS [Zone],
+        a.anbiyam_name AS [Name],
+        a.anbiyam_code AS [Code],
+        a.anbiyam_coordinator_name AS [Coordinator],
+        a.coordinator_phone AS [Mobile],
+        COUNT(DISTINCT f.family_id) AS [Families],
+        COUNT(CASE WHEN fm.member_id IS NOT NULL AND fm.member_status != 'Deceased' THEN fm.member_id END) AS [Members],
+        COUNT(CASE WHEN fm.gender = 'Male' AND fm.member_status != 'Deceased' THEN 1 END) AS [Male],
+        COUNT(CASE WHEN fm.gender = 'Female' AND fm.member_status != 'Deceased' THEN 1 END) AS [Female]
+    FROM anbiyam a
+    LEFT JOIN family f ON a.anbiyam_id = f.anbiyam_id
+    LEFT JOIN family_member fm ON fm.family_id = f.family_id
+    GROUP BY 
+        a.anbiyam_id,
+        a.anbiyam_name,
+        a.anbiyam_zone,
+        a.anbiyam_coordinator_name,
+        a.coordinator_phone,
+        a.anbiyam_code
 END
 GO
 
 
-DROP PROCEDURE sp_GetAgeGroupChartData
-GO
-
-CREATE PROCEDURE sp_GetAgeGroupChartData
+CREATE OR ALTER PROCEDURE sp_GetAgeGroupChartData
 AS
 BEGIN
-	SELECT
-    AgeGroupWithDesc,
-	AgeGroup,
-    COUNT(*) AS MemberCount
-FROM (
     SELECT
-        DATEDIFF(YEAR, dob, GETDATE()) 
-            - CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, dob, GETDATE()), dob) > GETDATE() THEN 1 ELSE 0 END AS Age,
-        CASE
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts'
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens'
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers'
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers'
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Golden Wisdom Circle'
-            ELSE 'Unknown'
-        END AS AgeGroup,
-		        CASE
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts (0-12)'
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens (13-19)'
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers (20-35)'
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers (36-59)'
-            WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Golden Wisdom Circle (60+)'
-            ELSE 'Unknown'
-        END AS AgeGroupWithDesc
-    FROM family_member
-) AS AgeData
-GROUP BY AgeGroup, AgeGroupWithDesc;
+        AgeGroupWithDesc,
+	    AgeGroup,
+        COUNT(*) AS MemberCount
+    FROM (
+        SELECT
+            DATEDIFF(YEAR, dob, GETDATE()) 
+                - CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, dob, GETDATE()), dob) > GETDATE() THEN 1 ELSE 0 END AS Age,
+            CASE
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Wisdom Circle'
+                ELSE 'Unknown Age Group'
+            END AS AgeGroup,
+		            CASE
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) < 13 THEN 'Little Sprouts (0-12)'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 13 AND 18 THEN 'Rising Teens (13-19)'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 19 AND 35 THEN 'Young Achivers (20-35)'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) BETWEEN 36 AND 60 THEN 'Prive Movers (36-59)'
+                WHEN DATEDIFF(YEAR, dob, GETDATE()) > 60 THEN 'Wisdom Circle (60+)'
+                ELSE 'Unknown Age Group'
+            END AS AgeGroupWithDesc
+        FROM family_member where member_status != 'Deceased'
+    ) AS AgeData
+    GROUP BY AgeGroup, AgeGroupWithDesc;
 END
 GO
 
-CREATE PROCEDURE sp_GenderData
+
+CREATE OR ALTER PROCEDURE sp_GenderData
 AS
 BEGIN
     SELECT SUM(CASE WHEN gender = 'Male' THEN 1 ELSE 0 END) AS MaleCount, SUM(CASE WHEN gender = 'Female' THEN 1 ELSE 0 END) AS FemaleCount
-    FROM family_member WHERE member_status = 'Active';
+    FROM family_member WHERE member_status != 'Deceased';
 END
 GO
 
 
-DROP PROCEDURE sp_GetFamilyBasicDetails
-GO
 
-CREATE PROCEDURE sp_GetFamilyBasicDetails
+CREATE OR ALTER PROCEDURE sp_GetFamilyBasicDetails
     @anbiyam_id INT = 0,
     @family_head NVARCHAR(100) = NULL,
     @occupation NVARCHAR(100) = NULL,
@@ -938,10 +908,8 @@ BEGIN
 END
 GO
 
-DROP PROCEDURE sp_AggregateOccupations;
-GO
 
-CREATE PROCEDURE sp_AggregateOccupations
+CREATE OR ALTER PROCEDURE sp_AggregateOccupations
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -955,8 +923,58 @@ BEGIN
         Occupation 
 END
 
+GO
 
-ALTER PROCEDURE sp_SaveFamily
+
+CREATE OR ALTER PROCEDURE sp_GetAllCemeteries
+    @burial_date_from datetime = null,
+    @burial_date_to datetime = null,
+    @deceased_date_from datetime = null,
+    @deceased_date_to datetime = null,
+    @IsOurparish BIT = null
+AS
+BEGIN
+    IF @IsOurparish = 0
+		BEGIN
+			SELECT
+				CemeteryId AS [cemeteryid],
+				cemeterycode AS [Cemetery Code],
+				Name AS [Deceased Name],
+				DeceasedDate AS [Deceased Date],
+				BuriedDate AS [Burial Date],
+				Remarks AS [Remarks],
+                ContactPerson AS [Contact Person],
+                ContactPhone AS [Contact Mobile]
+			FROM nonparishcemetery
+			WHERE
+				((@burial_date_from IS NULL AND @burial_date_to IS NULL) OR BuriedDate BETWEEN @burial_date_from AND @burial_date_to)
+				AND
+				((@deceased_date_from IS NULL AND @deceased_date_to IS NULL) OR DeceasedDate BETWEEN @deceased_date_from AND @deceased_date_to)
+			ORDER BY cemeterycode DESC
+		END
+    ELSE
+		BEGIN
+			SELECT
+				cemetery_id AS [cemeteryid],
+				grave_number AS [Cemetery Code],
+				deceased_name AS [Deceased Name],
+				date_of_death AS [Deceased Date],
+				burial_date AS [Burial Date],
+				remarks AS [Remarks],
+                f.head_of_family AS [Contact Person],
+                f.phone AS [Contact Mobile]
+			FROM cemetery_details cd
+			INNER JOIN family f ON cd.family_id = f.family_id
+			WHERE
+				((@burial_date_from IS NULL AND @burial_date_to IS NULL) OR cd.burial_date BETWEEN @burial_date_from AND @burial_date_to)
+				AND
+				((@deceased_date_from IS NULL AND @deceased_date_to IS NULL) OR cd.date_of_death BETWEEN @deceased_date_from AND @deceased_date_to)
+			ORDER BY grave_number DESC
+		END
+END
+GO
+
+CREATE OR ALTER PROCEDURE sp_SaveFamily
     @family_code NVARCHAR(50),
 	@anbiyam_id INT,
     @head_of_family NVARCHAR(100),
@@ -1032,8 +1050,7 @@ END
 GO
 
 
-
-ALTER PROCEDURE sp_SaveNonParishCemetery
+CREATE OR ALTER PROCEDURE sp_SaveNonParishCemetery
     @Name NVARCHAR(100),
     @DOB DATE = NULL,
     @Address NVARCHAR(200) = NULL,
@@ -1061,55 +1078,342 @@ END
 GO
 
 
+------------------------------------------------------------------------------------------------------
+---------V2 Changes----------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 
-DROP PROCEDURE sp_GetAllCemeteries
-GO
-
-CREATE PROCEDURE sp_GetAllCemeteries
-    @burial_date_from datetime = null,
-    @burial_date_to datetime = null,
-    @deceased_date_from datetime = null,
-    @deceased_date_to datetime = null,
-    @IsOurparish BIT = null
+CREATE OR ALTER PROCEDURE sp_SaveFamily
+    @family_code NVARCHAR(50),
+	@anbiyam_id INT,
+    @head_of_family NVARCHAR(100),
+    @gender NVARCHAR(10),
+    @family_permanant_address NVARCHAR(200),
+	@family_temp_address NVARCHAR(200),
+	@family_perm_city NVARCHAR(50),
+	@family_perm_state NVARCHAR(50),
+	@family_perm_zipcode NVARCHAR(10),
+	@family_temp_city NVARCHAR(50),
+	@family_temp_state NVARCHAR(50),
+	@family_temp_zipcode NVARCHAR(10),
+    @phone NVARCHAR(20),
+	@email NVARCHAR(100),
+	@monthly_subscription INT,
+    @is_multiple_cards bit,
+	@family_notes NVARCHAR(200),
+	@last_subscriptin_date DATE,
+    @family_id INT = 0 OUTPUT,
+    @ishusbandactive bit,
+    @iswifeactive bit
 AS
 BEGIN
-    IF @IsOurparish = 0
-		BEGIN
-			SELECT
-				CemeteryId AS [cemeteryid],
-				cemeterycode AS [Cemetery Code],
-				Name AS [Deceased Name],
-				DeceasedDate AS [Deceased Date],
-				BuriedDate AS [Burial Date],
-				Remarks AS [Remarks],
-                ContactPerson AS [Contact Person],
-                ContactPhone AS [Contact Mobile]
-			FROM nonparishcemetery
-			WHERE
-				((@burial_date_from IS NULL AND @burial_date_to IS NULL) OR BuriedDate BETWEEN @burial_date_from AND @burial_date_to)
-				AND
-				((@deceased_date_from IS NULL AND @deceased_date_to IS NULL) OR DeceasedDate BETWEEN @deceased_date_from AND @deceased_date_to)
-			ORDER BY cemeterycode DESC
-		END
+    SET NOCOUNT ON;
+
+    IF @family_id IS NOT NULL AND @family_id > 0 AND EXISTS (SELECT 1 FROM dbo.family WHERE family_id = @family_id)
+        BEGIN
+            UPDATE dbo.family
+            SET
+                family_code = @family_code,
+			    anbiyam_id = @anbiyam_id,
+                head_of_family = @head_of_family,
+                gender = @gender,
+                family_permanant_address = @family_permanant_address,
+			    family_temp_address = @family_temp_address,
+			    family_city = @family_perm_city,
+			    family_state = @family_perm_state,
+			    zip_code = @family_perm_zipcode,
+			    family_temp_city = @family_temp_city,
+			    family_temp_state = @family_temp_state,
+			    family_temp_zipcode = @family_temp_zipcode,
+                phone = @phone,
+			    email = @email,
+			    monthly_subscription = @monthly_subscription,
+                modified = GETDATE(),
+			    family_notes = @family_notes,
+			    multiple_familycards = @is_multiple_cards,
+			    last_subscription_date = @last_subscriptin_date,
+                ishusbandactive = @ishusbandactive,
+                iswifeactive = @iswifeactive
+            WHERE family_id = @family_id;
+
+        END
     ELSE
-		BEGIN
-			SELECT
-				cemetery_id AS [cemeteryid],
-				grave_number AS [Cemetery Code],
-				deceased_name AS [Deceased Name],
-				date_of_death AS [Deceased Date],
-				burial_date AS [Burial Date],
-				remarks AS [Remarks],
-                f.head_of_family AS [Contact Person],
-                f.phone AS [Contact Mobile]
-			FROM cemetery_details cd
-			INNER JOIN family f ON cd.family_id = f.family_id
-			WHERE
-				((@burial_date_from IS NULL AND @burial_date_to IS NULL) OR cd.burial_date BETWEEN @burial_date_from AND @burial_date_to)
-				AND
-				((@deceased_date_from IS NULL AND @deceased_date_to IS NULL) OR cd.date_of_death BETWEEN @deceased_date_from AND @deceased_date_to)
-			ORDER BY grave_number DESC
-		END
+        BEGIN
+
+            INSERT INTO dbo.family (
+                family_code,
+			    anbiyam_id,
+                head_of_family,
+                gender,
+                family_permanant_address,
+			    family_temp_address,
+			    family_city,
+			    family_state,
+			    zip_code,
+			    family_temp_city,
+			    family_temp_state,
+			    family_temp_zipcode,
+                phone,
+			    email,
+			    monthly_subscription,
+			    created_at,
+			    modified,
+			    parish_member_since,
+			    family_notes,
+			    multiple_familycards,
+			    last_subscription_date,
+                ishusbandactive,
+                iswifeactive
+            )
+            VALUES (
+                @family_code,
+			    @anbiyam_id,
+                @head_of_family,
+                @gender,
+                @family_permanant_address,
+			    @family_temp_address,
+			    @family_perm_city,
+			    @family_perm_state,
+			    @family_perm_zipcode,
+			    @family_temp_city,
+			    @family_temp_state,
+			    @family_temp_zipcode,
+                @phone,
+			    @email,
+			    @monthly_subscription,
+                GETDATE(),
+                GETDATE(),
+                YEAR(GETDATE()),
+			    @family_notes,
+			    @is_multiple_cards,
+			    @last_subscriptin_date,
+                @ishusbandactive,
+                @iswifeactive
+            );
+
+            SET @family_id = SCOPE_IDENTITY();
+        END
 END
 GO
 
+
+CREATE OR ALTER PROCEDURE sp_SaveFamilyMember
+    @member_id INT = 0 OUTPUT,
+    @family_id INT,
+    @first_name NVARCHAR(100),
+    @relationship NVARCHAR(50), 
+    @gender NVARCHAR(10),
+    @dob DATE = NULL,
+    @member_status NVARCHAR(20) = NULL,
+	@occupation NVARCHAR(20) = NULL,
+	@qualification NVARCHAR(30) = NULL,
+	@blood_group NVARCHAR(5) = NULL,
+	@email NVARCHAR(100) = NULL,
+    @phone NVARCHAR(20) = NULL,
+	@baptized_date DATETIME = NULL,
+	@marriage_date DATETIME = NULL,
+	@first_communion_date DATETIME = NULL,
+	@confirmation_date DATETIME = NULL,
+	@priesthood_date DATETIME = NULL,
+    @isadmin BIT = 0,
+    @legionofmary BIT = 0,
+    @isyouth BIT = 0,
+    @isalterservices BIT = 0,
+    @isvencentdepaul BIT = 0,
+    @iswomenassoc BIT = 0,
+    @islitergycouncil BIT = 0,
+    @ischoir BIT = 0,
+    @iscatechismteacher BIT = 0,
+    @iscatechismstudent BIT = 0,
+	@childclass NVARCHAR(10) = NULL,
+	@child_institution NVARCHAR(100) = NULL,
+    @member_group NVARCHAR(50) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @member_id IS NOT NULL AND @member_id > 0 AND EXISTS (SELECT 1 FROM dbo.family_member WHERE member_id = @member_id)
+    BEGIN
+        UPDATE dbo.family_member
+        SET
+            family_id = @family_id,
+            first_name = @first_name,
+            relationship = @relationship,
+            gender = @gender,
+            dob = @dob,
+            member_status = @member_status,
+            occupation = @occupation,
+            qualification = @qualification,
+            blood_group = @blood_group,
+            email = @email,
+            phone = @phone,
+            baptized_date = @baptized_date,
+            modified = GETDATE(),
+            marriage_date = @marriage_date,
+            first_communion_date = @first_communion_date,
+            first_confirmation_date = @confirmation_date,
+            priesthood_date = @priesthood_date,
+            is_admin_council = @isadmin,
+            is_legion_of_mary = @legionofmary,
+            is_youth_group = @isyouth,
+            is_alter_services = @isalterservices,
+            is_vencent_de_paul_soc = @isvencentdepaul,
+            is_choir = @ischoir,
+            is_catechism_teacher = @iscatechismteacher,
+            is_catechism_student = @iscatechismstudent,
+            is_women_assoc = @iswomenassoc,
+            is_litergy_council = @islitergycouncil,
+            child_class = @childclass,
+            child_institution = @child_institution,
+            member_group = @member_group
+        WHERE member_id = @member_id;
+    END
+    ELSE
+    BEGIN
+        INSERT INTO family_member (
+            family_id,
+            first_name,
+            relationship,
+            gender,
+            dob,
+            member_status,
+            occupation,
+            qualification,
+            blood_group,
+            email,
+            phone,
+            baptized_date,
+            created_at,
+            modified,
+            marriage_date,
+            first_communion_date,
+            first_confirmation_date,
+            priesthood_date,
+            is_admin_council,
+            is_legion_of_mary,
+            is_youth_group,
+            is_alter_services,
+            is_vencent_de_paul_soc,
+            is_choir,
+            is_catechism_student,
+            is_catechism_teacher,
+            is_women_assoc,
+            is_litergy_council,
+            child_class,
+            child_institution,
+            member_group
+        )
+        VALUES (
+            @family_id,
+            @first_name,
+            @relationship,
+            @gender,
+            @dob,
+            @member_status,
+            @occupation,
+            @qualification,
+            @blood_group,
+            @email,
+            @phone,
+            @baptized_date,
+            GETDATE(),
+            GETDATE(),
+            @marriage_date,
+            @first_communion_date,
+            @confirmation_date,
+            @priesthood_date,
+            @isadmin,
+            @legionofmary,
+            @isyouth,
+            @isalterservices,
+            @isvencentdepaul,
+            @ischoir,
+            @iscatechismstudent,
+            @iscatechismteacher,
+            @iswomenassoc,
+            @islitergycouncil,
+            @childclass,
+            @child_institution,
+            @member_group
+        );
+
+        SET @member_id = SCOPE_IDENTITY();
+    END
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE sp_GetFamilyMembersDetailsByFamilyId
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+        SELECT 
+        first_name AS Name,
+        relationship,
+        dob,
+        fm.phone,
+        fm.email,
+        blood_group,
+        occupation,
+        qualification,
+        blood_group,
+        marriage_date,
+        baptized_date,
+        first_communion_date,
+        first_confirmation_date,
+        priesthood_date,
+        is_admin_council,
+        is_legion_of_mary,
+        is_youth_group,
+        is_alter_services,
+        is_vencent_de_paul_soc,
+        is_choir,
+        is_catechism_teacher,
+        is_catechism_student,
+        is_women_assoc,
+        child_class,
+        is_litergy_council
+        child_institution,
+        member_group,
+        ishusbandactive,
+        iswifeactive,
+		member_id,
+		child_class
+    FROM family_member fm left join
+    family f on f.family_id = fm.family_id
+    WHERE fm.family_id = @family_id;
+
+END
+GO
+
+
+
+CREATE OR ALTER PROCEDURE sp_GetFamilyDetailsById
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        family_code,
+        anbiyam_id,
+        Zone = (SELECT anbiyam_zone FROM anbiyam WHERE anbiyam_id = family.anbiyam_id),
+        family_permanant_address,
+        family_temp_address,
+        family_city,
+        family_state,
+        zip_code,
+        family_temp_city,
+        family_temp_state,
+        family_temp_zipcode,
+        monthly_subscription,
+		multiple_familycards,
+		family_notes,
+		last_subscription_date,
+		isactive		
+    FROM family
+    WHERE family_id = @family_id;
+
+END
+GO

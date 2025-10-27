@@ -21,6 +21,7 @@ namespace TestFat
             tempZipcodetxt.KeyPress += NumberOnlyTextBox_KeyPress;
             tempZipcodetxt.KeyPress += NumberOnlyTextBox_KeyPress;
             txtHeadPhone.KeyPress += NumberOnlyTextBox_KeyPress;
+            this.MaximizeBox = false;
         }
 
         private void btnAddCemetery_Click(object sender, EventArgs e)

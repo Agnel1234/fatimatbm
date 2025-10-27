@@ -39,6 +39,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnbiyamPopup));
             this.lblAnbiyamName = new System.Windows.Forms.Label();
             this.txtAnbiyamName = new System.Windows.Forms.TextBox();
             this.lblAnbiyamZone = new System.Windows.Forms.Label();
@@ -76,7 +77,6 @@
             this.txtAnbiyamName.Name = "txtAnbiyamName";
             this.txtAnbiyamName.Size = new System.Drawing.Size(200, 23);
             this.txtAnbiyamName.TabIndex = 1;
-            //this.txtAnbiyamName.TextChanged += new System.EventHandler(this.txtAnbiyamName_TextChanged);
             this.txtAnbiyamName.Leave += new System.EventHandler(this.txtAnbiyamName_Leave);
             // 
             // lblAnbiyamZone
@@ -243,6 +243,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 450);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AnbiyamPopup";
             this.panel1.ResumeLayout(false);

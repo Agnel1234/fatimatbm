@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.familyPage = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.familyMembersGrid = new System.Windows.Forms.DataGridView();
@@ -81,22 +81,21 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.familytab = new System.Windows.Forms.TabControl();
             this.cemeteryPage = new System.Windows.Forms.TabPage();
-            this.cemeteryGridView = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.dtDeceasedStart = new System.Windows.Forms.DateTimePicker();
+            this.dtDeceasedEnd = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cemeterySearchBtn = new System.Windows.Forms.Button();
+            this.parishCombobox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtBurialEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtBurialStart = new System.Windows.Forms.DateTimePicker();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnOutsideParsihMember = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.parishCombobox = new System.Windows.Forms.ComboBox();
-            this.dtBurialStart = new System.Windows.Forms.DateTimePicker();
-            this.dtBurialEnd = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtDeceasedEnd = new System.Windows.Forms.DateTimePicker();
-            this.dtDeceasedStart = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cemeterySearchBtn = new System.Windows.Forms.Button();
+            this.cemeteryGridView = new System.Windows.Forms.DataGridView();
             this.familyPage.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.familyMembersGrid)).BeginInit();
@@ -118,9 +117,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.familytab.SuspendLayout();
             this.cemeteryPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cemeteryGridView)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cemeteryGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // familyPage
@@ -142,9 +141,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
             this.panel6.Controls.Add(this.familyMembersGrid);
-            this.panel6.Location = new System.Drawing.Point(8, 370);
+            this.panel6.Location = new System.Drawing.Point(8, 344);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1276, 188);
+            this.panel6.Size = new System.Drawing.Size(1276, 214);
             this.panel6.TabIndex = 2;
             // 
             // familyMembersGrid
@@ -158,7 +157,7 @@
             this.familyMembersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.familyMembersGrid.Location = new System.Drawing.Point(15, 18);
             this.familyMembersGrid.Name = "familyMembersGrid";
-            this.familyMembersGrid.Size = new System.Drawing.Size(1242, 151);
+            this.familyMembersGrid.Size = new System.Drawing.Size(1242, 177);
             this.familyMembersGrid.TabIndex = 0;
             // 
             // panel5
@@ -229,7 +228,7 @@
             this.panel4.Controls.Add(this.familygrid);
             this.panel4.Location = new System.Drawing.Point(8, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1276, 358);
+            this.panel4.Size = new System.Drawing.Size(1276, 332);
             this.panel4.TabIndex = 0;
             // 
             // cemeteryComboBox
@@ -338,7 +337,7 @@
             this.familygrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.familygrid.Location = new System.Drawing.Point(15, 151);
             this.familygrid.Name = "familygrid";
-            this.familygrid.Size = new System.Drawing.Size(1242, 190);
+            this.familygrid.Size = new System.Drawing.Size(1242, 168);
             this.familygrid.TabIndex = 0;
             this.familygrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.familygrid_CellClick);
             // 
@@ -530,17 +529,17 @@
             this.chart3.BorderlineWidth = 2;
             this.chart3.BorderSkin.BackColor = System.Drawing.Color.Black;
             this.chart3.BorderSkin.PageColor = System.Drawing.Color.Gray;
-            chartArea1.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea1);
+            chartArea10.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea10);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart3.Legends.Add(legend1);
+            legend10.Name = "Legend1";
+            this.chart3.Legends.Add(legend10);
             this.chart3.Location = new System.Drawing.Point(3, 3);
             this.chart3.Name = "chart3";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart3.Series.Add(series1);
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            this.chart3.Series.Add(series10);
             this.chart3.Size = new System.Drawing.Size(861, 598);
             this.chart3.TabIndex = 1;
             // 
@@ -549,18 +548,18 @@
             this.chart2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
             this.chart2.BorderlineColor = System.Drawing.Color.GhostWhite;
             this.chart2.BorderlineWidth = 2;
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            chartArea11.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea11);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Left;
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
+            legend11.Name = "Legend1";
+            this.chart2.Legends.Add(legend11);
             this.chart2.Location = new System.Drawing.Point(3, 65);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            this.chart2.Series.Add(series11);
             this.chart2.Size = new System.Drawing.Size(419, 604);
             this.chart2.TabIndex = 4;
             this.chart2.Text = "Age Group Chart";
@@ -616,16 +615,16 @@
             this.chart1.BackColor = System.Drawing.Color.Thistle;
             this.chart1.BorderlineColor = System.Drawing.Color.Thistle;
             this.chart1.BorderlineWidth = 2;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea12.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chart1.Legends.Add(legend12);
             this.chart1.Location = new System.Drawing.Point(3, 322);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.chart1.Series.Add(series12);
             this.chart1.Size = new System.Drawing.Size(353, 313);
             this.chart1.TabIndex = 18;
             this.chart1.Text = "Age Group Chart";
@@ -650,8 +649,9 @@
             // 
             // cemeteryPage
             // 
-            this.cemeteryPage.Controls.Add(this.cemeteryGridView);
             this.cemeteryPage.Controls.Add(this.panel7);
+            this.cemeteryPage.Controls.Add(this.panel8);
+            this.cemeteryPage.Controls.Add(this.cemeteryGridView);
             this.cemeteryPage.Location = new System.Drawing.Point(4, 44);
             this.cemeteryPage.Name = "cemeteryPage";
             this.cemeteryPage.Padding = new System.Windows.Forms.Padding(3);
@@ -659,6 +659,169 @@
             this.cemeteryPage.TabIndex = 3;
             this.cemeteryPage.Text = "Cemetery Management";
             this.cemeteryPage.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.dtDeceasedStart);
+            this.panel7.Controls.Add(this.dtDeceasedEnd);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Controls.Add(this.cemeterySearchBtn);
+            this.panel7.Controls.Add(this.parishCombobox);
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Controls.Add(this.label7);
+            this.panel7.Controls.Add(this.label4);
+            this.panel7.Controls.Add(this.label5);
+            this.panel7.Controls.Add(this.dtBurialEnd);
+            this.panel7.Controls.Add(this.dtBurialStart);
+            this.panel7.Location = new System.Drawing.Point(6, 9);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(826, 127);
+            this.panel7.TabIndex = 32;
+            // 
+            // dtDeceasedStart
+            // 
+            this.dtDeceasedStart.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dtDeceasedStart.Checked = false;
+            this.dtDeceasedStart.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtDeceasedStart.Location = new System.Drawing.Point(18, 39);
+            this.dtDeceasedStart.Name = "dtDeceasedStart";
+            this.dtDeceasedStart.ShowCheckBox = true;
+            this.dtDeceasedStart.Size = new System.Drawing.Size(200, 25);
+            this.dtDeceasedStart.TabIndex = 23;
+            // 
+            // dtDeceasedEnd
+            // 
+            this.dtDeceasedEnd.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dtDeceasedEnd.Checked = false;
+            this.dtDeceasedEnd.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtDeceasedEnd.Location = new System.Drawing.Point(18, 91);
+            this.dtDeceasedEnd.Name = "dtDeceasedEnd";
+            this.dtDeceasedEnd.ShowCheckBox = true;
+            this.dtDeceasedEnd.Size = new System.Drawing.Size(200, 25);
+            this.dtDeceasedEnd.TabIndex = 24;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label10.Location = new System.Drawing.Point(300, 11);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 18);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Burial Date";
+            // 
+            // cemeterySearchBtn
+            // 
+            this.cemeterySearchBtn.BackColor = System.Drawing.Color.White;
+            this.cemeterySearchBtn.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cemeterySearchBtn.ForeColor = System.Drawing.Color.Black;
+            this.cemeterySearchBtn.Location = new System.Drawing.Point(573, 87);
+            this.cemeterySearchBtn.Name = "cemeterySearchBtn";
+            this.cemeterySearchBtn.Size = new System.Drawing.Size(216, 27);
+            this.cemeterySearchBtn.TabIndex = 11;
+            this.cemeterySearchBtn.Text = "Search Cemetery";
+            this.cemeterySearchBtn.UseVisualStyleBackColor = false;
+            this.cemeterySearchBtn.Click += new System.EventHandler(this.cemeterySearchBtn_Click);
+            // 
+            // parishCombobox
+            // 
+            this.parishCombobox.FormattingEnabled = true;
+            this.parishCombobox.Items.AddRange(new object[] {
+            "Fatima Church Parish",
+            "Other Parish"});
+            this.parishCombobox.Location = new System.Drawing.Point(573, 39);
+            this.parishCombobox.Name = "parishCombobox";
+            this.parishCombobox.Size = new System.Drawing.Size(216, 26);
+            this.parishCombobox.TabIndex = 29;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label8.Location = new System.Drawing.Point(570, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 18);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Parish";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label7.Location = new System.Drawing.Point(33, 67);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(25, 18);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "To";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label4.Location = new System.Drawing.Point(320, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 18);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "To";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label5.Location = new System.Drawing.Point(15, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 18);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Deceased Date";
+            // 
+            // dtBurialEnd
+            // 
+            this.dtBurialEnd.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dtBurialEnd.Checked = false;
+            this.dtBurialEnd.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtBurialEnd.Location = new System.Drawing.Point(303, 89);
+            this.dtBurialEnd.Name = "dtBurialEnd";
+            this.dtBurialEnd.ShowCheckBox = true;
+            this.dtBurialEnd.Size = new System.Drawing.Size(200, 25);
+            this.dtBurialEnd.TabIndex = 27;
+            // 
+            // dtBurialStart
+            // 
+            this.dtBurialStart.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dtBurialStart.Checked = false;
+            this.dtBurialStart.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtBurialStart.Location = new System.Drawing.Point(303, 39);
+            this.dtBurialStart.Name = "dtBurialStart";
+            this.dtBurialStart.ShowCheckBox = true;
+            this.dtBurialStart.Size = new System.Drawing.Size(200, 25);
+            this.dtBurialStart.TabIndex = 28;
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel8.Controls.Add(this.btnOutsideParsihMember);
+            this.panel8.Location = new System.Drawing.Point(838, 9);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(448, 127);
+            this.panel8.TabIndex = 31;
+            // 
+            // btnOutsideParsihMember
+            // 
+            this.btnOutsideParsihMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOutsideParsihMember.ForeColor = System.Drawing.Color.Black;
+            this.btnOutsideParsihMember.Location = new System.Drawing.Point(146, 39);
+            this.btnOutsideParsihMember.Name = "btnOutsideParsihMember";
+            this.btnOutsideParsihMember.Size = new System.Drawing.Size(208, 36);
+            this.btnOutsideParsihMember.TabIndex = 31;
+            this.btnOutsideParsihMember.Text = "Add Outside Parish Member";
+            this.btnOutsideParsihMember.UseVisualStyleBackColor = true;
+            this.btnOutsideParsihMember.Click += new System.EventHandler(this.btnOutsideParsihMember_Click);
             // 
             // cemeteryGridView
             // 
@@ -672,187 +835,8 @@
             this.cemeteryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cemeteryGridView.Location = new System.Drawing.Point(3, 142);
             this.cemeteryGridView.Name = "cemeteryGridView";
-            this.cemeteryGridView.Size = new System.Drawing.Size(1286, 502);
+            this.cemeteryGridView.Size = new System.Drawing.Size(1286, 522);
             this.cemeteryGridView.TabIndex = 16;
-            // 
-            // panel7
-            // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
-            this.panel7.Controls.Add(this.panel8);
-            this.panel7.Controls.Add(this.label8);
-            this.panel7.Controls.Add(this.parishCombobox);
-            this.panel7.Controls.Add(this.dtBurialStart);
-            this.panel7.Controls.Add(this.dtBurialEnd);
-            this.panel7.Controls.Add(this.label4);
-            this.panel7.Controls.Add(this.dtDeceasedEnd);
-            this.panel7.Controls.Add(this.dtDeceasedStart);
-            this.panel7.Controls.Add(this.label10);
-            this.panel7.Controls.Add(this.label7);
-            this.panel7.Controls.Add(this.label6);
-            this.panel7.Controls.Add(this.label5);
-            this.panel7.Controls.Add(this.cemeterySearchBtn);
-            this.panel7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1286, 133);
-            this.panel7.TabIndex = 15;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.btnOutsideParsihMember);
-            this.panel8.Location = new System.Drawing.Point(835, 3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(448, 127);
-            this.panel8.TabIndex = 31;
-            // 
-            // btnOutsideParsihMember
-            // 
-            this.btnOutsideParsihMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOutsideParsihMember.ForeColor = System.Drawing.Color.Black;
-            this.btnOutsideParsihMember.Location = new System.Drawing.Point(150, 43);
-            this.btnOutsideParsihMember.Name = "btnOutsideParsihMember";
-            this.btnOutsideParsihMember.Size = new System.Drawing.Size(208, 36);
-            this.btnOutsideParsihMember.TabIndex = 31;
-            this.btnOutsideParsihMember.Text = "Add Outside Parish Member";
-            this.btnOutsideParsihMember.UseVisualStyleBackColor = true;
-            this.btnOutsideParsihMember.Click += new System.EventHandler(this.btnOutsideParsihMember_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label8.Location = new System.Drawing.Point(574, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 18);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Parish";
-            // 
-            // parishCombobox
-            // 
-            this.parishCombobox.FormattingEnabled = true;
-            this.parishCombobox.Items.AddRange(new object[] {
-            "Fatima Church Parish",
-            "Other Parish"});
-            this.parishCombobox.Location = new System.Drawing.Point(584, 46);
-            this.parishCombobox.Name = "parishCombobox";
-            this.parishCombobox.Size = new System.Drawing.Size(209, 26);
-            this.parishCombobox.TabIndex = 29;
-            // 
-            // dtBurialStart
-            // 
-            this.dtBurialStart.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.dtBurialStart.Checked = false;
-            this.dtBurialStart.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtBurialStart.Location = new System.Drawing.Point(303, 44);
-            this.dtBurialStart.Name = "dtBurialStart";
-            this.dtBurialStart.ShowCheckBox = true;
-            this.dtBurialStart.Size = new System.Drawing.Size(200, 25);
-            this.dtBurialStart.TabIndex = 28;
-            // 
-            // dtBurialEnd
-            // 
-            this.dtBurialEnd.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.dtBurialEnd.Checked = false;
-            this.dtBurialEnd.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtBurialEnd.Location = new System.Drawing.Point(303, 94);
-            this.dtBurialEnd.Name = "dtBurialEnd";
-            this.dtBurialEnd.ShowCheckBox = true;
-            this.dtBurialEnd.Size = new System.Drawing.Size(200, 25);
-            this.dtBurialEnd.TabIndex = 27;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label4.Location = new System.Drawing.Point(320, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 18);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "To";
-            // 
-            // dtDeceasedEnd
-            // 
-            this.dtDeceasedEnd.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.dtDeceasedEnd.Checked = false;
-            this.dtDeceasedEnd.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtDeceasedEnd.Location = new System.Drawing.Point(18, 96);
-            this.dtDeceasedEnd.Name = "dtDeceasedEnd";
-            this.dtDeceasedEnd.ShowCheckBox = true;
-            this.dtDeceasedEnd.Size = new System.Drawing.Size(200, 25);
-            this.dtDeceasedEnd.TabIndex = 24;
-            // 
-            // dtDeceasedStart
-            // 
-            this.dtDeceasedStart.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.dtDeceasedStart.Checked = false;
-            this.dtDeceasedStart.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtDeceasedStart.Location = new System.Drawing.Point(18, 44);
-            this.dtDeceasedStart.Name = "dtDeceasedStart";
-            this.dtDeceasedStart.ShowCheckBox = true;
-            this.dtDeceasedStart.Size = new System.Drawing.Size(200, 25);
-            this.dtDeceasedStart.TabIndex = 23;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label10.Location = new System.Drawing.Point(300, 16);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 18);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Burial Date";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label7.Location = new System.Drawing.Point(39, 72);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 18);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "To";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label6.Location = new System.Drawing.Point(-63, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 17);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "From";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label5.Location = new System.Drawing.Point(15, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 18);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Deceased Date";
-            // 
-            // cemeterySearchBtn
-            // 
-            this.cemeterySearchBtn.BackColor = System.Drawing.Color.White;
-            this.cemeterySearchBtn.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cemeterySearchBtn.ForeColor = System.Drawing.Color.Black;
-            this.cemeterySearchBtn.Location = new System.Drawing.Point(577, 94);
-            this.cemeterySearchBtn.Name = "cemeterySearchBtn";
-            this.cemeterySearchBtn.Size = new System.Drawing.Size(216, 27);
-            this.cemeterySearchBtn.TabIndex = 11;
-            this.cemeterySearchBtn.Text = "Search Cemetery";
-            this.cemeterySearchBtn.UseVisualStyleBackColor = false;
-            this.cemeterySearchBtn.Click += new System.EventHandler(this.cemeterySearchBtn_Click);
             // 
             // Form1
             // 
@@ -890,10 +874,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.familytab.ResumeLayout(false);
             this.cemeteryPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cemeteryGridView)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cemeteryGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -917,11 +901,9 @@
         private System.Windows.Forms.Button btnCemetery;
         private System.Windows.Forms.TabPage cemeteryPage;
         private System.Windows.Forms.DataGridView cemeteryGridView;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button cemeterySearchBtn;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dtBurialStart;
         private System.Windows.Forms.DateTimePicker dtBurialEnd;
@@ -956,8 +938,9 @@
         private System.Windows.Forms.ComboBox cemeteryComboBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox parishCombobox;
-        private System.Windows.Forms.Button btnOutsideParsihMember;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button btnOutsideParsihMember;
+        private System.Windows.Forms.Panel panel7;
     }
 }
 

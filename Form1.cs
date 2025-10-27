@@ -18,10 +18,36 @@ namespace TestFat
     {
         private int familyIDInContext = 0;
         public string anbiyamAddress = "";
-        public Form1()
-        {
 
+        // Add these members to the Form1 class (e.g., near the top of the class)
+        public string LoggedInUser { get; private set; }
+        public Form1(string loggedInUser)
+        {
             InitializeComponent();
+            LoggedInUser = loggedInUser ?? string.Empty;
+
+            // Optionally show username in the title bar so it's visible:
+            if (!string.IsNullOrWhiteSpace(LoggedInUser))
+            {
+                this.Text = $"{this.Text} - {LoggedInUser}";
+
+                if(LoggedInUser == "GUEST")
+                {
+                    btncreate.Enabled = false;
+                    btnedit.Enabled = false;
+                    btnCemetery.Enabled = false;
+                    btnFamilyCreate.Enabled = false;
+                    btnFamilyEdit.Enabled = false;
+                    btnOutsideParsihMember.Enabled = false;
+                }
+            }
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; // or Sizable if you want resizable window
+            this.ControlBox = true;      // enables the whole control box (minimize, maximize, close)
+            this.MaximizeBox = false;    // keep maximize disabled (optional)
+            this.MinimizeBox = true;     // enable minimize (optional)
+            this.ShowIcon = true;
+
             LoadAnbiyamGrid(null);
             LoadOccupation();
             LoadAnbiyam();
@@ -31,6 +57,12 @@ namespace TestFat
 
             LoadFamilyBasicDetails(null);
             LoadAllCemeteryData(null);
+
+            // Make all grids read-only
+            familygrid.ReadOnly = true;
+            anbiyamGrid.ReadOnly = true;
+            familyMembersGrid.ReadOnly = true;
+            cemeteryGridView.ReadOnly = true;
 
             this.familygrid.SelectionChanged += familygrid_SelectionChanged;
             this.familygrid.RowPrePaint += familygrid_RowPrePaint;
@@ -61,6 +93,14 @@ namespace TestFat
                 webBrowser1.Dock = DockStyle.Fill;
             }
             parishCombobox.SelectedIndex = 0;
+
+            // panel7 - Top Left
+            this.panel7.Location = new System.Drawing.Point(10, 10); // 10px from top and left
+            this.panel7.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+            // panel8 - Top Right
+            this.panel8.Location = new System.Drawing.Point(this.ClientSize.Width - this.panel8.Width - 10, 10); // 10px from top and right
+            this.panel8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         }
 
         private void exitMenuItem3_Click(object sender, EventArgs e)
@@ -129,7 +169,7 @@ namespace TestFat
             familygrid.DataSource = dt;
             familygrid.Columns["FamilyID"].Visible = false;
             familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
-            familygrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+            familygrid.DefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Regular);
             familygrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
             familygrid.BackgroundColor = Color.WhiteSmoke;
             familygrid.DefaultCellStyle.ForeColor = Color.Black;
@@ -179,6 +219,11 @@ namespace TestFat
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAgeGroupChartData");
 
             chart3.Series.Clear();
+            chart3.Titles.Clear(); // Clear any previous titles
+            chart3.Titles.Add("Age Group Distribution"); // Add chart name/title
+            chart3.Titles[0].Font = new Font("Georgia", 14, FontStyle.Bold);
+            chart3.Titles[0].ForeColor = Color.DarkSlateGray;
+
             chart3.ChartAreas[0].AxisX.Title = "Age Group";
             chart3.ChartAreas[0].AxisY.Title = "Members";
 
@@ -187,27 +232,44 @@ namespace TestFat
             chart3.ChartAreas[0].BorderColor = Color.DarkGray;
             chart3.ChartAreas[0].BorderDashStyle = ChartDashStyle.Solid;
             chart3.ChartAreas[0].BorderWidth = 2;
+            chart3.ChartAreas[0].ShadowColor = Color.Gray;
+            chart3.ChartAreas[0].ShadowOffset = 2;
 
-            // Aesthetic: Set chart control background
+                // Chart control background
             chart3.BackColor = Color.White;
+            chart3.AntiAliasing = AntiAliasingStyles.All;
 
-            // Aesthetic: Add a legend
+            // Legend aesthetics
             chart3.Legends.Clear();
             var legend = chart3.Legends.Add("AgeGroups");
-            legend.Docking = Docking.Right;
-            legend.Font = new Font("Georgia", 10, FontStyle.Bold);
+            legend.Docking = Docking.Bottom;
+            legend.Font = new Font("Georgia", 11, FontStyle.Bold);
             legend.BackColor = Color.Transparent;
+            legend.BorderColor = Color.DarkGray;
+            legend.BorderWidth = 1;
 
-            // Aesthetic: Pie chart with soft edge and outside labels
+            // Pie chart series
             var series = chart3.Series.Add("Members Age Group1");
             series.ChartType = SeriesChartType.Pie;
             series["PieDrawingStyle"] = "SoftEdge";
             series["PieLabelStyle"] = "Outside";
-            series.Font = new Font("Georgia", 10, FontStyle.Bold);
+            series.Font = new Font("Georgia", 11, FontStyle.Bold);
+            series.BorderColor = Color.White;
+            series.BorderWidth = 2;
+            series.IsValueShownAsLabel = false;
 
-            // Aesthetic: Custom colors for slices
-            Color[] pieColors = { Color.SkyBlue, Color.Orange, Color.LimeGreen, Color.MediumPurple, Color.Gold, Color.Coral };
+            // Custom colors for slices
+            Color[] pieColors = {
+                Color.RoyalBlue,         // Youngest group
+                Color.MediumVioletRed,   // Teens
+                Color.Teal,              // Young adults
+                Color.Goldenrod,         // Middle age
+                Color.DarkOrange,        // Seniors
+                Color.SlateGray          // Elders/Unknown
+            };
+
             int colorIndex = 0;
+            int totalCount = dt.AsEnumerable().Sum(r => r.Field<int>("MemberCount"));
 
             foreach (DataRow row in dt.Rows)
             {
@@ -219,21 +281,26 @@ namespace TestFat
                 // Set color for each slice
                 series.Points[pointIndex].Color = pieColors[colorIndex % pieColors.Length];
 
-                // Aesthetic: Show value and percentage in label
-                series.Points[pointIndex].Label = $"{ageGroupWithDesc}\n{count} ({series.Points[pointIndex].YValues[0] / dt.AsEnumerable().Sum(r => r.Field<int>("MemberCount")):P0})";
+                // Label: value and percentage, formatted
+                double percent = totalCount > 0 ? (double)count / totalCount : 0;
+                series.Points[pointIndex].Label = $"{ageGroupWithDesc}\n{count} ({percent:P1})";
                 series.Points[pointIndex].LegendText = ageGroupWithDesc;
+
+                // Tooltip for interactivity
+                series.Points[pointIndex].ToolTip = $"{ageGroupWithDesc}: {count} members ({percent:P1})";
+
                 colorIndex++;
             }
 
-            // Aesthetic: Explode largest slice for emphasis
+            // Explode largest slice for emphasis
             if (series.Points.Count > 0)
             {
                 int maxIndex = series.Points.IndexOf(series.Points.OrderByDescending(p => p.YValues[0]).First());
-               // series.Points[maxIndex].ex = true;
+                //series.Points[maxIndex].Exploded = true;
             }
 
-            // Aesthetic: Remove border around the chart control
-            chart3.BorderlineDashStyle = ChartDashStyle.NotSet;
+            // Remove border around the chart control
+            chart3.BorderlineDashStyle = ChartDashStyle.Solid;
             chart3.BorderlineColor = Color.Transparent;
         }
 
@@ -242,36 +309,44 @@ namespace TestFat
             DataTable dt = DatabaseHelper.ExecuteStoredProcedure("sp_GenderData");
 
             chart2.Series.Clear();
-            chart2.ChartAreas[0].AxisX.Title = "Gender";
-            chart2.ChartAreas[0].AxisY.Title = "Count";
+            chart2.Titles.Clear(); // Clear any previous titles
+            chart2.Titles.Add("Gender Distribution"); // Add chart title
+            chart2.Titles[0].Font = new Font("Georgia", 14, FontStyle.Bold);
+            chart2.Titles[0].ForeColor = Color.DarkSlateGray;
 
-            // Aesthetic: Set chart area background and border
+            // Chart area aesthetics
             chart2.ChartAreas[0].BackColor = Color.WhiteSmoke;
             chart2.ChartAreas[0].BorderColor = Color.DarkGray;
             chart2.ChartAreas[0].BorderDashStyle = ChartDashStyle.Solid;
             chart2.ChartAreas[0].BorderWidth = 2;
+            chart2.ChartAreas[0].ShadowColor = Color.Gray;
+            chart2.ChartAreas[0].ShadowOffset = 2;
 
-            // Aesthetic: Set chart control background
+            // Chart control background
             chart2.BackColor = Color.White;
+            chart2.AntiAliasing = AntiAliasingStyles.All;
 
-            // Aesthetic: Add a legend
+            // Legend aesthetics
             chart2.Legends.Clear();
             var legend = chart2.Legends.Add("GenderGroups");
-            legend.Docking = Docking.Top;
-            legend.Font = new Font("Georgia", 10, FontStyle.Bold);
+            legend.Docking = Docking.Bottom;
+            legend.Font = new Font("Georgia", 11, FontStyle.Bold);
             legend.BackColor = Color.Transparent;
+            legend.BorderColor = Color.DarkGray;
+            legend.BorderWidth = 1;
 
-            // Aesthetic: Column chart with custom colors and value labels
+            // Column chart with custom colors and value labels
             var series = chart2.Series.Add("Gender Count");
             series.ChartType = SeriesChartType.Column;
-            series.Font = new Font("Georgia", 10, FontStyle.Bold);
+            series.Font = new Font("Georgia", 11, FontStyle.Bold);
             series.IsValueShownAsLabel = true;
             series.LabelForeColor = Color.Black;
             series.IsVisibleInLegend = false;
+            series.BorderColor = Color.White;
+            series.BorderWidth = 2;
 
-            // Custom colors for columns
-            Color[] columnColors = { Color.SkyBlue, Color.Orange };
-            int colorIndex = 0;
+            Color[] columnColors = { Color.RoyalBlue, Color.MediumVioletRed };
+
 
             // Add Male and Female counts
             if (dt.Rows.Count > 0)
@@ -292,26 +367,26 @@ namespace TestFat
 
                 int pointIndexMale = series.Points.AddXY("Male", maleCount);
                 series.Points[pointIndexMale].Color = columnColors[0];
-                series.Points[pointIndexMale].Label = maleCount.ToString();
+                series.Points[pointIndexMale].Label = $"{maleCount}";
                 series.Points[pointIndexMale].LegendText = "Male";
+                series.Points[pointIndexMale].ToolTip = $"Male: {maleCount}";
 
                 int pointIndexFemale = series.Points.AddXY("Female", femaleCount);
                 series.Points[pointIndexFemale].Color = columnColors[1];
-                series.Points[pointIndexFemale].Label = femaleCount.ToString();
+                series.Points[pointIndexFemale].Label = $"{femaleCount}";
                 series.Points[pointIndexFemale].LegendText = "Female";
+                series.Points[pointIndexFemale].ToolTip = $"Female: {femaleCount}";
             }
 
             // Axis label font and grid lines
             chart2.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Georgia", 10, FontStyle.Bold);
             chart2.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Georgia", 10, FontStyle.Bold);
-            chart2.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
-            chart2.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+            chart2.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.White;
+            chart2.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.White;
 
             // Remove border around the chart control
             chart2.BorderlineDashStyle = ChartDashStyle.NotSet;
             chart2.BorderlineColor = Color.Transparent;
-
-
         }
 
         private void ShowPopup(string action)
@@ -363,15 +438,16 @@ namespace TestFat
 
         private void LoadAnbiyamGrid(DataTable dt)
         {
-            if(dt == null)
+            if(dt == null || (dt != null & dt.Rows.Count == 0))
             {
+                anbiyamGrid.DataSource = null;
                 dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
             }
             
             anbiyamGrid.DataSource = dt;
             anbiyamGrid.Columns["anbiyam_id"].Visible = false;
             anbiyamGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
-            anbiyamGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+            anbiyamGrid.DefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Regular);
             anbiyamGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
             anbiyamGrid.BackgroundColor = Color.WhiteSmoke;
             anbiyamGrid.DefaultCellStyle.ForeColor = Color.Black;
@@ -408,27 +484,30 @@ namespace TestFat
         {
             if (e.RowIndex >= 0 && anbiyamGrid.SelectedCells.Count == 1 && anbiyamGrid.SelectedCells[0].ColumnIndex == 10)
             {
-                var result = MessageBox.Show("Are you sure you want to delete this Anbiyam?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                if (LoggedInUser != "GUEST")
                 {
-                    int id = Convert.ToInt32(anbiyamGrid.Rows[e.RowIndex].Cells["anbiyam_id"].Value);
-                    try
+                    var result = MessageBox.Show("Are you sure you want to delete this Anbiyam?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                        int id = Convert.ToInt32(anbiyamGrid.Rows[e.RowIndex].Cells["anbiyam_id"].Value);
+                        try
                         {
-                            MessageBox.Show("This Anbiyam cannot be deleted, as families are linked to it", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            DatabaseHelper.ExecuteStoredProcedure("sp_DeleteAnbiyam", new SqlParameter("@anbiyamID", id));
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show(ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                            {
+                                MessageBox.Show("This Anbiyam cannot be deleted, as families are linked to it", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                MessageBox.Show(ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+                        // Refresh grid
+                        LoadAnbiyamGrid(null);
                     }
-                    // Refresh grid
-                    LoadAnbiyamGrid(null);
                 }
             }
         }
@@ -448,7 +527,7 @@ namespace TestFat
                 familyMembersGrid.DataSource = dt;
                 familyMembersGrid.Columns["memberID"].Visible = false; // Hide the ID column if needed
                 familyMembersGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Bold);
-                familyMembersGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
+                familyMembersGrid.DefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Regular);
                 familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
                 familyMembersGrid.BackgroundColor = Color.WhiteSmoke;
                 familyMembersGrid.DefaultCellStyle.ForeColor = Color.Black;
@@ -491,27 +570,30 @@ namespace TestFat
         {
             if (e.RowIndex >= 0 && familygrid.SelectedCells != null && familygrid.SelectedCells.Count == 1 && familygrid.SelectedCells[0].Value == "Delete")
             {
-                var result = MessageBox.Show("Are you sure you want to delete this Family?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                if (LoggedInUser != "GUEST")
                 {
-                    int id = Convert.ToInt32(familygrid.Rows[e.RowIndex].Cells["FamilyID"].Value);
-                    try
+                    var result = MessageBox.Show("Are you sure you want to delete this Family?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        DatabaseHelper.ExecuteStoredProcedure("sp_DeleteFamily", new SqlParameter("@familyID", id));
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                        int id = Convert.ToInt32(familygrid.Rows[e.RowIndex].Cells["FamilyID"].Value);
+                        try
                         {
-                            MessageBox.Show("This Family cannot be deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            DatabaseHelper.ExecuteStoredProcedure("sp_DeleteFamily", new SqlParameter("@familyID", id));
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                            {
+                                MessageBox.Show("This Family cannot be deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+                        // Refresh grid
+                        LoadFamilyBasicDetails(null);
                     }
-                    // Refresh grid
-                    LoadFamilyBasicDetails(null);
                 }
             }
         }
@@ -689,9 +771,10 @@ namespace TestFat
         {
             using (var popup = new NonParishFamily())
             {
+                popup.StartPosition = FormStartPosition.CenterScreen; // Show in the middle of the screen
                 popup.ShowDialog();
                 // After closing, reload family basic details
-               // LoadFamilyBasicDetails(null);
+                // LoadFamilyBasicDetails(null);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿--CREATE DATABASE fatimachurchtbm;
+﻿CREATE DATABASE fatimachurchtbm;
 GO
 
 USE fatimachurchtbm;
@@ -12,7 +12,7 @@ CREATE TABLE anbiyam (
 	anbiyam_zone INT NOT NULL,
 	anbiyam_coordinator_name NVARCHAR(50) NOT NULL,
 	anbiyam_ass_coordinator_name NVARCHAR(50) NULL,
-	coordinator_email NVARCHAR(100) UNIQUE NULL,
+	coordinator_email NVARCHAR(100) NULL,
 	coordinator_phone NVARCHAR(15),
 	modified DATE DEFAULT GETDATE()
 );
@@ -161,5 +161,45 @@ GO
 ALTER TABLE family ADD disabled_date DATETIME NULL;
 GO
 
+
+------------------------------------------------------------------------------------------------------
+---------V2 Changes----------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+
+ALTER TABLE family ADD ishusbandactive BIT NOT NULL DEFAULT (1);
+GO
+ALTER TABLE family ADD iswifeactive BIT NOT NULL DEFAULT (1);
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[users]') AND type = N'U')
+BEGIN
+    CREATE TABLE dbo.[users] (
+        userid INT IDENTITY(1,1) PRIMARY KEY,
+        username NVARCHAR(100) NOT NULL CONSTRAINT UQ_users_username UNIQUE,
+        password NVARCHAR(256) NOT NULL,           -- store hashes in production
+        userrole NVARCHAR(50) NOT NULL DEFAULT('User'),
+        created_at DATETIME NOT NULL DEFAULT(GETDATE())
+    );
+END
+GO
+
+-- Insert default users if they don't already exist.
+-- Passwords are stored as SHA-256 hex strings. Replace plaintext passwords below.
+IF NOT EXISTS (SELECT 1 FROM dbo.[users] WHERE username = 'Admin')
+BEGIN
+    DECLARE @pwd_admin NVARCHAR(400) = N'Admin@123'; -- change to your desired admin password
+    DECLARE @hash_admin VARBINARY(8000) = HASHBYTES('SHA2_256', CONVERT(VARBINARY(MAX), @pwd_admin));
+    INSERT INTO dbo.[users] (username, password, userrole)
+    VALUES ('Admin', CONVERT(NVARCHAR(256), @hash_admin, 2), 'Admin');
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.[users] WHERE username = 'Guest')
+BEGIN
+    DECLARE @pwd_guest NVARCHAR(400) = N'Guest@123'; -- change to your desired guest password
+    DECLARE @hash_guest VARBINARY(8000) = HASHBYTES('SHA2_256', CONVERT(VARBINARY(MAX), @pwd_guest));
+    INSERT INTO dbo.[users] (username, password, userrole)
+    VALUES ('Guest', CONVERT(NVARCHAR(256), @hash_guest, 2), 'Guest');
+END
+GO
 
 
