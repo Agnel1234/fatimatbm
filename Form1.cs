@@ -174,6 +174,19 @@ namespace TestFat
             familygrid.BackgroundColor = Color.WhiteSmoke;
             familygrid.DefaultCellStyle.ForeColor = Color.Black;
 
+            if (familygrid.Columns["SubscriptionInfo"] == null)
+            {
+                DataGridViewButtonColumn subCol = new DataGridViewButtonColumn();
+                subCol.Name = "SubscriptionInfo";
+                subCol.HeaderText = "";
+                subCol.Text = "SubscriptionInfo";
+                subCol.UseColumnTextForButtonValue = true;
+                subCol.Width = 100;
+                subCol.DefaultCellStyle.BackColor = Color.SteelBlue;
+                subCol.DefaultCellStyle.ForeColor = Color.White;
+                familygrid.Columns.Insert(10, subCol); // adjust index as needed relative to other columns
+            }
+
             // Remove existing delete column if present to avoid duplicates
             if (familygrid.Columns["delete"] != null)
                 familygrid.Columns.Remove("delete");
@@ -568,14 +581,34 @@ namespace TestFat
 
         private void familygrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && familygrid.SelectedCells != null && familygrid.SelectedCells.Count == 1 && familygrid.SelectedCells[0].Value == "Delete")
+            if (e.RowIndex < 0) return;
+
+            var grid = sender as DataGridView;
+
+            // Subscription button clicked
+            if (grid.Columns[e.ColumnIndex].Name == "SubscriptionInfo")
+            {
+                int familyId = Convert.ToInt32(grid.Rows[e.RowIndex].Cells["FamilyID"].Value);
+                using (var popup = new SubscriptionPopup(familyId))
+                {
+                    // Ensure popup centers over the main form
+                    popup.StartPosition = FormStartPosition.CenterParent;
+                    popup.ShowDialog(this);
+                }
+                // refresh after closing in case of changes
+                LoadFamilyBasicDetails(null);
+                return;
+            }
+
+            // Existing Delete handling (keep unchanged)
+            if (grid.Columns[e.ColumnIndex].Name == "delete" && grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString() == "Delete")
             {
                 if (LoggedInUser != "GUEST")
                 {
                     var result = MessageBox.Show("Are you sure you want to delete this Family?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        int id = Convert.ToInt32(familygrid.Rows[e.RowIndex].Cells["FamilyID"].Value);
+                        int id = Convert.ToInt32(grid.Rows[e.RowIndex].Cells["FamilyID"].Value);
                         try
                         {
                             DatabaseHelper.ExecuteStoredProcedure("sp_DeleteFamily", new SqlParameter("@familyID", id));
@@ -583,15 +616,10 @@ namespace TestFat
                         catch (Exception ex)
                         {
                             if (ex.Message != null && ex.Message.Contains("Cannot delete"))
-                            {
                                 MessageBox.Show("This Family cannot be deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
                             else
-                            {
                                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
                         }
-                        // Refresh grid
                         LoadFamilyBasicDetails(null);
                     }
                 }

@@ -1417,3 +1417,90 @@ BEGIN
 
 END
 GO
+
+-------------------------------------------------------------------------------------------------------
+---------V2 Changes End----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+-- Upsert procedure for family_subscription_yearly: set a single month (1..12)
+CREATE OR ALTER PROCEDURE dbo.sp_SetFamilySubscriptionMonth
+    @family_id INT,
+    @subscription_year INT,
+    @month TINYINT,
+    @amount DECIMAL(10,2),
+    @paid_date DATE = NULL,
+    @status NVARCHAR(20) = 'Paid' -- or Pending/Overdue
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Column name mapping
+    DECLARE @amountCol SYSNAME, @dateCol SYSNAME, @statusCol SYSNAME, @sql NVARCHAR(MAX);
+
+    SET @amountCol = CASE @month
+        WHEN 1 THEN N'jan_amount' WHEN 2 THEN N'feb_amount' WHEN 3 THEN N'mar_amount'
+        WHEN 4 THEN N'apr_amount' WHEN 5 THEN N'may_amount' WHEN 6 THEN N'jun_amount'
+        WHEN 7 THEN N'jul_amount' WHEN 8 THEN N'aug_amount' WHEN 9 THEN N'sep_amount'
+        WHEN 10 THEN N'oct_amount' WHEN 11 THEN N'nov_amount' WHEN 12 THEN N'dec_amount' ELSE NULL END;
+
+    SET @dateCol = CASE @month
+        WHEN 1 THEN N'jan_paid_date' WHEN 2 THEN N'feb_paid_date' WHEN 3 THEN N'mar_paid_date'
+        WHEN 4 THEN N'apr_paid_date' WHEN 5 THEN N'may_paid_date' WHEN 6 THEN N'jun_paid_date'
+        WHEN 7 THEN N'jul_paid_date' WHEN 8 THEN N'aug_paid_date' WHEN 9 THEN N'sep_paid_date'
+        WHEN 10 THEN N'oct_paid_date' WHEN 11 THEN N'nov_paid_date' WHEN 12 THEN N'dec_paid_date' ELSE NULL END;
+
+    SET @statusCol = CASE @month
+        WHEN 1 THEN N'jan_status' WHEN 2 THEN N'feb_status' WHEN 3 THEN N'mar_status'
+        WHEN 4 THEN N'apr_status' WHEN 5 THEN N'may_status' WHEN 6 THEN N'jun_status'
+        WHEN 7 THEN N'jul_status' WHEN 8 THEN N'aug_status' WHEN 9 THEN N'sep_status'
+        WHEN 10 THEN N'oct_status' WHEN 11 THEN N'nov_status' WHEN 12 THEN N'dec_status' ELSE NULL END;
+
+    IF @amountCol IS NULL
+    BEGIN
+        RAISERROR('Invalid month value',16,1);
+        RETURN;
+    END
+
+    -- Ensure a row exists for (family_id, year)
+    IF NOT EXISTS (SELECT 1 FROM dbo.family_subscription_yearly WHERE family_id = @family_id AND subscription_year = @subscription_year)
+    BEGIN
+        INSERT INTO dbo.family_subscription_yearly (family_id, subscription_year)
+        VALUES (@family_id, @subscription_year);
+    END
+
+    -- Build dynamic UPDATE to set the proper monthly columns and modified
+    SET @sql = N'
+        UPDATE dbo.family_subscription_yearly
+        SET ' + QUOTENAME(@amountCol) + N' = @amount,
+            ' + QUOTENAME(@dateCol) + N' = @paid_date,
+            ' + QUOTENAME(@statusCol) + N' = @status,
+            modified = GETDATE()
+        WHERE family_id = @family_id AND subscription_year = @subscription_year;
+    ';
+
+    EXEC sp_executesql @sql,
+        N'@amount DECIMAL(10,2), @paid_date DATE, @status NVARCHAR(20), @family_id INT, @subscription_year INT',
+        @amount=@amount, @paid_date=@paid_date, @status=@status, @family_id=@family_id, @subscription_year=@subscription_year;
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE dbo.sp_GetFamilySubscriptionYear
+    @family_id INT,
+    @subscription_year INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT * FROM dbo.family_subscription_yearly
+    WHERE family_id = @family_id AND subscription_year = @subscription_year;
+END
+GO
+
+-- Quick indexes for common queries
+CREATE INDEX IX_family_subscription_yearly_family_year ON dbo.family_subscription_yearly(family_id, subscription_year);
+CREATE INDEX IX_cemetery_subscription_yearly_year ON dbo.cemetery_subscription_yearly(subscription_year);
+GO
+
+----------------------------------------------------------------------
+-- End of V2 Changes
+----------------------------------------------------------------------
