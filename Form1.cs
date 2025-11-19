@@ -55,8 +55,8 @@ namespace TestFat
             LoadAgeGroupChart();
             LoadGenderGroupChart();
 
-            LoadFamilyBasicDetails(null);
-            LoadAllCemeteryData(null);
+            // LoadFamilyBasicDetails(null);
+           // LoadAllCemeteryData(null);
 
             // Make all grids read-only
             familygrid.ReadOnly = true;
@@ -165,6 +165,8 @@ namespace TestFat
             {
                 dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails");
             }
+
+            
 
             familygrid.DataSource = dt;
             familygrid.Columns["FamilyID"].Visible = false;
@@ -583,12 +585,9 @@ namespace TestFat
         {
             if (e.RowIndex < 0) return;
 
-            var grid = sender as DataGridView;
-
-            // Subscription button clicked
-            if (grid.Columns[e.ColumnIndex].Name == "SubscriptionInfo")
+            if (familygrid.SelectedCells != null && familygrid.SelectedCells.Count == 1 && familygrid.SelectedCells[0].Value == "SubscriptionInfo")
             {
-                int familyId = Convert.ToInt32(grid.Rows[e.RowIndex].Cells["FamilyID"].Value);
+                int familyId = Convert.ToInt32(familygrid.Rows[e.RowIndex].Cells["FamilyID"].Value);
                 using (var popup = new SubscriptionPopup(familyId))
                 {
                     // Ensure popup centers over the main form
@@ -600,15 +599,14 @@ namespace TestFat
                 return;
             }
 
-            // Existing Delete handling (keep unchanged)
-            if (grid.Columns[e.ColumnIndex].Name == "delete" && grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString() == "Delete")
+            if (familygrid.SelectedCells != null && familygrid.SelectedCells.Count == 1 && familygrid.SelectedCells[0].Value == "Delete")
             {
                 if (LoggedInUser != "GUEST")
                 {
                     var result = MessageBox.Show("Are you sure you want to delete this Family?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        int id = Convert.ToInt32(grid.Rows[e.RowIndex].Cells["FamilyID"].Value);
+                        int id = Convert.ToInt32(familygrid.Rows[e.RowIndex].Cells["FamilyID"].Value);
                         try
                         {
                             DatabaseHelper.ExecuteStoredProcedure("sp_DeleteFamily", new SqlParameter("@familyID", id));

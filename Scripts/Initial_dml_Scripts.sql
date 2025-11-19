@@ -865,7 +865,7 @@ CREATE OR ALTER PROCEDURE sp_GetFamilyBasicDetails
     @cemetery_available BIT = NULL
 AS
 BEGIN
-    SELECT 
+    SELECT TOP (20)
         f.family_id AS FamilyID,
         a.anbiyam_name AS [Anbiyam],
         f.family_code AS [Code], 
@@ -905,6 +905,8 @@ BEGIN
         f.monthly_subscription,
         f.parish_member_since,
         f.multiple_familycards
+	 ORDER BY
+        f.family_id DESC;
 END
 GO
 
@@ -1504,3 +1506,73 @@ GO
 ----------------------------------------------------------------------
 -- End of V2 Changes
 ----------------------------------------------------------------------
+
+CREATE OR ALTER PROCEDURE sp_GetFamilyDetailsById
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        family_code,
+        anbiyam_id,
+		head_of_family,
+        Zone = (SELECT anbiyam_zone FROM anbiyam WHERE anbiyam_id = family.anbiyam_id),
+        family_permanant_address,
+        family_temp_address,
+        family_city,
+        family_state,
+        zip_code,
+        family_temp_city,
+        family_temp_state,
+        family_temp_zipcode,
+        monthly_subscription,
+		multiple_familycards,
+		family_notes,
+		last_subscription_date,
+		isactive		
+    FROM family
+    WHERE family_id = @family_id;
+
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE dbo.sp_GetLastPaidSubscriptionDate
+    @family_id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    /*
+      Returns the most recent paid subscription date for the given family_id,
+      together with the subscription_year, month_number (1..12), amount and status.
+      If no paid date exists, returns zero rows.
+    */
+
+    SELECT TOP (1)
+        p.paid_date    AS LastPaidDate,
+        fs.subscription_year,
+        p.month_number,
+        p.amount       AS MonthAmount,
+        p.status       AS MonthStatus
+    FROM dbo.family_subscription_yearly AS fs
+    CROSS APPLY (VALUES
+        (fs.jan_paid_date,  1, fs.jan_amount,  fs.jan_status),
+        (fs.feb_paid_date,  2, fs.feb_amount,  fs.feb_status),
+        (fs.mar_paid_date,  3, fs.mar_amount,  fs.mar_status),
+        (fs.apr_paid_date,  4, fs.apr_amount,  fs.apr_status),
+        (fs.may_paid_date,  5, fs.may_amount,  fs.may_status),
+        (fs.jun_paid_date,  6, fs.jun_amount,  fs.jun_status),
+        (fs.jul_paid_date,  7, fs.jul_amount,  fs.jul_status),
+        (fs.aug_paid_date,  8, fs.aug_amount,  fs.aug_status),
+        (fs.sep_paid_date,  9, fs.sep_amount,  fs.sep_status),
+        (fs.oct_paid_date, 10, fs.oct_amount,  fs.oct_status),
+        (fs.nov_paid_date, 11, fs.nov_amount,  fs.nov_status),
+        (fs.dec_paid_date, 12, fs.dec_amount,  fs.dec_status)
+    ) AS p(paid_date, month_number, amount, status)
+    WHERE fs.family_id = @family_id
+      AND p.paid_date IS NOT NULL
+    ORDER BY p.paid_date DESC;
+END
+GO
