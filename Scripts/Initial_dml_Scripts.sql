@@ -865,7 +865,7 @@ CREATE OR ALTER PROCEDURE sp_GetFamilyBasicDetails
     @cemetery_available BIT = NULL
 AS
 BEGIN
-    SELECT TOP (20)
+    SELECT TOP (30)
         f.family_id AS FamilyID,
         a.anbiyam_name AS [Anbiyam],
         f.family_code AS [Code], 
