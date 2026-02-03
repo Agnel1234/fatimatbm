@@ -1,16 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Syncfusion.GridHelperClasses;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Grid;
+using Syncfusion.Pdf.Tables;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml.Linq;
 
 namespace TestFat
 {
@@ -31,7 +37,7 @@ namespace TestFat
             {
                 this.Text = $"{this.Text} - {LoggedInUser}";
 
-                if(LoggedInUser == "GUEST")
+                if (LoggedInUser == "GUEST")
                 {
                     btncreate.Enabled = false;
                     btnedit.Enabled = false;
@@ -56,7 +62,7 @@ namespace TestFat
             LoadGenderGroupChart();
 
             // LoadFamilyBasicDetails(null);
-           // LoadAllCemeteryData(null);
+            // LoadAllCemeteryData(null);
 
             // Make all grids read-only
             familygrid.ReadOnly = true;
@@ -166,8 +172,6 @@ namespace TestFat
                 dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetails");
             }
 
-            
-
             familygrid.DataSource = dt;
             familygrid.Columns["FamilyID"].Visible = false;
             familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
@@ -208,12 +212,12 @@ namespace TestFat
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "dashboardPage")
+            if (((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "dashboardPage")
             {
                 LoadAgeGroupChart();
                 LoadGenderGroupChart();
             }
-            else if(((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "anbiyamPage")
+            else if (((System.Windows.Forms.TabControl)sender).SelectedTab.Name == "anbiyamPage")
             {
                 LoadAnbiyam();
                 LoadAnbiyamGrid(null);
@@ -250,7 +254,7 @@ namespace TestFat
             chart3.ChartAreas[0].ShadowColor = Color.Gray;
             chart3.ChartAreas[0].ShadowOffset = 2;
 
-                // Chart control background
+            // Chart control background
             chart3.BackColor = Color.White;
             chart3.AntiAliasing = AntiAliasingStyles.All;
 
@@ -453,12 +457,12 @@ namespace TestFat
 
         private void LoadAnbiyamGrid(DataTable dt)
         {
-            if(dt == null || (dt != null & dt.Rows.Count == 0))
+            if (dt == null || (dt != null & dt.Rows.Count == 0))
             {
                 anbiyamGrid.DataSource = null;
                 dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyWithAnbiyam");
             }
-            
+
             anbiyamGrid.DataSource = dt;
             anbiyamGrid.Columns["anbiyam_id"].Visible = false;
             anbiyamGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
@@ -627,7 +631,7 @@ namespace TestFat
 
         public void ShowAnbiyamOnMap(string anbiyamAddress)
         {
-            string url = $"https://www.bing.com/maps?q={Uri.EscapeDataString("Silver spring flats, bethelpuram, East tambaram")}";
+            string url = "http://maps.google.com/maps?t=map&q=loc:fatimachurchtambaram";
             webBrowser1.ScriptErrorsSuppressed = true;
             webBrowser1.Navigate(url);
             webBrowser1.Dock = DockStyle.Fill;
@@ -713,7 +717,7 @@ namespace TestFat
                 string familyHead = txtFamilyHead.Text == "" ? null : txtFamilyHead.Text.Trim();
                 string occupation = familyOccupationComboxbox.SelectedText == "" ? null : familyOccupationComboxbox.SelectedText.Trim(); ;
 
-                switch(cemeteryComboBox.SelectedItem)
+                switch (cemeteryComboBox.SelectedItem)
                 {
                     case "Not Applicable":
                         isCemeteryAvailable = null; // Handle "Select" as null
@@ -803,6 +807,140 @@ namespace TestFat
                 // LoadFamilyBasicDetails(null);
             }
         }
-    }
 
+        private void btnpdfExport_Click(object sender, EventArgs e)
+        {
+            // Ensure the DataGridView has data
+            if (anbiyamGrid.DataSource == null)
+            {
+                MessageBox.Show("No Anbiyam data to export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    string filename = "anbiyam_export-" + Guid.NewGuid() + ".pdf";
+                    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), filename);
+                    ExportPDFData(anbiyamGrid.DataSource, filePath);
+                    MessageBox.Show("Anbiyam data exported Succesfully. File available at " + filePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while trying to export Anbiyam data : {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ExportPDFData(object dgv, string filepath)
+        {
+            PdfDocument pdfDocument = new PdfDocument();
+            PdfPage pdfPage = pdfDocument.Pages.Add();
+
+            RectangleF bounds = new RectangleF(0, 0, pdfDocument.Pages[0].GetClientSize().Width, 100);
+            PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
+            //Load the PDF document
+            FileStream imageStream = new FileStream("C:\\Users\\Jennifer\\Downloads\\testheader.png", FileMode.Open, FileAccess.Read);
+            PdfImage image = new PdfBitmap(imageStream);
+            //Draw the image in the header.
+            header.Graphics.DrawImage(image, new PointF(0, 0), new SizeF(pdfDocument.Pages[0].GetClientSize().Width, 100));
+            //Add the header at the top.
+            pdfDocument.Template.Top = header;
+
+            PdfGrid pdfGrid = new PdfGrid();
+            pdfGrid.DataSource = dgv;
+            pdfGrid.Draw(pdfPage, new PointF(0, 10));
+            
+            //Save the document
+            pdfDocument.Save(filepath);
+            //Close the document
+            pdfDocument.Close(true);
+        }
+
+        private async void btn_exportfamily_Click(object sender, EventArgs e)
+        {
+            if (familygrid.DataSource == null)
+            {
+                MessageBox.Show("No Family data to export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    string message = "Choose YES to export all families in the system, choose NO to export only the filtered families to export & choose CANCEL to close popup";
+                    string title = "Confirmation";
+
+                    DialogResult result = MessageBox.Show(message, title, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        string filename = "family_full_data_export-" + Guid.NewGuid() + ".pdf";
+                        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), filename);
+
+                        progressBar1.Style = ProgressBarStyle.Marquee; // Set style to Marquee
+                        progressBar1.MarqueeAnimationSpeed = 30; // Set animation speed (milliseconds)
+                        progressBar1.Visible = true; // Show the progress bar
+                        DataTable dt = new DataTable();
+
+                        await Task.Run(() => {
+                            try
+                            {
+                                dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyBasicDetailsForExport");
+                                ExportPDFData(dt, filePath);
+                                System.Threading.Thread.Sleep(3000);
+                                MessageBox.Show("Full Family data exported Succesfully. File available at " + filePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"An error occurred while trying to export full family data : {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }                            
+                            
+                        });
+
+                        progressBar1.Visible = false; 
+                        progressBar1.Style = ProgressBarStyle.Blocks;
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        string filename = "family_partialdata_export-" + Guid.NewGuid() + ".pdf";
+                        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), filename);
+                        ExportPDFData(familygrid.DataSource, filePath);
+                        MessageBox.Show("Selected Family data exported Succesfully. File available at " + filePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while trying to export Family data : {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btn_disablefamily_Click(object sender, EventArgs e)
+        {
+            if (familyIDInContext <= 0)
+            {
+                MessageBox.Show("Please select the specific family to disable.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                DatabaseHelper.ExecuteStoredProcedure("sp_DisableFamily", new SqlParameter("@familyID", familyIDInContext));
+                MessageBox.Show("Selected family is disabled", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadFamilyBasicDetails(null);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message != null && ex.Message.Contains("Cannot delete"))
+                    MessageBox.Show("This Family cannot be disabled", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
+}

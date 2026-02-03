@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Syncfusion.Licensing;
+using System;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace TestFat
@@ -8,6 +10,10 @@ namespace TestFat
         [STAThread]
         static void Main()
         {
+            string syncfusionLicense = ConfigurationManager.AppSettings["syncfusionLicense"];
+            // Register Syncfusion license key
+            SyncfusionLicenseProvider.RegisterLicense(syncfusionLicense);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

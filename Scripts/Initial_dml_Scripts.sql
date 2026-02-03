@@ -1544,12 +1544,6 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    /*
-      Returns the most recent paid subscription date for the given family_id,
-      together with the subscription_year, month_number (1..12), amount and status.
-      If no paid date exists, returns zero rows.
-    */
-
     SELECT TOP (1)
         p.paid_date    AS LastPaidDate,
         fs.subscription_year,
@@ -1574,5 +1568,133 @@ BEGIN
     WHERE fs.family_id = @family_id
       AND p.paid_date IS NOT NULL
     ORDER BY p.paid_date DESC;
+END
+GO
+
+CREATE OR ALTER PROCEDURE sp_DisableFamily
+    @familyID INT
+AS
+BEGIN
+    UPDATE family set isactive=0,disabled_date=GETDATE() where family_id = @familyID;
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE sp_GetFamilyBasicDetails
+    @anbiyam_id INT = 0,
+    @family_head NVARCHAR(100) = NULL,
+    @occupation NVARCHAR(100) = NULL,
+    @cemetery_available BIT = NULL
+AS
+BEGIN
+    SELECT TOP (30)
+        f.family_id AS FamilyID,
+        a.anbiyam_name AS [Anbiyam],
+        f.family_code AS [Code], 
+        f.head_of_family AS [Family head],  
+        f.phone AS [Mobile],
+        f.monthly_subscription AS [Subscription],
+        f.parish_member_since AS [Member Since],
+        COUNT(DISTINCT fm.member_id) AS [Members],
+        COUNT(DISTINCT cd.cemetery_id) AS [Cemeteries],
+		f.multiple_familycards AS [Multiple Cards]
+    FROM family f
+        INNER JOIN anbiyam a ON a.anbiyam_id = f.anbiyam_id
+        LEFT JOIN family_member fm ON fm.family_id = f.family_id
+        LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
+    WHERE fm.member_status = 'Active'
+        AND f.isactive = 1
+        AND (@anbiyam_id = 0 OR @anbiyam_id = a.anbiyam_id)
+        AND (@family_head IS NULL OR f.head_of_family LIKE '%' + @family_head + '%')
+        AND (@occupation IS NULL OR EXISTS (
+            SELECT 1 FROM family_member fm2 
+            WHERE fm2.family_id = f.family_id AND fm2.occupation LIKE '%' + @occupation + '%'
+        ))
+        AND (
+            @cemetery_available IS NULL
+            OR (@cemetery_available = 1 AND EXISTS (
+                SELECT 1 FROM cemetery_details cd2 WHERE cd2.family_id = f.family_id
+            ))
+            OR (@cemetery_available = 0 AND NOT EXISTS (
+                SELECT 1 FROM cemetery_details cd3 WHERE cd3.family_id = f.family_id
+            ))
+        )
+    GROUP BY 
+        f.family_id,
+        a.anbiyam_name,
+        f.family_code,
+        f.head_of_family,
+        f.phone,
+        f.monthly_subscription,
+        f.parish_member_since,
+        f.multiple_familycards
+	 ORDER BY
+        f.family_id DESC;
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE sp_GetFamilyBasicDetailsForExport
+    @anbiyam_id INT = 0,
+    @family_head NVARCHAR(100) = NULL,
+    @occupation NVARCHAR(100) = NULL,
+    @cemetery_available BIT = NULL
+AS
+BEGIN
+    SELECT TOP (30)
+        f.family_id AS FamilyID,
+        a.anbiyam_name AS [Anbiyam],
+        f.family_code AS [Code], 
+        f.head_of_family AS [Family head],  
+        f.phone AS [Mobile],
+        f.monthly_subscription AS [Subscription],
+        f.parish_member_since AS [Member Since],
+        COUNT(DISTINCT fm.member_id) AS [Members],
+        COUNT(DISTINCT cd.cemetery_id) AS [Cemeteries],
+		f.multiple_familycards AS [Multiple Cards]
+    FROM family f
+        INNER JOIN anbiyam a ON a.anbiyam_id = f.anbiyam_id
+        LEFT JOIN family_member fm ON fm.family_id = f.family_id
+        LEFT JOIN cemetery_details cd ON cd.family_id = f.family_id
+    WHERE fm.member_status = 'Active'
+        AND f.isactive = 1
+        AND @anbiyam_id = 0
+        AND @family_head IS NULL
+        AND @occupation IS NULL
+        AND @cemetery_available IS NULL
+    GROUP BY 
+        f.family_id,
+        a.anbiyam_name,
+        f.family_code,
+        f.head_of_family,
+        f.phone,
+        f.monthly_subscription,
+        f.parish_member_since,
+        f.multiple_familycards
+	 ORDER BY
+        f.family_id ASC;
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE sp_DeleteFamily
+    @familyID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+	--DELETE FROM family_subscription WHERE family_id = @familyID;
+	DELETE FROM cemetery_details where family_id = @familyID;
+	DELETE FROM family_member WHERE family_id = @familyID;
+
+    -- Check if any families are linked to this anbiyam
+    IF EXISTS (SELECT 1 FROM family_member WHERE family_id = @familyID)
+    BEGIN
+        -- Optionally, you can raise an error or return a status code
+        RAISERROR('Cannot delete: Members are linked to this Family.', 16, 1);
+        RETURN;
+    END
+
+    UPDATE family set isactive=0,disabled_date=GETDATE(), family_code='DELETED'  where family_id = @familyID;
 END
 GO

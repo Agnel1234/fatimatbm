@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Forms.Tools;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -12,7 +13,8 @@ namespace TestFat
     {
         private readonly int _familyId;
         private int _year;
-        private readonly Button[] _monthButtons = new Button[12];
+        private readonly ToggleButton[] _monthButtons = new ToggleButton[12];
+        private readonly Label[] _monthLabels = new Label[12];
 
         // UI controls (created by InitializeComponent)
         private Label lblFamily;
@@ -83,7 +85,7 @@ namespace TestFat
             };
             nudYear = new NumericUpDown
             {
-                Minimum = 2000,
+                Minimum = 2023,
                 Maximum = 2100,
                 Value = _year,
                 Location = new Point(500, 42),
@@ -181,26 +183,39 @@ namespace TestFat
 
             for (int i = 0; i < 12; i++)
             {
-                var b = new Button
+                var l = new Label
+                {
+                    Text = $"{monthNames[i]}",
+                    Width = 60,
+                    Height = 46,
+                    Anchor = AnchorStyles.Bottom,
+                };
+                var b = new ToggleButton
                 {
                     Tag = i + 1, // month number
-                    Text = $"{i + 1}. {monthNames[i]}",
-                    Width = 180,
-                    Height = 44,
-                    Margin = new Padding(6),
-                    BackColor = Color.LightGray,
-                    FlatStyle = FlatStyle.Flat
+                    Width = 120,
+                    Height = 46,
+                    Anchor = AnchorStyles.Bottom,
+                    VisualStyle = ToggleButtonStyle.Office2016Colorful,
+                    RightToLeft = RightToLeft.Yes,
+                    InactiveState = { Text = "NOT PAID"},
+                    ActiveState = { Text = "PAID" },
+                    Name = $"togglebutton{i + 1}"
+
                 };
-                b.FlatAppearance.BorderColor = Color.DarkGray;
-                b.Click += MonthButton_Click;
+
+               // b.FlatAppearance.BorderColor = Color.DarkGray;
+                b.ToggleStateChanged += MonthButton_Click;
                 _monthButtons[i] = b;
+                _monthLabels[i] = l;
+                monthsPanel.Controls.Add(l);
                 monthsPanel.Controls.Add(b);
             }
         }
 
         private void MonthButton_Click(object sender, EventArgs e)
         {
-            var btn = sender as Button;
+            var btn = sender as ToggleButton;
             if (btn == null) return;
 
             int month = (int)btn.Tag;
@@ -215,7 +230,7 @@ namespace TestFat
             }
             else
             {
-                txtAmount.Text = "";
+                //txtAmount.Text = txtAmount.Text;
                 dtpPaidOn.Value = DateTime.Today;
             }
 
@@ -260,7 +275,7 @@ namespace TestFat
         private void LoadSubscriptionYear(int year)
         {
             // Reset UI
-            foreach (var b in _monthButtons) if (b != null) b.BackColor = Color.LightGray;
+            //foreach (var b in _monthButtons) if (b != null) b.BackColor = Color.LightGray;
 
             var parameters = new[] {
                 new SqlParameter("@family_id", _familyId),
@@ -294,7 +309,8 @@ namespace TestFat
 
                 if (status != null && status.Equals("Paid", StringComparison.OrdinalIgnoreCase) && paidDateObj != DBNull.Value)
                 {
-                    btn.BackColor = Color.LightGreen;
+                    //btn.BackColor = Color.LightGreen;
+                    btn.ToggleState = ToggleButtonState.Active;
                     btn.Text = $"{m}. {CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames[m - 1]} • Paid";
                 }
                 else if (amountObj != DBNull.Value)

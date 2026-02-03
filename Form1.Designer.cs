@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend17 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.familyPage = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.familyMembersGrid = new System.Windows.Forms.DataGridView();
@@ -67,6 +67,7 @@
             this.anbiyamCombobox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnpdfExport = new System.Windows.Forms.Button();
             this.btncreate = new System.Windows.Forms.Button();
             this.btnedit = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -96,6 +97,9 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnOutsideParsihMember = new System.Windows.Forms.Button();
             this.cemeteryGridView = new System.Windows.Forms.DataGridView();
+            this.btn_disablefamily = new System.Windows.Forms.Button();
+            this.btn_exportfamily = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.familyPage.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.familyMembersGrid)).BeginInit();
@@ -124,6 +128,7 @@
             // 
             // familyPage
             // 
+            this.familyPage.Controls.Add(this.progressBar1);
             this.familyPage.Controls.Add(this.panel6);
             this.familyPage.Controls.Add(this.panel5);
             this.familyPage.Controls.Add(this.panel4);
@@ -165,6 +170,8 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panel5.Controls.Add(this.btn_exportfamily);
+            this.panel5.Controls.Add(this.btn_disablefamily);
             this.panel5.Controls.Add(this.btnCemetery);
             this.panel5.Controls.Add(this.btnFamilyCreate);
             this.panel5.Controls.Add(this.btnFamilyEdit);
@@ -450,12 +457,25 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel3.Controls.Add(this.btnpdfExport);
             this.panel3.Controls.Add(this.btncreate);
             this.panel3.Controls.Add(this.btnedit);
             this.panel3.Location = new System.Drawing.Point(3, 601);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1280, 62);
             this.panel3.TabIndex = 2;
+            // 
+            // btnpdfExport
+            // 
+            this.btnpdfExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnpdfExport.ForeColor = System.Drawing.Color.Black;
+            this.btnpdfExport.Location = new System.Drawing.Point(767, 19);
+            this.btnpdfExport.Name = "btnpdfExport";
+            this.btnpdfExport.Size = new System.Drawing.Size(134, 29);
+            this.btnpdfExport.TabIndex = 2;
+            this.btnpdfExport.Text = "Export To PDF";
+            this.btnpdfExport.UseVisualStyleBackColor = true;
+            this.btnpdfExport.Click += new System.EventHandler(this.btnpdfExport_Click);
             // 
             // btncreate
             // 
@@ -529,17 +549,17 @@
             this.chart3.BorderlineWidth = 2;
             this.chart3.BorderSkin.BackColor = System.Drawing.Color.Black;
             this.chart3.BorderSkin.PageColor = System.Drawing.Color.Gray;
-            chartArea10.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea10);
+            chartArea16.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea16);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend10.Name = "Legend1";
-            this.chart3.Legends.Add(legend10);
+            legend16.Name = "Legend1";
+            this.chart3.Legends.Add(legend16);
             this.chart3.Location = new System.Drawing.Point(3, 3);
             this.chart3.Name = "chart3";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.chart3.Series.Add(series10);
+            series16.ChartArea = "ChartArea1";
+            series16.Legend = "Legend1";
+            series16.Name = "Series1";
+            this.chart3.Series.Add(series16);
             this.chart3.Size = new System.Drawing.Size(861, 598);
             this.chart3.TabIndex = 1;
             // 
@@ -548,18 +568,18 @@
             this.chart2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
             this.chart2.BorderlineColor = System.Drawing.Color.GhostWhite;
             this.chart2.BorderlineWidth = 2;
-            chartArea11.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea11);
+            chartArea17.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea17);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Left;
-            legend11.Name = "Legend1";
-            this.chart2.Legends.Add(legend11);
+            legend17.Name = "Legend1";
+            this.chart2.Legends.Add(legend17);
             this.chart2.Location = new System.Drawing.Point(3, 65);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            this.chart2.Series.Add(series11);
+            series17.ChartArea = "ChartArea1";
+            series17.Legend = "Legend1";
+            series17.Name = "Series1";
+            this.chart2.Series.Add(series17);
             this.chart2.Size = new System.Drawing.Size(419, 604);
             this.chart2.TabIndex = 4;
             this.chart2.Text = "Age Group Chart";
@@ -615,16 +635,16 @@
             this.chart1.BackColor = System.Drawing.Color.Thistle;
             this.chart1.BorderlineColor = System.Drawing.Color.Thistle;
             this.chart1.BorderlineWidth = 2;
-            chartArea12.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.chart1.Legends.Add(legend12);
+            chartArea18.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea18);
+            legend18.Name = "Legend1";
+            this.chart1.Legends.Add(legend18);
             this.chart1.Location = new System.Drawing.Point(3, 322);
             this.chart1.Name = "chart1";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            this.chart1.Series.Add(series12);
+            series18.ChartArea = "ChartArea1";
+            series18.Legend = "Legend1";
+            series18.Name = "Series1";
+            this.chart1.Series.Add(series18);
             this.chart1.Size = new System.Drawing.Size(353, 313);
             this.chart1.TabIndex = 18;
             this.chart1.Text = "Age Group Chart";
@@ -838,6 +858,39 @@
             this.cemeteryGridView.Size = new System.Drawing.Size(1286, 522);
             this.cemeteryGridView.TabIndex = 16;
             // 
+            // btn_disablefamily
+            // 
+            this.btn_disablefamily.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_disablefamily.ForeColor = System.Drawing.Color.Black;
+            this.btn_disablefamily.Location = new System.Drawing.Point(540, 35);
+            this.btn_disablefamily.Name = "btn_disablefamily";
+            this.btn_disablefamily.Size = new System.Drawing.Size(134, 36);
+            this.btn_disablefamily.TabIndex = 3;
+            this.btn_disablefamily.Text = "Disable Family";
+            this.btn_disablefamily.UseVisualStyleBackColor = true;
+            this.btn_disablefamily.Click += new System.EventHandler(this.btn_disablefamily_Click);
+            // 
+            // btn_exportfamily
+            // 
+            this.btn_exportfamily.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_exportfamily.ForeColor = System.Drawing.Color.Black;
+            this.btn_exportfamily.Location = new System.Drawing.Point(381, 35);
+            this.btn_exportfamily.Name = "btn_exportfamily";
+            this.btn_exportfamily.Size = new System.Drawing.Size(134, 36);
+            this.btn_exportfamily.TabIndex = 4;
+            this.btn_exportfamily.Text = "Export To PDF";
+            this.btn_exportfamily.UseVisualStyleBackColor = true;
+            this.btn_exportfamily.Click += new System.EventHandler(this.btn_exportfamily_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.progressBar1.Location = new System.Drawing.Point(572, 331);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 5;
+            this.progressBar1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -941,6 +994,10 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button btnOutsideParsihMember;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button btnpdfExport;
+        private System.Windows.Forms.Button btn_exportfamily;
+        private System.Windows.Forms.Button btn_disablefamily;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
