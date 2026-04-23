@@ -8,57 +8,186 @@ namespace TestFat
 {
     public partial class LoginForm : Form
     {
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+
         public string LoggedInUser { get; private set; }
 
         public LoginForm()
         {
             InitializeComponent();
+            ApplyTheme();
 
-            // Aesthetic: Set form background and border style
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = true;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = Color.WhiteSmoke;
-            this.Font = new Font("Georgia", 11, FontStyle.Regular);
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) btnLogin_Click_1(s, e); };
+        }
 
-            // Aesthetic: Set title and icon
-            this.Text = "User Login";
-            // this.Icon = Properties.Resources.YourAppIcon; // Uncomment if you have an icon
+        private void ApplyTheme()
+        {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition   = FormStartPosition.CenterScreen;
+            this.BackColor       = AppTheme.Navy;
+            this.ClientSize      = new Size(420, 380);
+            this.Text            = "Login";
+            this.Font            = AppTheme.BodyFont;
 
-            // Aesthetic: Style controls if they exist
-            if (this.Controls.ContainsKey("txtUsername"))
+            // Border on outer form
+            this.Paint += (s, pe) =>
+                pe.Graphics.DrawRectangle(new Pen(AppTheme.Gold, 1), 0, 0, Width - 1, Height - 1);
+
+            // ── Header panel ──
+            var header = new Panel
             {
-                txtUsername.Font = new Font("Georgia", 11, FontStyle.Regular);
-                txtUsername.BackColor = Color.White;
-                txtUsername.ForeColor = Color.Black;
-            }
-            if (this.Controls.ContainsKey("txtPassword") || txtPassword != null)
+                Height    = 100,
+                Dock      = DockStyle.Top,
+                BackColor = AppTheme.Navy,
+            };
+
+            // Cross + church name stacked
+            header.Controls.Add(new Label
             {
-                txtPassword.Font = new Font("Georgia", 11, FontStyle.Regular);
-                txtPassword.BackColor = Color.White;
-                txtPassword.ForeColor = Color.Black;
-                txtPassword.UseSystemPasswordChar = false;
-                txtPassword.PasswordChar = '*';
-            }
-            if (this.Controls.ContainsKey("btnLogin"))
+                Text      = "✝",
+                Font      = new Font("Georgia", 22F, FontStyle.Bold),
+                ForeColor = AppTheme.Gold,
+                AutoSize  = true,
+                Location  = new Point(header.Width / 2 - 10, 8),
+                Anchor    = AnchorStyles.Top,
+            });
+            header.Controls.Add(new Label
             {
-                btnLogin.Font = new Font("Georgia", 12, FontStyle.Bold);
-                btnLogin.BackColor = Color.RoyalBlue;
-                btnLogin.ForeColor = Color.White;
-                btnLogin.FlatStyle = FlatStyle.Flat;
-                btnLogin.FlatAppearance.BorderColor = Color.DarkSlateGray;
-            }
-            if (this.Controls.ContainsKey("lblUsername"))
+                Text      = "Our Lady of Fatima Church",
+                Font      = new Font("Georgia", 13F, FontStyle.Bold),
+                ForeColor = AppTheme.Gold,
+                AutoSize  = true,
+                Location  = new Point(60, 42),
+            });
+            header.Controls.Add(new Label
             {
-                lblUsername.Font = new Font("Georgia", 12, FontStyle.Bold);
-                lblUsername.ForeColor = Color.DarkSlateGray;
-            }
-            if (this.Controls.ContainsKey("lblPassword"))
+                Text      = "Tambaram, Chennai",
+                Font      = AppTheme.SmallFont,
+                ForeColor = Color.FromArgb(180, 200, 215),
+                AutoSize  = true,
+                Location  = new Point(130, 68),
+            });
+
+            // Drag the form by dragging the header
+            header.MouseDown += (s, e) => {
+                if (e.Button == MouseButtons.Left) { ReleaseCapture(); SendMessage(Handle, 0xA1, 0x2, 0); }
+            };
+
+            // ── Card panel (white) ──
+            var card = new Panel
             {
-                lblPassword.Font = new Font("Georgia", 12, FontStyle.Bold);
-                lblPassword.ForeColor = Color.DarkSlateGray;
-            }
+                BackColor   = Color.White,
+                Size        = new Size(340, 230),
+                Location    = new Point(40, 110),
+                BorderStyle = BorderStyle.None,
+            };
+            card.Paint += (s, pe) =>
+                pe.Graphics.DrawRectangle(new Pen(AppTheme.GridBorder, 1), 0, 0, card.Width - 1, card.Height - 1);
+
+            // Card top accent bar
+            card.Controls.Add(new Panel
+            {
+                Height    = 4,
+                Dock      = DockStyle.Top,
+                BackColor = AppTheme.Teal,
+            });
+
+            // ── Labels and fields inside card ──
+            int lx = 24, fx = 150, fw = 160, fy = 28;
+
+            // Username
+            card.Controls.Add(new Label
+            {
+                Text      = "Username",
+                Font      = AppTheme.BoldSmall,
+                ForeColor = AppTheme.Navy,
+                AutoSize  = true,
+                Location  = new Point(lx, fy + 4),
+            });
+            txtUsername.Location    = new Point(fx, fy);
+            txtUsername.Size        = new Size(fw, 26);
+            txtUsername.Font        = AppTheme.BodyFont;
+            txtUsername.BackColor   = AppTheme.OffWhite;
+            txtUsername.ForeColor   = AppTheme.Navy;
+            txtUsername.BorderStyle = BorderStyle.FixedSingle;
+            card.Controls.Add(txtUsername);
+
+            // Password
+            int py = fy + 50;
+            card.Controls.Add(new Label
+            {
+                Text      = "Password",
+                Font      = AppTheme.BoldSmall,
+                ForeColor = AppTheme.Navy,
+                AutoSize  = true,
+                Location  = new Point(lx, py + 4),
+            });
+            txtPassword.Location      = new Point(fx, py);
+            txtPassword.Size          = new Size(fw, 26);
+            txtPassword.Font          = AppTheme.BodyFont;
+            txtPassword.BackColor     = AppTheme.OffWhite;
+            txtPassword.ForeColor     = AppTheme.Navy;
+            txtPassword.BorderStyle   = BorderStyle.FixedSingle;
+            txtPassword.PasswordChar  = '●';
+            card.Controls.Add(txtPassword);
+
+            // Login button
+            btnLogin.Location  = new Point(lx, py + 60);
+            btnLogin.Size      = new Size(fw + fx - lx, 36);
+            btnLogin.Text      = "Sign In";
+            AppTheme.StyleButtonPrimary(btnLogin);
+            AppTheme.SetIcon(btnLogin, AppTheme.IconChurch(18), "Sign In");
+            card.Controls.Add(btnLogin);
+
+            // Hint text
+            card.Controls.Add(new Label
+            {
+                Text      = "Use your assigned church credentials",
+                Font      = new Font("Georgia", 8F, FontStyle.Italic),
+                ForeColor = Color.FromArgb(140, 160, 175),
+                AutoSize  = true,
+                Location  = new Point(lx, py + 102),
+            });
+
+            // ── Close button top-right ──
+            var btnClose = new Button
+            {
+                Text      = "✕",
+                Size      = new Size(36, 36),
+                Location  = new Point(this.ClientSize.Width - 40, 4),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = AppTheme.Navy,
+                ForeColor = Color.FromArgb(160, 190, 210),
+                Font      = new Font("Segoe UI", 11F),
+                Cursor    = Cursors.Hand,
+                TabStop   = false,
+                Anchor    = AnchorStyles.Top | AnchorStyles.Right,
+            };
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.MouseEnter += (s, e) => ((Button)s).BackColor = Color.FromArgb(192, 57, 43);
+            btnClose.MouseLeave += (s, e) => ((Button)s).BackColor = AppTheme.Navy;
+            btnClose.Click      += (s, e) => { this.DialogResult = DialogResult.Cancel; this.Close(); };
+
+            // ── Footer label ──
+            var footer = new Label
+            {
+                Text      = "© Fatima Church, Tambaram",
+                Font      = new Font("Georgia", 8F, FontStyle.Italic),
+                ForeColor = Color.FromArgb(100, 130, 150),
+                AutoSize  = true,
+                Location  = new Point(130, 350),
+            };
+
+            // Remove old panel1 controls from form and add new ones
+            this.Controls.Clear();
+            this.Controls.Add(header);
+            this.Controls.Add(card);
+            this.Controls.Add(btnClose);
+            this.Controls.Add(footer);
         }
 
         private bool AuthenticateUser(string username, string password)
@@ -91,7 +220,7 @@ namespace TestFat
             }
             else
             {
-                MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThemedDialog.Error("Invalid username or password.\nPlease try again.", "Login Failed", this);
             }
         }
     }

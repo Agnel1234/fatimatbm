@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(& \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Community\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\" \"C:\\\\Apps\\\\fatimatbm\\\\FatimaChurchForms.csproj\" /t:Build /p:Configuration=Debug 2>&1 | Where-Object { $_ -match \"error CS|Build succeeded|Build FAILED\" } | Select-Object -Last 10)",
+      "PowerShell(sqlcmd -S \"\\(localdb\\)\\\\MSSQLLocalDB\" -Q \"SELECT name FROM sys.databases WHERE name = 'fatimachurchtbm'\" 2>&1)",
+      "PowerShell(sqlcmd -S \"\\(localdb\\)\\\\MSSQLLocalDB\" -d fatimachurchtbm -Q \"SELECT name FROM sys.objects WHERE type = 'P' AND name IN \\('sp_GetAllSubscriptions','sp_GetSubscriptionsFiltered','sp_GetSubscriptionTotalCount','sp_SetCemeterySubscription','sp_GetCemeterySubscription','sp_GetFamilyByCode'\\) ORDER BY name\" 2>&1)",
+      "Bash(msbuild FatimaChurchForms.csproj /p:Configuration=Debug /nologo /verbosity:minimal)",
+      "Bash(cmd.exe /c \"\\\\\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Community\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\\\\\" FatimaChurchForms.csproj /p:Configuration=Debug /nologo /verbosity:minimal 2>&1\")",
+      "Bash(cmd.exe /c \"\\\\\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Community\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\\\\\" FatimaChurchForms.csproj /p:Configuration=Debug /nologo /verbosity:minimal\")",
+      "Bash(powershell.exe -Command \"& 'C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Community\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe' 'C:\\\\Apps\\\\fatimatbm\\\\FatimaChurchForms.csproj' /p:Configuration=Debug /nologo /verbosity:minimal 2>&1\")",
+      "Bash(powershell.exe -Command \"Start-Process 'C:\\\\Apps\\\\fatimatbm\\\\bin\\\\Debug\\\\FatimaChurch.exe'\")",
+      "Bash(powershell.exe -Command \"Start-Process 'C:\\\\Apps\\\\fatimatbm\\\\bin\\\\Debug\\\\FatimaChurch.exe' -Wait -PassThru 2>&1\")",
+      "Bash(powershell.exe -Command ' *)",
+      "Read(//c/Program Files \\(x86\\)/MSBuild/**)",
+      "Read(//c/Program Files/**)",
+      "PowerShell($dll = \"C:\\\\Apps\\\\fatimatbm\\\\packages\\\\Syncfusion.Pdf.WinForms.32.1.25\\\\lib\\\\net462\\\\Syncfusion.Pdf.Base.dll\"; $asm = [System.Reflection.Assembly]::LoadFile\\($dll\\); $asm.GetTypes\\(\\) | Where-Object { $_.IsEnum } | Select-Object -First 20 FullName)",
+      "PowerShell($dll = \"C:\\\\Apps\\\\fatimatbm\\\\packages\\\\Syncfusion.Pdf.WinForms.32.1.25\\\\lib\\\\net462\\\\Syncfusion.Pdf.Base.dll\"; $bytes = [System.IO.File]::ReadAllBytes\\($dll\\); $asm = [System.Reflection.Assembly]::Load\\($bytes\\); $asm.GetTypes\\(\\).Count)"
+    ]
+  }
+}

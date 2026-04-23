@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Fatima Church App – UI Comparison</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; }
+
+  /* ── Page chrome ── */
+  .page-header {
+    background: linear-gradient(135deg, #1A2D42, #2C6E7A);
+    color: #C9A84C;
+    padding: 20px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #C9A84C;
+  }
+  .page-header span { color: #a0c4cc; font-size: 13px; font-weight: normal; margin-left: 12px; }
+  .section-label {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 24px 0 10px;
+    color: #a0b8c8;
+  }
+  .comparison-row {
+    display: flex;
+    gap: 24px;
+    padding: 0 32px 40px;
+    align-items: flex-start;
+  }
+  .col { flex: 1; }
+  .col-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px;
+    border-radius: 4px 4px 0 0;
+    font-weight: bold;
+  }
+  .col-label.before { background: #3a2a2a; color: #e08080; }
+  .col-label.after  { background: #1a3a2a; color: #80e0a0; }
+
+  .screen {
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    font-family: Georgia, serif;
+  }
+
+  /* ── BEFORE styles ── */
+  .b-titlebar {
+    background: #d0d0d0;
+    color: #000;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Yu Gothic Medium', sans-serif;
+  }
+  .b-titlebar .win-btns { margin-left: auto; display: flex; gap: 4px; }
+  .b-titlebar .win-btns span {
+    width: 14px; height: 14px; border-radius: 2px;
+    border: 1px solid #888; background: #c0c0c0;
+    display: inline-block; text-align: center; font-size: 9px; line-height: 14px;
+  }
+  .b-tabs {
+    display: flex;
+    background: #ece9d8;
+    border-bottom: 2px solid #888;
+    font-size: 11px;
+    font-family: Georgia, serif;
+  }
+  .b-tab {
+    padding: 6px 14px;
+    border: 1px solid #888;
+    border-bottom: none;
+    background: #d4d0c8;
+    color: #000;
+    margin-right: 2px;
+    cursor: default;
+  }
+  .b-tab.active { background: #ece9d8; border-bottom: 2px solid #ece9d8; color: #000; font-weight: bold; }
+  .b-body { background: #ece9d8; padding: 10px; }
+
+  /* search bar – before */
+  .b-filter { background: #d8d8d8; padding: 8px 10px; display: flex; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 11px; }
+  .b-filter label { color: #000; font-size: 11px; }
+  .b-filter select, .b-filter input {
+    height: 22px; border: 1px solid #888; background: #fff; font-size: 11px; padding: 0 4px;
+  }
+  .b-filter button {
+    height: 22px; padding: 0 10px; background: #d4d0c8; border: 1px solid #888; font-size: 11px; cursor: pointer;
+  }
+
+  /* grid – before */
+  .b-grid { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .b-grid th {
+    background: #4682b4; color: #fff; padding: 5px 8px;
+    font-family: Georgia, serif; font-size: 11px; font-weight: bold;
+    border: 1px solid #2a6090; text-align: left;
+  }
+  .b-grid td { padding: 4px 8px; border: 1px solid #c0c0c0; font-size: 11px; }
+  .b-grid tr:nth-child(even) td { background: #778899; color: #fff; }
+  .b-grid tr:nth-child(odd) td { background: #f5f5f5; }
+
+  /* action bar – before */
+  .b-actions {
+    background: #e0e0e0; padding: 8px 10px;
+    display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; font-size: 11px;
+  }
+  .b-btn {
+    padding: 4px 14px; background: #d4d0c8; border: 1px solid #888;
+    font-size: 11px; font-family: Georgia, serif; cursor: pointer;
+  }
+
+  /* stat cards – before (just text) */
+  .b-stats { display: flex; gap: 6px; margin-bottom: 8px; }
+  .b-stat { flex: 1; background: #d8d8d8; border: 1px solid #aaa; padding: 8px; font-size: 10px; text-align: center; }
+  .b-stat .num { font-size: 20px; font-weight: bold; display: block; }
+
+  /* chart placeholder */
+  .b-chart-row { display: flex; gap: 8px; }
+  .b-chart { flex: 1; background: #dde8dd; border: 1px solid #aaa; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #555; }
+
+  /* ── AFTER styles ── */
+  .a-titlebar {
+    background: #1A2D42;
+    color: #C9A84C;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0 16px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+  }
+  .a-titlebar .cross { font-size: 18px; }
+  .a-titlebar .subtitle { color: #7aaabb; font-size: 10px; font-weight: normal; margin-left: 4px; }
+  .a-titlebar .user-badge {
+    margin-left: auto;
+    background: #2C6E7A;
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0;
+  }
+  .a-titlebar .win-btns { display: flex; gap: 5px; margin-left: 12px; }
+  .a-titlebar .win-btns span {
+    width: 13px; height: 13px; border-radius: 50%;
+    display: inline-block;
+  }
+  .a-titlebar .win-btns .wc { background: #ff5f57; }
+  .a-titlebar .win-btns .wm { background: #febc2e; }
+  .a-titlebar .win-btns .we { background: #28c840; }
+
+  .a-tabs {
+    display: flex;
+    background: #152234;
+    border-bottom: 2px solid #2C6E7A;
+    font-size: 11px;
+  }
+  .a-tab {
+    padding: 7px 18px;
+    color: #7a9aaa;
+    cursor: default;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+  }
+  .a-tab.active {
+    color: #fff;
+    border-bottom: 2px solid #C9A84C;
+    background: #1e3a50;
+  }
+  .a-body { background: #f0f4f7; padding: 10px; }
+
+  /* search bar – after */
+  .a-filter {
+    background: #fff; padding: 8px 12px; display: flex; gap: 10px;
+    align-items: center; margin-bottom: 10px; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12); font-size: 11px;
+  }
+  .a-filter label { color: #1A2D42; font-size: 11px; font-weight: bold; }
+  .a-filter select, .a-filter input {
+    height: 24px; border: 1px solid #b0ccd4; border-radius: 4px;
+    background: #f5fafc; font-size: 11px; padding: 0 6px; outline: none;
+  }
+  .a-filter button {
+    height: 24px; padding: 0 14px; background: #2C6E7A; border: none;
+    border-radius: 4px; color: #fff; font-size: 11px; cursor: pointer;
+  }
+
+  /* grid – after */
+  .a-grid { width: 100%; border-collapse: collapse; font-size: 11px; border-radius: 6px; overflow: hidden; }
+  .a-grid th {
+    background: #1A2D42; color: #C9A84C; padding: 6px 10px;
+    font-family: Georgia, serif; font-size: 11px; font-weight: bold;
+    border-bottom: 2px solid #2C6E7A; text-align: left;
+  }
+  .a-grid td { padding: 5px 10px; border-bottom: 1px solid #dde8ee; font-size: 11px; background: #fff; }
+  .a-grid tr:nth-child(even) td { background: #f0f7fa; }
+  .a-grid tr:hover td { background: #ddf0f5; }
+
+  /* status badges */
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 10px; font-weight: bold; letter-spacing: 0.3px;
+  }
+  .badge.paid    { background: #d4edda; color: #1a6630; }
+  .badge.pending { background: #fff3cd; color: #856404; }
+  .badge.overdue { background: #f8d7da; color: #842029; }
+
+  /* sub-btn in grid */
+  .sub-btn {
+    padding: 2px 8px; background: #2C6E7A; color: #fff; border: none;
+    border-radius: 3px; font-size: 10px; cursor: pointer;
+  }
+
+  /* action bar – after */
+  .a-actions {
+    background: #fff; padding: 8px 12px; border-radius: 6px;
+    display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08); font-size: 11px;
+  }
+  .a-btn {
+    padding: 5px 16px; border: none; border-radius: 4px;
+    font-size: 11px; font-family: Georgia, serif; cursor: pointer;
+  }
+  .a-btn.primary { background: #2C6E7A; color: #fff; }
+  .a-btn.secondary { background: #1A2D42; color: #C9A84C; }
+  .a-btn.outline { background: transparent; border: 1px solid #2C6E7A; color: #2C6E7A; }
+
+  /* stat cards – after */
+  .a-stats { display: flex; gap: 10px; margin-bottom: 12px; }
+  .a-stat {
+    flex: 1; background: #fff; border-radius: 8px;
+    padding: 10px 12px; border-left: 4px solid #2C6E7A;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .a-stat.gold  { border-left-color: #C9A84C; }
+  .a-stat.navy  { border-left-color: #1A2D42; }
+  .a-stat.green { border-left-color: #2a9d5c; }
+  .a-stat .num { font-size: 24px; font-weight: bold; color: #1A2D42; display: block; }
+  .a-stat .lbl { font-size: 10px; color: #6a8a9a; margin-top: 2px; }
+
+  /* chart placeholder */
+  .a-chart-row { display: flex; gap: 10px; }
+  .a-chart {
+    flex: 1; background: #fff; border-radius: 8px; height: 100px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #2C6E7A; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-top: 3px solid #2C6E7A;
+  }
+
+  /* map panel – after */
+  .a-map {
+    background: #1A2D42; border-radius: 6px; margin-top: 10px;
+    overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .a-map-header {
+    background: #1A2D42; color: #C9A84C; padding: 6px 12px;
+    font-size: 11px; font-weight: bold; border-bottom: 1px solid #2C6E7A;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .a-map-header .sub { color: #7aaabb; font-weight: normal; font-size: 10px; }
+  .a-map-body {
+    height: 90px; background: linear-gradient(135deg, #e8f4f8 0%, #d0e8f0 40%, #b8dce8 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .map-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(44,110,122,0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(44,110,122,0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .map-pin {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #1A2D42; border: 2px solid #C9A84C;
+    display: flex; align-items: center; justify-content: center;
+    color: #C9A84C; font-size: 14px; position: relative; z-index: 2;
+    box-shadow: 0 0 0 6px rgba(26,45,66,0.2);
+  }
+  .map-zone {
+    position: absolute; width: 80px; height: 80px; border-radius: 50%;
+    border: 1px dashed #2C6E7A; background: rgba(44,110,122,0.08);
+    z-index: 1;
+  }
+
+  /* divider */
+  .divider {
+    width: 2px; background: rgba(255,255,255,0.1);
+    align-self: stretch; margin: 0 -10px;
+  }
+
+  .arrow {
+    text-align: center; padding: 60px 0; color: #C9A84C; font-size: 28px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  &#9765; Fatima Church App — UI Redesign Comparison
+  <span>Before (current) vs After (proposed)</span>
+</div>
+
+<!-- ═══════════════════ SCREEN 1: DASHBOARD ═══════════════════ -->
+<div class="section-label">① Dashboard Tab</div>
+<div class="comparison-row">
+
+  <!-- BEFORE -->
+  <div class="col">
+    <div class="col-label before">◀ Current</div>
+    <div class="screen">
+      <div class="b-titlebar">
+        <span>📋</span> Fatima Church – Admin
+        <div class="win-btns"><span>_</span><span>□</span><span>×</span></div>
+      </div>
+      <div class="b-tabs">
+        <div class="b-tab active">Dashboard</div>
+        <div class="b-tab">Anbiyams</div>
+        <div class="b-tab">Families</div>
+        <div class="b-tab">Cemetery Management</div>
+        <div class="b-tab">Subscriptions</div>
+      </div>
+      <div class="b-body">
+        <!-- no stat cards, just charts -->
+        <div class="b-chart-row">
+          <div class="b-chart" style="background:#e8dde8;">📊 Age Group Chart<br/><small>(Thistle bg)</small></div>
+          <div class="b-chart" style="background:#dde8dd;">📊 Gender Chart<br/><small>(Sage green bg)</small></div>
+        </div>
+        <div style="margin-top:8px; background:#d4d0c8; padding:6px; font-size:10px; color:#555; text-align:center;">
+          No summary cards &nbsp;·&nbsp; No KPI metrics &nbsp;·&nbsp; No visual hierarchy
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="col">
+    <div class="col-label after">After ▶</div>
+    <div class="screen">
+      <div class="a-titlebar">
+        <span class="cross">✝</span>
+        Our Lady of Fatima Church
+        <span class="subtitle">— Tambaram, Chennai</span>
+        <div class="user-badge">👤 Admin</div>
+        <div class="win-btns"><span class="wc"></span><span class="wm"></span><span class="we"></span></div>
+      </div>
+      <div class="a-tabs">
+        <div class="a-tab active">Dashboard</div>
+        <div class="a-tab">Anbiyams</div>
+        <div class="a-tab">Families</div>
+        <div class="a-tab">Cemetery</div>
+        <div class="a-tab">Subscriptions</div>
+      </div>
+      <div class="a-body">
+        <!-- Stat cards -->
+        <div class="a-stats">
+          <div class="a-stat">
+            <span class="num">248</span>
+            <div class="lbl">Total Families</div>
+          </div>
+          <div class="a-stat gold">
+            <span class="num">12</span>
+            <div class="lbl">Anbiyam Zones</div>
+          </div>
+          <div class="a-stat green">
+            <span class="num">186</span>
+            <div class="lbl">Subscriptions Paid</div>
+          </div>
+          <div class="a-stat navy">
+            <span class="num">94</span>
+            <div class="lbl">Cemetery Records</div>
+          </div>
+        </div>
+        <div class="a-chart-row">
+          <div class="a-chart" style="border-top-color:#2C6E7A;">📊 Age Group Chart</div>
+          <div class="a-chart" style="border-top-color:#C9A84C;">📊 Gender Chart</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SCREEN 2: ANBIYAM TAB ═══════════════════ -->
+<div class="section-label">② Anbiyam Tab (with Map)</div>
+<div class="comparison-row">
+
+  <!-- BEFORE -->
+  <div class="col">
+    <div class="col-label before">◀ Current</div>
+    <div class="screen">
+      <div class="b-titlebar">
+        <span>📋</span> Fatima Church – Admin
+        <div class="win-btns"><span>_</span><span>□</span><span>×</span></div>
+      </div>
+      <div class="b-tabs">
+        <div class="b-tab">Dashboard</div>
+        <div class="b-tab active">Anbiyams</div>
+        <div class="b-tab">Families</div>
+        <div class="b-tab">Cemetery Management</div>
+        <div class="b-tab">Subscriptions</div>
+      </div>
+      <div class="b-body" style="background:#e8d5e8;">
+        <div class="b-filter">
+          <label>Anbiyam Code - Name</label>
+          <select><option>-- All --</option></select>
+          <label>Coordinator</label>
+          <input type="text" placeholder="" style="width:100px"/>
+          <button>Search Anbiyam</button>
+        </div>
+        <table class="b-grid">
+          <tr><th>Zone</th><th>Name</th><th>Coordinator</th><th>Mobile</th><th>Families</th><th>Delete</th></tr>
+          <tr><td>North</td><td>St. Anthony</td><td>John Paul</td><td>9876543210</td><td>18</td><td><button style="font-size:10px;padding:1px 6px">Delete</button></td></tr>
+          <tr><td>South</td><td>St. Mary</td><td>Maria Selvi</td><td>9876543211</td><td>22</td><td><button style="font-size:10px;padding:1px 6px">Delete</button></td></tr>
+          <tr><td>East</td><td>St. Joseph</td><td>Anthony Raj</td><td>9876543212</td><td>15</td><td><button style="font-size:10px;padding:1px 6px">Delete</button></td></tr>
+        </table>
+        <div style="margin-top:6px; background:#d0c8c0; border:1px solid #aaa; height:70px; display:flex; align-items:center; justify-content:center; font-size:10px; color:#666;">
+          Map area — only visible if showMap="true" in config<br/>Navigates to plain Google Maps URL
+        </div>
+        <div class="b-actions">
+          <button class="b-btn">Export To PDF</button>
+          <button class="b-btn">Edit</button>
+          <button class="b-btn">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="col">
+    <div class="col-label after">After ▶</div>
+    <div class="screen">
+      <div class="a-titlebar">
+        <span class="cross">✝</span>
+        Our Lady of Fatima Church
+        <span class="subtitle">— Tambaram, Chennai</span>
+        <div class="user-badge">👤 Admin</div>
+        <div class="win-btns"><span class="wc"></span><span class="wm"></span><span class="we"></span></div>
+      </div>
+      <div class="a-tabs">
+        <div class="a-tab">Dashboard</div>
+        <div class="a-tab active">Anbiyams</div>
+        <div class="a-tab">Families</div>
+        <div class="a-tab">Cemetery</div>
+        <div class="a-tab">Subscriptions</div>
+      </div>
+      <div class="a-body">
+        <div class="a-filter">
+          <label>Anbiyam</label>
+          <select><option>-- All --</option></select>
+          <label>Coordinator</label>
+          <input type="text" style="width:100px"/>
+          <button>🔍 Search</button>
+        </div>
+        <table class="a-grid">
+          <tr><th>Zone</th><th>Name</th><th>Coordinator</th><th>Mobile</th><th>Families</th><th></th></tr>
+          <tr><td>North</td><td>St. Anthony</td><td>John Paul</td><td>9876543210</td><td>18</td><td><button class="sub-btn">Delete</button></td></tr>
+          <tr><td>South</td><td>St. Mary</td><td>Maria Selvi</td><td>9876543211</td><td>22</td><td><button class="sub-btn">Delete</button></td></tr>
+          <tr><td>East</td><td>St. Joseph</td><td>Anthony Raj</td><td>9876543212</td><td>15</td><td><button class="sub-btn">Delete</button></td></tr>
+        </table>
+        <!-- Map panel — always visible -->
+        <div class="a-map">
+          <div class="a-map-header">
+            ✝ &nbsp;Our Lady of Fatima Church
+            <span class="sub">— Tambaram, Chennai · Tamil Nadu 600 045</span>
+          </div>
+          <div class="a-map-body">
+            <div class="map-grid"></div>
+            <div class="map-zone"></div>
+            <div class="map-pin">✝</div>
+          </div>
+        </div>
+        <div class="a-actions">
+          <button class="a-btn outline">📄 Export PDF</button>
+          <button class="a-btn secondary">✏️ Edit</button>
+          <button class="a-btn primary">＋ Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SCREEN 3: FAMILIES TAB ═══════════════════ -->
+<div class="section-label">③ Families Tab</div>
+<div class="comparison-row">
+
+  <!-- BEFORE -->
+  <div class="col">
+    <div class="col-label before">◀ Current</div>
+    <div class="screen">
+      <div class="b-titlebar">
+        <span>📋</span> Fatima Church – Admin
+        <div class="win-btns"><span>_</span><span>□</span><span>×</span></div>
+      </div>
+      <div class="b-tabs">
+        <div class="b-tab">Dashboard</div><div class="b-tab">Anbiyams</div>
+        <div class="b-tab active">Families</div>
+        <div class="b-tab">Cemetery Management</div><div class="b-tab">Subscriptions</div>
+      </div>
+      <div class="b-body">
+        <div class="b-filter">
+          <label>Anbiyam</label><select><option>All</option></select>
+          <label>Family Head</label><input type="text" style="width:90px"/>
+          <label>Occupation</label><input type="text" style="width:80px"/>
+          <button>Search</button>
+        </div>
+        <table class="b-grid">
+          <tr><th>Anbiyam</th><th>Code</th><th>Family Head</th><th>Mobile</th><th>Members</th><th>Subscription</th><th>SubscriptionInfo</th><th>Delete</th></tr>
+          <tr><td>St. Anthony</td><td>F001</td><td>John Peter</td><td>98765</td><td>4</td><td>Active</td>
+            <td><button style="background:#4682b4;color:#fff;border:none;padding:2px 6px;font-size:10px">SubscriptionInfo</button></td>
+            <td><button style="font-size:10px;padding:1px 6px">Delete</button></td></tr>
+          <tr><td>St. Mary</td><td>F002</td><td>Mary Joseph</td><td>98766</td><td>3</td><td>Active</td>
+            <td><button style="background:#4682b4;color:#fff;border:none;padding:2px 6px;font-size:10px">SubscriptionInfo</button></td>
+            <td><button style="font-size:10px;padding:1px 6px">Delete</button></td></tr>
+          <tr><td>St. Joseph</td><td>F003</td><td>Paul Raj</td><td>98767</td><td>5</td><td>Active</td>
+            <td><button style="background:#4682b4;color:#fff;border:none;padding:2px 6px;font-size:10px">SubscriptionInfo</button></td>
+            <td><button style="font-size:10px;padding:1px 6px">Delete</button></td></tr>
+        </table>
+        <div class="b-actions">
+          <button class="b-btn">Export</button>
+          <button class="b-btn">Disable</button>
+          <button class="b-btn">Cemetery Info</button>
+          <button class="b-btn">Edit</button>
+          <button class="b-btn">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="col">
+    <div class="col-label after">After ▶</div>
+    <div class="screen">
+      <div class="a-titlebar">
+        <span class="cross">✝</span> Our Lady of Fatima Church
+        <span class="subtitle">— Tambaram, Chennai</span>
+        <div class="user-badge">👤 Admin</div>
+        <div class="win-btns"><span class="wc"></span><span class="wm"></span><span class="we"></span></div>
+      </div>
+      <div class="a-tabs">
+        <div class="a-tab">Dashboard</div><div class="a-tab">Anbiyams</div>
+        <div class="a-tab active">Families</div>
+        <div class="a-tab">Cemetery</div><div class="a-tab">Subscriptions</div>
+      </div>
+      <div class="a-body">
+        <div class="a-filter">
+          <label>Anbiyam</label><select><option>All</option></select>
+          <label>Family Head</label><input type="text" style="width:80px"/>
+          <label>Occupation</label><input type="text" style="width:70px"/>
+          <button>🔍 Search</button>
+        </div>
+        <table class="a-grid">
+          <tr><th>Anbiyam</th><th>Code</th><th>Family Head</th><th>Mobile</th><th>Members</th><th>Subscription</th><th></th><th></th></tr>
+          <tr>
+            <td>St. Anthony</td><td>F001</td><td>John Peter</td><td>98765</td><td>4</td><td>Active</td>
+            <td><button class="sub-btn" style="background:#2C6E7A;">💳 Sub Info</button></td>
+            <td><button class="sub-btn" style="background:#8B0000;">Delete</button></td>
+          </tr>
+          <tr>
+            <td>St. Mary</td><td>F002</td><td>Mary Joseph</td><td>98766</td><td>3</td><td>Active</td>
+            <td><button class="sub-btn" style="background:#2C6E7A;">💳 Sub Info</button></td>
+            <td><button class="sub-btn" style="background:#8B0000;">Delete</button></td>
+          </tr>
+          <tr>
+            <td>St. Joseph</td><td>F003</td><td>Paul Raj</td><td>98767</td><td>5</td><td>Active</td>
+            <td><button class="sub-btn" style="background:#2C6E7A;">💳 Sub Info</button></td>
+            <td><button class="sub-btn" style="background:#8B0000;">Delete</button></td>
+          </tr>
+        </table>
+        <div class="a-actions">
+          <button class="a-btn outline">📄 Export</button>
+          <button class="a-btn outline">🚫 Disable</button>
+          <button class="a-btn outline">⛪ Cemetery</button>
+          <button class="a-btn secondary">✏️ Edit</button>
+          <button class="a-btn primary">＋ Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SCREEN 4: SUBSCRIPTIONS TAB ═══════════════════ -->
+<div class="section-label">④ Subscriptions Tab — Status Badge Highlight</div>
+<div class="comparison-row">
+
+  <!-- BEFORE -->
+  <div class="col">
+    <div class="col-label before">◀ Current</div>
+    <div class="screen">
+      <div class="b-titlebar">
+        <span>📋</span> Fatima Church – Admin
+        <div class="win-btns"><span>_</span><span>□</span><span>×</span></div>
+      </div>
+      <div class="b-tabs">
+        <div class="b-tab">Dashboard</div><div class="b-tab">Anbiyams</div>
+        <div class="b-tab">Families</div><div class="b-tab">Cemetery Management</div>
+        <div class="b-tab active">Subscriptions</div>
+      </div>
+      <div class="b-body">
+        <div class="b-filter">
+          <label>Family</label><input type="text" style="width:80px"/>
+          <label>Type</label><select><option>All</option></select>
+          <label>Status</label><select><option>All</option></select>
+          <button>Search</button>
+        </div>
+        <table class="b-grid">
+          <tr><th>Family Code</th><th>Head Name</th><th>Anbiyam</th><th>Type</th><th>Year</th><th>Amount</th><th>Status</th></tr>
+          <tr><td>F001</td><td>John Peter</td><td>St. Anthony</td><td>Family</td><td>2025</td><td>₹1200</td><td>Paid</td></tr>
+          <tr><td>F002</td><td>Mary Joseph</td><td>St. Mary</td><td>Cemetery</td><td>2025</td><td>₹500</td><td>Pending</td></tr>
+          <tr><td>F003</td><td>Paul Raj</td><td>St. Joseph</td><td>Family</td><td>2024</td><td>₹1200</td><td>Overdue</td></tr>
+        </table>
+        <div style="margin-top:6px;font-size:10px;color:#888;text-align:center;padding:4px">
+          Status shown as plain text — no color differentiation
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="col">
+    <div class="col-label after">After ▶</div>
+    <div class="screen">
+      <div class="a-titlebar">
+        <span class="cross">✝</span> Our Lady of Fatima Church
+        <span class="subtitle">— Tambaram, Chennai</span>
+        <div class="user-badge">👤 Admin</div>
+        <div class="win-btns"><span class="wc"></span><span class="wm"></span><span class="we"></span></div>
+      </div>
+      <div class="a-tabs">
+        <div class="a-tab">Dashboard</div><div class="a-tab">Anbiyams</div>
+        <div class="a-tab">Families</div><div class="a-tab">Cemetery</div>
+        <div class="a-tab active">Subscriptions</div>
+      </div>
+      <div class="a-body">
+        <div class="a-filter">
+          <label>Family</label><input type="text" style="width:80px"/>
+          <label>Type</label><select><option>All</option></select>
+          <label>Status</label><select><option>All</option></select>
+          <button>🔍 Search</button>
+        </div>
+        <table class="a-grid">
+          <tr><th>Family Code</th><th>Head Name</th><th>Anbiyam</th><th>Type</th><th>Year</th><th>Amount</th><th>Status</th></tr>
+          <tr><td>F001</td><td>John Peter</td><td>St. Anthony</td>
+            <td><span class="badge" style="background:#d4e8f4;color:#0a4a6e">Family</span></td>
+            <td>2025</td><td>₹1,200</td>
+            <td><span class="badge paid">✔ Paid</span></td>
+          </tr>
+          <tr><td>F002</td><td>Mary Joseph</td><td>St. Mary</td>
+            <td><span class="badge" style="background:#ede4f4;color:#5a0a7e">Cemetery</span></td>
+            <td>2025</td><td>₹500</td>
+            <td><span class="badge pending">⏳ Pending</span></td>
+          </tr>
+          <tr><td>F003</td><td>Paul Raj</td><td>St. Joseph</td>
+            <td><span class="badge" style="background:#d4e8f4;color:#0a4a6e">Family</span></td>
+            <td>2024</td><td>₹1,200</td>
+            <td><span class="badge overdue">⚠ Overdue</span></td>
+          </tr>
+        </table>
+        <div style="margin-top:8px;font-size:10px;color:#2C6E7A;text-align:right;padding:4px">
+          ✔ Paid: 186 &nbsp;|&nbsp; ⏳ Pending: 42 &nbsp;|&nbsp; ⚠ Overdue: 20
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ COLOUR PALETTE ═══════════════════ -->
+<div class="section-label">⑤ Colour Palette Comparison</div>
+<div class="comparison-row" style="justify-content:center; gap:40px;">
+  <div style="text-align:center;">
+    <div class="col-label before" style="border-radius:4px; margin-bottom:10px;">Current Palette</div>
+    <div style="display:flex; gap:8px;">
+      <div style="width:60px;height:60px;background:#d8d8d8;border:1px solid #aaa;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#333">Gray</div>
+      <div style="width:60px;height:60px;background:#d8d4e0;border:1px solid #aaa;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#333">Thistle</div>
+      <div style="width:60px;height:60px;background:#d8e2dc;border:1px solid #aaa;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#333">Sage</div>
+      <div style="width:60px;height:60px;background:#4682b4;border:1px solid #aaa;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#fff">Steel Blue</div>
+      <div style="width:60px;height:60px;background:#778899;border:1px solid #aaa;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#fff">Slate</div>
+    </div>
+  </div>
+  <div style="color:#C9A84C;font-size:32px;padding-top:30px;">→</div>
+  <div style="text-align:center;">
+    <div class="col-label after" style="border-radius:4px; margin-bottom:10px;">Proposed Palette</div>
+    <div style="display:flex; gap:8px;">
+      <div style="width:60px;height:60px;background:#1A2D42;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#C9A84C">Navy</div>
+      <div style="width:60px;height:60px;background:#2C6E7A;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#fff">Teal</div>
+      <div style="width:60px;height:60px;background:#C9A84C;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#1A2D42">Gold</div>
+      <div style="width:60px;height:60px;background:#f0f4f7;border:1px solid #b0ccd4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#1A2D42">Off-white</div>
+      <div style="width:60px;height:60px;background:#d4edda;border:1px solid #b0ccb8;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:9px;color:#1a6630">Paid green</div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; padding: 30px; color:#4a6a7a; font-size:12px;">
+  Open <code>c:\Apps\fatimatbm\Resources\ui_comparison.html</code> in a browser to view this comparison
+</div>
+
+</body>
+</html>

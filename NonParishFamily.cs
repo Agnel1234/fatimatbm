@@ -22,6 +22,44 @@ namespace TestFat
             tempZipcodetxt.KeyPress += NumberOnlyTextBox_KeyPress;
             txtHeadPhone.KeyPress += NumberOnlyTextBox_KeyPress;
             this.MaximizeBox = false;
+            ApplyTheme();
+        }
+
+        private void ApplyTheme()
+        {
+            this.BackColor = AppTheme.OffWhite;
+            this.Font = AppTheme.BodyFont;
+
+            // Navy header bar
+            var header = new Panel { Height = 44, Dock = DockStyle.Top, BackColor = AppTheme.Navy };
+            header.Controls.Add(new Label
+            {
+                Text = "✝  Outside Parish Cemetery",
+                Font = AppTheme.HeaderFont,
+                ForeColor = AppTheme.Gold,
+                AutoSize = true,
+                Location = new Point(12, 12)
+            });
+            this.Controls.Add(header);
+            header.BringToFront();
+
+            // Style action bar and button
+            panel2.BackColor = AppTheme.Navy;
+            AppTheme.StyleButtonPrimary(btnAddCemetery);
+            AppTheme.SetIcon(btnAddCemetery, AppTheme.IconCemetery(), "Register Cemetery");
+
+            // Style group boxes
+            generalGroupBox.BackColor = Color.White;
+            generalGroupBox.ForeColor = AppTheme.Navy;
+            generalGroupBox.Font = AppTheme.BoldSmall;
+
+            husbandGroupBox.BackColor = Color.White;
+            husbandGroupBox.ForeColor = AppTheme.Navy;
+            husbandGroupBox.Font = AppTheme.BoldSmall;
+
+            // Section header panels → teal
+            panel2.BackColor = AppTheme.Navy;
+            flowLayoutPanel1.BackColor = AppTheme.OffWhite;
         }
 
         private void btnAddCemetery_Click(object sender, EventArgs e)

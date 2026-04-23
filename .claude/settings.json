@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(sqlcmd -S \"\\(localdb\\)\\\\MSSQLLocalDB\" -d fatimachurchtbm -i \"C:\\\\Apps\\\\fatimatbm\\\\Scripts\\\\V4_dml_Scripts.sql\" 2>&1)",
+      "PowerShell(sqlcmd -S \"\\(localdb\\)\\\\MSSQLLocalDB\" -d fatimachurchtbm -Q \"SELECT name FROM sys.objects WHERE type = 'P' AND name IN \\('sp_GetAllSubscriptions','sp_GetSubscriptionsFiltered','sp_GetSubscriptionTotalCount','sp_SetCemeterySubscription','sp_GetCemeterySubscription','sp_GetFamilyByCode'\\) ORDER BY name; EXEC sp_GetSubscriptionTotalCount; EXEC sp_GetSubscriptionsFiltered @pageNumber=1, @pageSize=10;\" 2>&1)",
+      "PowerShell(Start-Process \"C:\\\\Apps\\\\fatimatbm\\\\bin\\\\Debug\\\\FatimaChurch.exe\")",
+      "Bash(sqlcmd -S '\\(localdb\\)\\\\MSSQLLocalDB' -d fatimachurchtbm -U sa -P Cts190588!1 -Q ' *)",
+      "Read(//c/Program Files/Microsoft Visual Studio/**)",
+      "Read(//c/Program Files \\(x86\\)/Microsoft Visual Studio/**)"
+    ]
+  }
+}

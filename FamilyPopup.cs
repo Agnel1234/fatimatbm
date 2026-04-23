@@ -33,6 +33,7 @@ namespace TestFat
 
         {
             InitializeComponent();
+            ApplyTheme();
 
             permZipcodetxt.KeyPress += NumberOnlyTextBox_KeyPress;
             tempZipcodetxt.KeyPress += NumberOnlyTextBox_KeyPress;
@@ -89,6 +90,64 @@ namespace TestFat
                 child4MemberId = 0;
                 child5MemberId = 0;
             }
+        }
+
+        private void ApplyTheme()
+        {
+            this.BackColor = AppTheme.OffWhite;
+
+            // Navy header bar at top
+            var header = new Panel { Height = 44, BackColor = AppTheme.Navy, Dock = DockStyle.Top };
+            var headerLbl = new Label
+            {
+                Text = "✝  Family Details",
+                Font = AppTheme.HeaderFont,
+                ForeColor = AppTheme.Gold,
+                AutoSize = true,
+                Location = new Point(12, 12)
+            };
+            header.Controls.Add(headerLbl);
+            this.Controls.Add(header);
+            header.BringToFront();
+
+            // Action bar (panel5) — navy background
+            panel5.BackColor = AppTheme.Navy;
+
+            // Primary submit button
+            AppTheme.StyleButtonPrimary(btnSubmit);
+            AppTheme.SetIcon(btnSubmit, AppTheme.IconSave(), "Save", 18);
+
+            // Add children / relation buttons — outline style
+            AppTheme.StyleButtonOutline(btnAddChildren);
+            AppTheme.SetIcon(btnAddChildren, AppTheme.IconAddPerson(), "Add Child", 18);
+
+            AppTheme.StyleButtonOutline(btnAddOtherRelation);
+            AppTheme.SetIcon(btnAddOtherRelation, AppTheme.IconAddPerson(), "Add Relation", 18);
+
+            // Disable button — secondary (navy/gold)
+            AppTheme.StyleButtonSecondary(btn_disable);
+            AppTheme.SetIcon(btn_disable, AppTheme.IconDisable(), "Disable Family", 18);
+
+            // Style group box header panels (InactiveCaption panels → teal tint)
+            Color sectionHeader = Color.FromArgb(44, 110, 122);
+            Color sectionHeaderFg = Color.White;
+            Panel[] headerPanels = { panel20, panel2, panel1, panel3, panel4 };
+            foreach (var p in headerPanels)
+            {
+                if (p != null) { p.BackColor = sectionHeader; foreach (Control c in p.Controls) if (c is Label l) l.ForeColor = sectionHeaderFg; }
+            }
+
+            // Group boxes — white background
+            GroupBox[] groupBoxes = { generalGroupBox, husbandGroupBox, wifeGroupbox,
+                child1Groupbox, child2Groupbox, child3Groupbox, child4Groupbox, child5Groupbox,
+                relation1Groupbox, otherRelation2Groupbox };
+            foreach (var gb in groupBoxes)
+            {
+                if (gb != null) { gb.BackColor = Color.White; gb.ForeColor = AppTheme.Navy; gb.Font = AppTheme.BoldSmall; }
+            }
+
+            // flowLayoutPanel background
+            flowLayoutPanel1.BackColor = AppTheme.OffWhite;
         }
 
         private void btnAddChildren_Click(object sender, EventArgs e)

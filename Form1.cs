@@ -76,11 +76,16 @@ namespace TestFat
             // LoadFamilyBasicDetails(null);
             // LoadAllCemeteryData(null);
 
-            // Make all grids read-only
+            // Make all grids read-only and disable empty row
             familygrid.ReadOnly = true;
+            familygrid.AllowUserToAddRows = false;
             anbiyamGrid.ReadOnly = true;
+            anbiyamGrid.AllowUserToAddRows = false;
             familyMembersGrid.ReadOnly = true;
+            familyMembersGrid.AllowUserToAddRows = false;
             cemeteryGridView.ReadOnly = true;
+            cemeteryGridView.AllowUserToAddRows = false;
+            subscriptionGrid.AllowUserToAddRows = false;
 
             // Full-row selection so SelectionChanged fires when any cell is clicked
             familygrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -113,6 +118,7 @@ namespace TestFat
             this.panel8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 
             SetupPaginationControls();
+            AdjustFamilyTabLayout();
         }
 
         private void SetupPaginationControls()
@@ -131,16 +137,7 @@ namespace TestFat
             };
             panel5.Controls.AddRange(new Control[] { btnFamilyPrevious, btnFamilyNext, lblFamilyPageInfo });
 
-            // ── Anbiyams tab: add pagination row inside panel3 (action buttons) ──
-            btnAnbiyamPrevious = new System.Windows.Forms.Button { Text = "< Prev", Font = navFont, Width = 80, Height = 28, Location = new Point(810, 18) };
-            btnAnbiyamNext     = new System.Windows.Forms.Button { Text = "Next >", Font = navFont, Width = 80, Height = 28, Location = new Point(900, 18) };
-            lblAnbiyamPageInfo = new System.Windows.Forms.Label  { Text = "Page 1 of 1", Font = navFont, AutoSize = true, Location = new Point(990, 24) };
-            btnAnbiyamPrevious.Click += (s, e) => { if (_anbiyamCurrentPage > 1) { _anbiyamCurrentPage--; LoadAnbiyamGrid(null); } };
-            btnAnbiyamNext.Click     += (s, e) => {
-                int tp = (int)Math.Ceiling((double)_anbiyamTotalCount / PageSize);
-                if (_anbiyamCurrentPage < tp) { _anbiyamCurrentPage++; LoadAnbiyamGrid(null); }
-            };
-            panel3.Controls.AddRange(new Control[] { btnAnbiyamPrevious, btnAnbiyamNext, lblAnbiyamPageInfo });
+            // Anbiyam pagination removed per UX improvements
 
             // ── Cemetery tab: shrink grid and add a pagination panel below it ──
             cemeteryGridView.Size = new Size(cemeteryGridView.Width, cemeteryGridView.Height - 42);
@@ -160,6 +157,42 @@ namespace TestFat
             };
             cemeteryPagPanel.Controls.AddRange(new Control[] { btnCemeteryPrevious, btnCemeteryNext, lblCemeteryPageInfo });
             cemeteryPage.Controls.Add(cemeteryPagPanel);
+        }
+
+        private void AdjustFamilyTabLayout()
+        {
+            int pageHeight = familyPage.Height;
+            int pageWidth = familyPage.Width;
+            int pad = 4;
+
+            int h15 = (int)(pageHeight * 0.15);
+            int h50 = (int)(pageHeight * 0.50);
+            int h20 = (int)(pageHeight * 0.20);
+            int h15b = pageHeight - h15 - h50 - h20 - (pad * 3);
+
+            panel4.Location = new Point(0, 0);
+            panel4.Size = new Size(pageWidth, h15);
+            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+            familygrid.Location = new Point(0, h15 + pad);
+            familygrid.Size = new Size(pageWidth, h50);
+            familygrid.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+            var lblMembers = familyPage.Controls.OfType<Label>().FirstOrDefault(l => l.Text.Contains("Family Members"));
+            if (lblMembers != null)
+            {
+                lblMembers.Location = new Point(0, h15 + pad + h50 + pad);
+                lblMembers.Size = new Size(pageWidth, 22);
+                lblMembers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            }
+
+            familyMembersGrid.Location = new Point(0, h15 + pad + h50 + pad + 22 + pad);
+            familyMembersGrid.Size = new Size(pageWidth, h20);
+            familyMembersGrid.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+            panel5.Location = new Point(0, h15 + pad + h50 + pad + 22 + pad + h20 + pad);
+            panel5.Size = new Size(pageWidth, h15b);
+            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         }
 
         private void ApplyTheme()
@@ -214,28 +247,7 @@ namespace TestFat
             //AppTheme.StyleButtonPrimary(searchButton);
             //StylePanelLabels(panel2);
 
-            // ── Anbiyam tab: reset filter button in action bar ──
-            {
-                var btnAnbiyamReset = new Button
-                {
-                    Text     = "Reset Filters",
-                    Size     = new Size(140, 29),
-                    Location = new Point(600, 19),
-                    Anchor   = AnchorStyles.Bottom | AnchorStyles.Right,
-                };
-                AppTheme.StyleButtonOutline(btnAnbiyamReset);
-                AppTheme.SetIcon(btnAnbiyamReset, AppTheme.IconClose(14), "Reset Filters", 14);
-                btnAnbiyamReset.Click += (s, e) =>
-                {
-                    //anbiyamCombobox.SelectedIndex    = 0;
-                    //coordinatorTetbox.Clear();
-                    _anbiyamIdFilter    = null;
-                    _anbiyamCoordFilter = null;
-                    _anbiyamCurrentPage = 1;
-                    LoadAnbiyamGrid(null);
-                };
-                panel3.Controls.Add(btnAnbiyamReset);
-            }
+            // Anbiyam reset filters removed per UX improvements
 
             // ── Family tab filter panel & action panel ──
             panel4.BackColor = AppTheme.FilterBar;
@@ -789,7 +801,8 @@ namespace TestFat
             int h            = dashboardPage.ClientSize.Height - pad * 2;
             if (h < 100) return;     // form not yet sized
 
-            int midH = (h - pad) / 2;  // height for each middle-area chart
+            int ageChartH = (int)(h * 0.80);  // Age chart takes 80%
+            int zoneChartH = h - ageChartH - pad;  // Zone chart takes 20%
 
             // chart2 = Gender Distribution — fixed 300 px left column, full height
             chart2.Dock     = DockStyle.None;
@@ -800,15 +813,15 @@ namespace TestFat
             int tlWidth = dashboardPage.ClientSize.Width - tlLeft - cardColWidth - pad;
             if (tlWidth < 60) tlWidth = 60;
 
-            // tableLayoutPanel3 = Age Distribution — middle top half
+            // tableLayoutPanel3 = Age Distribution — 80% of height
             tableLayoutPanel3.Dock     = DockStyle.None;
             tableLayoutPanel3.Location = new Point(tlLeft, pad);
-            tableLayoutPanel3.Size     = new Size(tlWidth, midH);
+            tableLayoutPanel3.Size     = new Size(tlWidth, ageChartH);
 
-            // chart4 = Zone Families — middle bottom half
+            // chart4 = Zone Families — 20% of height at bottom
             var zc = EnsureZoneChart();
             zc.Location = new Point(tlLeft, tableLayoutPanel3.Bottom + pad);
-            zc.Size     = new Size(tlWidth, h - midH - pad);
+            zc.Size     = new Size(tlWidth, zoneChartH);
 
             // Styles
             chart2.BackColor            = Color.White;
@@ -969,8 +982,7 @@ namespace TestFat
         // Anbiyams tab
         private int _anbiyamCurrentPage = 1;
         private int _anbiyamTotalCount = 0;
-        private System.Windows.Forms.Button btnAnbiyamPrevious, btnAnbiyamNext;
-        private System.Windows.Forms.Label lblAnbiyamPageInfo;
+        // Anbiyam pagination buttons removed per UX improvements
         private int? _anbiyamIdFilter = null;
         private string _anbiyamCoordFilter = null;
 
@@ -1556,30 +1568,15 @@ namespace TestFat
         {
             if (dt == null)
             {
-                var countParams = new[]
-                {
-                    new SqlParameter("@anbiyam_id",       (object)_anbiyamIdFilter    ?? DBNull.Value),
-                    new SqlParameter("@coordinator_name", (object)_anbiyamCoordFilter ?? DBNull.Value)
-                };
-                object cnt = DatabaseHelper.ExecuteScalarStoredProcedure("sp_GetAnbiyamTotalCount", countParams);
-                _anbiyamTotalCount = cnt != null && cnt != DBNull.Value ? Convert.ToInt32(cnt) : 0;
-
+                // Load all anbiyams without pagination
                 var dataParams = new[]
                 {
-                    new SqlParameter("@pageNumber",       _anbiyamCurrentPage),
-                    new SqlParameter("@pageSize",         PageSize),
+                    new SqlParameter("@pageNumber",       1),
+                    new SqlParameter("@pageSize",         1000),
                     new SqlParameter("@anbiyam_id",       (object)_anbiyamIdFilter    ?? DBNull.Value),
                     new SqlParameter("@coordinator_name", (object)_anbiyamCoordFilter ?? DBNull.Value)
                 };
                 dt = DatabaseHelper.ExecuteStoredProcedure("sp_GetAnbiyamGridPaged", dataParams);
-
-                if (lblAnbiyamPageInfo != null)
-                {
-                    int tp = _anbiyamTotalCount == 0 ? 1 : (int)Math.Ceiling((double)_anbiyamTotalCount / PageSize);
-                    lblAnbiyamPageInfo.Text = $"Page {_anbiyamCurrentPage} of {tp}  ({_anbiyamTotalCount} records)";
-                    btnAnbiyamPrevious.Enabled = _anbiyamCurrentPage > 1;
-                    btnAnbiyamNext.Enabled = _anbiyamCurrentPage < tp;
-                }
             }
 
             anbiyamGrid.DataSource = dt;

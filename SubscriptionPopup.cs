@@ -34,19 +34,67 @@ namespace TestFat
             _familyId = familyId;
             _year = year ?? DateTime.Today.Year;
 
-            // Build the UI and wire events
             InitializeComponent();
 
-            // Match other forms' aesthetics
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = true;
-            this.BackColor = Color.WhiteSmoke;
             this.Font = new Font("Georgia", 11F, FontStyle.Regular);
             this.ShowIcon = true;
             this.StartPosition = FormStartPosition.CenterParent;
 
+            ApplyTheme();
             Load += SubscriptionPopup_Load;
+        }
+
+        private void ApplyTheme()
+        {
+            this.BackColor = AppTheme.OffWhite;
+
+            // Navy header bar
+            var header = new Panel { Height = 44, BackColor = AppTheme.Navy,
+                Location = new Point(0, 0), Width = this.ClientSize.Width };
+            var headerLbl = new Label
+            {
+                Text = "✝  Subscription",
+                Font = AppTheme.HeaderFont,
+                ForeColor = AppTheme.Gold,
+                AutoSize = true,
+                Location = new Point(12, 12)
+            };
+            header.Controls.Add(headerLbl);
+            this.Controls.Add(header);
+            header.BringToFront();
+
+            // Shift existing controls below the header
+            int shift = 44;
+            foreach (Control c in this.Controls)
+            {
+                if (c == header) continue;
+                c.Location = new Point(c.Left, c.Top + shift);
+            }
+            this.ClientSize = new Size(this.ClientSize.Width, this.ClientSize.Height + shift);
+
+            // Hide old title label (header bar replaces it)
+            lblTitle.Visible = false;
+
+            // Label colours
+            lblFamily.ForeColor = AppTheme.Navy;
+            lblFamily.Font = AppTheme.BodyFont;
+
+            // Panel backgrounds
+            monthsPanel.BackColor = Color.White;
+            monthsPanel.BorderStyle = BorderStyle.None;
+            paymentPanel.BackColor = Color.White;
+            paymentPanel.BorderStyle = BorderStyle.None;
+            foreach (Control c in paymentPanel.Controls)
+                if (c is Label l) { l.ForeColor = AppTheme.Navy; l.BackColor = Color.Transparent; }
+
+            // Buttons
+            AppTheme.StyleButtonPrimary(btnSaveMonth);
+            AppTheme.SetIcon(btnSaveMonth, AppTheme.IconSave(), "Save");
+            AppTheme.StyleButtonSecondary(btnClose);
+            AppTheme.SetIcon(btnClose, AppTheme.IconClose(), "Close", 16);
         }
 
         private void InitializeComponent()
