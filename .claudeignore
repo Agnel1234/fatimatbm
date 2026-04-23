@@ -1,0 +1,43 @@
+# Claude Code Ignore Rules
+# Prevents unnecessary folders from being read during analysis
+
+# Package managers
+node_modules/
+packages/
+.nuget/
+
+# Build output
+bin/
+obj/
+dist/
+build/
+
+# IDE and editor
+.vs/
+.vscode/
+.idea/
+*.user
+*.sln.iml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Git
+.git/
+.gitignore
+
+# NuGet
+*.nupkg
+.nuget/
+
+# Test coverage
+coverage/
+.nyc_output/
