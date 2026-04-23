@@ -1,0 +1,198 @@
+================================================================================
+V4 DATABASE MIGRATION NOTES
+================================================================================
+Version: V4
+Date Created: 2026-04-21
+Status: Ready for Deployment to Production RDS
+
+================================================================================
+OVERVIEW
+================================================================================
+
+V4 introduces pagination and advanced filtering support for the Fatima Church
+Forms application. The main changes are NEW stored procedures and indexes to
+support efficient querying of large subscription datasets.
+
+NO BREAKING CHANGES: All V3 tables and schemas remain intact. V4 is purely
+additive (new indexes and procedures).
+
+================================================================================
+WHAT'S ALREADY IN PROD (V1, V2, V3)
+================================================================================
+
+✓ V1 (Oct 20, 2025):
+  - Core tables: anbiyam, family, family_member, cemetery_details
+  - Initial stored procedures for CRUD operations
+  - User authentication (users table - V2)
+
+✓ V2 (Oct 25, 2025):
+  - Added users table with hashed passwords
+  - Added columns: ishusbandactive, iswifeactive to family table
+
+✓ V3 (Nov 3, 2025):
+  - Migrated from family_subscription (monthly rows) to family_subscription_yearly
+  - Created cemetery_subscription_yearly table
+  - New procedures: sp_SetFamilySubscriptionMonth, sp_GetFamilySubscriptionYear
+  - Indexes: IX_family_subscription_yearly_family_year, IX_cemetery_subscription_yearly_year
+  - DROPPED old family_subscription table
+
+PRODUCTION ASSUMPTION: All V3 changes are deployed to the AWS RDS instance at
+fatimachurchinstanceind.c9ycygc8iku9.ap-south-1.rds.amazonaws.com
+
+================================================================================
+WHAT'S NEW IN V4 (TO BE DEPLOYED)
+================================================================================
+
+NEW INDEXES (for performance optimization):
+  - IX_family_subscription_yearly_year
+  - IX_family_subscription_yearly_family
+  - IX_family_subscription_yearly_status  (with INCLUDE columns)
+  - IX_family_subscription_yearly_composite
+  - IX_cemetery_subscription_yearly_family
+  - IX_cemetery_subscription_yearly_status  (with INCLUDE columns)
+  - IX_cemetery_subscription_yearly_composite
+
+NEW STORED PROCEDURES:
+
+  1. sp_GetAllSubscriptions
+     - Gets all family and cemetery subscriptions with pagination
+     - Parameters: @pageNumber (default 1), @pageSize (default 50)
+     - Returns: Combined family + cemetery subscription rows
+     - Purpose: Power the new Subscription tab grid
+
+  2. sp_GetSubscriptionsFiltered
+     - Gets filtered subscriptions with pagination
+     - Parameters: @pageNumber, @pageSize, @familyName, @anbiyamId,
+                  @subscriptionType (Family/Cemetery), @status (Paid/Pending),
+                  @yearFrom, @yearTo
+     - Returns: Filtered subscription rows
+     - Purpose: Support advanced filtering in Subscription tab
+
+  3. sp_GetSubscriptionTotalCount
+     - Gets total count of matching subscriptions (for pagination UI)
+     - Same parameters as sp_GetSubscriptionsFiltered
+     - Returns: Single row with TotalCount column
+     - Purpose: Calculate total pages in client UI
+
+  4. sp_SetCemeterySubscription
+     - Upserts cemetery subscription (insert or update by family_id + year)
+     - Parameters: @family_id, @subscription_year, @amount, @payment_date,
+                  @payment_status
+     - Returns: None (success/error via exception)
+     - Purpose: Persist cemetery subscription changes from CemeterySubscriptionPopup
+
+================================================================================
+DEPLOYMENT INSTRUCTIONS
+================================================================================
+
+STEP 1: Backup Production Database
+  - Take a backup snapshot of fatimachurchtbm database before deploying
+  - Document the timestamp for rollback purposes if needed
+
+STEP 2: Run V4 Scripts
+  Execute in this order on the Production RDS instance:
+
+  a) V4_ddl_Scripts.sql
+     - Creates new indexes on existing tables
+     - Idempotent: uses IF NOT EXISTS checks
+     - Estimated runtime: < 1 minute
+
+  b) V4_dml_Scripts.sql
+     - Creates 4 new stored procedures
+     - Idempotent: uses CREATE OR ALTER
+     - Estimated runtime: < 30 seconds
+
+STEP 3: Validate Deployment
+  Run validation queries:
+
+  -- Check indexes were created
+  SELECT name, object_name, type_desc
+  FROM sys.indexes
+  WHERE object_id IN (OBJECT_ID('dbo.family_subscription_yearly'),
+                      OBJECT_ID('dbo.cemetery_subscription_yearly'))
+  AND name LIKE 'IX_%'
+  ORDER BY object_name;
+
+  -- Check stored procedures were created
+  SELECT name, type_desc
+  FROM sys.objects
+  WHERE name IN ('sp_GetAllSubscriptions', 'sp_GetSubscriptionsFiltered',
+                 'sp_GetSubscriptionTotalCount', 'sp_SetCemeterySubscription')
+  ORDER BY name;
+
+  -- Test sp_GetAllSubscriptions
+  EXEC dbo.sp_GetAllSubscriptions @pageNumber = 1, @pageSize = 10;
+
+  -- Test sp_GetSubscriptionTotalCount
+  EXEC dbo.sp_GetSubscriptionTotalCount;
+
+STEP 4: Deploy Application Code
+  - Build and deploy the updated Windows Forms application
+  - Application will use new Subscription tab and procedures
+
+================================================================================
+ROLLBACK PROCEDURE
+================================================================================
+
+If V4 deployment causes issues:
+
+1. Restore database from backup (Step 1)
+2. Revert application code to previous version
+3. Verify application functionality
+
+Quick rollback (without restoring entire database):
+  -- Drop new indexes
+  DROP INDEX IF EXISTS dbo.IX_family_subscription_yearly_year
+    ON dbo.family_subscription_yearly;
+  DROP INDEX IF EXISTS dbo.IX_family_subscription_yearly_family
+    ON dbo.family_subscription_yearly;
+  -- ... (repeat for other new indexes)
+
+  -- Drop new stored procedures
+  DROP PROCEDURE IF EXISTS dbo.sp_GetAllSubscriptions;
+  DROP PROCEDURE IF EXISTS dbo.sp_GetSubscriptionsFiltered;
+  DROP PROCEDURE IF EXISTS dbo.sp_GetSubscriptionTotalCount;
+  DROP PROCEDURE IF EXISTS dbo.sp_SetCemeterySubscription;
+
+Note: Dropping indexes will not break existing functionality but may impact
+performance of the new Subscription tab.
+
+================================================================================
+TESTING CHECKLIST (PRE-DEPLOYMENT)
+================================================================================
+
+Before deploying V4 to Production, test on a staging/dev instance:
+
+□ Run V4 scripts without errors
+□ Verify all 6 indexes exist and are active
+□ Verify all 4 stored procedures exist and are callable
+□ Execute sp_GetAllSubscriptions with various page sizes
+□ Execute sp_GetSubscriptionsFiltered with various filter combinations
+□ Verify sp_GetSubscriptionTotalCount returns accurate counts
+□ Test sp_SetCemeterySubscription for insert and update cases
+□ Verify no existing V1/V2/V3 functionality is broken
+□ Check query performance: sp_GetAllSubscriptions with 500+ subscriptions
+  should return < 2 seconds
+
+================================================================================
+PRODUCTION ENVIRONMENT DETAILS
+================================================================================
+
+Database: fatimachurchtbm
+Server: fatimachurchinstanceind.c9ycygc8iku9.ap-south-1.rds.amazonaws.com
+Engine: Microsoft SQL Server
+Current Version: V3 (as of 2026-02-03)
+
+================================================================================
+SUPPORT & ROLLBACK CONTACT
+================================================================================
+
+If issues arise during or after V4 deployment:
+1. Check the validation queries in STEP 3
+2. Review the Rollback Procedure section
+3. Restore from backup if necessary
+4. Contact development team with error details
+
+================================================================================
+END OF V4 MIGRATION NOTES
+================================================================================

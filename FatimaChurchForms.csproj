@@ -52,10 +52,10 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>FatimaChurchKeyFile.pfx</AssemblyOriginatorKeyFile>
@@ -216,6 +216,8 @@
     <Compile Include="NonParishFamily.Designer.cs">
       <DependentUpon>NonParishFamily.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppTheme.cs" />
+    <Compile Include="ThemedDialog.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgressForm.cs">
       <SubType>Form</SubType>
@@ -224,6 +226,15 @@
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NonParishCemeterySubscriptionPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CemeterySubscriptionPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CemeterySubscriptionPopup.Designer.cs">
+      <DependentUpon>CemeterySubscriptionPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubscriptionPopup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +295,9 @@
   <ItemGroup>
     <Content Include="church-2.ico" />
     <Content Include="Resources\church-2.ico" />
+    <Content Include="Resources\anbiyam_map.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
