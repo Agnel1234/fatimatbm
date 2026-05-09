@@ -29,7 +29,7 @@ namespace TestFat
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition   = FormStartPosition.CenterScreen;
             this.BackColor       = AppTheme.Navy;
-            this.ClientSize      = new Size(420, 380);
+            this.ClientSize      = new Size(460, 420);
             this.Text            = "Login";
             this.Font            = AppTheme.BodyFont;
 
@@ -40,37 +40,44 @@ namespace TestFat
             // ── Header panel ──
             var header = new Panel
             {
-                Height    = 100,
+                Height    = 110,
                 Dock      = DockStyle.Top,
                 BackColor = AppTheme.Navy,
             };
 
-            // Cross + church name stacked
-            header.Controls.Add(new Label
+            // Cross + church name stacked (centered in header)
+            var lblCross = new Label
             {
                 Text      = "✝",
-                Font      = new Font("Georgia", 22F, FontStyle.Bold),
+                Font      = new Font("Georgia", 28F, FontStyle.Bold),
                 ForeColor = AppTheme.Gold,
                 AutoSize  = true,
-                Location  = new Point(header.Width / 2 - 10, 8),
-                Anchor    = AnchorStyles.Top,
-            });
-            header.Controls.Add(new Label
+                Location  = new Point(header.Width / 2 - 14, 8),
+            };
+            header.Controls.Add(lblCross);
+            header.Layout += (s, e) => lblCross.Left = (header.Width / 2) - 14;
+
+            var lblChurch = new Label
             {
                 Text      = "Our Lady of Fatima Church",
                 Font      = new Font("Georgia", 13F, FontStyle.Bold),
                 ForeColor = AppTheme.Gold,
                 AutoSize  = true,
-                Location  = new Point(60, 42),
-            });
-            header.Controls.Add(new Label
+                Location  = new Point(110, 42),
+            };
+            header.Controls.Add(lblChurch);
+            header.Layout += (s, e) => lblChurch.Left = (header.Width - lblChurch.Width) / 2;
+
+            var lblLocation = new Label
             {
                 Text      = "Tambaram, Chennai",
                 Font      = AppTheme.SmallFont,
                 ForeColor = Color.FromArgb(180, 200, 215),
                 AutoSize  = true,
-                Location  = new Point(130, 68),
-            });
+                Location  = new Point(165, 68),
+            };
+            header.Controls.Add(lblLocation);
+            header.Layout += (s, e) => lblLocation.Left = (header.Width - lblLocation.Width) / 2;
 
             // Drag the form by dragging the header
             header.MouseDown += (s, e) => {
@@ -81,10 +88,16 @@ namespace TestFat
             var card = new Panel
             {
                 BackColor   = Color.White,
-                Size        = new Size(340, 230),
-                Location    = new Point(40, 110),
+                Size        = new Size(340, 240),
+                Location    = new Point(60, 115),
                 BorderStyle = BorderStyle.None,
             };
+
+            // Center card horizontally on form resize
+            this.Resize += (s, e) => {
+                card.Left = (this.ClientSize.Width - card.Width) / 2;
+            };
+
             card.Paint += (s, pe) =>
                 pe.Graphics.DrawRectangle(new Pen(AppTheme.GridBorder, 1), 0, 0, card.Width - 1, card.Height - 1);
 
@@ -97,7 +110,7 @@ namespace TestFat
             });
 
             // ── Labels and fields inside card ──
-            int lx = 24, fx = 150, fw = 160, fy = 28;
+            int lx = 24, fx = 130, fw = 180, fy = 28;
 
             // Username
             card.Controls.Add(new Label
@@ -108,8 +121,8 @@ namespace TestFat
                 AutoSize  = true,
                 Location  = new Point(lx, fy + 4),
             });
-            txtUsername.Location    = new Point(fx, fy);
-            txtUsername.Size        = new Size(fw, 26);
+            txtUsername.Location    = new Point(lx, fy + 22);
+            txtUsername.Size        = new Size(fw, 28);
             txtUsername.Font        = AppTheme.BodyFont;
             txtUsername.BackColor   = AppTheme.OffWhite;
             txtUsername.ForeColor   = AppTheme.Navy;
@@ -117,7 +130,7 @@ namespace TestFat
             card.Controls.Add(txtUsername);
 
             // Password
-            int py = fy + 50;
+            int py = fy + 65;
             card.Controls.Add(new Label
             {
                 Text      = "Password",
@@ -126,8 +139,8 @@ namespace TestFat
                 AutoSize  = true,
                 Location  = new Point(lx, py + 4),
             });
-            txtPassword.Location      = new Point(fx, py);
-            txtPassword.Size          = new Size(fw, 26);
+            txtPassword.Location      = new Point(lx, py + 22);
+            txtPassword.Size          = new Size(fw, 28);
             txtPassword.Font          = AppTheme.BodyFont;
             txtPassword.BackColor     = AppTheme.OffWhite;
             txtPassword.ForeColor     = AppTheme.Navy;
@@ -136,8 +149,8 @@ namespace TestFat
             card.Controls.Add(txtPassword);
 
             // Login button
-            btnLogin.Location  = new Point(lx, py + 60);
-            btnLogin.Size      = new Size(fw + fx - lx, 36);
+            btnLogin.Location  = new Point(lx, py + 75);
+            btnLogin.Size      = new Size(fw, 38);
             btnLogin.Text      = "Sign In";
             AppTheme.StyleButtonPrimary(btnLogin);
             AppTheme.SetIcon(btnLogin, AppTheme.IconChurch(18), "Sign In");
@@ -150,7 +163,7 @@ namespace TestFat
                 Font      = new Font("Georgia", 8F, FontStyle.Italic),
                 ForeColor = Color.FromArgb(140, 160, 175),
                 AutoSize  = true,
-                Location  = new Point(lx, py + 102),
+                Location  = new Point(lx, py + 123),
             });
 
             // ── Close button top-right ──
@@ -165,8 +178,9 @@ namespace TestFat
                 Font      = new Font("Segoe UI", 11F),
                 Cursor    = Cursors.Hand,
                 TabStop   = false,
-                Anchor    = AnchorStyles.Top | AnchorStyles.Right,
             };
+            this.Resize += (s, e) => btnClose.Left = this.ClientSize.Width - 40;
+
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.MouseEnter += (s, e) => ((Button)s).BackColor = Color.FromArgb(192, 57, 43);
             btnClose.MouseLeave += (s, e) => ((Button)s).BackColor = AppTheme.Navy;
@@ -179,8 +193,9 @@ namespace TestFat
                 Font      = new Font("Georgia", 8F, FontStyle.Italic),
                 ForeColor = Color.FromArgb(100, 130, 150),
                 AutoSize  = true,
-                Location  = new Point(130, 350),
+                Location  = new Point(155, 365),
             };
+            this.Resize += (s, e) => footer.Left = (this.ClientSize.Width - footer.Width) / 2;
 
             // Remove old panel1 controls from form and add new ones
             this.Controls.Clear();
@@ -188,6 +203,12 @@ namespace TestFat
             this.Controls.Add(card);
             this.Controls.Add(btnClose);
             this.Controls.Add(footer);
+
+            // Initial centering
+            this.Load += (s, e) => {
+                card.Left = (this.ClientSize.Width - card.Width) / 2;
+                footer.Left = (this.ClientSize.Width - footer.Width) / 2;
+            };
         }
 
         private bool AuthenticateUser(string username, string password)

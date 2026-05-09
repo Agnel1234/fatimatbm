@@ -30,7 +30,6 @@ namespace TestFat
         public string anbiyamAddress = "";
         private Point _hoveredCell = new Point(-1, -1);
 
-        // Add these members to the Form1 class (e.g., near the top of the class)
         public string LoggedInUser { get; private set; }
         public Form1(string loggedInUser)
         {
@@ -72,9 +71,6 @@ namespace TestFat
             LoadAgeGroupChart();
             LoadGenderGroupChart();
             LoadZoneFamilyChart();
-
-            // LoadFamilyBasicDetails(null);
-            // LoadAllCemeteryData(null);
 
             // Make all grids read-only and disable empty row
             familygrid.ReadOnly = true;
@@ -118,7 +114,7 @@ namespace TestFat
             this.panel8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 
             SetupPaginationControls();
-            AdjustFamilyTabLayout();
+            RebuildFamilyTab();
         }
 
         private void SetupPaginationControls()
@@ -126,16 +122,15 @@ namespace TestFat
             var navFont = new Font("Georgia", 10F);
             var navBack = Color.FromArgb(216, 226, 220);
 
-            // ── Families tab: add pagination row inside panel5 (action buttons) ──
-            btnFamilyPrevious = new System.Windows.Forms.Button { Text = "< Prev", Font = navFont, Width = 80, Height = 28, Location = new Point(810, 36) };
-            btnFamilyNext     = new System.Windows.Forms.Button { Text = "Next >", Font = navFont, Width = 80, Height = 28, Location = new Point(900, 36) };
-            lblFamilyPageInfo = new System.Windows.Forms.Label  { Text = "Page 1 of 1", Font = navFont, AutoSize = true, Location = new Point(990, 42) };
+            // ── Families tab: create pagination controls (will be added to action bar by RebuildFamilyTab) ──
+            btnFamilyPrevious = new System.Windows.Forms.Button { Text = "< Prev", Font = navFont, Width = 80, Height = 28 };
+            btnFamilyNext     = new System.Windows.Forms.Button { Text = "Next >", Font = navFont, Width = 80, Height = 28 };
+            lblFamilyPageInfo = new System.Windows.Forms.Label  { Text = "Page 1 of 1", Font = navFont, AutoSize = true };
             btnFamilyPrevious.Click += (s, e) => { if (_familyCurrentPage > 1) { _familyCurrentPage--; LoadFamilyBasicDetails(null); } };
             btnFamilyNext.Click     += (s, e) => {
                 int tp = (int)Math.Ceiling((double)_familyTotalCount / PageSize);
                 if (_familyCurrentPage < tp) { _familyCurrentPage++; LoadFamilyBasicDetails(null); }
             };
-            panel5.Controls.AddRange(new Control[] { btnFamilyPrevious, btnFamilyNext, lblFamilyPageInfo });
 
             // Anbiyam pagination removed per UX improvements
 
@@ -159,40 +154,283 @@ namespace TestFat
             cemeteryPage.Controls.Add(cemeteryPagPanel);
         }
 
+        private void RebuildFamilyTab()
+        {
+            familyPage.Controls.Clear();
+
+            // ────────────────────────────────────────────────────────────────
+            // MASTER LAYOUT: 6-row TableLayoutPanel
+            // ────────────────────────────────────────────────────────────────
+            var master = new TableLayoutPanel
+            {
+                Dock        = DockStyle.Fill,
+                ColumnCount = 1,
+                RowCount    = 6,
+                Margin      = Padding.Empty,
+                Padding     = Padding.Empty,
+                BackColor   = AppTheme.OffWhite,
+            };
+            master.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
+            master.RowStyles.Add(new RowStyle(SizeType.Percent,  12f));   // Filter bar
+            master.RowStyles.Add(new RowStyle(SizeType.Absolute, 32f));   // Family List header
+            master.RowStyles.Add(new RowStyle(SizeType.Percent,  45f));   // Family grid
+            master.RowStyles.Add(new RowStyle(SizeType.Absolute, 32f));   // Members header
+            master.RowStyles.Add(new RowStyle(SizeType.Percent,  23f));   // Members grid
+            master.RowStyles.Add(new RowStyle(SizeType.Percent,  20f));   // Action bar
+
+            // Row 0: Filter panel
+            master.Controls.Add(BuildFilterPanel(), 0, 0);
+
+            // Row 1: Family List header
+            var lblFamilyListHeader = new Label
+            {
+                Name       = "lblFamilyListHeader",
+                Text       = "  👨‍👩‍👧‍👦  Family List",
+                Font       = AppTheme.BoldSmall,
+                ForeColor  = AppTheme.Gold,
+                BackColor  = AppTheme.Navy,
+                Dock       = DockStyle.Fill,
+                TextAlign  = ContentAlignment.MiddleLeft,
+                Padding    = new Padding(8, 0, 0, 0),
+                Margin     = Padding.Empty,
+            };
+            master.Controls.Add(lblFamilyListHeader, 0, 1);
+
+            // Row 2: Family grid
+            familygrid.Dock   = DockStyle.Fill;
+            familygrid.Margin = Padding.Empty;
+            AppTheme.StyleGrid(familygrid);
+            _familyGridInitialized = false;
+            master.Controls.Add(familygrid, 0, 2);
+
+            // Row 3: Family Members header
+            var lblMembersHeader = new Label
+            {
+                Name       = "lblMembersHeader",
+                Text       = "  👤  Family Members",
+                Font       = AppTheme.BoldSmall,
+                ForeColor  = AppTheme.Gold,
+                BackColor  = AppTheme.Navy,
+                Dock       = DockStyle.Fill,
+                TextAlign  = ContentAlignment.MiddleLeft,
+                Padding    = new Padding(8, 0, 0, 0),
+                Margin     = Padding.Empty,
+            };
+            master.Controls.Add(lblMembersHeader, 0, 3);
+
+            // Row 4: Family members grid
+            familyMembersGrid.Dock   = DockStyle.Fill;
+            familyMembersGrid.Margin = Padding.Empty;
+            AppTheme.StyleGrid(familyMembersGrid);
+            master.Controls.Add(familyMembersGrid, 0, 4);
+
+            // Row 5: Action bar
+            master.Controls.Add(BuildActionBar(), 0, 5);
+
+            familyPage.Controls.Add(master);
+
+            // ────────────────────────────────────────────────────────────────
+            // BUTTON STYLING
+            // ────────────────────────────────────────────────────────────────
+            AppTheme.StyleButtonPrimary(btnFamilyCreate);
+            AppTheme.StyleButtonSecondary(btnFamilyEdit);
+            AppTheme.StyleButtonSecondary(btnCemetery);
+            AppTheme.StyleButtonOutline(btn_exportfamily);
+
+            btn_disablefamily.FlatStyle                     = FlatStyle.Flat;
+            btn_disablefamily.BackColor                     = Color.FromArgb(180, 95, 15);
+            btn_disablefamily.ForeColor                     = Color.White;
+            btn_disablefamily.FlatAppearance.BorderColor    = Color.FromArgb(150, 75, 5);
+            btn_disablefamily.FlatAppearance.BorderSize     = 0;
+            btn_disablefamily.Font                          = AppTheme.BoldSmall;
+            btn_disablefamily.Cursor                        = Cursors.Hand;
+
+            // ────────────────────────────────────────────────────────────────
+            // INITIAL ENABLED STATE
+            // ────────────────────────────────────────────────────────────────
+            btn_disablefamily.Enabled = false;
+            btnFamilyEdit.Enabled     = false;
+            btnCemetery.Enabled       = false;
+            btn_exportfamily.Enabled  = true;
+
+            if (LoggedInUser == "GUEST")
+            {
+                btnFamilyCreate.Enabled = false;
+            }
+        }
+
+        private Panel BuildFilterPanel()
+        {
+            var outer = new Panel
+            {
+                Dock      = DockStyle.Fill,
+                BackColor = AppTheme.FilterBar,
+                Margin    = Padding.Empty,
+                Padding   = new Padding(0, 6, 0, 6),
+            };
+
+            // Teal left accent stripe
+            outer.Paint += (s, e) =>
+                e.Graphics.FillRectangle(new SolidBrush(AppTheme.Teal), 0, 0, 4, outer.Height);
+
+            // Inner 5-column TableLayoutPanel
+            var table = new TableLayoutPanel
+            {
+                Dock        = DockStyle.Fill,
+                ColumnCount = 5,
+                RowCount    = 2,
+                BackColor   = Color.Transparent,
+                Padding     = new Padding(8, 0, 8, 0),
+            };
+
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22f));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22f));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18f));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18f));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
+            table.RowStyles.Add(new RowStyle(SizeType.Absolute, 22f));
+            table.RowStyles.Add(new RowStyle(SizeType.Percent,  100f));
+
+            // Row 0: Labels
+            table.Controls.Add(MakeFilterLabel("Family Head Name"), 0, 0);
+            table.Controls.Add(MakeFilterLabel("Anbiyam Zone"),     1, 0);
+            table.Controls.Add(MakeFilterLabel("Occupation"),       2, 0);
+            table.Controls.Add(MakeFilterLabel("Cemetery"),         3, 0);
+
+            // Row 1: Input controls
+            txtFamilyHead.Dock                = DockStyle.Fill;
+            familyAnbiyamCombobox.Dock        = DockStyle.Fill;
+            familyOccupationComboxbox.Dock    = DockStyle.Fill;
+            cemeteryComboBox.Dock             = DockStyle.Fill;
+
+            table.Controls.Add(txtFamilyHead,             0, 1);
+            table.Controls.Add(familyAnbiyamCombobox,     1, 1);
+            table.Controls.Add(familyOccupationComboxbox, 2, 1);
+            table.Controls.Add(cemeteryComboBox,          3, 1);
+
+            // Row 1, Col 4: Search + Reset buttons
+            AppTheme.StyleButtonPrimary(searchFamily);
+            AppTheme.StyleButtonOutline(button1);
+            searchFamily.Text = "🔍  Search";
+            button1.Text      = "✕  Reset";
+            button1.Click    -= Button1_ResetClick;
+            button1.Click    += Button1_ResetClick;
+
+            var btnFlow = new FlowLayoutPanel
+            {
+                Dock          = DockStyle.Fill,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents  = false,
+                BackColor     = Color.Transparent,
+                Padding       = new Padding(0, 2, 0, 0),
+                Margin        = Padding.Empty,
+            };
+            btnFlow.Controls.Add(searchFamily);
+            btnFlow.Controls.Add(button1);
+
+            table.Controls.Add(btnFlow, 4, 1);
+            outer.Controls.Add(table);
+            return outer;
+        }
+
+        private Label MakeFilterLabel(string text)
+        {
+            return new Label
+            {
+                Text      = text,
+                Font      = AppTheme.BoldSmall,
+                AutoSize  = false,
+                Dock      = DockStyle.Fill,
+                TextAlign = ContentAlignment.BottomLeft,
+                ForeColor = AppTheme.Navy,
+                Margin    = Padding.Empty,
+            };
+        }
+
+        private Panel BuildActionBar()
+        {
+            var bar = new Panel
+            {
+                Dock      = DockStyle.Fill,
+                BackColor = AppTheme.ActionBar,
+                Margin    = Padding.Empty,
+                Padding   = new Padding(8, 0, 8, 0),
+            };
+
+            // Left group: Create, Edit, Cemetery
+            var leftFlow = new FlowLayoutPanel
+            {
+                Dock          = DockStyle.Left,
+                AutoSize      = true,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents  = false,
+                BackColor     = Color.Transparent,
+                Padding       = Padding.Empty,
+                Margin        = Padding.Empty,
+            };
+            leftFlow.Controls.AddRange(new Control[] { btnFamilyCreate, btnFamilyEdit, btnCemetery });
+
+            // Right group: Export, Disable
+            var rightFlow = new FlowLayoutPanel
+            {
+                Dock          = DockStyle.Right,
+                AutoSize      = true,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents  = false,
+                BackColor     = Color.Transparent,
+                Padding       = Padding.Empty,
+                Margin        = Padding.Empty,
+            };
+            rightFlow.Controls.AddRange(new Control[] { btn_exportfamily, btn_disablefamily });
+
+            // Pagination: far right
+            var pageFlow = new FlowLayoutPanel
+            {
+                Dock          = DockStyle.Right,
+                AutoSize      = true,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents  = false,
+                BackColor     = Color.Transparent,
+                Padding       = new Padding(8, 0, 0, 0),
+                Margin        = Padding.Empty,
+            };
+            pageFlow.Controls.AddRange(new Control[] { btnFamilyPrevious, lblFamilyPageInfo, btnFamilyNext });
+
+            // Add controls: pagination, export/disable, then create/edit/cemetery (Dock.Right stacks in reverse)
+            bar.Controls.Add(pageFlow);
+            bar.Controls.Add(rightFlow);
+            bar.Controls.Add(leftFlow);
+
+            // Vertically center all child controls
+            bar.Layout += (s, e) =>
+            {
+                foreach (Control c in bar.Controls)
+                {
+                    c.Top = (bar.Height - c.Height) / 2;
+                }
+            };
+
+            return bar;
+        }
+
+        private void Button1_ResetClick(object sender, EventArgs e)
+        {
+            familyAnbiyamCombobox.SelectedIndex     = 0;
+            txtFamilyHead.Clear();
+            familyOccupationComboxbox.SelectedIndex = 0;
+            cemeteryComboBox.SelectedIndex          = 0;
+            _familyAnbiyamFilter                    = 0;
+            _familyHeadFilter                       = null;
+            _familyOccFilter                        = null;
+            _familyCemeteryFilter                   = DBNull.Value;
+            _familyCurrentPage                      = 1;
+            _familyGridInitialized                  = false;
+            LoadFamilyBasicDetails(null);
+        }
+
         private void AdjustFamilyTabLayout()
         {
-            int pageHeight = familyPage.Height;
-            int pageWidth = familyPage.Width;
-            int pad = 4;
-
-            int h15 = (int)(pageHeight * 0.15);
-            int h50 = (int)(pageHeight * 0.50);
-            int h20 = (int)(pageHeight * 0.20);
-            int h15b = pageHeight - h15 - h50 - h20 - (pad * 3);
-
-            panel4.Location = new Point(0, 0);
-            panel4.Size = new Size(pageWidth, h15);
-            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-
-            familygrid.Location = new Point(0, h15 + pad);
-            familygrid.Size = new Size(pageWidth, h50);
-            familygrid.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-
-            var lblMembers = familyPage.Controls.OfType<Label>().FirstOrDefault(l => l.Text.Contains("Family Members"));
-            if (lblMembers != null)
-            {
-                lblMembers.Location = new Point(0, h15 + pad + h50 + pad);
-                lblMembers.Size = new Size(pageWidth, 22);
-                lblMembers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            }
-
-            familyMembersGrid.Location = new Point(0, h15 + pad + h50 + pad + 22 + pad);
-            familyMembersGrid.Size = new Size(pageWidth, h20);
-            familyMembersGrid.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-
-            panel5.Location = new Point(0, h15 + pad + h50 + pad + 22 + pad + h20 + pad);
-            panel5.Size = new Size(pageWidth, h15b);
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            // Replaced by RebuildFamilyTab()
         }
 
         private void ApplyTheme()
@@ -219,24 +457,6 @@ namespace TestFat
             AppTheme.StyleGrid(cemeteryGridView);
             AppTheme.StyleGrid(familyMembersGrid);
 
-            // ── Family members section divider label ──
-            {
-                var lblMembers = new Label
-                {
-                    Text      = "  Family Members",
-                    Font      = AppTheme.BoldSmall,
-                    ForeColor = AppTheme.Gold,
-                    BackColor = AppTheme.Navy,
-                    AutoSize  = false,
-                    Size      = new Size(familyMembersGrid.Width, 22),
-                    Location  = new Point(familyMembersGrid.Left, familyMembersGrid.Top - 22),
-                    Anchor    = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
-                    TextAlign = ContentAlignment.MiddleLeft,
-                };
-                familyPage.Controls.Add(lblMembers);
-                lblMembers.BringToFront();
-            }
-
             // ── Anbiyam tab filter panel & action panel ──
             //panel2.BackColor = AppTheme.FilterBar;
            // panel2.Paint += (s, pe) => pe.Graphics.FillRectangle(new SolidBrush(AppTheme.Teal), 0, 0, 4, ((Panel)s).Height);
@@ -249,49 +469,11 @@ namespace TestFat
 
             // Anbiyam reset filters removed per UX improvements
 
-            // ── Family tab filter panel & action panel ──
-            panel4.BackColor = AppTheme.FilterBar;
-            panel5.BackColor = AppTheme.ActionBar;
-            AppTheme.StyleButtonPrimary(btnFamilyCreate);
-            AppTheme.StyleButtonSecondary(btnFamilyEdit);
-            AppTheme.StyleButtonPrimary(searchFamily);
-            AppTheme.StyleButtonSecondary(btnCemetery);
-            AppTheme.StyleButtonOutline(btn_exportfamily);
-            // Disable button: amber/warning colour — distinct from danger red
-            btn_disablefamily.FlatStyle = FlatStyle.Flat;
-            btn_disablefamily.BackColor = Color.FromArgb(180, 95, 15);
-            btn_disablefamily.ForeColor = Color.White;
-            btn_disablefamily.FlatAppearance.BorderColor = Color.FromArgb(150, 75, 5);
-            btn_disablefamily.FlatAppearance.BorderSize  = 0;
-            btn_disablefamily.Font   = AppTheme.BoldSmall;
-            btn_disablefamily.Cursor = Cursors.Hand;
-            StylePanelLabels(panel4);
-
-            // ── Family tab: wire existing Reset Filter button (button1) ──
-            AppTheme.StyleButtonOutline(button1);
-            button1.Click += (s, e) =>
-            {
-                familyAnbiyamCombobox.SelectedIndex  = 0;
-                txtFamilyHead.Clear();
-                familyOccupationComboxbox.SelectedIndex = 0;
-                cemeteryComboBox.SelectedIndex       = 0;
-                _familyAnbiyamFilter    = 0;
-                _familyHeadFilter       = null;
-                _familyOccFilter        = null;
-                _familyCemeteryFilter   = DBNull.Value;
-                _familyCurrentPage      = 1;
-                LoadFamilyBasicDetails(null);
-            };
-
             // ── Selection-dependent buttons start disabled ──
-            btn_disablefamily.Enabled = false;
-            btnFamilyEdit.Enabled = false;
-            btnCemetery.Enabled = false;
             btnedit.Enabled = false;
 
             // ── Export buttons are always available ──
             btnpdfExport.Enabled = true;
-            btn_exportfamily.Enabled = true;
 
             // ── Cemetery tab filter & action panels ──
             panel7.BackColor   = AppTheme.FilterBar;
@@ -369,7 +551,6 @@ namespace TestFat
             lblSubscriptionPageInfo.Font = AppTheme.BoldSmall;
 
             // ── Family members sub-grid panel ──
-            //panel6.BackColor = AppTheme.OffWhite;
             AppTheme.StyleGrid(familyMembersGrid);
 
             // ── Header bar + custom tab nav (single panel, always above familytab) ──
@@ -649,15 +830,22 @@ namespace TestFat
             try
             {
                 object v;
-                v = DatabaseHelper.ExecuteScalarStoredProcedure("sp_GetFamilyTotalCount",
+
+                DataTable dtFamily = DatabaseHelper.ExecuteStoredProcedure("sp_GetFamilyTotalCount",
                     new SqlParameter("@anbiyam_id", 0),
                     new SqlParameter("@family_head", DBNull.Value),
                     new SqlParameter("@occupation", DBNull.Value),
                     new SqlParameter("@cemetery_available", DBNull.Value));
-                totalFamilies = v != null && v != DBNull.Value ? Convert.ToInt32(v) : 0;
+                if (dtFamily != null && dtFamily.Rows.Count > 0)
+                    totalFamilies = Convert.ToInt32(dtFamily.Rows[0]["TotalCount"]);
+                else
+                    totalFamilies = 0;
 
-                v = DatabaseHelper.ExecuteScalarStoredProcedure("sp_GetTotalAnbiyamsCount");
-                totalAnbiyams = v != null && v != DBNull.Value ? Convert.ToInt32(v) : 0;
+                DataTable dtAnbiyam = DatabaseHelper.ExecuteStoredProcedure("sp_GetTotalAnbiyamsCount");
+                if (dtAnbiyam != null && dtAnbiyam.Rows.Count > 0)
+                    totalAnbiyams = Convert.ToInt32(dtAnbiyam.Rows[0][0]);
+                else
+                    totalAnbiyams = 0;
 
                 v = DatabaseHelper.ExecuteScalarStoredProcedure("sp_GetSubscriptionTotalCount",
                     new SqlParameter("@familyName", DBNull.Value),
@@ -848,14 +1036,8 @@ namespace TestFat
             // Insert a default "Select" row at the top
             DataRow newRow = dt.NewRow();
             newRow[dt.Columns[0].ColumnName] = "Select";
-            newRow[dt.Columns[1].ColumnName] = 200; // or 0 if you prefer
+            newRow[dt.Columns[1].ColumnName] = 200;
             dt.Rows.InsertAt(newRow, 0);
-
-            //anbiyamCombobox.DataSource = dt;
-           // anbiyamCombobox.DisplayMember = dt.Columns[0].ColumnName;
-           // anbiyamCombobox.ValueMember = dt.Columns[1].ColumnName;
-            //anbiyamCombobox.SelectedIndex = 0; // Ensure "Select" is shown by default
-
 
             familyAnbiyamCombobox.DataSource = dt;
             familyAnbiyamCombobox.DisplayMember = dt.Columns[0].ColumnName;
@@ -867,16 +1049,18 @@ namespace TestFat
         {
             if (dt == null)
             {
-                // Get total count for pagination display
-                var countParams = new[]
+                if (_familyCurrentPage == 1)
                 {
-                    new SqlParameter("@anbiyam_id", _familyAnbiyamFilter),
-                    new SqlParameter("@family_head", _familyHeadFilter ?? (object)DBNull.Value),
-                    new SqlParameter("@occupation",  _familyOccFilter  ?? (object)DBNull.Value),
-                    new SqlParameter("@cemetery_available", _familyCemeteryFilter)
-                };
-                object cnt = DatabaseHelper.ExecuteScalarStoredProcedure("sp_GetFamilyTotalCount", countParams);
-                _familyTotalCount = cnt != null && cnt != DBNull.Value ? Convert.ToInt32(cnt) : 0;
+                    var countParams = new[]
+                    {
+                        new SqlParameter("@anbiyam_id", _familyAnbiyamFilter),
+                        new SqlParameter("@family_head", _familyHeadFilter ?? (object)DBNull.Value),
+                        new SqlParameter("@occupation",  _familyOccFilter  ?? (object)DBNull.Value),
+                        new SqlParameter("@cemetery_available", _familyCemeteryFilter)
+                    };
+                    object cnt = DatabaseHelper.ExecuteScalarStoredProcedure("sp_GetFamilyTotalCount", countParams);
+                    _familyTotalCount = cnt != null && cnt != DBNull.Value ? Convert.ToInt32(cnt) : 0;
+                }
 
                 var dataParams = new[]
                 {
@@ -896,43 +1080,46 @@ namespace TestFat
                     btnFamilyPrevious.Enabled = _familyCurrentPage > 1;
                     btnFamilyNext.Enabled = _familyCurrentPage < tp;
                 }
+
+                var hdr = familyPage.Controls.OfType<Label>()
+                             .FirstOrDefault(l => l.Name == "lblFamilyListHeader");
+                if (hdr != null)
+                    hdr.Text = $"  Family List  ({_familyTotalCount} records)";
             }
 
             familygrid.DataSource = dt;
-            familygrid.Columns["FamilyID"].Visible = false;
-            familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
-            familygrid.DefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Regular);
-            familygrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
-            familygrid.BackgroundColor = Color.WhiteSmoke;
-            familygrid.DefaultCellStyle.ForeColor = Color.Black;
 
-            if (familygrid.Columns["SubscriptionInfo"] == null)
+            if (!_familyGridInitialized)
             {
+                familygrid.Columns["FamilyID"].Visible = false;
+                familygrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12, FontStyle.Bold);
+                familygrid.DefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Regular);
+                familygrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
+                familygrid.BackgroundColor = Color.WhiteSmoke;
+                familygrid.DefaultCellStyle.ForeColor = Color.Black;
+
                 DataGridViewButtonColumn subCol = new DataGridViewButtonColumn();
                 subCol.Name = "SubscriptionInfo";
                 subCol.HeaderText = "";
-                subCol.Text = "Sub Info";
+                subCol.Text = "Subscription";
                 subCol.UseColumnTextForButtonValue = true;
                 subCol.Width = 88;
                 subCol.DefaultCellStyle.BackColor = AppTheme.Teal;
                 subCol.DefaultCellStyle.ForeColor = Color.White;
                 familygrid.Columns.Insert(Math.Min(10, familygrid.Columns.Count), subCol);
+
+                DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
+                btnCol.Name = "delete";
+                btnCol.HeaderText = "";
+                btnCol.Text = "Delete";
+                btnCol.UseColumnTextForButtonValue = true;
+                btnCol.Width = 60;
+                btnCol.DefaultCellStyle.BackColor = Color.DarkRed;
+                btnCol.DefaultCellStyle.ForeColor = Color.White;
+                familygrid.Columns.Insert(Math.Min(10, familygrid.Columns.Count), btnCol);
+
+                _familyGridInitialized = true;
             }
-
-            // Remove existing delete column if present to avoid duplicates
-            if (familygrid.Columns["delete"] != null)
-                familygrid.Columns.Remove("delete");
-
-            // Add a button column for delete
-            DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
-            btnCol.Name = "delete";
-            btnCol.HeaderText = "";
-            btnCol.Text = "Delete";
-            btnCol.UseColumnTextForButtonValue = true;
-            btnCol.Width = 60;
-            btnCol.DefaultCellStyle.BackColor = Color.DarkRed;
-            btnCol.DefaultCellStyle.ForeColor = Color.White;
-            familygrid.Columns.Insert(Math.Min(10, familygrid.Columns.Count), btnCol);
         }
 
 
@@ -968,7 +1155,7 @@ namespace TestFat
         // ============================================================
         // Pagination – shared page size and per-tab state
         // ============================================================
-        private const int PageSize = 50;
+        private const int PageSize = 25;
 
         // Families tab
         private int _familyCurrentPage = 1;
@@ -978,6 +1165,7 @@ namespace TestFat
         private int _familyAnbiyamFilter = 0;
         private string _familyHeadFilter = null, _familyOccFilter = null;
         private object _familyCemeteryFilter = DBNull.Value;
+        private bool _familyGridInitialized = false;
 
         // Anbiyams tab
         private int _anbiyamCurrentPage = 1;
@@ -1212,8 +1400,8 @@ namespace TestFat
             if (grid.Columns.Contains("Status") && e.ColumnIndex == grid.Columns["Status"].Index)
             {
                 string status = "";
-                if (grid.Rows[e.RowIndex].DataBoundItem is DataRowView drv2)
-                    status = drv2["Status"]?.ToString() ?? "";
+                if (grid.Rows[e.RowIndex].DataBoundItem is DataRowView drvStatus)
+                    status = drvStatus["Status"]?.ToString() ?? "";
                 else
                     status = e.Value?.ToString() ?? "";
                 ApplyStatusBadge(e, status);
@@ -1221,42 +1409,36 @@ namespace TestFat
             }
 
             // SubscriptionType column badge
-            if (!grid.Columns.Contains("SubscriptionType")) return;
-            if (e.ColumnIndex != grid.Columns["SubscriptionType"].Index) return;
-
-            string subType = "";
-            if (grid.Rows[e.RowIndex].DataBoundItem is DataRowView drv)
-                subType = drv["SubscriptionType"]?.ToString() ?? "";
-            else
-                subType = e.Value?.ToString() ?? "";
-
-            ApplySubTypeBadge(e, subType);
+            if (grid.Columns.Contains("Type") && e.ColumnIndex == grid.Columns["Type"].Index)
+            {
+                string subType = "";
+                if (grid.Rows[e.RowIndex].DataBoundItem is DataRowView drvSubType)
+                    subType = drvSubType["Type"]?.ToString() ?? "";
+                else
+                    subType = e.Value?.ToString() ?? "";
+                ApplySubTypeBadge(e, subType);
+                return;
+            }
         }
 
         private static void ApplySubTypeBadge(DataGridViewCellFormattingEventArgs e, string subType)
         {
             if (subType == "Family")
             {
-                e.CellStyle.BackColor = Color.FromArgb(215, 230, 250);
-                e.CellStyle.ForeColor = Color.FromArgb(20,  60, 120);
-                e.CellStyle.Font      = AppTheme.BoldSmall;
-                e.Value               = "♦  Family";   // ♦ Family
+                e.CellStyle.ForeColor = Color.Blue;
+                e.Value               = "👨‍👩‍👧‍👦  Family";
                 e.FormattingApplied   = true;
             }
             else if (subType == "Cemetery")
             {
-                e.CellStyle.BackColor = Color.FromArgb(215, 245, 225);
-                e.CellStyle.ForeColor = Color.FromArgb(25,  85,  50);
-                e.CellStyle.Font      = AppTheme.BoldSmall;
-                e.Value               = "✝  Cemetery";
+                e.CellStyle.ForeColor = Color.Red;
+                e.Value               = "⛪  Parish Cemetery";
                 e.FormattingApplied   = true;
             }
             else if (subType == "Outside Parish Cemetery")
             {
-                e.CellStyle.BackColor = Color.FromArgb(255, 240, 200);
-                e.CellStyle.ForeColor = Color.FromArgb(120, 60,  0);
-                e.CellStyle.Font      = AppTheme.BoldSmall;
-                e.Value               = "⛪  Outside Parish";
+                e.CellStyle.ForeColor = Color.BlueViolet;
+                e.Value               = "⛪  Outside-Parish Cemetery";
                 e.FormattingApplied   = true;
             }
         }
@@ -1293,14 +1475,28 @@ namespace TestFat
         {
             if (e.RowIndex < 0) return;
             var grid = (DataGridView)sender;
+
+            // Occupation column with icons
+            //if (grid.Columns.Contains("Occupation") && e.ColumnIndex == grid.Columns["Occupation"].Index)
+            //{
+            //    string occupation = "";
+            //    if (grid.Rows[e.RowIndex].DataBoundItem is DataRowView drvOccupation)
+            //        occupation = drvOccupation["Occupation"]?.ToString() ?? "";
+            //    else
+            //        occupation = e.Value?.ToString() ?? "";
+            //    ApplyOccupationBadge(e, occupation);
+            //    return;
+            //}
+
+            // Status column with badges
             string colName = grid.Columns.Contains("SubscriptionStatus") ? "SubscriptionStatus"
                            : grid.Columns.Contains("Status")             ? "Status"
                            : null;
             if (colName == null || e.ColumnIndex != grid.Columns[colName].Index) return;
 
             string status = "";
-            if (grid.Rows[e.RowIndex].DataBoundItem is DataRowView drv)
-                status = drv[colName]?.ToString() ?? "";
+            if (grid.Rows[e.RowIndex].DataBoundItem is DataRowView drvStatus)
+                status = drvStatus[colName]?.ToString() ?? "";
             else
                 status = e.Value?.ToString() ?? "";
 
@@ -1426,13 +1622,6 @@ namespace TestFat
                 series.Points[pointIndex].ToolTip = $"{ageGroupWithDesc}: {count} members ({percent:P1})";
 
                 colorIndex++;
-            }
-
-            // Explode largest slice for emphasis
-            if (series.Points.Count > 0)
-            {
-                int maxIndex = series.Points.IndexOf(series.Points.OrderByDescending(p => p.YValues[0]).First());
-                //series.Points[maxIndex].Exploded = true;
             }
 
             // Remove border around the chart control
@@ -1612,10 +1801,48 @@ namespace TestFat
                 int familyId = GetFamilyIdFromSelectedRow(selectedRow);
                 familyIDInContext = familyId;
                 LoadFamilyMembersForGrid(familyId);
+
+                // Update Family Members header with selected family name
+                string familyHead = "Selected Family";
+                try
+                {
+                    // Try to get the family head name from the selected row
+                    // First, try common column names
+                    foreach (DataGridViewColumn col in familygrid.Columns)
+                    {
+                        if (col.Visible && (col.Name.ToLower().Contains("head") || col.Name.ToLower().Contains("family")))
+                        {
+                            var cellValue = selectedRow.Cells[col.Name]?.Value;
+                            if (cellValue != null && cellValue != DBNull.Value)
+                            {
+                                familyHead = cellValue.ToString();
+                                break;
+                            }
+                        }
+                    }
+                    // If not found, use the first visible column after FamilyID
+                    if (familyHead == "Selected Family" && selectedRow.Cells.Count > 1)
+                    {
+                        var cellValue = selectedRow.Cells[1]?.Value;
+                        if (cellValue != null && cellValue != DBNull.Value)
+                            familyHead = cellValue.ToString();
+                    }
+                }
+                catch { } // Fallback to default if any error occurs
+
+                var hdr = familyPage.Controls.OfType<Label>()
+                             .FirstOrDefault(l => l.Name == "lblMembersHeader");
+                if (hdr != null)
+                    hdr.Text = $"  Family Members of: {familyHead}";
             }
             else
             {
                 familyIDInContext = 0;
+                // Reset members header to default
+                var hdr = familyPage.Controls.OfType<Label>()
+                             .FirstOrDefault(l => l.Name == "lblMembersHeader");
+                if (hdr != null)
+                    hdr.Text = "  Family Members";
             }
 
             if (LoggedInUser != "GUEST")
@@ -1678,7 +1905,6 @@ namespace TestFat
                 familyMembersGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
                 familyMembersGrid.BackgroundColor = Color.WhiteSmoke;
                 familyMembersGrid.DefaultCellStyle.ForeColor = Color.Black;
-
             }
             else
             {
@@ -1887,27 +2113,6 @@ namespace TestFat
             }
         }
 
-        //private void searchButton_Click(object sender, EventArgs e)
-        //{
-        //    using (var progress = new ProgressForm("Searching..."))
-        //    {
-        //        // Get selected anbiyam_id (handle "Select" as null)
-        //        object anbiyamIdObj = anbiyamCombobox.SelectedValue;
-        //        int? anbiyamId = null;
-        //        if (anbiyamIdObj != null && int.TryParse(anbiyamIdObj.ToString(), out int parsedId) && parsedId != 200) // 200 is your "Select" value
-        //            anbiyamId = parsedId;
-
-        //        // Get coordinator name and head of family from textboxes
-        //        string coordinatorName = coordinatorTetbox.Text.Trim();
-
-        //        // Store filters for pagination and reset to page 1
-        //        _anbiyamIdFilter    = anbiyamId;
-        //        _anbiyamCoordFilter = string.IsNullOrEmpty(coordinatorName) ? null : coordinatorName;
-        //        _anbiyamCurrentPage = 1;
-        //        LoadAnbiyamGrid(null);
-        //    }
-        //}
-
         private void searchFamily_Click(object sender, EventArgs e)
         {
             using (var progress = new ProgressForm("Searching..."))
@@ -1921,7 +2126,9 @@ namespace TestFat
                     anbiyamId = parsedId;
 
                 string familyHead = txtFamilyHead.Text == "" ? null : txtFamilyHead.Text.Trim();
-                string occupation = familyOccupationComboxbox.SelectedText == "" ? null : familyOccupationComboxbox.SelectedText.Trim(); ;
+                string occupation = familyOccupationComboxbox.SelectedIndex <= 0
+                    ? null
+                    : familyOccupationComboxbox.SelectedItem?.ToString();
 
                 switch (cemeteryComboBox.SelectedItem)
                 {
@@ -1939,12 +2146,12 @@ namespace TestFat
                         break;
                 }
 
-                // Store filters for pagination and reset to page 1
                 _familyAnbiyamFilter = anbiyamId;
                 _familyHeadFilter    = string.IsNullOrEmpty(familyHead) ? null : familyHead;
                 _familyOccFilter     = string.IsNullOrEmpty(occupation) ? null : occupation;
                 _familyCemeteryFilter = isCemeteryAvailable.HasValue ? (object)(isCemeteryAvailable.Value ? 1 : 0) : DBNull.Value;
                 _familyCurrentPage   = 1;
+                _familyGridInitialized = false;
                 LoadFamilyBasicDetails(null);
             }
         }
@@ -2001,10 +2208,8 @@ namespace TestFat
         {
             using (var popup = new NonParishFamily())
             {
-                popup.StartPosition = FormStartPosition.CenterScreen; // Show in the middle of the screen
+                popup.StartPosition = FormStartPosition.CenterScreen;
                 popup.ShowDialog();
-                // After closing, reload family basic details
-                // LoadFamilyBasicDetails(null);
             }
         }
 
@@ -2193,9 +2398,6 @@ namespace TestFat
                 {
                     string filename = "family_full_data_export-" + Guid.NewGuid() + ".pdf";
                     string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), filename);
-                    //progressBar1.Style = ProgressBarStyle.Marquee;
-                    //progressBar1.MarqueeAnimationSpeed = 30;
-                    //progressBar1.Visible = true;
                     DataTable dt = new DataTable();
                     await Task.Run(() => {
                         try
@@ -2206,8 +2408,6 @@ namespace TestFat
                         }
                         catch { }
                     });
-                    //progressBar1.Visible = false;
-                    //progressBar1.Style = ProgressBarStyle.Blocks;
                     ThemedDialog.Info("All family data exported successfully.\n\nSaved to: " + filePath, "Export Complete", this);
                 }
                 else if (choice == DialogResult.No)

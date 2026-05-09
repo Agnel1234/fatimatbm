@@ -252,7 +252,6 @@ namespace TestFat
 
                 };
 
-               // b.FlatAppearance.BorderColor = Color.DarkGray;
                 b.ToggleStateChanged += MonthButton_Click;
                 _monthButtons[i] = b;
                 _monthLabels[i] = l;
@@ -278,7 +277,6 @@ namespace TestFat
             }
             else
             {
-                //txtAmount.Text = txtAmount.Text;
                 dtpPaidOn.Value = DateTime.Today;
             }
 
@@ -322,9 +320,6 @@ namespace TestFat
 
         private void LoadSubscriptionYear(int year)
         {
-            // Reset UI
-            //foreach (var b in _monthButtons) if (b != null) b.BackColor = Color.LightGray;
-
             var parameters = new[] {
                 new SqlParameter("@family_id", _familyId),
                 new SqlParameter("@subscription_year", year)
@@ -357,7 +352,6 @@ namespace TestFat
 
                 if (status != null && status.Equals("Paid", StringComparison.OrdinalIgnoreCase) && paidDateObj != DBNull.Value)
                 {
-                    //btn.BackColor = Color.LightGreen;
                     btn.ToggleState = ToggleButtonState.Active;
                     btn.Text = $"{m}. {CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames[m - 1]} • Paid";
                 }

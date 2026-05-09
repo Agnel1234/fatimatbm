@@ -288,11 +288,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="delete.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="church-2.ico" />
     <Content Include="Resources\church-2.ico" />
     <Content Include="Resources\anbiyam_map.html">

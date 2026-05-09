@@ -1,0 +1,357 @@
+------------------------------------------------------------------------------------------------------
+-- SYNTHETIC DATA SCRIPT FOR FATIMA CHURCH TBM
+-- Purpose: Generate 200 families with members across multiple zones in Anbiyam
+-- Created: 2026-04-24
+-- Fixed: Phone generation, duplicate subscription records
+------------------------------------------------------------------------------------------------------
+
+USE fatimachurchtbm;
+GO
+
+SET NOCOUNT ON;
+GO
+
+------------------------------------------------------------------------------------------------------
+-- SECTION 1: DELETE OLD TEST DATA AND RESET ANBIYAM ZONES
+------------------------------------------------------------------------------------------------------
+
+-- Delete all test families and their data first
+DELETE FROM family_subscription_yearly WHERE family_id IN (SELECT family_id FROM family WHERE family_code LIKE 'FAM%');
+DELETE FROM cemetery_subscription_yearly WHERE family_id IN (SELECT family_id FROM family WHERE family_code LIKE 'FAM%');
+DELETE FROM cemetery_details WHERE family_id IN (SELECT family_id FROM family WHERE family_code LIKE 'FAM%');
+DELETE FROM family_member WHERE family_id IN (SELECT family_id FROM family WHERE family_code LIKE 'FAM%');
+DELETE FROM family WHERE family_code LIKE 'FAM%';
+
+-- Delete anbiyam records (1-5) to avoid PK conflicts
+DELETE FROM anbiyam WHERE anbiyam_id IN (1, 2, 3, 4, 5);
+
+-- Reset identity seed for anbiyam table
+DBCC CHECKIDENT ('anbiyam', RESEED, 0);
+
+GO
+
+------------------------------------------------------------------------------------------------------
+-- SECTION 2: INSERT ANBIYAM DATA (Zones) WITH CORRECT IDs
+------------------------------------------------------------------------------------------------------
+
+SET IDENTITY_INSERT anbiyam ON;
+
+INSERT INTO anbiyam (anbiyam_id, anbiyam_name, anbiyam_code, anbiyam_zone, anbiyam_coordinator_name, anbiyam_ass_coordinator_name, coordinator_email, coordinator_phone)
+VALUES (1, 'East Zone', 'ANB001', 1, 'Raj Kumar', 'Priya Singh', 'raj.kumar@fatimachurch.org', '9876543210');
+
+INSERT INTO anbiyam (anbiyam_id, anbiyam_name, anbiyam_code, anbiyam_zone, anbiyam_coordinator_name, anbiyam_ass_coordinator_name, coordinator_email, coordinator_phone)
+VALUES (2, 'West Zone', 'ANB002', 2, 'Thomas Joseph', 'Maria Anna', 'thomas.joseph@fatimachurch.org', '9876543211');
+
+INSERT INTO anbiyam (anbiyam_id, anbiyam_name, anbiyam_code, anbiyam_zone, anbiyam_coordinator_name, anbiyam_ass_coordinator_name, coordinator_email, coordinator_phone)
+VALUES (3, 'North Zone', 'ANB003', 3, 'Abraham David', 'Sarah Mary', 'abraham.david@fatimachurch.org', '9876543212');
+
+INSERT INTO anbiyam (anbiyam_id, anbiyam_name, anbiyam_code, anbiyam_zone, anbiyam_coordinator_name, anbiyam_ass_coordinator_name, coordinator_email, coordinator_phone)
+VALUES (4, 'South Zone', 'ANB004', 4, 'Peter George', 'Elizabeth Martha', 'peter.george@fatimachurch.org', '9876543213');
+
+INSERT INTO anbiyam (anbiyam_id, anbiyam_name, anbiyam_code, anbiyam_zone, anbiyam_coordinator_name, anbiyam_ass_coordinator_name, coordinator_email, coordinator_phone)
+VALUES (5, 'Central Zone', 'ANB005', 5, 'John Paul', 'Rose Anne', 'john.paul@fatimachurch.org', '9876543214');
+
+SET IDENTITY_INSERT anbiyam OFF;
+
+GO
+
+------------------------------------------------------------------------------------------------------
+-- SECTION 3: GENERATE SYNTHETIC FAMILY DATA (200 families)
+------------------------------------------------------------------------------------------------------
+
+-- Create temporary tables for random data
+CREATE TABLE #TempFirstNames (ID INT IDENTITY(1,1), Name NVARCHAR(50));
+CREATE TABLE #TempLastNames (ID INT IDENTITY(1,1), Name NVARCHAR(50));
+CREATE TABLE #TempOccupations (ID INT IDENTITY(1,1), Name NVARCHAR(50));
+CREATE TABLE #TempCities (ID INT IDENTITY(1,1), Name NVARCHAR(50));
+
+-- Insert first names
+INSERT INTO #TempFirstNames VALUES ('John'), ('Thomas'), ('Peter'), ('Paul'), ('Joseph'), ('David'), ('Michael'), ('Andrew'), ('Philip'), ('James'),
+    ('Robert'), ('William'), ('Richard'), ('Charles'), ('Daniel'), ('Matthew'), ('Anthony'), ('Donald'), ('Steven'), ('Christopher'),
+    ('Mary'), ('Anna'), ('Sarah'), ('Elizabeth'), ('Martha'), ('Ruth'), ('Rachel'), ('Rebecca'), ('Naomi'), ('Esther'),
+    ('Angela'), ('Rose'), ('Lily'), ('Jane'), ('Katherine'), ('Victoria'), ('Diana'), ('Catherine'), ('Margaret'), ('Anne');
+
+-- Insert last names
+INSERT INTO #TempLastNames VALUES ('Mathew'), ('Joseph'), ('Thomas'), ('George'), ('David'), ('Abraham'), ('Jacob'), ('Isaac'), ('Joshua'), ('Solomon'),
+    ('Singh'), ('Kumar'), ('Sharma'), ('Patel'), ('Gupta'), ('Verma'), ('Mishra'), ('Pandey'), ('Rao'), ('Desai'),
+    ('Williams'), ('Johnson'), ('Brown'), ('Jones'), ('Garcia'), ('Miller'), ('Davis'), ('Rodriguez'), ('Martinez'), ('Taylor'),
+    ('Anderson'), ('Wilson'), ('Moore'), ('Jackson'), ('Martin'), ('Lee'), ('White'), ('Harris'), ('Thompson'), ('Bennett');
+
+-- Insert occupations
+INSERT INTO #TempOccupations VALUES ('Business'), ('Service'), ('Teaching'), ('Engineering'), ('Medicine'), ('Law'), ('Banking'), ('IT'), ('Manufacturing'), ('Agriculture'),
+    ('Retail'), ('Construction'), ('Transportation'), ('Hospitality'), ('Consulting'), ('Finance'), ('Real Estate'), ('Sales'), ('Admin'), ('Other');
+
+-- Insert cities
+INSERT INTO #TempCities VALUES ('Bangalore'), ('Chennai'), ('Hyderabad'), ('Pune'), ('Delhi'), ('Mumbai'), ('Kolkata'), ('Ahmedabad'), ('Jaipur'), ('Lucknow'),
+    ('Chandigarh'), ('Kochi'), ('Coimbatore'), ('Indore'), ('Nagpur'), ('Surat'), ('Gurgaon'), ('Noida'), ('Visakhapatnam'), ('Bhopal');
+
+-- Insert families
+DECLARE @Counter INT = 1;
+DECLARE @MaxFamilies INT = 200;
+
+WHILE @Counter <= @MaxFamilies
+BEGIN
+    DECLARE @AnbiyamId INT = ((@Counter - 1) % 5) + 1;
+    DECLARE @FamCode NVARCHAR(10) = 'FAM' + RIGHT('000' + CAST(@Counter AS NVARCHAR(10)), 4);
+    DECLARE @FirstNameId INT = ((@Counter - 1) % 38) + 1;
+    DECLARE @LastNameId INT = ((@Counter - 1) % 38) + 1;
+    DECLARE @FirstName NVARCHAR(50) = (SELECT Name FROM #TempFirstNames WHERE ID = @FirstNameId);
+    DECLARE @LastName NVARCHAR(50) = (SELECT Name FROM #TempLastNames WHERE ID = @LastNameId);
+    DECLARE @Gender NVARCHAR(10) = CASE WHEN @Counter % 3 = 0 THEN 'Female' ELSE 'Male' END;
+    DECLARE @OccupationId INT = ((@Counter - 1) % 20) + 1;
+    DECLARE @Occupation NVARCHAR(50) = (SELECT Name FROM #TempOccupations WHERE ID = @OccupationId);
+    DECLARE @CityId INT = ((@Counter - 1) % 20) + 1;
+    DECLARE @City NVARCHAR(50) = (SELECT Name FROM #TempCities WHERE ID = @CityId);
+    DECLARE @Email NVARCHAR(100) = LOWER(@FirstName + '.' + @LastName + CAST(@Counter AS NVARCHAR(10)) + '@fatimachurch.org');
+    DECLARE @Phone NVARCHAR(20) = '98' + RIGHT('0000000' + CAST(75000000 + (@Counter * 12345) AS NVARCHAR(10)), 8);
+    DECLARE @ZipCode NVARCHAR(10) = CAST(560000 + @Counter AS NVARCHAR(10));
+
+    -- Insert family if it doesn't exist
+    IF NOT EXISTS (SELECT 1 FROM family WHERE family_code = @FamCode)
+    BEGIN
+        INSERT INTO family
+        (anbiyam_id, family_code, head_of_family, gender, family_permanant_address, family_temp_address,
+         family_city, family_state, zip_code, phone, email, monthly_subscription, parish_member_since,
+         isactive, created_at, modified, ishusbandactive, iswifeactive)
+        VALUES
+        (@AnbiyamId,
+         @FamCode,
+         @FirstName + ' ' + @LastName,
+         @Gender,
+         CAST(@Counter AS NVARCHAR(10)) + '/1, ' + @LastName + ' Street, ' + @City,
+         'Temp Address Block ' + CAST(@Counter AS NVARCHAR(10)),
+         @City,
+         'State',
+         @ZipCode,
+         @Phone,
+         @Email,
+         500,
+         2015,
+         1,
+         GETDATE(),
+         GETDATE(),
+         1,
+         1);
+    END
+
+    SET @Counter = @Counter + 1;
+END
+
+GO
+
+------------------------------------------------------------------------------------------------------
+-- SECTION 4: INSERT FAMILY MEMBERS (3-7 members per family)
+------------------------------------------------------------------------------------------------------
+
+-- Create temp table for member names
+CREATE TABLE #TempMemberNames (ID INT IDENTITY(1,1), Name NVARCHAR(50));
+
+INSERT INTO #TempMemberNames VALUES ('John'), ('James'), ('Michael'), ('David'), ('Robert'), ('William'), ('Richard'), ('Charles'),
+    ('Mary'), ('Anna'), ('Sarah'), ('Elizabeth'), ('Martha'), ('Ruth'), ('Rachel'), ('Rebecca'), ('Jennifer'), ('Patricia'),
+    ('Linda'), ('Barbara'), ('Susan'), ('Jessica'), ('Lisa'), ('Nancy'), ('Karen'), ('Betty');
+
+-- Insert family members
+DECLARE @FamilyId INT;
+DECLARE @MemberCount INT;
+DECLARE @MemberIndex INT;
+
+DECLARE family_cursor CURSOR FOR
+    SELECT family_id FROM family WHERE family_code LIKE 'FAM%' ORDER BY family_id;
+
+OPEN family_cursor;
+FETCH NEXT FROM family_cursor INTO @FamilyId;
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    -- Generate member count (3-7 members per family)
+    SET @MemberCount = 3 + (@FamilyId % 5);
+    SET @MemberIndex = 1;
+
+    WHILE @MemberIndex <= @MemberCount
+    BEGIN
+        DECLARE @MemberNameId INT = @MemberIndex;
+        DECLARE @MemberName NVARCHAR(50) = (SELECT Name FROM #TempMemberNames WHERE ID = @MemberNameId);
+        DECLARE @MemberRelationship NVARCHAR(30);
+        DECLARE @MemberGender NVARCHAR(10);
+        DECLARE @MemberDOB DATE;
+        DECLARE @MemberEmail NVARCHAR(100);
+        DECLARE @MemberPhone NVARCHAR(20);
+
+        -- Assign relationships and gender
+        IF @MemberIndex = 1
+        BEGIN
+            SET @MemberRelationship = 'Head';
+            SET @MemberGender = 'Male';
+        END
+        ELSE IF @MemberIndex = 2
+        BEGIN
+            SET @MemberRelationship = 'Spouse';
+            SET @MemberGender = 'Female';
+        END
+        ELSE IF @MemberIndex % 2 = 0
+        BEGIN
+            SET @MemberRelationship = 'Son';
+            SET @MemberGender = 'Male';
+        END
+        ELSE
+        BEGIN
+            SET @MemberRelationship = 'Daughter';
+            SET @MemberGender = 'Female';
+        END
+
+        -- Generate DOB (age 10-80)
+        SET @MemberDOB = DATEADD(YEAR, -(10 + (@MemberIndex * 7) % 70), GETDATE());
+        SET @MemberEmail = LOWER(@MemberName + '.' + CAST(@FamilyId AS NVARCHAR(10)) + '@fatimachurch.org');
+        SET @MemberPhone = '98' + RIGHT('0000000' + CAST(75000000 + (@FamilyId * 54321) AS NVARCHAR(10)), 8);
+
+        -- Insert family member
+        INSERT INTO family_member (family_id, first_name, relationship, gender, dob, member_status, email, phone)
+        VALUES (@FamilyId, @MemberName, @MemberRelationship, @MemberGender, @MemberDOB, 'Active', @MemberEmail, @MemberPhone);
+
+        SET @MemberIndex = @MemberIndex + 1;
+    END
+
+    FETCH NEXT FROM family_cursor INTO @FamilyId;
+END
+
+CLOSE family_cursor;
+DEALLOCATE family_cursor;
+
+GO
+
+------------------------------------------------------------------------------------------------------
+-- SECTION 5: INSERT FAMILY SUBSCRIPTION DATA FOR CURRENT YEAR (2026)
+------------------------------------------------------------------------------------------------------
+
+-- Only insert if subscription doesn't already exist for this year
+INSERT INTO family_subscription_yearly
+(family_id, subscription_year,
+ jan_amount, jan_status, feb_amount, feb_status, mar_amount, mar_status,
+ apr_amount, apr_status, may_amount, may_status, jun_amount, jun_status,
+ jul_amount, jul_status, aug_amount, aug_status, sep_amount, sep_status,
+ oct_amount, oct_status, nov_amount, nov_status, dec_amount, dec_status,
+ created_at, modified)
+SELECT
+    f.family_id, 2026,
+    500, 'Paid', 500, 'Paid', 500, 'Paid',
+    500, 'Paid', 500, 'Paid', 500, 'Paid',
+    500, CASE WHEN f.family_id % 3 = 0 THEN 'Pending' ELSE 'Paid' END,
+    500, CASE WHEN f.family_id % 3 = 0 THEN 'Pending' ELSE 'Paid' END,
+    500, CASE WHEN f.family_id % 3 = 0 THEN 'Pending' ELSE 'Paid' END,
+    500, CASE WHEN f.family_id % 2 = 0 THEN 'Pending' ELSE 'Paid' END,
+    500, CASE WHEN f.family_id % 2 = 0 THEN 'Pending' ELSE 'Paid' END,
+    NULL, 'Pending',
+    GETDATE(), GETDATE()
+FROM family f
+WHERE f.family_code LIKE 'FAM%'
+  AND NOT EXISTS (
+    SELECT 1 FROM family_subscription_yearly fsy
+    WHERE fsy.family_id = f.family_id AND fsy.subscription_year = 2026
+  );
+
+GO
+
+------------------------------------------------------------------------------------------------------
+-- SECTION 6: INSERT CEMETERY SUBSCRIPTION DATA
+------------------------------------------------------------------------------------------------------
+
+-- Insert cemetery subscription for families that don't have one yet
+INSERT INTO cemetery_subscription_yearly (family_id, subscription_year, amount, payment_status, remarks, created_at, modified)
+SELECT
+    f.family_id,
+    2026,
+    1000.00,
+    CASE WHEN f.family_id % 4 = 0 THEN 'Paid' ELSE 'Pending' END,
+    'Cemetery plot subscription for family ' + f.head_of_family,
+    GETDATE(),
+    GETDATE()
+FROM family f
+WHERE f.family_code LIKE 'FAM%'
+  AND f.family_id % 4 = 0
+  AND NOT EXISTS (
+    SELECT 1 FROM cemetery_subscription_yearly cs
+    WHERE cs.family_id = f.family_id AND cs.subscription_year = 2026
+  );
+
+GO
+
+------------------------------------------------------------------------------------------------------
+-- SECTION 7: CLEANUP TEMPORARY TABLES
+------------------------------------------------------------------------------------------------------
+
+DROP TABLE #TempFirstNames;
+DROP TABLE #TempLastNames;
+DROP TABLE #TempOccupations;
+DROP TABLE #TempCities;
+DROP TABLE #TempMemberNames;
+
+GO
+
+------------------------------------------------------------------------------------------------------
+-- SECTION 8: VERIFICATION AND SUMMARY
+------------------------------------------------------------------------------------------------------
+
+PRINT '';
+PRINT '========== DATA INSERTION SUMMARY ==========';
+PRINT '';
+
+-- Show data counts
+SELECT
+    'Anbiyam/Zones' AS [Data Type],
+    COUNT(*) AS [Count]
+FROM anbiyam
+UNION ALL
+SELECT 'Families', COUNT(*) FROM family WHERE family_code LIKE 'FAM%'
+UNION ALL
+SELECT 'Family Members', COUNT(*) FROM family_member
+UNION ALL
+SELECT 'Subscriptions (Yearly)', COUNT(*) FROM family_subscription_yearly WHERE subscription_year = 2026
+UNION ALL
+SELECT 'Cemetery Subscriptions', COUNT(*) FROM cemetery_subscription_yearly WHERE subscription_year = 2026;
+
+PRINT '';
+PRINT '========== SAMPLE FAMILY DATA (First 10) ==========';
+PRINT '';
+
+-- Show sample family data
+SELECT TOP 10
+    f.family_id,
+    f.family_code,
+    f.head_of_family,
+    a.anbiyam_name AS [Zone],
+    f.family_city,
+    f.email,
+    f.phone,
+    (SELECT COUNT(*) FROM family_member WHERE family_id = f.family_id) AS [Member Count]
+FROM family f
+INNER JOIN anbiyam a ON f.anbiyam_id = a.anbiyam_id
+WHERE f.family_code LIKE 'FAM%'
+ORDER BY f.family_id;
+
+PRINT '';
+PRINT '========== ZONE SUMMARY REPORT ==========';
+PRINT '';
+
+-- Show subscription status summary by zone
+SELECT
+    a.anbiyam_name AS [Zone],
+    COUNT(DISTINCT f.family_id) AS [Family Count],
+    COUNT(DISTINCT fm.member_id) AS [Total Members],
+    SUM(CASE WHEN fsy.jan_status = 'Paid' THEN 1 ELSE 0 END) AS [Jan Paid],
+    SUM(CASE WHEN fsy.apr_status = 'Paid' THEN 1 ELSE 0 END) AS [Apr Paid],
+    COUNT(DISTINCT cs.family_id) AS [Cemetery Subscriptions]
+FROM family f
+INNER JOIN anbiyam a ON f.anbiyam_id = a.anbiyam_id
+LEFT JOIN family_member fm ON f.family_id = fm.family_id
+LEFT JOIN family_subscription_yearly fsy ON f.family_id = fsy.family_id AND fsy.subscription_year = 2026
+LEFT JOIN cemetery_subscription_yearly cs ON f.family_id = cs.family_id AND cs.subscription_year = 2026
+WHERE f.family_code LIKE 'FAM%'
+GROUP BY a.anbiyam_name
+ORDER BY a.anbiyam_name;
+
+PRINT '';
+PRINT '========== DATA INSERTION COMPLETE ==========';
+PRINT '200 families with members have been successfully added across 5 zones.';
+PRINT '';
+
+GO

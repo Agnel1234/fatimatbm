@@ -23,8 +23,9 @@ namespace TestFat
 
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog; // Optional: prevents resizing
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
+            ApplyTheme();
             LoadCemeteryData();
             LoadMemberDropdown();
         }
@@ -36,12 +37,7 @@ namespace TestFat
             cemeteryGrid.DataSource = dt;
             cemeteryGrid.Columns["cemeteryid"].Visible = false;
 
-            cemeteryGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 11, FontStyle.Bold);
-            cemeteryGrid.DefaultCellStyle.Font = new Font("Georgia", 10, FontStyle.Regular);
-            cemeteryGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSlateGray;
-            cemeteryGrid.BackgroundColor = Color.WhiteSmoke;
-            cemeteryGrid.DefaultCellStyle.ForeColor = Color.Black;
-
+            AppTheme.StyleGrid(cemeteryGrid);
         }
 
         private void LoadMemberDropdown()
@@ -51,13 +47,32 @@ namespace TestFat
 
             DataRow newRow = dt.NewRow();
             newRow[dt.Columns[1].ColumnName] = "Select Member";
-            newRow[dt.Columns[0].ColumnName] = 200; 
+            newRow[dt.Columns[0].ColumnName] = 200;
             dt.Rows.InsertAt(newRow, 0);
 
             comboMemberName.DataSource = dt;
             comboMemberName.DisplayMember = dt.Columns[1].ColumnName;
             comboMemberName.ValueMember = dt.Columns[0].ColumnName;
-            comboMemberName.SelectedIndex = 0; 
+            comboMemberName.SelectedIndex = 0;
+        }
+
+        private void ApplyTheme()
+        {
+            this.BackColor = AppTheme.OffWhite;
+            panel1.BackColor = AppTheme.OffWhite;
+            groupBox1.BackColor = AppTheme.OffWhite;
+
+            foreach (Control c in groupBox1.Controls)
+            {
+                if (c is Label l)
+                {
+                    l.ForeColor = AppTheme.Navy;
+                    l.BackColor = Color.Transparent;
+                }
+            }
+
+            AppTheme.StyleButtonPrimary(btnAddCemetery);
+            AppTheme.SetIcon(btnAddCemetery, AppTheme.IconChurch(), "Register Cemetery");
         }
 
         private void btnAddCemetery_Click(object sender, EventArgs e)

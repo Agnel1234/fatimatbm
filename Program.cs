@@ -37,30 +37,12 @@ namespace TestFat
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //using (var login = new LoginForm())
-            //{
-            //    // Ensure login is shown centered
-            //    login.StartPosition = FormStartPosition.CenterScreen;
+            var main = new Form1("Admin");
+            main.StartPosition = FormStartPosition.CenterScreen;
+            Application.Run(main);
 
-            //    if (login.ShowDialog() == DialogResult.OK)
-            //    {
-            //        // Pass successful username into Form1
-            //        var main = new Form1(login.LoggedInUser);
-            //        main.StartPosition = FormStartPosition.CenterScreen;
-            //        Application.Run(main);
-            //    }
 
-            //}
-                    // Ensure login is shown centered
-                    //login.StartPosition = FormStartPosition.CenterScreen;
 
-                        // Pass successful username into Form1
-                    var main = new Form1("Admin");
-                    main.StartPosition = FormStartPosition.CenterScreen;
-                    Application.Run(main);
-
-                
-            
         }
     }
 }

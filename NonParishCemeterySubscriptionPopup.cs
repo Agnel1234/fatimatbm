@@ -104,7 +104,7 @@ namespace TestFat
             top += 56;
 
             btnSave = new Button { Text = "Save", Location = new Point(fieldX, top), Width = 100, Height = 32,
-                BackColor = Color.SteelBlue, ForeColor = Color.White, Font = new Font("Georgia", 11F, FontStyle.Bold) };
+                Font = new Font("Georgia", 11F, FontStyle.Bold) };
             btnSave.Click += BtnSave_Click;
 
             btnClose = new Button { Text = "Close", Location = new Point(fieldX + 114, top), Width = 100, Height = 32,

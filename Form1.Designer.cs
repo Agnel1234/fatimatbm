@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea25 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend25 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea26 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend26 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea27 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend27 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.familyPage = new System.Windows.Forms.TabPage();
+            this.familygrid = new System.Windows.Forms.DataGridView();
             this.familyMembersGrid = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_exportfamily = new System.Windows.Forms.Button();
@@ -64,6 +65,13 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.familytab = new System.Windows.Forms.TabControl();
             this.anbiyamPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnpdfExport = new System.Windows.Forms.Button();
+            this.btncreate = new System.Windows.Forms.Button();
+            this.btnedit = new System.Windows.Forms.Button();
+            this.anbiyamGrid = new System.Windows.Forms.DataGridView();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.cemeteryPage = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dtDeceasedStart = new System.Windows.Forms.DateTimePicker();
@@ -98,15 +106,8 @@
             this.lblSubscriptionAmbiyam = new System.Windows.Forms.Label();
             this.txtSubscriptionFamilyName = new System.Windows.Forms.TextBox();
             this.lblSubscriptionFamilyName = new System.Windows.Forms.Label();
-            this.familygrid = new System.Windows.Forms.DataGridView();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.anbiyamGrid = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnedit = new System.Windows.Forms.Button();
-            this.btncreate = new System.Windows.Forms.Button();
-            this.btnpdfExport = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.familyPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.familygrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.familyMembersGrid)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -118,6 +119,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.familytab.SuspendLayout();
             this.anbiyamPage.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.anbiyamGrid)).BeginInit();
             this.cemeteryPage.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -126,10 +130,6 @@
             this.subscriptionPaginationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subscriptionGrid)).BeginInit();
             this.subscriptionFilterPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.familygrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anbiyamGrid)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // familyPage
@@ -146,40 +146,47 @@
             this.familyPage.Text = "Families";
             this.familyPage.UseVisualStyleBackColor = true;
             // 
+            // familygrid
+            // 
+            this.familygrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.familygrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.familygrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.familygrid.Location = new System.Drawing.Point(6, 3);
+            this.familygrid.Name = "familygrid";
+            this.familygrid.Size = new System.Drawing.Size(1278, 330);
+            this.familygrid.TabIndex = 0;
+            this.familygrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.familygrid_CellClick);
+            // 
             // familyMembersGrid
             // 
-            this.familyMembersGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.familyMembersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.familyMembersGrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.familyMembersGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.familyMembersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.familyMembersGrid.Location = new System.Drawing.Point(6, 326);
+            this.familyMembersGrid.Location = new System.Drawing.Point(6, 370);
             this.familyMembersGrid.Name = "familyMembersGrid";
-            this.familyMembersGrid.Size = new System.Drawing.Size(1281, 232);
+            this.familyMembersGrid.Size = new System.Drawing.Size(1278, 83);
             this.familyMembersGrid.TabIndex = 0;
+
             // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel5.Controls.Add(this.btn_exportfamily);
             this.panel5.Controls.Add(this.btn_disablefamily);
             this.panel5.Controls.Add(this.btnCemetery);
             this.panel5.Controls.Add(this.btnFamilyCreate);
             this.panel5.Controls.Add(this.btnFamilyEdit);
-            this.panel5.Location = new System.Drawing.Point(3, 564);
+            this.panel5.Location = new System.Drawing.Point(6, 589);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1281, 100);
+            this.panel5.Size = new System.Drawing.Size(1278, 75);
             this.panel5.TabIndex = 1;
             // 
             // btn_exportfamily
             // 
             this.btn_exportfamily.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_exportfamily.ForeColor = System.Drawing.Color.Black;
-            this.btn_exportfamily.Location = new System.Drawing.Point(386, 35);
+            this.btn_exportfamily.Location = new System.Drawing.Point(383, 10);
             this.btn_exportfamily.Name = "btn_exportfamily";
             this.btn_exportfamily.Size = new System.Drawing.Size(134, 36);
             this.btn_exportfamily.TabIndex = 4;
@@ -191,7 +198,7 @@
             // 
             this.btn_disablefamily.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_disablefamily.ForeColor = System.Drawing.Color.Black;
-            this.btn_disablefamily.Location = new System.Drawing.Point(545, 35);
+            this.btn_disablefamily.Location = new System.Drawing.Point(542, 10);
             this.btn_disablefamily.Name = "btn_disablefamily";
             this.btn_disablefamily.Size = new System.Drawing.Size(134, 36);
             this.btn_disablefamily.TabIndex = 3;
@@ -203,7 +210,7 @@
             // 
             this.btnCemetery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCemetery.ForeColor = System.Drawing.Color.Black;
-            this.btnCemetery.Location = new System.Drawing.Point(706, 38);
+            this.btnCemetery.Location = new System.Drawing.Point(703, 13);
             this.btnCemetery.Name = "btnCemetery";
             this.btnCemetery.Size = new System.Drawing.Size(153, 36);
             this.btnCemetery.TabIndex = 2;
@@ -215,7 +222,7 @@
             // 
             this.btnFamilyCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFamilyCreate.ForeColor = System.Drawing.Color.Black;
-            this.btnFamilyCreate.Location = new System.Drawing.Point(1074, 38);
+            this.btnFamilyCreate.Location = new System.Drawing.Point(1071, 13);
             this.btnFamilyCreate.Name = "btnFamilyCreate";
             this.btnFamilyCreate.Size = new System.Drawing.Size(153, 36);
             this.btnFamilyCreate.TabIndex = 1;
@@ -227,7 +234,7 @@
             // 
             this.btnFamilyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFamilyEdit.ForeColor = System.Drawing.Color.Black;
-            this.btnFamilyEdit.Location = new System.Drawing.Point(891, 35);
+            this.btnFamilyEdit.Location = new System.Drawing.Point(888, 10);
             this.btnFamilyEdit.Name = "btnFamilyEdit";
             this.btnFamilyEdit.Size = new System.Drawing.Size(153, 36);
             this.btnFamilyEdit.TabIndex = 0;
@@ -237,9 +244,6 @@
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
             this.panel4.Controls.Add(this.cemeteryComboBox);
             this.panel4.Controls.Add(this.button1);
@@ -251,9 +255,9 @@
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.familyAnbiyamCombobox);
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(6, 6);
+            this.panel4.Location = new System.Drawing.Point(6, 459);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1284, 179);
+            this.panel4.Size = new System.Drawing.Size(1278, 110);
             this.panel4.TabIndex = 0;
             // 
             // cemeteryComboBox
@@ -263,7 +267,7 @@
             "Not Applicable",
             "Yes",
             "No"});
-            this.cemeteryComboBox.Location = new System.Drawing.Point(638, 140);
+            this.cemeteryComboBox.Location = new System.Drawing.Point(617, 60);
             this.cemeteryComboBox.Name = "cemeteryComboBox";
             this.cemeteryComboBox.Size = new System.Drawing.Size(209, 26);
             this.cemeteryComboBox.TabIndex = 15;
@@ -271,7 +275,7 @@
             // button1
             // 
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(934, 140);
+            this.button1.Location = new System.Drawing.Point(913, 60);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(207, 26);
             this.button1.TabIndex = 14;
@@ -282,7 +286,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(473, 148);
+            this.label13.Location = new System.Drawing.Point(452, 68);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(137, 18);
             this.label13.TabIndex = 12;
@@ -291,7 +295,7 @@
             // familyOccupationComboxbox
             // 
             this.familyOccupationComboxbox.FormattingEnabled = true;
-            this.familyOccupationComboxbox.Location = new System.Drawing.Point(211, 148);
+            this.familyOccupationComboxbox.Location = new System.Drawing.Point(190, 68);
             this.familyOccupationComboxbox.Name = "familyOccupationComboxbox";
             this.familyOccupationComboxbox.Size = new System.Drawing.Size(184, 26);
             this.familyOccupationComboxbox.TabIndex = 11;
@@ -300,7 +304,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(33, 152);
+            this.label12.Location = new System.Drawing.Point(12, 71);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 18);
             this.label12.TabIndex = 10;
@@ -309,7 +313,7 @@
             // searchFamily
             // 
             this.searchFamily.ForeColor = System.Drawing.Color.Black;
-            this.searchFamily.Location = new System.Drawing.Point(934, 93);
+            this.searchFamily.Location = new System.Drawing.Point(913, 13);
             this.searchFamily.Name = "searchFamily";
             this.searchFamily.Size = new System.Drawing.Size(207, 26);
             this.searchFamily.TabIndex = 9;
@@ -319,7 +323,7 @@
             // 
             // txtFamilyHead
             // 
-            this.txtFamilyHead.Location = new System.Drawing.Point(638, 94);
+            this.txtFamilyHead.Location = new System.Drawing.Point(617, 14);
             this.txtFamilyHead.Name = "txtFamilyHead";
             this.txtFamilyHead.Size = new System.Drawing.Size(209, 25);
             this.txtFamilyHead.TabIndex = 8;
@@ -328,7 +332,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(473, 98);
+            this.label3.Location = new System.Drawing.Point(452, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 18);
             this.label3.TabIndex = 7;
@@ -337,7 +341,7 @@
             // familyAnbiyamCombobox
             // 
             this.familyAnbiyamCombobox.FormattingEnabled = true;
-            this.familyAnbiyamCombobox.Location = new System.Drawing.Point(211, 94);
+            this.familyAnbiyamCombobox.Location = new System.Drawing.Point(190, 14);
             this.familyAnbiyamCombobox.Name = "familyAnbiyamCombobox";
             this.familyAnbiyamCombobox.Size = new System.Drawing.Size(184, 26);
             this.familyAnbiyamCombobox.TabIndex = 6;
@@ -346,7 +350,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(33, 98);
+            this.label11.Location = new System.Drawing.Point(12, 18);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(161, 18);
             this.label11.TabIndex = 5;
@@ -390,17 +394,17 @@
             this.chart3.BorderlineWidth = 2;
             this.chart3.BorderSkin.BackColor = System.Drawing.Color.Black;
             this.chart3.BorderSkin.PageColor = System.Drawing.Color.Gray;
-            chartArea7.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea7);
+            chartArea25.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea25);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend7.Name = "Legend1";
-            this.chart3.Legends.Add(legend7);
+            legend25.Name = "Legend1";
+            this.chart3.Legends.Add(legend25);
             this.chart3.Location = new System.Drawing.Point(3, 3);
             this.chart3.Name = "chart3";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart3.Series.Add(series7);
+            series25.ChartArea = "ChartArea1";
+            series25.Legend = "Legend1";
+            series25.Name = "Series1";
+            this.chart3.Series.Add(series25);
             this.chart3.Size = new System.Drawing.Size(861, 660);
             this.chart3.TabIndex = 1;
             // 
@@ -409,18 +413,18 @@
             this.chart2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
             this.chart2.BorderlineColor = System.Drawing.Color.GhostWhite;
             this.chart2.BorderlineWidth = 2;
-            chartArea8.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea8);
+            chartArea26.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea26);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Left;
-            legend8.Name = "Legend1";
-            this.chart2.Legends.Add(legend8);
+            legend26.Name = "Legend1";
+            this.chart2.Legends.Add(legend26);
             this.chart2.Location = new System.Drawing.Point(3, 3);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart2.Series.Add(series8);
+            series26.ChartArea = "ChartArea1";
+            series26.Legend = "Legend1";
+            series26.Name = "Series1";
+            this.chart2.Series.Add(series26);
             this.chart2.Size = new System.Drawing.Size(419, 666);
             this.chart2.TabIndex = 4;
             this.chart2.Text = "Age Group Chart";
@@ -443,16 +447,16 @@
             this.chart1.BackColor = System.Drawing.Color.Thistle;
             this.chart1.BorderlineColor = System.Drawing.Color.Thistle;
             this.chart1.BorderlineWidth = 2;
-            chartArea9.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            this.chart1.Legends.Add(legend9);
+            chartArea27.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea27);
+            legend27.Name = "Legend1";
+            this.chart1.Legends.Add(legend27);
             this.chart1.Location = new System.Drawing.Point(3, 322);
             this.chart1.Name = "chart1";
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.chart1.Series.Add(series9);
+            series27.ChartArea = "ChartArea1";
+            series27.Legend = "Legend1";
+            series27.Name = "Series1";
+            this.chart1.Series.Add(series27);
             this.chart1.Size = new System.Drawing.Size(353, 313);
             this.chart1.TabIndex = 18;
             this.chart1.Text = "Age Group Chart";
@@ -486,6 +490,98 @@
             this.anbiyamPage.Size = new System.Drawing.Size(1292, 672);
             this.anbiyamPage.TabIndex = 1;
             this.anbiyamPage.Text = "Anbiyams";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.anbiyamGrid, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.webBrowser1, 0, 2);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.227676F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.57179F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.14082F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.05971F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1286, 666);
+            this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel3.Controls.Add(this.btnpdfExport);
+            this.panel3.Controls.Add(this.btncreate);
+            this.panel3.Controls.Add(this.btnedit);
+            this.panel3.Location = new System.Drawing.Point(3, 601);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1280, 62);
+            this.panel3.TabIndex = 2;
+            // 
+            // btnpdfExport
+            // 
+            this.btnpdfExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnpdfExport.ForeColor = System.Drawing.Color.Black;
+            this.btnpdfExport.Location = new System.Drawing.Point(767, 19);
+            this.btnpdfExport.Name = "btnpdfExport";
+            this.btnpdfExport.Size = new System.Drawing.Size(134, 29);
+            this.btnpdfExport.TabIndex = 2;
+            this.btnpdfExport.Text = "Export To PDF";
+            this.btnpdfExport.UseVisualStyleBackColor = true;
+            this.btnpdfExport.Click += new System.EventHandler(this.btnpdfExport_Click);
+            // 
+            // btncreate
+            // 
+            this.btncreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncreate.ForeColor = System.Drawing.Color.Black;
+            this.btncreate.Location = new System.Drawing.Point(1087, 19);
+            this.btncreate.Name = "btncreate";
+            this.btncreate.Size = new System.Drawing.Size(124, 29);
+            this.btncreate.TabIndex = 1;
+            this.btncreate.Text = "Create";
+            this.btncreate.UseVisualStyleBackColor = true;
+            this.btncreate.Click += new System.EventHandler(this.btncreate_Click);
+            // 
+            // btnedit
+            // 
+            this.btnedit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnedit.ForeColor = System.Drawing.Color.Black;
+            this.btnedit.Location = new System.Drawing.Point(927, 19);
+            this.btnedit.Name = "btnedit";
+            this.btnedit.Size = new System.Drawing.Size(134, 29);
+            this.btnedit.TabIndex = 0;
+            this.btnedit.Text = "Edit";
+            this.btnedit.UseVisualStyleBackColor = true;
+            this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
+            // 
+            // anbiyamGrid
+            // 
+            this.anbiyamGrid.AllowUserToOrderColumns = true;
+            this.anbiyamGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.anbiyamGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.anbiyamGrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.anbiyamGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.anbiyamGrid.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.anbiyamGrid.Location = new System.Drawing.Point(3, 64);
+            this.anbiyamGrid.Name = "anbiyamGrid";
+            this.anbiyamGrid.Size = new System.Drawing.Size(1280, 264);
+            this.anbiyamGrid.TabIndex = 1;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.webBrowser1.Location = new System.Drawing.Point(3, 334);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(1280, 261);
+            this.webBrowser1.TabIndex = 4;
             // 
             // cemeteryPage
             // 
@@ -882,112 +978,6 @@
             this.lblSubscriptionFamilyName.TabIndex = 0;
             this.lblSubscriptionFamilyName.Text = "Family Name";
             // 
-            // familygrid
-            // 
-            this.familygrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.familygrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.familygrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.familygrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.familygrid.Location = new System.Drawing.Point(6, 191);
-            this.familygrid.Name = "familygrid";
-            this.familygrid.Size = new System.Drawing.Size(1281, 129);
-            this.familygrid.TabIndex = 0;
-            this.familygrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.familygrid_CellClick);
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.webBrowser1.Location = new System.Drawing.Point(3, 334);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1280, 261);
-            this.webBrowser1.TabIndex = 4;
-            // 
-            // anbiyamGrid
-            // 
-            this.anbiyamGrid.AllowUserToOrderColumns = true;
-            this.anbiyamGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.anbiyamGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.anbiyamGrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.anbiyamGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.anbiyamGrid.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.anbiyamGrid.Location = new System.Drawing.Point(3, 64);
-            this.anbiyamGrid.Name = "anbiyamGrid";
-            this.anbiyamGrid.Size = new System.Drawing.Size(1280, 264);
-            this.anbiyamGrid.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel3.Controls.Add(this.btnpdfExport);
-            this.panel3.Controls.Add(this.btncreate);
-            this.panel3.Controls.Add(this.btnedit);
-            this.panel3.Location = new System.Drawing.Point(3, 601);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1280, 62);
-            this.panel3.TabIndex = 2;
-            // 
-            // btnedit
-            // 
-            this.btnedit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnedit.ForeColor = System.Drawing.Color.Black;
-            this.btnedit.Location = new System.Drawing.Point(927, 19);
-            this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(134, 29);
-            this.btnedit.TabIndex = 0;
-            this.btnedit.Text = "Edit";
-            this.btnedit.UseVisualStyleBackColor = true;
-            this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
-            // 
-            // btncreate
-            // 
-            this.btncreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncreate.ForeColor = System.Drawing.Color.Black;
-            this.btncreate.Location = new System.Drawing.Point(1087, 19);
-            this.btncreate.Name = "btncreate";
-            this.btncreate.Size = new System.Drawing.Size(124, 29);
-            this.btncreate.TabIndex = 1;
-            this.btncreate.Text = "Create";
-            this.btncreate.UseVisualStyleBackColor = true;
-            this.btncreate.Click += new System.EventHandler(this.btncreate_Click);
-            // 
-            // btnpdfExport
-            // 
-            this.btnpdfExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnpdfExport.ForeColor = System.Drawing.Color.Black;
-            this.btnpdfExport.Location = new System.Drawing.Point(767, 19);
-            this.btnpdfExport.Name = "btnpdfExport";
-            this.btnpdfExport.Size = new System.Drawing.Size(134, 29);
-            this.btnpdfExport.TabIndex = 2;
-            this.btnpdfExport.Text = "Export To PDF";
-            this.btnpdfExport.UseVisualStyleBackColor = true;
-            this.btnpdfExport.Click += new System.EventHandler(this.btnpdfExport_Click);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.anbiyamGrid, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.webBrowser1, 0, 2);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.227676F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.57179F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.14082F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.05971F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1286, 666);
-            this.tableLayoutPanel2.TabIndex = 4;
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1001,6 +991,7 @@
             this.Text = "Fatima Church Tambaram";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.familyPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.familygrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.familyMembersGrid)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -1013,6 +1004,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.familytab.ResumeLayout(false);
             this.anbiyamPage.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.anbiyamGrid)).EndInit();
             this.cemeteryPage.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -1024,10 +1018,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.subscriptionGrid)).EndInit();
             this.subscriptionFilterPanel.ResumeLayout(false);
             this.subscriptionFilterPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.familygrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anbiyamGrid)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
