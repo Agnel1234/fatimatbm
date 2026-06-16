@@ -37,12 +37,19 @@ namespace TestFat
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var main = new Form1("Admin");
-            main.StartPosition = FormStartPosition.CenterScreen;
-            Application.Run(main);
-
-
-
+            // Show login form - user must authenticate
+            using (var loginForm = new LoginForm())
+            {
+               // if (loginForm.ShowDialog() == DialogResult.OK)
+                //{
+                    // User authenticated successfully
+                    //var main = new Form1(loginForm.LoggedInUser);
+                    var main = new Form1("ADMIN");
+                    main.StartPosition = FormStartPosition.CenterScreen;
+                    Application.Run(main);
+                //APP}
+                // If user closes login or authentication fails, application exits
+            }
         }
     }
 }

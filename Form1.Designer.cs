@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea25 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend25 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea26 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend26 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea27 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend27 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.familyPage = new System.Windows.Forms.TabPage();
             this.familygrid = new System.Windows.Forms.DataGridView();
             this.familyMembersGrid = new System.Windows.Forms.DataGridView();
@@ -134,6 +134,7 @@
             // 
             // familyPage
             // 
+            this.familyPage.BackColor = System.Drawing.Color.IndianRed;
             this.familyPage.Controls.Add(this.familygrid);
             this.familyPage.Controls.Add(this.familyMembersGrid);
             this.familyPage.Controls.Add(this.panel5);
@@ -144,16 +145,15 @@
             this.familyPage.Size = new System.Drawing.Size(1292, 672);
             this.familyPage.TabIndex = 2;
             this.familyPage.Text = "Families";
-            this.familyPage.UseVisualStyleBackColor = true;
             // 
             // familygrid
             // 
             this.familygrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.familygrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.familygrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.familygrid.Location = new System.Drawing.Point(6, 3);
+            this.familygrid.Location = new System.Drawing.Point(6, 132);
             this.familygrid.Name = "familygrid";
-            this.familygrid.Size = new System.Drawing.Size(1278, 330);
+            this.familygrid.Size = new System.Drawing.Size(1278, 301);
             this.familygrid.TabIndex = 0;
             this.familygrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.familygrid_CellClick);
             // 
@@ -163,11 +163,10 @@
             this.familyMembersGrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.familyMembersGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.familyMembersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.familyMembersGrid.Location = new System.Drawing.Point(6, 370);
+            this.familyMembersGrid.Location = new System.Drawing.Point(6, 439);
             this.familyMembersGrid.Name = "familyMembersGrid";
-            this.familyMembersGrid.Size = new System.Drawing.Size(1278, 83);
+            this.familyMembersGrid.Size = new System.Drawing.Size(1278, 144);
             this.familyMembersGrid.TabIndex = 0;
-
             // 
             // panel5
             // 
@@ -255,9 +254,10 @@
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.familyAnbiyamCombobox);
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(6, 459);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1278, 110);
+            this.panel4.Size = new System.Drawing.Size(1286, 666);
             this.panel4.TabIndex = 0;
             // 
             // cemeteryComboBox
@@ -267,7 +267,7 @@
             "Not Applicable",
             "Yes",
             "No"});
-            this.cemeteryComboBox.Location = new System.Drawing.Point(617, 60);
+            this.cemeteryComboBox.Location = new System.Drawing.Point(615, 97);
             this.cemeteryComboBox.Name = "cemeteryComboBox";
             this.cemeteryComboBox.Size = new System.Drawing.Size(209, 26);
             this.cemeteryComboBox.TabIndex = 15;
@@ -275,7 +275,7 @@
             // button1
             // 
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(913, 60);
+            this.button1.Location = new System.Drawing.Point(911, 97);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(207, 26);
             this.button1.TabIndex = 14;
@@ -286,7 +286,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(452, 68);
+            this.label13.Location = new System.Drawing.Point(450, 105);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(137, 18);
             this.label13.TabIndex = 12;
@@ -295,7 +295,7 @@
             // familyOccupationComboxbox
             // 
             this.familyOccupationComboxbox.FormattingEnabled = true;
-            this.familyOccupationComboxbox.Location = new System.Drawing.Point(190, 68);
+            this.familyOccupationComboxbox.Location = new System.Drawing.Point(188, 105);
             this.familyOccupationComboxbox.Name = "familyOccupationComboxbox";
             this.familyOccupationComboxbox.Size = new System.Drawing.Size(184, 26);
             this.familyOccupationComboxbox.TabIndex = 11;
@@ -304,7 +304,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(12, 71);
+            this.label12.Location = new System.Drawing.Point(10, 108);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 18);
             this.label12.TabIndex = 10;
@@ -313,7 +313,7 @@
             // searchFamily
             // 
             this.searchFamily.ForeColor = System.Drawing.Color.Black;
-            this.searchFamily.Location = new System.Drawing.Point(913, 13);
+            this.searchFamily.Location = new System.Drawing.Point(911, 50);
             this.searchFamily.Name = "searchFamily";
             this.searchFamily.Size = new System.Drawing.Size(207, 26);
             this.searchFamily.TabIndex = 9;
@@ -323,7 +323,7 @@
             // 
             // txtFamilyHead
             // 
-            this.txtFamilyHead.Location = new System.Drawing.Point(617, 14);
+            this.txtFamilyHead.Location = new System.Drawing.Point(615, 51);
             this.txtFamilyHead.Name = "txtFamilyHead";
             this.txtFamilyHead.Size = new System.Drawing.Size(209, 25);
             this.txtFamilyHead.TabIndex = 8;
@@ -332,7 +332,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(452, 18);
+            this.label3.Location = new System.Drawing.Point(450, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 18);
             this.label3.TabIndex = 7;
@@ -341,7 +341,7 @@
             // familyAnbiyamCombobox
             // 
             this.familyAnbiyamCombobox.FormattingEnabled = true;
-            this.familyAnbiyamCombobox.Location = new System.Drawing.Point(190, 14);
+            this.familyAnbiyamCombobox.Location = new System.Drawing.Point(188, 51);
             this.familyAnbiyamCombobox.Name = "familyAnbiyamCombobox";
             this.familyAnbiyamCombobox.Size = new System.Drawing.Size(184, 26);
             this.familyAnbiyamCombobox.TabIndex = 6;
@@ -350,7 +350,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(12, 18);
+            this.label11.Location = new System.Drawing.Point(10, 55);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(161, 18);
             this.label11.TabIndex = 5;
@@ -394,17 +394,17 @@
             this.chart3.BorderlineWidth = 2;
             this.chart3.BorderSkin.BackColor = System.Drawing.Color.Black;
             this.chart3.BorderSkin.PageColor = System.Drawing.Color.Gray;
-            chartArea25.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea25);
+            chartArea7.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea7);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend25.Name = "Legend1";
-            this.chart3.Legends.Add(legend25);
+            legend7.Name = "Legend1";
+            this.chart3.Legends.Add(legend7);
             this.chart3.Location = new System.Drawing.Point(3, 3);
             this.chart3.Name = "chart3";
-            series25.ChartArea = "ChartArea1";
-            series25.Legend = "Legend1";
-            series25.Name = "Series1";
-            this.chart3.Series.Add(series25);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chart3.Series.Add(series7);
             this.chart3.Size = new System.Drawing.Size(861, 660);
             this.chart3.TabIndex = 1;
             // 
@@ -413,18 +413,18 @@
             this.chart2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(220)))));
             this.chart2.BorderlineColor = System.Drawing.Color.GhostWhite;
             this.chart2.BorderlineWidth = 2;
-            chartArea26.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea26);
+            chartArea8.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea8);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Left;
-            legend26.Name = "Legend1";
-            this.chart2.Legends.Add(legend26);
+            legend8.Name = "Legend1";
+            this.chart2.Legends.Add(legend8);
             this.chart2.Location = new System.Drawing.Point(3, 3);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series26.ChartArea = "ChartArea1";
-            series26.Legend = "Legend1";
-            series26.Name = "Series1";
-            this.chart2.Series.Add(series26);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chart2.Series.Add(series8);
             this.chart2.Size = new System.Drawing.Size(419, 666);
             this.chart2.TabIndex = 4;
             this.chart2.Text = "Age Group Chart";
@@ -447,16 +447,16 @@
             this.chart1.BackColor = System.Drawing.Color.Thistle;
             this.chart1.BorderlineColor = System.Drawing.Color.Thistle;
             this.chart1.BorderlineWidth = 2;
-            chartArea27.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea27);
-            legend27.Name = "Legend1";
-            this.chart1.Legends.Add(legend27);
+            chartArea9.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chart1.Legends.Add(legend9);
             this.chart1.Location = new System.Drawing.Point(3, 322);
             this.chart1.Name = "chart1";
-            series27.ChartArea = "ChartArea1";
-            series27.Legend = "Legend1";
-            series27.Name = "Series1";
-            this.chart1.Series.Add(series27);
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.chart1.Series.Add(series9);
             this.chart1.Size = new System.Drawing.Size(353, 313);
             this.chart1.TabIndex = 18;
             this.chart1.Text = "Age Group Chart";

@@ -1,0 +1,322 @@
+{
+  "C:\\Apps\\fatimatbm\\AnbiyamPopup.cs": {
+    "mtime": 1776835242.3634453,
+    "ast_hash": "6e396650464120264a53b2e813c11c5f",
+    "semantic_hash": "6e396650464120264a53b2e813c11c5f"
+  },
+  "C:\\Apps\\fatimatbm\\AnbiyamPopup.Designer.cs": {
+    "mtime": 1761499217.463095,
+    "ast_hash": "6fc8584154517775ed1437b3fd28e7b1",
+    "semantic_hash": "6fc8584154517775ed1437b3fd28e7b1"
+  },
+  "C:\\Apps\\fatimatbm\\AppTheme.cs": {
+    "mtime": 1776836180.5576217,
+    "ast_hash": "79a5c7cd57d516dc0ef076e44928879c",
+    "semantic_hash": "79a5c7cd57d516dc0ef076e44928879c"
+  },
+  "C:\\Apps\\fatimatbm\\Cemetery.cs": {
+    "mtime": 1777048981.0996604,
+    "ast_hash": "6b49aaa62975d6b3769a362371e5b959",
+    "semantic_hash": "6b49aaa62975d6b3769a362371e5b959"
+  },
+  "C:\\Apps\\fatimatbm\\Cemetery.Designer.cs": {
+    "mtime": 1766990774.2388413,
+    "ast_hash": "1a541f16bbbffaa7b8a748a1654445f1",
+    "semantic_hash": "1a541f16bbbffaa7b8a748a1654445f1"
+  },
+  "C:\\Apps\\fatimatbm\\CemeterySubscriptionPopup.cs": {
+    "mtime": 1776790184.3861537,
+    "ast_hash": "8f668a7eb37f4d7a2bdf9048daa4e71d",
+    "semantic_hash": "8f668a7eb37f4d7a2bdf9048daa4e71d"
+  },
+  "C:\\Apps\\fatimatbm\\CemeterySubscriptionPopup.Designer.cs": {
+    "mtime": 1776770135.2018254,
+    "ast_hash": "e4d7006bc1710dd087b410f82d8e85fd",
+    "semantic_hash": "e4d7006bc1710dd087b410f82d8e85fd"
+  },
+  "C:\\Apps\\fatimatbm\\DatabaseHelper.cs": {
+    "mtime": 1761561264.6809998,
+    "ast_hash": "1ffea9fe2a36455bc05f1eecd4e5dc44",
+    "semantic_hash": "1ffea9fe2a36455bc05f1eecd4e5dc44"
+  },
+  "C:\\Apps\\fatimatbm\\EnhancedPdfGenerator.cs": {
+    "mtime": 1777049534.4573095,
+    "ast_hash": "a2471aaaccac3acc72df951a5b896107",
+    "semantic_hash": "a2471aaaccac3acc72df951a5b896107"
+  },
+  "C:\\Apps\\fatimatbm\\FamilyPopup.cs": {
+    "mtime": 1776787733.367808,
+    "ast_hash": "a52df8e1afae266dc2292bb8f79bc6da",
+    "semantic_hash": "a52df8e1afae266dc2292bb8f79bc6da"
+  },
+  "C:\\Apps\\fatimatbm\\FamilyPopup.Designer.cs": {
+    "mtime": 1769747021.200059,
+    "ast_hash": "9ee2ac0defc4a8ffe2802444b4eb6ed0",
+    "semantic_hash": "9ee2ac0defc4a8ffe2802444b4eb6ed0"
+  },
+  "C:\\Apps\\fatimatbm\\Form1.cs": {
+    "mtime": 1777048717.1454458,
+    "ast_hash": "e3cfe107291e902b5de5cf076912fb01",
+    "semantic_hash": "e3cfe107291e902b5de5cf076912fb01"
+  },
+  "C:\\Apps\\fatimatbm\\Form1.Designer.cs": {
+    "mtime": 1777019096.968026,
+    "ast_hash": "495b446cae3566096c77a4dd0c8b7c23",
+    "semantic_hash": "495b446cae3566096c77a4dd0c8b7c23"
+  },
+  "C:\\Apps\\fatimatbm\\Form1_Integration_ModernPDF.cs": {
+    "mtime": 1777049481.0694625,
+    "ast_hash": "eae3246a39f3504c330b77e98779d41f",
+    "semantic_hash": "eae3246a39f3504c330b77e98779d41f"
+  },
+  "C:\\Apps\\fatimatbm\\LoginForm.cs": {
+    "mtime": 1777015857.105495,
+    "ast_hash": "195143f3e31286d96ebd39df49783227",
+    "semantic_hash": "195143f3e31286d96ebd39df49783227"
+  },
+  "C:\\Apps\\fatimatbm\\LoginForm.Designer.cs": {
+    "mtime": 1761500308.3650439,
+    "ast_hash": "e2fcd5f7f0bd6056bb7e2aa059d9e891",
+    "semantic_hash": "e2fcd5f7f0bd6056bb7e2aa059d9e891"
+  },
+  "C:\\Apps\\fatimatbm\\ModernPdfGenerator.cs": {
+    "mtime": 1777049538.609906,
+    "ast_hash": "e14131e615d2279819bcf35ddb41c5dc",
+    "semantic_hash": "e14131e615d2279819bcf35ddb41c5dc"
+  },
+  "C:\\Apps\\fatimatbm\\NonParishCemeterySubscriptionPopup.cs": {
+    "mtime": 1777048891.3071187,
+    "ast_hash": "5f9a3803c5f776f66769966e58f1e74d",
+    "semantic_hash": "5f9a3803c5f776f66769966e58f1e74d"
+  },
+  "C:\\Apps\\fatimatbm\\NonParishFamily.cs": {
+    "mtime": 1776830465.0885577,
+    "ast_hash": "a5f0635b2136f31854a3cdd4aa57a919",
+    "semantic_hash": "a5f0635b2136f31854a3cdd4aa57a919"
+  },
+  "C:\\Apps\\fatimatbm\\NonParishFamily.Designer.cs": {
+    "mtime": 1761499517.2636094,
+    "ast_hash": "70f8af2661be8cc1a972fef286099152",
+    "semantic_hash": "70f8af2661be8cc1a972fef286099152"
+  },
+  "C:\\Apps\\fatimatbm\\PdfExportExample.cs": {
+    "mtime": 1777049287.7736187,
+    "ast_hash": "75f7440bd3ffc234eec8f61dc2d0cfd6",
+    "semantic_hash": "75f7440bd3ffc234eec8f61dc2d0cfd6"
+  },
+  "C:\\Apps\\fatimatbm\\Program.cs": {
+    "mtime": 1778299205.5412657,
+    "ast_hash": "18d3337d05c1bc768c3c744c9d0d2d3e",
+    "semantic_hash": "18d3337d05c1bc768c3c744c9d0d2d3e"
+  },
+  "C:\\Apps\\fatimatbm\\ProgressForm.cs": {
+    "mtime": 1750221278.3458343,
+    "ast_hash": "2df0a68905a0e59ce5d2351ce1fd572f",
+    "semantic_hash": "2df0a68905a0e59ce5d2351ce1fd572f"
+  },
+  "C:\\Apps\\fatimatbm\\ProgressForm.Designer.cs": {
+    "mtime": 1750221278.3458343,
+    "ast_hash": "b1974dec6576d0bffe948b2e302c0de2",
+    "semantic_hash": "b1974dec6576d0bffe948b2e302c0de2"
+  },
+  "C:\\Apps\\fatimatbm\\QUICK_START_PDF_INTEGRATION.cs": {
+    "mtime": 1777049349.2354307,
+    "ast_hash": "d69d8d5c706a0a1cabcf4a166e75564a",
+    "semantic_hash": "d69d8d5c706a0a1cabcf4a166e75564a"
+  },
+  "C:\\Apps\\fatimatbm\\SubscriptionPopup.cs": {
+    "mtime": 1777018911.4366877,
+    "ast_hash": "c20c75190ff5bca0ea27102309d17d55",
+    "semantic_hash": "c20c75190ff5bca0ea27102309d17d55"
+  },
+  "C:\\Apps\\fatimatbm\\SubscriptionPopup.Designer.cs": {
+    "mtime": 1762231104.7117882,
+    "ast_hash": "eba08b84d74bce23101531eda391629f",
+    "semantic_hash": "eba08b84d74bce23101531eda391629f"
+  },
+  "C:\\Apps\\fatimatbm\\ThemedDialog.cs": {
+    "mtime": 1776832979.7485437,
+    "ast_hash": "c6d636829961ff0101d8a3cd31187263",
+    "semantic_hash": "c6d636829961ff0101d8a3cd31187263"
+  },
+  "C:\\Apps\\fatimatbm\\.claude\\settings.json": {
+    "mtime": 1776787821.1809056,
+    "ast_hash": "5287127880838c752b3f6deae42179cf",
+    "semantic_hash": "5287127880838c752b3f6deae42179cf"
+  },
+  "C:\\Apps\\fatimatbm\\.claude\\settings.local.json": {
+    "mtime": 1777020357.803002,
+    "ast_hash": "0f01093fa4dbdb6e3304df5a12cc47d2",
+    "semantic_hash": "0f01093fa4dbdb6e3304df5a12cc47d2"
+  },
+  "C:\\Apps\\fatimatbm\\Properties\\AssemblyInfo.cs": {
+    "mtime": 1748669575.3772993,
+    "ast_hash": "b3de9b4f4c7f9e244f55f5b73127f229",
+    "semantic_hash": "b3de9b4f4c7f9e244f55f5b73127f229"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\DatabaseSetup.ps1": {
+    "mtime": 1778298222.7742856,
+    "ast_hash": "3fe61d631126e026806994c1e459e88d",
+    "semantic_hash": "3fe61d631126e026806994c1e459e88d"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\Initial_ddl_Scripts.sql": {
+    "mtime": 1762231104.7057576,
+    "ast_hash": "a0920c0756c89c44953b7386b54c3cc7",
+    "semantic_hash": "a0920c0756c89c44953b7386b54c3cc7"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\Initial_dml_Scripts.sql": {
+    "mtime": 1767543188.2529879,
+    "ast_hash": "8717a33040f39586391ef9e9e8bd2423",
+    "semantic_hash": "8717a33040f39586391ef9e9e8bd2423"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\Initial_dummy_data_Scripts.sql": {
+    "mtime": 1749875616.3933806,
+    "ast_hash": "c69d03d11777ade98543ab974489d063",
+    "semantic_hash": "c69d03d11777ade98543ab974489d063"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\Master_Installation_Script.sql": {
+    "mtime": 1778298299.103842,
+    "ast_hash": "b2610b9663ebc2cd28db0d1fde398208",
+    "semantic_hash": "b2610b9663ebc2cd28db0d1fde398208"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\PDF_Export_StoredProcedures.sql": {
+    "mtime": 1777049445.7314568,
+    "ast_hash": "5f86e195f09f268936d163deea99493a",
+    "semantic_hash": "5f86e195f09f268936d163deea99493a"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\Performance_Optimization.sql": {
+    "mtime": 1778296473.0522177,
+    "ast_hash": "35d349b9d4c22ddf244645bb1654c3ce",
+    "semantic_hash": "35d349b9d4c22ddf244645bb1654c3ce"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\V4_ddl_Scripts.sql": {
+    "mtime": 1776953184.0140827,
+    "ast_hash": "ef203f94e0cdc6049ac04c460fede6a2",
+    "semantic_hash": "ef203f94e0cdc6049ac04c460fede6a2"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\V4_dml_Scripts.sql": {
+    "mtime": 1776953365.0785167,
+    "ast_hash": "4bbbdca6c47bbc6a655aa6e54e9fd7af",
+    "semantic_hash": "4bbbdca6c47bbc6a655aa6e54e9fd7af"
+  },
+  "C:\\Apps\\fatimatbm\\COMPLETE_DEPLOYMENT_READY_SUMMARY.txt": {
+    "mtime": 1778298385.4659872,
+    "ast_hash": "9a659e6d22c249f669cbba54ec8b9528",
+    "semantic_hash": "9a659e6d22c249f669cbba54ec8b9528"
+  },
+  "C:\\Apps\\fatimatbm\\COMPLETE_INTEGRATION_GUIDE.md": {
+    "mtime": 1777049576.0908625,
+    "ast_hash": "1097b1637aeff254acbddce10f345c51",
+    "semantic_hash": "1097b1637aeff254acbddce10f345c51"
+  },
+  "C:\\Apps\\fatimatbm\\DELIVERABLES.md": {
+    "mtime": 1777049709.3378243,
+    "ast_hash": "f54e9e8df78f6ed77fd00c6649c19aa6",
+    "semantic_hash": "f54e9e8df78f6ed77fd00c6649c19aa6"
+  },
+  "C:\\Apps\\fatimatbm\\DEPLOYMENT_CHECKLIST.md": {
+    "mtime": 1778298007.305041,
+    "ast_hash": "2831ee4601634a9a6358a50fcc044f4c",
+    "semantic_hash": "2831ee4601634a9a6358a50fcc044f4c"
+  },
+  "C:\\Apps\\fatimatbm\\DEPLOYMENT_SUMMARY.md": {
+    "mtime": 1778298050.9659245,
+    "ast_hash": "34942f4fdf6cfe66e8d0ccd9a532888b",
+    "semantic_hash": "34942f4fdf6cfe66e8d0ccd9a532888b"
+  },
+  "C:\\Apps\\fatimatbm\\IDEMPOTENT_DEPLOYMENT_SUMMARY.md": {
+    "mtime": 1778298336.9885013,
+    "ast_hash": "565a37675fbb149e0f8cb155076423e2",
+    "semantic_hash": "565a37675fbb149e0f8cb155076423e2"
+  },
+  "C:\\Apps\\fatimatbm\\IMPLEMENTATION_SUMMARY.md": {
+    "mtime": 1777049647.0456336,
+    "ast_hash": "c2e3f55152cfdad061631937e69f8120",
+    "semantic_hash": "c2e3f55152cfdad061631937e69f8120"
+  },
+  "C:\\Apps\\fatimatbm\\INSTALLATION_GUIDE.md": {
+    "mtime": 1778297975.7764573,
+    "ast_hash": "fbb11a00fb3f62473fc8e758a4f4048d",
+    "semantic_hash": "fbb11a00fb3f62473fc8e758a4f4048d"
+  },
+  "C:\\Apps\\fatimatbm\\MODERN_PDF_GUIDE.md": {
+    "mtime": 1777049323.4574218,
+    "ast_hash": "8d4d87b3df43f2325c0e2b3adc57328c",
+    "semantic_hash": "8d4d87b3df43f2325c0e2b3adc57328c"
+  },
+  "C:\\Apps\\fatimatbm\\PDF_MODERNIZATION_COMPARISON.md": {
+    "mtime": 1777049384.845413,
+    "ast_hash": "31db3f1bf992555dce6362f57d8f84b8",
+    "semantic_hash": "31db3f1bf992555dce6362f57d8f84b8"
+  },
+  "C:\\Apps\\fatimatbm\\PERFORMANCE_ANALYSIS.md": {
+    "mtime": 1778296334.6001897,
+    "ast_hash": "f51a7a6ab2208760620d946fd6c92641",
+    "semantic_hash": "f51a7a6ab2208760620d946fd6c92641"
+  },
+  "C:\\Apps\\fatimatbm\\QUICK_DEPLOYMENT_REFERENCE.txt": {
+    "mtime": 1778298074.5105896,
+    "ast_hash": "78a6c8dda9679f98c4d22ca8ed295eda",
+    "semantic_hash": "78a6c8dda9679f98c4d22ca8ed295eda"
+  },
+  "C:\\Apps\\fatimatbm\\QUICK_REFERENCE_CARD.txt": {
+    "mtime": 1777049675.3388388,
+    "ast_hash": "3a306900ee9dd808ff57bd70a3d691ff",
+    "semantic_hash": "3a306900ee9dd808ff57bd70a3d691ff"
+  },
+  "C:\\Apps\\fatimatbm\\README.md": {
+    "mtime": 1762231104.2954118,
+    "ast_hash": "7395db4892c79ac41e668f4aaef32e77",
+    "semantic_hash": "7395db4892c79ac41e668f4aaef32e77"
+  },
+  "C:\\Apps\\fatimatbm\\USER_EXPERIENCE_WALKTHROUGH.md": {
+    "mtime": 1777049613.1867883,
+    "ast_hash": "865390b4defde4a6ce007570e1a18f86",
+    "semantic_hash": "865390b4defde4a6ce007570e1a18f86"
+  },
+  "C:\\Apps\\fatimatbm\\Resources\\anbiyam_map.html": {
+    "mtime": 1776774416.1644785,
+    "ast_hash": "49974c5c224ebd0253ecb314333320f8",
+    "semantic_hash": "49974c5c224ebd0253ecb314333320f8"
+  },
+  "C:\\Apps\\fatimatbm\\Resources\\ui_comparison.html": {
+    "mtime": 1776774679.8314016,
+    "ast_hash": "66e96a943805367b9693165345f183bb",
+    "semantic_hash": "66e96a943805367b9693165345f183bb"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\IDEMPOTENT_SCRIPTS_GUIDE.md": {
+    "mtime": 1778298217.4842758,
+    "ast_hash": "209618e4b523501c9487fec592f08a9c",
+    "semantic_hash": "209618e4b523501c9487fec592f08a9c"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\SCRIPT_VERSIONING_STRATEGY.md": {
+    "mtime": 1778298253.2460942,
+    "ast_hash": "6fc1d1884f5906826c0cc022555b9146",
+    "semantic_hash": "6fc1d1884f5906826c0cc022555b9146"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\temp_data.txt": {
+    "mtime": 1777019036.6550694,
+    "ast_hash": "3b8d781534e73f62dceca840b57e58b0",
+    "semantic_hash": "3b8d781534e73f62dceca840b57e58b0"
+  },
+  "C:\\Apps\\fatimatbm\\Scripts\\V4_migration_notes.txt": {
+    "mtime": 1776750709.6327884,
+    "ast_hash": "f2d8564208743ab0f3ef58389b711098",
+    "semantic_hash": "f2d8564208743ab0f3ef58389b711098"
+  },
+  "C:\\Apps\\fatimatbm\\Resources\\delete (1).png": {
+    "mtime": 1750227532.1539598,
+    "ast_hash": "cffaa78c7fc1b96885a1c9999a2aafd4",
+    "semantic_hash": "cffaa78c7fc1b96885a1c9999a2aafd4"
+  },
+  "C:\\Apps\\fatimatbm\\Resources\\pencil.png": {
+    "mtime": 1750263997.2582955,
+    "ast_hash": "b24722f6ad4f0667a35e22301073ef47",
+    "semantic_hash": "b24722f6ad4f0667a35e22301073ef47"
+  },
+  "C:\\Apps\\fatimatbm\\Resources\\plus.png": {
+    "mtime": 1750263979.716854,
+    "ast_hash": "558e65b2177dd867a585aaf2593ed042",
+    "semantic_hash": "558e65b2177dd867a585aaf2593ed042"
+  }
+}

@@ -171,15 +171,15 @@ namespace TestFat
                 BackColor   = AppTheme.OffWhite,
             };
             master.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
-            master.RowStyles.Add(new RowStyle(SizeType.Percent,  12f));   // Filter bar
+            master.RowStyles.Add(new RowStyle(SizeType.Percent,  35f));   // Filter bar
             master.RowStyles.Add(new RowStyle(SizeType.Absolute, 32f));   // Family List header
             master.RowStyles.Add(new RowStyle(SizeType.Percent,  45f));   // Family grid
             master.RowStyles.Add(new RowStyle(SizeType.Absolute, 32f));   // Members header
-            master.RowStyles.Add(new RowStyle(SizeType.Percent,  23f));   // Members grid
-            master.RowStyles.Add(new RowStyle(SizeType.Percent,  20f));   // Action bar
+            master.RowStyles.Add(new RowStyle(SizeType.Percent,  15f));   // Members grid
+            master.RowStyles.Add(new RowStyle(SizeType.Percent,  5f));   // Action bar
 
             // Row 0: Filter panel
-            master.Controls.Add(BuildFilterPanel(), 0, 0);
+            master.Controls.Add(panel4, 0, 0);
 
             // Row 1: Family List header
             var lblFamilyListHeader = new Label
